@@ -1,0 +1,9 @@
+torch
+torchvision
+pillow
+matplotlib
+numpy
+torchgeometry
+wandb
+pytorch-lightning
+
