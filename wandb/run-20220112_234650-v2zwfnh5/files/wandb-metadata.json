@@ -1,0 +1,22 @@
+{
+    "os": "macOS-12.0.1-x86_64-i386-64bit",
+    "python": "3.8.9",
+    "heartbeatAt": "2022-01-12T22:46:51.117642",
+    "startedAt": "2022-01-12T22:46:50.101122",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/NicolasMakaroff/ULM_4channel.git",
+        "commit": "fa1537dbf7933cdca9b84f0cd53469fd882bde71"
+    },
+    "email": "nicolas.makaroff@ensiie.fr",
+    "root": "/Users/nicolasmakaroff/Documents/ULM_4channel",
+    "host": "PULP312F.windows.dauphine.fr",
+    "username": "nicolasmakaroff",
+    "executable": "/Users/nicolasmakaroff/Documents/ULM_4channel/bin/python3"
+}

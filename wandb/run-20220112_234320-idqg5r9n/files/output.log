@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "train.py", line 69, in <module>
+    main(args,42)
+  File "train.py", line 50, in main
+    callbacks=[ImagePredictionLogger(samples)]
+NameError: name 'ImagePredictionLogger' is not defined

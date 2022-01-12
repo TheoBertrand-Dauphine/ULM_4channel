@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "train.py", line 68, in <module>
+    main(args,42)
+  File "train.py", line 35, in main
+    wandb_logger = WandbLogger(project="ULM_4CHANNEL")
+NameError: name 'WandbLogger' is not defined

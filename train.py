@@ -4,10 +4,11 @@ import os
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
+from torchvision import transforms
 
-from utils.dataset import BrainSegmentationDataset as Dataset
-from utils.transforms import transforms
-from nn.ulm_unet import ULM_UNet
+from utils.dataset import ULMDataset
+from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap
+from nn.ulm_unet import ULM_UNet, ImagePredictionLogger
 
 import pytorch_lightning
 from pytorch_lightning import Trainer
@@ -16,68 +17,40 @@ from pytorch_lightning.plugins import DDPPlugin
 import matplotlib.pyplot as plt
 import time
 
-def data_loaders(args,seed=1):
-    dataset_train, dataset_valid = datasets(args,seed)
-
-    def worker_init(worker_id):
-        np.random.seed(42 + worker_id)
-
-    loader_train = DataLoader(
-        dataset_train,
-        batch_size=args.batch_size,
-        shuffle=True,
-        drop_last=True,
-        #num_workers=args.workers,
-        #worker_init_fn=worker_init,
-    )
-    loader_valid = DataLoader(
-        dataset_valid,
-        batch_size=args.batch_size,
-        drop_last=False,
-        #num_workers=args.workers,
-        #worker_init_fn=worker_init,
-    )
-
-    return loader_train, loader_valid
+import wandb 
+from pytorch_lightning.loggers import WandbLogger
 
 
-def datasets(args,seed=1):
-    train = Dataset(
-        images_dir=args.images,
-        subset="train",
-        image_size=args.image_size,
-        transform=transforms(scale=args.aug_scale, angle=args.aug_angle, flip_prob=0.5),
-    )
-    valid = Dataset(
-        images_dir=args.images,
-        subset="validation",
-        image_size=args.image_size,
-        random_sampling=True,
-        seed=1
-    )
-    return train, valid
 
-def makedirs(args):
-    os.makedirs(args.weights, exist_ok=True)
 
 def main(args,seed):
-    makedirs(args)
-    trainloader, valoader = data_loaders(args,seed)
+
+    train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+    trainloader = DataLoader(train_dataset, batch_size=4, shuffle=True, num_workers=0)
+
+    validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+    valloader = DataLoader(validation_dataset, batch_size=4, shuffle=False, num_workers=0)
+
+    wandb.login()
+    wandb.init()
+    wandb_logger = WandbLogger(project="ULM_4CHANNEL")
+
     model = ULM_UNet()
-    tb_logger = pl_loggers.TensorBoardLogger('logs_acm_dice/')
+    samples = next(iter(valloader))
     trainer = Trainer(
         #gpus=[0],
         #num_nodes=2,
         #accelerator='ddp',
         #plugins=DDPPlugin(find_unused_parameters=False),
-        logger = tb_logger,
+        logger = wandb_logger,
         #progress_bar_refresh_rate=0,
         max_epochs=10,
         #benchmark=True,
-        check_val_every_n_epoch=5
+        check_val_every_n_epoch=1,
+        callbacks=[ImagePredictionLogger(samples)]
     )
 
-    trainer.fit(model,trainloader,valoader)
+    trainer.fit(model,trainloader,valloader)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")

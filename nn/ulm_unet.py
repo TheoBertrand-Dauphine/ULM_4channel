@@ -2,14 +2,17 @@ from collections import OrderedDict
 
 import torch
 import torch.nn as nn
+import numpy as np
 
 import pytorch_lightning as pl
+
+import wandb
 
 l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
 
-    def __init__(self, in_channels=3, out_channels=1, init_features=16):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16):
         super(ULM_UNet, self).__init__()
 
         features = init_features
@@ -66,7 +69,7 @@ class ULM_UNet(pl.LightningModule):
         dec1 = self.upconv1(dec2)
         dec1 = torch.cat((dec1, enc1), dim=1)
         dec1 = self.decoder1(dec1)
-        return torch.sigmoid(self.conv(dec1))
+        return self.conv(dec1)
 
     @staticmethod
     def _block(in_channels, features, name):
@@ -109,7 +112,7 @@ class ULM_UNet(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
 
-        x, y_true = batch
+        x, y_true = batch['image'].unsqueeze(1), batch['landmarks'].squeeze(1)
         y_pred = self(x)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
@@ -122,8 +125,68 @@ class ULM_UNet(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        x, y = batch
+        x, y = batch['image'].unsqueeze(1), batch['landmarks'].squeeze(1)
         y_hat = self(x)
         loss = l2loss(y_hat,y)
         self.log('val_loss',loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         return loss
+
+def wb_mask(bg_img, pred_mask, true_mask):
+
+    """class_labels = {
+        0: 'endpoint',
+        1: 'biffurcation',
+        2: 'crossing',
+    }"""
+
+    return wandb.Image(bg_img, masks={
+        "prediction" : {
+            "mask_data" : pred_mask
+        },
+        "ground truth" : {
+            "mask_data" : true_mask
+            }
+        })
+
+def gray2rgb(image):
+    w, h = image.shape
+    image += np.abs(np.min(image))
+    image_max = np.abs(np.max(image))
+    if image_max > 0:
+        image /= image_max
+    ret = np.empty((w, h, 3), dtype=np.uint8)
+    ret[:, :, 2] = ret[:, :, 1] = ret[:, :, 0] = image * 255
+    return ret
+
+class ImagePredictionLogger(pl.Callback):
+    def __init__(self, val_samples, num_samples=10):
+        super().__init__()
+        self.val_imgs, self.val_labels = val_samples['image'].unsqueeze(1), val_samples['landmarks'].squeeze(1)
+        self.val_imgs = self.val_imgs[:num_samples]
+        self.val_labels = self.val_labels[:num_samples]
+          
+    def on_validation_epoch_end(self, trainer, pl_module):
+        val_imgs = self.val_imgs.to(device=pl_module.device)
+
+        logits = pl_module(val_imgs)
+
+        mask_list = []
+        
+        for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
+            # the raw background image as a numpy array
+            #bg_image = image2np(original_image.data)
+            print(original_image.shape)
+            bg_image = gray2rgb(original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
+            # run the model on that image
+            #prediction = pl_module(original_image)[0]
+
+            prediction_mask = np.sum(logits.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=2)
+
+            # ground truth mask
+            true_mask = np.sum(ground_truth.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=2)
+            # keep a list of composite images
+
+            mask_list.append(wb_mask(bg_image, prediction_mask, true_mask))
+
+        # log all composite images to W&B'''
+        wandb.log({"predictions" : mask_list})

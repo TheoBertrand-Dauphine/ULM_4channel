@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "train.py", line 69, in <module>
+    main(args,42)
+  File "train.py", line 50, in main
+    callbacks=[ImagePredictionLogger(samples)]
+  File "/Users/nicolasmakaroff/Documents/ULM_4channel/nn/ulm_unet.py", line 141, in __init__
+    self.val_imgs, self.val_labels = val_samples['images'], val_samples['landmarks']
+KeyError: 'images'

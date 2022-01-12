@@ -30,7 +30,7 @@ import numpy as np
 
 import csv
 
-from network_designs import Unet_for_ULM_out4
+from nn.network_designs import Unet_for_ULM_out4
 
 import torchgeometry.image.gaussian
 
@@ -105,10 +105,10 @@ if __name__=='__main__':
             with torch.no_grad():
                 # Getting images and label...
                 
-                im = Image.open('training_ULM/training_ULM_{}.png'.format(i+1)) 
-                
+                im = Image.open('data/training_ULM/training_ULM_{}.png'.format(i+1)) 
+
                 point_list = []
-                with open('training_ULM_points/point_list_{}.csv'.format(i+1)) as f:
+                with open('data/training_ULM_points/point_list_{}.csv'.format(i+1)) as f:
                     rd = csv.reader(f)
                     for row in rd:
                         if len(row)!=0:
@@ -116,10 +116,10 @@ if __name__=='__main__':
                 
                 im_tensor = torch.unsqueeze(pil_to_tensor(im),0).sqrt()
                 im_tensor = (im_tensor[:,0,:,:].unsqueeze(0))
-                
-                
+
                 im_bif = torch.zeros([1,3,im_tensor.size(2),im_tensor.size(3)])
                 
+
                 # Making heat map with different channels for diferent kinds of landmarks
                 for j in range(len(point_list)):
                     if point_list[j][2] == 'endpoint':
@@ -132,7 +132,11 @@ if __name__=='__main__':
                         im_bif[0,2,point_list[j][0],point_list[j][1]] = 1
                         point_list[j] = [2,point_list[j][0],point_list[j][1]]
                 
+                print(im_bif.shape)
+                print(im_bif)
+
                 im_bif_blur = gaussian_blur(im_bif)
+    
                 if im_bif_blur.max()!=0:
                     im_bif_blur = im_bif_blur/(im_bif_blur.max())
                 
@@ -147,7 +151,7 @@ if __name__=='__main__':
                 
                 im_tensor_tot[i,0,:,:] = im_tensor
                 im_bif_tot[i,:,:,:] = im_bif_blur
-                
+                break
     im_bif_tot = torch.cat([im_bif_tot, im_bif_tot.max(dim=1,keepdim=True).values],dim=1)
     
 #%% Storing images for validation
@@ -159,10 +163,10 @@ if __name__=='__main__':
             with torch.no_grad():
                 # Getting images and label...
                 
-                im = Image.open('validation_ULM/validation_ULM_{}.png'.format(i+1)) 
+                im = Image.open('data/validation_ULM/validation_ULM_{}.png'.format(i+1)) 
                 
                 point_list = []
-                with open('validation_ULM_points/point_list_{}.csv'.format(i+1)) as f:
+                with open('data/validation_ULM_points/point_list_{}.csv'.format(i+1)) as f:
                     rd = csv.reader(f)
                     for row in rd:
                         if len(row)!=0:

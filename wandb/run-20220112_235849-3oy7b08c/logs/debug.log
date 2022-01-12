@@ -1,0 +1,165 @@
+2022-01-12 23:58:49,336 INFO    MainThread:11391 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-12 23:58:49,336 INFO    MainThread:11391 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-12 23:58:49,336 INFO    MainThread:11391 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-12 23:58:49,336 INFO    MainThread:11391 [wandb_init.py:_log_setup():371] Logging user logs to /Users/nicolasmakaroff/Documents/ULM_4channel/wandb/run-20220112_235849-3oy7b08c/logs/debug.log
+2022-01-12 23:58:49,337 INFO    MainThread:11391 [wandb_init.py:_log_setup():372] Logging internal logs to /Users/nicolasmakaroff/Documents/ULM_4channel/wandb/run-20220112_235849-3oy7b08c/logs/debug-internal.log
+2022-01-12 23:58:49,337 INFO    MainThread:11391 [wandb_init.py:init():404] calling init triggers
+2022-01-12 23:58:49,337 INFO    MainThread:11391 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {}
+2022-01-12 23:58:49,337 INFO    MainThread:11391 [wandb_init.py:init():460] starting backend
+2022-01-12 23:58:49,337 INFO    MainThread:11391 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2022-01-12 23:58:49,355 INFO    MainThread:11391 [backend.py:ensure_launched():216] starting backend process...
+2022-01-12 23:58:49,364 INFO    MainThread:11391 [backend.py:ensure_launched():221] started backend process with pid: 11402
+2022-01-12 23:58:49,369 INFO    MainThread:11391 [wandb_init.py:init():469] backend started and connected
+2022-01-12 23:58:49,379 INFO    MainThread:11391 [wandb_init.py:init():533] updated telemetry
+2022-01-12 23:58:49,406 INFO    MainThread:11391 [wandb_init.py:init():563] communicating current version
+2022-01-12 23:58:50,045 INFO    MainThread:11391 [wandb_init.py:init():568] got version response 
+2022-01-12 23:58:50,045 INFO    MainThread:11391 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2022-01-12 23:58:50,309 INFO    MainThread:11391 [wandb_init.py:init():606] starting run threads in backend
+2022-01-12 23:58:50,434 INFO    MainThread:11391 [wandb_run.py:_console_start():1810] atexit reg
+2022-01-12 23:58:50,438 INFO    MainThread:11391 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.REDIRECT
+2022-01-12 23:58:50,439 INFO    MainThread:11391 [wandb_run.py:_redirect():1689] Redirecting console.
+2022-01-12 23:58:50,441 INFO    MainThread:11391 [wandb_run.py:_redirect():1745] Redirects installed.
+2022-01-12 23:58:50,441 INFO    MainThread:11391 [wandb_init.py:init():633] run started, returning control to user process
+2022-01-12 23:58:53,233 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,234 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,236 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,237 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,238 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,239 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,240 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:58:53,240 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,717 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,718 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,720 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,721 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,722 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,723 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,724 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:15,725 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,900 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,902 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,903 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,904 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,905 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,906 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,907 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:37,908 INFO    MainThread:11391 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'endpoint', 1: 'biffurcation', 2: 'crossing'}}}}}
+2022-01-12 23:59:59,784 INFO    MainThread:11391 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 1
+2022-01-12 23:59:59,785 INFO    MainThread:11391 [wandb_run.py:_restore():1752] restore
+2022-01-13 00:00:02,310 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 167781
+  total_bytes: 167781
+}
+
+2022-01-13 00:00:02,681 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 167781
+  total_bytes: 167781
+}
+
+2022-01-13 00:00:03,566 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 167781
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:03,670 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 167781
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:03,774 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 167781
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:03,882 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:03,987 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:04,090 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:04,192 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:04,299 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:04,908 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+
+2022-01-13 00:00:05,361 INFO    MainThread:11391 [wandb_run.py:_wait_for_finish():1912] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+  media_count: 36
+}
+pusher_stats {
+  uploaded_bytes: 182780
+  total_bytes: 182780
+}
+local_info {
+}
+
+2022-01-13 00:00:06,498 INFO    MainThread:11391 [wandb_run.py:_append_history():2130] rendering history
+2022-01-13 00:00:06,498 INFO    MainThread:11391 [wandb_run.py:_append_summary():2085] rendering summary
+2022-01-13 00:00:06,498 INFO    MainThread:11391 [wandb_run.py:_append_files():2180] logging synced files
