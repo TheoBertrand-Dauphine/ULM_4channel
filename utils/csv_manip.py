@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 #%% Making training set
 
-f = open('ULM_points_halfright_label_16_07.csv',newline='\n')
+f = open('./data/csv/ULM_points_halfright_label_16_07.csv',newline='\n')
 
 list_of_points = []
 
@@ -25,7 +25,7 @@ for row in f.readlines():
     
     list_of_points.append([int(p[1]),int(p[2]),p[0]])
 
-I = Image.open('rat_brain_invivo_halfright_sqrt1_16_07.png')
+I = Image.open('./data/rat_brain_invivo_halfright_sqrt1_16_07.png')
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
@@ -43,7 +43,7 @@ for k in range(20):
     
     image_to_save = tensor_to_pil(Icropped)
     
-    image_to_save.save('./training_ULM/training_ULM_{}.png'.format(k+1))
+    image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+1))
     
     [i,j,h,w] = params
 
@@ -53,7 +53,7 @@ for k in range(20):
         if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
             cropped_list.append([x[1]-i,x[0]-j,x[2]])
     
-    with open("./training_ULM_points/point_list_{}.csv".format(k+1),"w") as f:
+    with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
         wr = csv.writer(f)
         wr.writerows(cropped_list)
     
@@ -92,7 +92,7 @@ for k in range(20):
 
 #%% Left part of hires brain goes to validation set
 
-f = open('ULM_points_halfleft_label_16_07.csv',newline='\n')
+f = open('./data/csv/ULM_points_halfleft_label_16_07.csv',newline='\n')
 
 list_of_points = []
 
@@ -101,13 +101,13 @@ for row in f.readlines():
     
     list_of_points.append([int(p[1]),int(p[2]),p[0]])
 
-I = Image.open('rat_brain_invivo_halfleft_sqrt1_16_07.png')
+I = Image.open('./data/rat_brain_invivo_halfleft_sqrt1_16_07.png')
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
 I_tensor = pil_to_tensor(I)
 
-side_size = 512
+side_size = 256
 
 A = torchvision.transforms.RandomCrop(side_size)
 
@@ -119,7 +119,7 @@ for k in range(10):
     
     image_to_save = tensor_to_pil(Icropped)
     
-    image_to_save.save('./validation_ULM/validation_ULM_{}.png'.format(k+1))
+    image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+1))
     
     [i,j,h,w] = params
 
@@ -129,7 +129,7 @@ for k in range(10):
         if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
             cropped_list.append([x[1]-i,x[0]-j,x[2]])
     
-    with open("./validation_ULM_points/point_list_{}.csv".format(k+1),"w") as f:
+    with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
         wr = csv.writer(f)
         wr.writerows(cropped_list)
 
@@ -148,7 +148,7 @@ for x in list_of_points:
 
 #%% Left half of bolus image goes to training set
 
-f = open('ULM_points_full_bolus_label_16_07.csv', newline='\n')
+f = open('./data/csv/ULM_points_full_bolus_label_16_07.csv', newline='\n')
 
 list_of_points = []
 
@@ -157,7 +157,7 @@ for row in f.readlines():
     
     list_of_points.append([int(p[1]),int(p[2]),p[0]])
 
-I = Image.open('rat_brain_bolus_full_sqrt1_16_07.png')
+I = Image.open('./data/rat_brain_bolus_full_sqrt1_16_07.png')
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
@@ -175,7 +175,7 @@ for k in range(20):
     image_to_save = tensor_to_pil(Icropped)
     
     # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
-    image_to_save.save('./training_ULM/training_ULM_{}.png'.format(k+21))
+    image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+21))
     
     [i,j,h,w] = params
 
@@ -185,7 +185,7 @@ for k in range(20):
         if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
             cropped_list.append([x[1]-i,x[0]-j,x[2]])
     
-    with open("./training_ULM_points/point_list_{}.csv".format(k+21),"w") as f:
+    with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+21),"w") as f:
         wr = csv.writer(f)
         wr.writerows(cropped_list)
 
@@ -212,7 +212,7 @@ for k in range(10):
     image_to_save = tensor_to_pil(Icropped)
     
     # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
-    image_to_save.save('./validation_ULM/validation_ULM_{}.png'.format(k+11))
+    image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+11))
     
     [i,j,h,w] = params
     j = j + round(I_tensor.shape[2])
@@ -223,7 +223,7 @@ for k in range(10):
         if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
             cropped_list.append([x[1]-i,x[0]-j,x[2]])
     
-    with open("./validation_ULM_points/point_list_{}.csv".format(k+11),"w") as f:
+    with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+11),"w") as f:
         wr = csv.writer(f)
         wr.writerows(cropped_list)
 
