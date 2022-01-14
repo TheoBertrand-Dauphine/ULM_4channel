@@ -8,6 +8,8 @@ import pytorch_lightning as pl
 
 import wandb
 
+import torchgeometry
+
 l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
@@ -127,8 +129,19 @@ class ULM_UNet(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         x, y = batch['image'].unsqueeze(1), batch['landmarks'].squeeze(1)
         y_hat = self(x)
-        loss = l2loss(y_hat,y)
-        self.log('val_loss',loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+
+        gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
+
+        a = torch.zeros_like(y_hat[0,0,:,:])
+        a[128,18] = 1.0
+        heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
+        heat_a = heat_a / heat_a.max()
+
+        loss = l2loss(y_hat,y)/l2loss(heat_a,torch.zeros_like(heat_a))
+
+        # local_max_filt = nn.MaxPool2d(21,stride=1,padding=10).cuda()
+
+        self.log('Normalized_val_loss',loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         return loss
 
 def wb_mask(bg_img, pred_mask, true_mask):
@@ -175,7 +188,7 @@ class ImagePredictionLogger(pl.Callback):
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
-            print(original_image.shape)
+            # print(original_image.shape)
             bg_image = gray2rgb(original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
             # run the model on that image
             #prediction = pl_module(original_image)[0]

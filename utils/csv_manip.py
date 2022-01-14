@@ -9,6 +9,7 @@ import csv
 from PIL import Image
 import torchvision
 # import torch
+import math
 # import torchgeometry.image.gaussian
 
 import matplotlib.pyplot as plt
@@ -31,31 +32,36 @@ tensor_to_pil = torchvision.transforms.ToPILImage()
 
 I_tensor = pil_to_tensor(I)
 
-side_size = 512
+side_size = 256
+size_tain = 80
+size_val = 20
 
 A = torchvision.transforms.RandomCrop(side_size)
 
-for k in range(20):
-    params = A.get_params(I_tensor,output_size = (side_size,side_size))
-    
-    Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
-    plt.imshow(Icropped.squeeze())
-    
-    image_to_save = tensor_to_pil(Icropped)
-    
-    image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+1))
-    
-    [i,j,h,w] = params
+for k in range(math.floor(size_tain/2)):
+    while True:
+        params = A.get_params(I_tensor,output_size = (side_size,side_size))
+        
+        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        plt.imshow(Icropped.squeeze())
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+1))
+        
+        [i,j,h,w] = params
 
-    cropped_list = []
-    
-    for x in list_of_points:
-        if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
-            cropped_list.append([x[1]-i,x[0]-j,x[2]])
-    
-    with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
-        wr = csv.writer(f)
-        wr.writerows(cropped_list)
+        cropped_list = []
+        
+        for x in list_of_points:
+            if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
+                cropped_list.append([x[1]-i,x[0]-j,x[2]])
+        
+        with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
+            wr = csv.writer(f)
+            wr.writerows(cropped_list)
+        if len(cropped_list)>0:
+            break
     
     
     
@@ -107,31 +113,32 @@ tensor_to_pil = torchvision.transforms.ToPILImage()
 
 I_tensor = pil_to_tensor(I)
 
-side_size = 256
-
 A = torchvision.transforms.RandomCrop(side_size)
 
-for k in range(10):
-    params = A.get_params(I_tensor,output_size = (side_size,side_size))
-    
-    Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
-    plt.imshow(Icropped.squeeze())
-    
-    image_to_save = tensor_to_pil(Icropped)
-    
-    image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+1))
-    
-    [i,j,h,w] = params
+for k in range(math.floor(size_val/2)):
+    while True:
+        params = A.get_params(I_tensor,output_size = (side_size,side_size))
+        
+        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        plt.imshow(Icropped.squeeze())
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+1))
+        
+        [i,j,h,w] = params
 
-    cropped_list = []
-    
-    for x in list_of_points:
-        if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
-            cropped_list.append([x[1]-i,x[0]-j,x[2]])
-    
-    with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
-        wr = csv.writer(f)
-        wr.writerows(cropped_list)
+        cropped_list = []
+        
+        for x in list_of_points:
+            if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
+                cropped_list.append([x[1]-i,x[0]-j,x[2]])
+        
+        with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
+            wr = csv.writer(f)
+            wr.writerows(cropped_list)
+        if len(cropped_list)>0:
+            break
 
 
 #%%
@@ -166,28 +173,31 @@ I_tensor = pil_to_tensor(I)
 I_tensor = I_tensor[:,:,0:round(I_tensor.shape[2]/2)]
 
 
-for k in range(20):
-    params = A.get_params(I_tensor,output_size = (side_size,side_size))
-    
-    Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
-    plt.imshow(Icropped.squeeze())
-    
-    image_to_save = tensor_to_pil(Icropped)
-    
-    # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
-    image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+21))
-    
-    [i,j,h,w] = params
+for k in range(math.floor(size_tain/2)):
+    while True:
+        params = A.get_params(I_tensor,output_size = (side_size,side_size))
+        
+        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        plt.imshow(Icropped.squeeze())
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
+        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(k+21))
+        
+        [i,j,h,w] = params
 
-    cropped_list = []
-    
-    for x in list_of_points:
-        if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
-            cropped_list.append([x[1]-i,x[0]-j,x[2]])
-    
-    with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+21),"w") as f:
-        wr = csv.writer(f)
-        wr.writerows(cropped_list)
+        cropped_list = []
+        
+        for x in list_of_points:
+            if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
+                cropped_list.append([x[1]-i,x[0]-j,x[2]])
+        
+        with open("./data/train_images/ULM_points/point_list_{}.csv".format(k+21),"w") as f:
+            wr = csv.writer(f)
+            wr.writerows(cropped_list)
+        if len(cropped_list)>0:
+            break
 
 #%%
 plt.figure(0)
@@ -203,29 +213,32 @@ I_tensor = pil_to_tensor(I)
 I_tensor = I_tensor[:,:,round(I_tensor.shape[2]/2):I_tensor.shape[2]]
 
 
-for k in range(10):
-    params = A.get_params(I_tensor,output_size = (side_size,side_size))
-    
-    Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
-    plt.imshow(Icropped.squeeze())
-    
-    image_to_save = tensor_to_pil(Icropped)
-    
-    # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
-    image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+11))
-    
-    [i,j,h,w] = params
-    j = j + round(I_tensor.shape[2])
+for k in range(math.floor(size_val/2)):
+    while True:
+        params = A.get_params(I_tensor,output_size = (side_size,side_size))
+        
+        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        plt.imshow(Icropped.squeeze())
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        # image_to_save.save('./validation_ULM_single/validation_ULM_{}.png'.format(k+1))
+        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(k+11))
+        
+        [i,j,h,w] = params
+        j = j + round(I_tensor.shape[2])
 
-    cropped_list = []
-    
-    for x in list_of_points:
-        if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
-            cropped_list.append([x[1]-i,x[0]-j,x[2]])
-    
-    with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+11),"w") as f:
-        wr = csv.writer(f)
-        wr.writerows(cropped_list)
+        cropped_list = []
+        
+        for x in list_of_points:
+            if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
+                cropped_list.append([x[1]-i,x[0]-j,x[2]])
+        
+        with open("./data/val_images/ULM_points/point_list_{}.csv".format(k+11),"w") as f:
+            wr = csv.writer(f)
+            wr.writerows(cropped_list)
+        if len(cropped_list)>0:
+            break
 
 
 #%%

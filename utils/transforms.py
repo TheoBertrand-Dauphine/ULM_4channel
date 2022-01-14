@@ -13,6 +13,8 @@ class Rescale(object):
     def __call__(self, sample):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
+        print(type(image))
+
         h, w = image.shape[:2]
         if isinstance(self.output_size, int):
             if h > w :
@@ -75,5 +77,6 @@ class HeatMap(object):
 
         gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
         landmarks = gaussian_blur(heat_map)
+        landmarks = landmarks / landmarks.max()
 
         return {'image':image, 'landmarks': landmarks, 'classes':classes}

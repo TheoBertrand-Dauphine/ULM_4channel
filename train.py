@@ -44,7 +44,7 @@ def main(args,seed):
         #plugins=DDPPlugin(find_unused_parameters=False),
         logger = wandb_logger,
         #progress_bar_refresh_rate=0,
-        max_epochs=10,
+        max_epochs=5,
         #benchmark=True,
         check_val_every_n_epoch=1,
         callbacks=[ImagePredictionLogger(samples)]
