@@ -154,14 +154,14 @@ class ULM_UNet(pl.LightningModule):
         points_coordinates = batch['landmarks']
         indic = (points_coordinates[:,:,:2]**2).sum(dim=2) > 0
 
-        F1 = 0
-        precision_cum = 0
-        recall_cum = 0
+        F1 = torch.tensor(0., device=self.device)
+        precision_cum = torch.tensor(0., device=self.device)
+        recall_cum = torch.tensor(0., device=self.device)
         
         for i in range(x.shape[0]):
             points = detected_points[detected_points[:,0]==i,1:]
             points = points[:,[1,2,0]]
-            distance = ((torch.tensor([[[1, 1, dist_tol]]])*(points.unsqueeze(0) - points_coordinates[i,:,:].unsqueeze(1)))**2).sum(dim=-1)
+            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:,:].unsqueeze(1)))**2).sum(dim=-1)
             found_matrix = distance < dist_tol**2
 
             try : 
@@ -178,7 +178,7 @@ class ULM_UNet(pl.LightningModule):
             precision = output_point_in_dataset.double().mean()
 
             if torch.isnan(precision):
-                precision = 0.0
+                precision = 1.0
 
             recall_cum += recall/x.shape[0]
             precision_cum += precision/x.shape[0]
@@ -200,14 +200,8 @@ def wb_mask(bg_img, pred_mask, true_mask):
         2: 'crossing',
     }"""
 
-    return wandb.Image(bg_img, masks={
-        "prediction" : {
-            "mask_data" : pred_mask
-        },
-        "ground truth" : {
-            "mask_data" : true_mask
-            }
-        })
+    return [wandb.Image(bg_img), wandb.Image(pred_mask), wandb.Image(true_mask)]
+
 
 def gray2rgb(image):
     w, h = image.shape
@@ -236,17 +230,18 @@ class ImagePredictionLogger(pl.Callback):
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
+            
             bg_image = gray2rgb(original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 
-            prediction_mask = np.sum(logits.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=2)
+            prediction_mask = np.sum(logits.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
 
             # ground truth mask
-            true_mask = np.sum(ground_truth.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=2)
+            true_mask = np.sum(ground_truth.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
             # keep a list of composite images
-
-            mask_list.append(wb_mask(bg_image, prediction_mask, true_mask))
-
+            
+            mask_list = wb_mask(bg_image, prediction_mask, true_mask)
+            print(len(mask_list))
         # log all composite images to W&B'''
-        wandb.log({"predictions" : mask_list})
+        wandb.log({"predictions" : mask_list[0], "pred_mask":mask_list[1], "true_mask":mask_list[2]})
