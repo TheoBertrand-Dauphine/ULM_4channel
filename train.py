@@ -26,10 +26,10 @@ from pytorch_lightning.loggers import WandbLogger
 def main(args,seed):
 
     train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    trainloader = DataLoader(train_dataset, batch_size=4, shuffle=True, num_workers=0)
+    trainloader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=4)
 
     validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    valloader = DataLoader(validation_dataset, batch_size=4, shuffle=False, num_workers=0)
+    valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=4)
 
     wandb.login()
     wandb.init()
@@ -37,6 +37,7 @@ def main(args,seed):
 
     model = ULM_UNet()
     samples = next(iter(valloader))
+
     trainer = Trainer(
         #gpus=[0],
         #num_nodes=2,
@@ -44,7 +45,7 @@ def main(args,seed):
         #plugins=DDPPlugin(find_unused_parameters=False),
         logger = wandb_logger,
         #progress_bar_refresh_rate=0,
-        max_epochs=5,
+        max_epochs=100,
         #benchmark=True,
         check_val_every_n_epoch=1,
         callbacks=[ImagePredictionLogger(samples)]

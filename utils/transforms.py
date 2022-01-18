@@ -13,8 +13,6 @@ class Rescale(object):
     def __call__(self, sample):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
-        print(type(image))
-
         h, w = image.shape[:2]
         if isinstance(self.output_size, int):
             if h > w :
@@ -53,6 +51,7 @@ class RandomCrop(object):
         left = np.random.randint(0, w - new_w)
 
         image = image[top: top + new_h, left: left + new_w]
+        heat_map = heat_map[top: top + new_h, left: left + new_w]
 
         landmarks = landmarks - [top, left, 0]
 
@@ -62,9 +61,8 @@ class RandomCrop(object):
 class ToTensor(object):
 
     def __call__(self,sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
-
-        return {'image':torch.from_numpy(image), 'landmarks': landmarks}
+        image, landmarks, classes, heat_map = sample['image'], sample['landmarks'], sample['classes'], sample['heat_map']
+        return {'image':torch.from_numpy(image), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
 
 class HeatMap(object):
 
@@ -76,7 +74,7 @@ class HeatMap(object):
             heat_map[0,int(rows[2]),int(rows[0]),int(rows[1])] = 1
 
         gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
-        landmarks = gaussian_blur(heat_map)
-        landmarks = landmarks / landmarks.max()
+        heat_map = gaussian_blur(heat_map)
+        heat_map = heat_map / heat_map.max()
 
-        return {'image':image, 'landmarks': landmarks, 'classes':classes}
+        return {'image':image, 'heat_map': heat_map, 'landmarks': landmarks, 'classes':classes}

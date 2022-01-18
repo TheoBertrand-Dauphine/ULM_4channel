@@ -33,7 +33,7 @@ tensor_to_pil = torchvision.transforms.ToPILImage()
 I_tensor = pil_to_tensor(I)
 
 side_size = 256
-size_tain = 80
+size_tain = 40
 size_val = 20
 
 A = torchvision.transforms.RandomCrop(side_size)

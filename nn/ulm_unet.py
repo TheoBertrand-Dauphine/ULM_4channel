@@ -110,11 +110,15 @@ class ULM_UNet(pl.LightningModule):
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
-        return optimizer
+
+        patience = 200
+
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=patience, min_lr=1e-8)
+        return {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "Normalized_val_loss"}}
 
     def training_step(self, batch, batch_idx):
 
-        x, y_true = batch['image'].unsqueeze(1), batch['landmarks'].squeeze(1)
+        x, y_true = batch['image'].unsqueeze(1), batch['heat_map'].squeeze(1)
         y_pred = self(x)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
@@ -127,7 +131,7 @@ class ULM_UNet(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        x, y = batch['image'].unsqueeze(1), batch['landmarks'].squeeze(1)
+        x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
 
         gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
@@ -136,12 +140,56 @@ class ULM_UNet(pl.LightningModule):
         a[128,18] = 1.0
         heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
         heat_a = heat_a / heat_a.max()
-
+        # print(y.shape)
         loss = l2loss(y_hat,y)/l2loss(heat_a,torch.zeros_like(heat_a))
 
-        # local_max_filt = nn.MaxPool2d(21,stride=1,padding=10).cuda()
+        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
 
-        self.log('Normalized_val_loss',loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        threshold = 0.5
+        dist_tol = 7
+
+        max_output = local_max_filt(y_hat*(y_hat>threshold))
+        detected_points = (max_output==y_hat).nonzero()
+
+        points_coordinates = batch['landmarks']
+        indic = (points_coordinates[:,:,:2]**2).sum(dim=2) > 0
+
+        F1 = 0
+        precision_cum = 0
+        recall_cum = 0
+        
+        for i in range(x.shape[0]):
+            points = detected_points[detected_points[:,0]==i,1:]
+            points = points[:,[1,2,0]]
+            distance = ((torch.tensor([[[1, 1, dist_tol]]])*(points.unsqueeze(0) - points_coordinates[i,:,:].unsqueeze(1)))**2).sum(dim=-1)
+            found_matrix = distance < dist_tol**2
+
+            try : 
+                GT_points_found = found_matrix.max(dim=1).values
+            except : 
+                GT_points_found = torch.tensor(0)
+
+            try:
+                output_point_in_dataset = found_matrix.max(dim=0).values
+            except:
+                output_point_in_dataset = torch.tensor(0)
+
+            recall = GT_points_found.double().mean()
+            precision = output_point_in_dataset.double().mean()
+
+            if torch.isnan(precision):
+                precision = 0.0
+
+            recall_cum += recall/x.shape[0]
+            precision_cum += precision/x.shape[0]
+
+            if precision!=0 and recall!=0:
+                F1 += 2/((1/recall)+(1/precision))/x.shape[0]
+
+        self.log('Normalized_val_loss', loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         return loss
 
 def wb_mask(bg_img, pred_mask, true_mask):
@@ -174,7 +222,7 @@ def gray2rgb(image):
 class ImagePredictionLogger(pl.Callback):
     def __init__(self, val_samples, num_samples=10):
         super().__init__()
-        self.val_imgs, self.val_labels = val_samples['image'].unsqueeze(1), val_samples['landmarks'].squeeze(1)
+        self.val_imgs, self.val_labels = val_samples['image'].unsqueeze(1), val_samples['heat_map'].squeeze(1)
         self.val_imgs = self.val_imgs[:num_samples]
         self.val_labels = self.val_labels[:num_samples]
           
@@ -188,7 +236,6 @@ class ImagePredictionLogger(pl.Callback):
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
-            # print(original_image.shape)
             bg_image = gray2rgb(original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
             # run the model on that image
             #prediction = pl_module(original_image)[0]
