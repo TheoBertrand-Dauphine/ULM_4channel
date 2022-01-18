@@ -26,7 +26,7 @@ from pytorch_lightning.loggers import WandbLogger
 def main(args,seed):
 
     train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    trainloader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=args.workers)
+    trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
     validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
     valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
@@ -39,9 +39,10 @@ def main(args,seed):
     samples = next(iter(valloader))
 
     print('nb of epochs : {} \n'.format(args.epochs))
+    print('nb of workers : {} \n'.format(args.workers))
 
     trainer = Trainer(
-        #gpus=[0],
+        gpus=args.device,
         #num_nodes=2,
         #accelerator='ddp',
         #plugins=DDPPlugin(find_unused_parameters=False),
@@ -57,7 +58,7 @@ def main(args,seed):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
-    parser.add_argument("--batch-size", type=int, default=16, help="input batch size for training (default: 16)")
+    parser.add_argument("--batch-size", type=int, default=4, help="input batch size for training (default: 16)")
     parser.add_argument("--epochs", type=int, default=1, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.0001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=str, default="cuda:0", help="device for training (default: cuda:0)")
