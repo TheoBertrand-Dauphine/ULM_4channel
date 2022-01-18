@@ -26,10 +26,10 @@ from pytorch_lightning.loggers import WandbLogger
 def main(args,seed):
 
     train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    trainloader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=4)
+    trainloader = DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=args.workers)
 
     validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=4)
+    valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
 
     wandb.login()
     wandb.init()
@@ -38,6 +38,8 @@ def main(args,seed):
     model = ULM_UNet()
     samples = next(iter(valloader))
 
+    print('nb of epochs : {} \n'.format(args.epochs))
+
     trainer = Trainer(
         #gpus=[0],
         #num_nodes=2,
@@ -45,7 +47,7 @@ def main(args,seed):
         #plugins=DDPPlugin(find_unused_parameters=False),
         logger = wandb_logger,
         #progress_bar_refresh_rate=0,
-        max_epochs=100,
+        max_epochs=args.epochs,
         #benchmark=True,
         check_val_every_n_epoch=1,
         callbacks=[ImagePredictionLogger(samples)]
@@ -56,7 +58,7 @@ def main(args,seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=16, help="input batch size for training (default: 16)")
-    parser.add_argument("--epochs", type=int, default=100, help="number of epochs to train (default: 100)")
+    parser.add_argument("--epochs", type=int, default=1, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.0001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=str, default="cuda:0", help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=1, help="number of workers for data loading (default: 4)")
