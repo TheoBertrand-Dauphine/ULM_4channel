@@ -7,13 +7,15 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from utils.dataset import ULMDataset
-from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap
+from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap, RandomAffine
 from nn.ulm_unet import ULM_UNet, ImagePredictionLogger
 
 import pytorch_lightning
 from pytorch_lightning import Trainer
 from pytorch_lightning import loggers as pl_loggers
 from pytorch_lightning.plugins import DDPPlugin
+from pytorch_lightning.callbacks import LearningRateMonitor
+
 import matplotlib.pyplot as plt
 import time
 
@@ -25,11 +27,13 @@ from pytorch_lightning.loggers import WandbLogger
 
 def main(args,seed):
 
-    train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+    train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor(), RandomAffine(360, 0.1)]))
     trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
     validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
+    valloader = DataLoader(validation_dataset, batch_size=20, shuffle=False, num_workers=args.workers)
+
+    lr_monitor = LearningRateMonitor(logging_interval='step')
 
     wandb.login()
     wandb.init()
@@ -37,9 +41,6 @@ def main(args,seed):
 
     model = ULM_UNet()
     samples = next(iter(valloader))
-
-    print('nb of epochs : {} \n'.format(args.epochs))
-    print('nb of workers : {} \n'.format(args.workers))
 
     trainer = Trainer(
         gpus=args.device,
@@ -51,7 +52,7 @@ def main(args,seed):
         max_epochs=args.epochs,
         #benchmark=True,
         check_val_every_n_epoch=1,
-        callbacks=[ImagePredictionLogger(samples)]
+        callbacks=[ImagePredictionLogger(samples), lr_monitor]
     )
 
     trainer.fit(model,trainloader,valloader)

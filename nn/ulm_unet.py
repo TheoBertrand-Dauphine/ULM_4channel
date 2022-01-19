@@ -145,14 +145,14 @@ class ULM_UNet(pl.LightningModule):
 
         local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
 
-        threshold = 0.5
+        threshold = 0.1
         dist_tol = 7
 
         max_output = local_max_filt(y_hat*(y_hat>threshold))
         detected_points = (max_output==y_hat).nonzero()
 
         points_coordinates = batch['landmarks']
-        indic = (points_coordinates[:,:,:2]**2).sum(dim=2) > 0
+        nb_points = ((points_coordinates[:,:,:2]**2).sum(dim=2) > 0).sum(dim=1)
 
         F1 = torch.tensor(0., device=self.device)
         precision_cum = torch.tensor(0., device=self.device)
@@ -161,24 +161,39 @@ class ULM_UNet(pl.LightningModule):
         for i in range(x.shape[0]):
             points = detected_points[detected_points[:,0]==i,1:]
             points = points[:,[1,2,0]]
-            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:,:].unsqueeze(1)))**2).sum(dim=-1)
-            found_matrix = distance < dist_tol**2
+            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
 
-            try : 
-                GT_points_found = found_matrix.max(dim=1).values
-            except : 
-                GT_points_found = torch.tensor(0)
+            distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
+            distance_min[distance_min==0]=1e8
 
-            try:
-                output_point_in_dataset = found_matrix.max(dim=0).values
-            except:
-                output_point_in_dataset = torch.tensor(0)
+            found_matrix = distance_min < dist_tol**2
 
-            recall = GT_points_found.double().mean()
-            precision = output_point_in_dataset.double().mean()
+            TP = found_matrix.max(dim=1).values.sum()
+            # FN = nb_points - TP
+            # FP = found_matrix.shape[1]-TP
+            # try : 
+            #     GT_points_found = found_matrix.max(dim=1).values
+            # except : 
+            #     GT_points_found = torch.tensor(0)
 
-            if torch.isnan(precision):
-                precision = 1.0
+            # try:
+            #     output_point_in_dataset = found_matrix.max(dim=0).values
+            # except:
+            #     output_point_in_dataset = torch.tensor(0)
+
+            # recall = GT_points_found.double().mean()
+            # precision = output_point_in_dataset.double().mean()
+
+            precision = TP/max(found_matrix.shape[1],1) #nb of points well classified/nb of points in the class
+            recall = TP/max(nb_points[i],1) #nb of points well classified/nb of points labeled in the class
+
+            if precision>1 or recall>1:
+                print('problems')
+                print('TP : {} \n'.format(TP))
+                print('nb of points : {}\n'.format(nb_points[i]))
+
+            # if torch.isnan(precision):
+            #     precision = 1.0
 
             recall_cum += recall/x.shape[0]
             precision_cum += precision/x.shape[0]
@@ -242,6 +257,6 @@ class ImagePredictionLogger(pl.Callback):
             # keep a list of composite images
             
             mask_list = wb_mask(bg_image, prediction_mask, true_mask)
-            print(len(mask_list))
+
         # log all composite images to W&B'''
         wandb.log({"predictions" : mask_list[0], "pred_mask":mask_list[1], "true_mask":mask_list[2]})

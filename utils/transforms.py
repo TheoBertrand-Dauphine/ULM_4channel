@@ -31,6 +31,21 @@ class Rescale(object):
 
         return {'image':img, 'landmarks': landmarks, 'classes':classes}
 
+class RandomAffine(object):
+
+    def __init__(self, angle, t_value):
+        # assert isinstance(t_value, (double,tuple))
+        self.t_value = t_value
+        self.angle = angle
+        self.transform = transforms.RandomAffine(self.angle, translate=(self.t_value, self.t_value))
+
+    def __call__(self, sample):
+        image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
+
+        transform_output = self.transform(torch.cat([image.unsqueeze(0).unsqueeze(0), heat_map],1))
+        
+        return {'image': transform_output[:,0:1,:,:].squeeze(), 'landmarks': landmarks, 'heat_map': transform_output[:,1:4,:,:].squeeze()}
+
 class RandomCrop(object):
 
     def __init__(self, output_size):
