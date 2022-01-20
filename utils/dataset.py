@@ -85,8 +85,7 @@ if __name__ == '__main__':
     composed = transforms.Compose([Rescale(256), HeatMap()])
     fig = plt.figure()
 
-    sample = ULM_dataset[3]
-    print( sample['image'].shape, sample['landmarks'].shape, sample['classes'].shape, sample['heat_map'].shape)
+    sample = ULM_dataset[8]
     for i, trfrm in enumerate([scale, crop, heat, composed]):
         print(i)
         trfrm_sample = trfrm(sample)
@@ -99,8 +98,10 @@ if __name__ == '__main__':
         ax.axis('off')
 
         if trfrm == heat:
-            plt.imshow(trfrm_sample['heat_map'][:,:,:].permute([1,2,0]))
+            print(trfrm_sample['heat_map'].shape)
+            plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
+            plt.scatter(trfrm_sample['landmarks'][:, 1], trfrm_sample['landmarks'][:, 0], s=10, marker='.', c='y')
         else:
-            show_landmarks(**trfrm_sample)
+            plt.imshow(trfrm_sample['image'])
 
     plt.show()

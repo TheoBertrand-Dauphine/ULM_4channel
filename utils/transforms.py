@@ -66,7 +66,6 @@ class RandomCrop(object):
         left = np.random.randint(0, w - new_w)
 
         image = image[top: top + new_h, left: left + new_w]
-        heat_map = heat_map[top: top + new_h, left: left + new_w]
 
         landmarks = landmarks - [top, left, 0]
 
@@ -85,7 +84,7 @@ class HeatMap(object):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
         heat_map = torch.zeros(1,3,image.shape[0], image.shape[1])
-        for rows in landmarks:
+        for rows in landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,:]:
             heat_map[0,int(rows[2]),int(rows[0]),int(rows[1])] = 1
 
         gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
