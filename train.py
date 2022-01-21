@@ -26,14 +26,20 @@ from pytorch_lightning.loggers import WandbLogger
 
 
 def main(args,seed):
+    print(args.synthetic)
 
-    train_dataset = ULMDataset(root_dir='./data/train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor(), RandomAffine(360, 0.1)]))
+    if args.synthetic:
+        data_dir = './data_synthetic/'
+    else:
+        data_dir = './data/'
+
+    train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor(), RandomAffine(360, 0.1)]))
     trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-    validation_dataset = ULMDataset(root_dir='./data/val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-    valloader = DataLoader(validation_dataset, batch_size=20, shuffle=False, num_workers=args.workers)
+    validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+    valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
 
-    lr_monitor = LearningRateMonitor(logging_interval='step')
+    lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
     wandb.login()
     wandb.init()
@@ -69,6 +75,8 @@ if __name__ == '__main__':
     parser.add_argument("--image-size",type=int,default=64,help="target input image size (default: 256)")
     parser.add_argument("--aug-scale",type=int,default=0.05,help="scale factor range for augmentation (default: 0.05)")
     parser.add_argument("--aug-angle",type=int,default=15,help="rotation angle range in degrees for augmentation (default: 15)")
+    parser.add_argument("--synthetic",type=bool,default=False,help="Using synthetic data (default: ULM data)")
+
     args = parser.parse_args()
 
     main(args,42)

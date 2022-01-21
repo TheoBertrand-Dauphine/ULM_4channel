@@ -114,6 +114,7 @@ class ULM_UNet(pl.LightningModule):
         patience = 200
 
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=patience, min_lr=1e-8)
+
         return {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "Normalized_val_loss"}}
 
     def training_step(self, batch, batch_idx):
@@ -140,12 +141,11 @@ class ULM_UNet(pl.LightningModule):
         a[128,18] = 1.0
         heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
         heat_a = heat_a / heat_a.max()
-        # print(y.shape)
-        loss = l2loss(y_hat,y)/l2loss(heat_a,torch.zeros_like(heat_a))
+        val_loss = l2loss(y_hat,y)/l2loss(heat_a,torch.zeros_like(heat_a))
 
         local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
 
-        threshold = 0.5
+        threshold = 0.1
         dist_tol = 7
 
         max_output = local_max_filt(y_hat)
@@ -157,6 +157,8 @@ class ULM_UNet(pl.LightningModule):
         F1 = torch.tensor(0., device=self.device)
         precision_cum = torch.tensor(0., device=self.device)
         recall_cum = torch.tensor(0., device=self.device)
+
+        avg_points_detected = detected_points.shape[0]/x.shape[0]
         
         for i in range(x.shape[0]):
             points = detected_points[detected_points[:,0]==i,1:]
@@ -188,11 +190,14 @@ class ULM_UNet(pl.LightningModule):
                 if precision!=0 and recall!=0:
                     F1 += 2/((1/recall)+(1/precision))/x.shape[0]
 
-        self.log('Normalized_val_loss', loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        # print('hi, i am validating \n')
+
+        self.log('Normalized_val_loss', val_loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        return loss
+        self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        return val_loss
 
 def wb_mask(bg_img, pred_mask, true_mask):
 
@@ -228,6 +233,8 @@ class ImagePredictionLogger(pl.Callback):
         logits = pl_module(val_imgs)
 
         mask_list = []
+
+        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
         
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
@@ -237,13 +244,13 @@ class ImagePredictionLogger(pl.Callback):
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 
-            prediction_mask = np.sum(logits.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            prediction_mask = np.sum(local_max_filt(torch.tensor(logits.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
 
             # ground truth mask
-            true_mask = np.sum(ground_truth.data.cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            true_mask = np.sum(local_max_filt(torch.tensor(ground_truth.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
             # keep a list of composite images
             
             mask_list = wb_mask(bg_image, prediction_mask, true_mask)
 
         # log all composite images to W&B'''
-        wandb.log({"predictions" : mask_list[0], "pred_mask":mask_list[1], "true_mask":mask_list[2]})
+        wandb.log({"Background" : mask_list[0], "predicted":mask_list[1], "label":mask_list[2]})
