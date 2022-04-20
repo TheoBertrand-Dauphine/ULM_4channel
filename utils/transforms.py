@@ -31,6 +31,31 @@ class Rescale(object):
 
         return {'image':img, 'landmarks': landmarks, 'classes':classes}
 
+class Rescale_image(object):
+
+    def __init__(self, output_size):
+        assert isinstance(output_size, (int,tuple))
+        self.output_size = output_size
+
+    def __call__(self, sample):
+        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+
+        h, w = image.shape[:2]
+        if isinstance(self.output_size, int):
+            if h > w :
+                new_h, new_w = self.output_size * h  / w, self.output_size
+            else:
+                new_h, new_w = self.output_size, self.output_size * w / h
+
+        else:
+            new_h, new_w = self.output_size
+
+        new_h, new_w = int(new_h), int(new_w)
+
+        img = transform.resize(image, (new_h, new_w))
+        
+        return {'image':img, 'landmarks': landmarks, 'classes':classes}
+
 class RandomAffine(object):
 
     def __init__(self, angle, t_value):
@@ -84,6 +109,7 @@ class HeatMap(object):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
         heat_map = torch.zeros(1,3,image.shape[0], image.shape[1])
+        print(heat_map.shape)
         for rows in landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,:]:
             heat_map[0,int(rows[2]),int(rows[0]),int(rows[1])] = 1
 
