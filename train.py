@@ -65,8 +65,8 @@ def main(args,seed):
         #progress_bar_refresh_rate=0,
         max_epochs=args.epochs,
         #benchmark=True,
-        check_val_every_n_epoch=4,
-        log_every_n_steps=10,
+        check_val_every_n_epoch=1,
+        log_every_n_steps=5,
         callbacks=[ImagePredictionLogger(samples), lr_monitor]
     )
 
