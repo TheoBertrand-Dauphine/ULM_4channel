@@ -109,7 +109,6 @@ class HeatMap(object):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
         heat_map = torch.zeros(1,3,image.shape[0], image.shape[1])
-        print(heat_map.shape)
         for rows in landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,:]:
             heat_map[0,int(rows[2]),int(rows[0]),int(rows[1])] = 1
 

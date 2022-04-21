@@ -51,7 +51,6 @@ class ULM_UNet(pl.LightningModule):
         )
         
     def forward(self, x):
-
         enc1 = self.encoder1(x)
         enc2 = self.encoder2(self.pool1(enc1))
         enc3 = self.encoder3(self.pool2(enc2))
@@ -244,10 +243,10 @@ class ImagePredictionLogger(pl.Callback):
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 
-            prediction_mask = np.sum(local_max_filt(torch.tensor(logits.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            prediction_mask = np.sum(local_max_filt(logits.clone().detach()).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
 
             # ground truth mask
-            true_mask = np.sum(local_max_filt(torch.tensor(ground_truth.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            true_mask = np.sum(local_max_filt(ground_truth.clone().detach()).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
             # keep a list of composite images
             
             mask_list = wb_mask(bg_image, prediction_mask, true_mask)

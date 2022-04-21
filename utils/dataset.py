@@ -63,7 +63,7 @@ class ULMDataset(Dataset):
         landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
         landmarks.loc[classes == 'crossing',2] = 2
 
-        landmarks_array = np.zeros([40,3])
+        landmarks_array = np.zeros([40,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
         landmarks = np.array(landmarks)
         # print(landmarks)
@@ -120,50 +120,25 @@ class IOSTARDataset(Dataset):
 
         points_folder = sorted([name for name in os.listdir(self.root_dir + '/IOSTAR_points/') if os.path.isfile(self.root_dir + '/IOSTAR_points/' + name)])
 
-        print(points_folder)
-        print(data_folder)
         landmarks_frame = loadmat(self.root_dir + '/IOSTAR_points/' + points_folder[idx])
 
         landmarks = np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
             np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
             np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])
-        # print(landmarks)
 
-        # classes = landmarks_frame.iloc[:,2]
 
         classes = np.empty(shape = (landmarks.shape[0],),dtype = "S12")
         classes[landmarks[:,2]==0.] = 'endpoint'
         classes[landmarks[:,2]==1.] = 'biffurcation'
         classes[landmarks[:,2]==2.] = 'crossing'
-        # print(classes)
-
-        # print(landmarks_frame)
-
-        # landmarks.loc[classes == 'EndpointPos',2] = 0
-        # landmarks.loc[classes=='BiffPos',2 ] = 1
-        # landmarks.loc[classes == 'CrossPos',2] = 2
-
-        # landmarks_array = np.zeros([40,3])
-
-        # landmarks = np.array(landmarks)
-        # print(landmarks)
-
-        # print(idx)
-
-        # print(data_folder)
-        # print(points_folder)
-        # plt.imshow(image)
-        # plt.scatter(landmarks[:, 1], landmarks[:, 0], s=10, marker='.', c='blue')
-        # plt.show()
-
-        # landmarks_array[:landmarks.shape[0],:] = landmarks
-
-        # print(landmarks_array)
 
         if image.ndim==3:
-            image = image[:,:,0]
+            image = image[:,:,1]
+
+        landmarks_array = np.zeros([100,3])
+        landmarks_array[:landmarks.shape[0],:] = landmarks
       
-        sample = {'image': image, 'classes': classes, 'landmarks': landmarks}
+        sample = {'image': image.astype(np.float), 'classes': classes, 'landmarks': landmarks_array.astype(np.float)}
 
         
         if self.transform:
@@ -174,56 +149,33 @@ class IOSTARDataset(Dataset):
 if __name__ == '__main__':
 
     IOSTAR_dataset = IOSTARDataset(root_dir='./data_IOSTAR/train_images')
-    scale = Rescale_image((535,535))
-    crop = RandomCrop(512)
+    crop = RandomCrop(100)
     heat = HeatMap()
 
-    composed = transforms.Compose([Rescale_image((565,560)), HeatMap()])
-
-    # tau_alpha = 446/419
-    # tau_beta = 906/853
-
-    # alpha = 1024/565
-    # beta = 1024/560
-
-    # off_alpha = 808-tau_alpha*793
-    # off_beta = 934-tau_beta*908
-    # plt.figure(0)
-    # plt.imshow(IOSTAR_dataset[0]['image'])
-    # plt.scatter(tau_alpha*(alpha*IOSTAR_dataset[0]['landmarks'][:, 1])+off_alpha, tau_beta*(beta*IOSTAR_dataset[0]['landmarks'][:, 0]+off_beta), s=10, marker='.', c='red')
-
+    composed = transforms.Compose([Rescale_image(256), HeatMap()])
 
     fig = plt.figure(1)
 
-    sample = IOSTAR_dataset[0]
+    sample = IOSTAR_dataset[14]
+    scale = Rescale_image(sample['image'].shape)
+
     for i, trfrm in enumerate([scale, crop, heat, composed]):
         print(i)
         trfrm_sample = trfrm(sample)
-        
-        #print(i, sample['image'].shape, sample['landmarks'].shape, sample['classes'].shape)
 
-
-        
         ax = plt.subplot(1,4, i+1)
         plt.tight_layout()
         ax.set_title(type(trfrm).__name__)
         ax.axis('off')
-        pad_valx = 15
-        pad_valy = 16
-        if trfrm==scale:
-            print(torch.nn.functional.pad(torch.tensor(trfrm_sample['image']), pad=[pad_valx,pad_valx,pad_valy,pad_valy]).shape)
-            plt.imshow(torch.nn.functional.pad(torch.tensor(trfrm_sample['image']), pad=[pad_valx,pad_valx,pad_valy,pad_valy]))
-            plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
 
+        if trfrm==scale:
+            plt.imshow(trfrm_sample['image'])
+            plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
         if trfrm==crop:
             plt.imshow(trfrm_sample['image'])
-            # plt.scatter(trfrm_sample['landmarks'][:, 1], trfrm_sample['landmarks'][:, 0], s=10, marker='.', c='red')
-
         if trfrm == heat:
             plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
-            # plt.scatter(trfrm_sample['landmarks'][:, 1], trfrm_sample['landmarks'][:, 0], s=10, marker='.', c='blue')
         elif trfrm == composed:
             plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
-            # plt.scatter(trfrm_sample['landmarks'][:, 1], trfrm_sample['landmarks'][:, 0], s=4, marker='.', c='blue')
 
     plt.show()
