@@ -85,7 +85,7 @@ class ULMDataset(Dataset):
       
         sample = {'image': np.sqrt(image), 'classes': classes, 'landmarks': landmarks_array}
 
-        
+        # print(sample['image'].shape)
         if self.transform:
             sample = self.transform(sample)
         return sample
@@ -133,12 +133,12 @@ class IOSTARDataset(Dataset):
         classes[landmarks[:,2]==2.] = 'crossing'
 
         if image.ndim==3:
-            image = image[:,:,1]
+            image = np.transpose(image,(2,0,1))
 
         landmarks_array = np.zeros([100,3])
         landmarks_array[:landmarks.shape[0],:] = landmarks
       
-        sample = {'image': image.astype(np.float), 'classes': classes, 'landmarks': landmarks_array.astype(np.float)}
+        sample = {'image': image, 'classes': classes, 'landmarks': landmarks_array}
 
         
         if self.transform:
@@ -156,8 +156,8 @@ if __name__ == '__main__':
 
     fig = plt.figure(1)
 
-    sample = IOSTAR_dataset[14]
-    scale = Rescale_image(sample['image'].shape)
+    sample = IOSTAR_dataset[8]
+    scale = Rescale_image(sample['image'].shape[1:])
 
     for i, trfrm in enumerate([scale, crop, heat, composed]):
         print(i)
@@ -168,11 +168,16 @@ if __name__ == '__main__':
         ax.set_title(type(trfrm).__name__)
         ax.axis('off')
 
+        if trfrm_sample['image'].ndim==3:
+            img = trfrm_sample['image'].transpose((1,2,0))
+        else:
+            img = trfrm_sample['image']
+        
         if trfrm==scale:
-            plt.imshow(trfrm_sample['image'])
+            plt.imshow(img)
             plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
         if trfrm==crop:
-            plt.imshow(trfrm_sample['image'])
+            plt.imshow(img)
         if trfrm == heat:
             plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
         elif trfrm == composed:

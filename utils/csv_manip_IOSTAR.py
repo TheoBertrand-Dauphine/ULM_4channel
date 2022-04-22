@@ -105,9 +105,6 @@ for p, index in enumerate(validation_samples):
         
         [j,i,h,w] = params
 
-        # if p==0:
-        #     print(f0)
-
         f1 = f0.copy()
 
         #Filtering out points located ouside the cropped region
@@ -115,6 +112,8 @@ for p, index in enumerate(validation_samples):
         f1['EndpointPos'] = f0['EndpointPos'][(f0['EndpointPos'][:,1]>i) & (f0['EndpointPos'][:,1]<i+h) & (f0['EndpointPos'][:,0]>j) & (f0['EndpointPos'][:,0]<j+w)] - np.array([[j,i]])
         f1['CrossPos'] = f0['CrossPos'][(f0['CrossPos'][:,1]>i) & (f0['CrossPos'][:,1]<i+h) & (f0['CrossPos'][:,0]>j) & (f0['CrossPos'][:,0]<j+w)] - np.array([[j,i]])
         f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
+
+        # print(f1['EndpointPos'].max())
         
         # Saving in data folder
 

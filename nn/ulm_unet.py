@@ -51,6 +51,7 @@ class ULM_UNet(pl.LightningModule):
         )
         
     def forward(self, x):
+        # print(x.shape)
         enc1 = self.encoder1(x)
         enc2 = self.encoder2(self.pool1(enc1))
         enc3 = self.encoder3(self.pool2(enc2))
@@ -118,7 +119,11 @@ class ULM_UNet(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
 
-        x, y_true = batch['image'].unsqueeze(1), batch['heat_map'].squeeze(1)
+        if batch['image'].ndim==4:
+            x, y_true = batch['image'], batch['heat_map'].squeeze()
+        else:
+            x, y_true = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
+
         y_pred = self(x)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
@@ -131,7 +136,11 @@ class ULM_UNet(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
+
+        if batch['image'].ndim==4:
+            x, y = batch['image'], batch['heat_map'].squeeze()
+        else:
+            x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
 
         gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
@@ -210,19 +219,26 @@ def wb_mask(bg_img, pred_mask, true_mask):
 
 
 def gray2rgb(image):
-    w, h = image.shape
+    w, h = image.shape[-2:]
     image += np.abs(np.min(image))
     image_max = np.abs(np.max(image))
     if image_max > 0:
         image /= image_max
     ret = np.empty((w, h, 3), dtype=np.uint8)
-    ret[:, :, 2] = ret[:, :, 1] = ret[:, :, 0] = image * 255
+    if image.ndim==3:
+        ret = (255*image).transpose((1,2,0))
+    else:
+        ret[:, :, 2] = ret[:, :, 1] = ret[:, :, 0] = image * 255
     return ret
 
 class ImagePredictionLogger(pl.Callback):
     def __init__(self, val_samples, num_samples=10):
         super().__init__()
-        self.val_imgs, self.val_labels = val_samples['image'].unsqueeze(1), val_samples['heat_map'].squeeze(1)
+        if val_samples['image'].ndim==4:
+            self.val_imgs, self.val_labels = val_samples['image'], val_samples['heat_map'].squeeze(1)
+        else:
+            self.val_imgs, self.val_labels = val_samples['image'].unsqueeze(1), val_samples['heat_map'].squeeze(1)
+
         self.val_imgs = self.val_imgs[:num_samples]
         self.val_labels = self.val_labels[:num_samples]
           

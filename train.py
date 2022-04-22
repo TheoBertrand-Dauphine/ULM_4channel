@@ -53,7 +53,11 @@ def main(args,seed):
     wandb.init()
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
-    model = ULM_UNet()
+    if args.data == 'IOSTAR':
+        model = ULM_UNet(in_channels=3)
+    else:
+        model = ULM_UNet()
+
     samples = next(iter(valloader))
 
     trainer = Trainer(
