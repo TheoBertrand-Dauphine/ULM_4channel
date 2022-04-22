@@ -117,6 +117,6 @@ for p, index in enumerate(validation_samples):
         
         # Saving in data folder
 
-        savemat('./data_IOSTAR/val_images/IOSTAR_points/IOSTAR_points_{}.csv'.format(patches_per_image*p + k+1), f1)
+        savemat('./data_IOSTAR/val_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k+1), f1)
 
 
