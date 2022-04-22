@@ -10,4 +10,4 @@
 #SBATCH --mail-user=tbertrand@ceremade.dauphine.fr
 #SBATCH --mail-type=BEGIN,FAIL,END
 
-python3 train.py --device 1 --epochs 5 --workers 8 --batch-size 4
+python3 train.py --device 1 --epochs 1000 --workers 8 --batch-size 8 --data 'IOSTAR'

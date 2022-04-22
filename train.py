@@ -53,7 +53,7 @@ def main(args,seed):
     wandb.init()
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
-    model = ULM_UNet().double()
+    model = ULM_UNet()
     samples = next(iter(valloader))
 
     trainer = Trainer(

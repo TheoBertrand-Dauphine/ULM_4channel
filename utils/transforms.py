@@ -101,7 +101,7 @@ class ToTensor(object):
 
     def __call__(self,sample):
         image, landmarks, classes, heat_map = sample['image'], sample['landmarks'], sample['classes'], sample['heat_map']
-        return {'image':torch.from_numpy(image), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
+        return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
 
 class HeatMap(object):
 
