@@ -22,6 +22,7 @@ import time
 import wandb 
 from pytorch_lightning.loggers import WandbLogger
 
+import datetime
 
 
 
@@ -76,6 +77,8 @@ def main(args,seed):
 
     trainer.fit(model,trainloader,valloader)
 
+    trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=4, help="input batch size for training (default: 16)")
@@ -83,7 +86,7 @@ if __name__ == '__main__':
     parser.add_argument("--lr", type=float, default=0.0001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=int, default=0, help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=1, help="number of workers for data loading (default: 4)")
-    parser.add_argument("--weights", type=str, default="./weights", help="folder to save weights")
+    parser.add_argument("--weights", type=str, default="./weights/", help="folder to save weights")
     parser.add_argument("--images", type=str, default="./data/kaggle_3m", help="root folder with images")
     parser.add_argument("--image-size",type=int,default=64,help="target input image size (default: 256)")
     parser.add_argument("--aug-scale",type=int,default=0.05,help="scale factor range for augmentation (default: 0.05)")
