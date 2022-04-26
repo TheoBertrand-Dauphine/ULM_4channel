@@ -10,4 +10,5 @@
 #SBATCH --mail-user=tbertrand@ceremade.dauphine.fr
 #SBATCH --mail-type=BEGIN,FAIL,END
 
-python3 train.py --device 1 --epochs 1000 --workers 8 --batch-size 8 --data 'IOSTAR'
+python3 ./utils/csv_manip_IOSTAR.py
+python3 train.py --device 1 --epochs 2000 --workers 8 --batch-size 8 --data 'synthetic'
