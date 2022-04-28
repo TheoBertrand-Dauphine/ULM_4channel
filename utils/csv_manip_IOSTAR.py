@@ -20,12 +20,12 @@ import numpy as np
 
 images_numbering = [2,3,5,8,9,10,12,13,15,16,17,20,21,22,24,28,30,34,36,37,38,39,40,48]
 
-nb_training_samples = 14
+nb_training_samples = 12
 
 training_samples = sample(images_numbering, nb_training_samples)
 validation_samples = list(set(images_numbering)-set(training_samples))
 
-patches_per_image = 2
+patches_per_image = 4
 
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
@@ -74,6 +74,14 @@ for p, index in enumerate(training_samples):
         f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
         
         # Saving in data folder
+        plt.figure(0)
+        plt.imshow(image_to_save)
+        plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
+        plt.scatter(f1['CrossPos'][:,1], f1['CrossPos'][:,0], c='b')
+        plt.scatter(f1['BiffPos'][:,1], f1['BiffPos'][:,0], c='g')
+        plt.savefig('./data_IOSTAR/train_images/visualization_train/train_im_scatter{}.png'.format(patches_per_image*p + k+1))
+        plt.clf()
+        
 
         savemat('./data_IOSTAR/train_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k+1), f1)
     
@@ -114,6 +122,13 @@ for p, index in enumerate(validation_samples):
         f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
 
         # print(f1['EndpointPos'].max())
+        plt.figure(0)
+        plt.imshow(image_to_save)
+        plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
+        plt.scatter(f1['CrossPos'][:,1], f1['CrossPos'][:,0], c='b')
+        plt.scatter(f1['BiffPos'][:,1], f1['BiffPos'][:,0], c='g')
+        plt.savefig('./data_IOSTAR/val_images/visualization_val/val_im_scatter{}.png'.format(patches_per_image*p + k+1))
+        plt.clf()
         
         # Saving in data folder
 

@@ -14,8 +14,12 @@ l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
 
-    def __init__(self, in_channels=1, out_channels=3, init_features=16):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1):
         super(ULM_UNet, self).__init__()
+
+        self.threshold = threshold
+        self.patience = patience
+        self.alpha = alpha
 
         features = init_features
         self.encoder1 = ULM_UNet._block(in_channels, features, name="enc1")
@@ -111,9 +115,8 @@ class ULM_UNet(pl.LightningModule):
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
 
-        patience = 100
 
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=patience, min_lr=1e-8)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=self.patience, min_lr=1e-8)
 
         return {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "Normalized_val_loss"}}
 
@@ -143,17 +146,20 @@ class ULM_UNet(pl.LightningModule):
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
 
-        gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
+        # sigma = .4*self.alpha
 
-        a = torch.zeros_like(y_hat[0,0,:,:])
-        a[128,18] = 1.0
-        heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
-        heat_a = heat_a / heat_a.max()
-        val_loss = l2loss(y_hat,y)/l2loss(heat_a,torch.zeros_like(heat_a))
+        # gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (sigma,sigma))
 
-        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
+        # a = torch.zeros_like(y_hat[0,0,:,:])
+        # a[128,18] = 1.0
+        # heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
+        # heat_a = heat_a / heat_a.max()
+        
+        val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
 
-        threshold = 0.1
+        local_max_filt = nn.MaxPool2d(13, stride=1, padding=6)
+
+        threshold = self.threshold
         dist_tol = 7
 
         max_output = local_max_filt(y_hat)
@@ -161,6 +167,8 @@ class ULM_UNet(pl.LightningModule):
 
         points_coordinates = batch['landmarks']
         nb_points = ((points_coordinates[:,:,:2]**2).sum(dim=2) > 0).sum(dim=1)
+
+        # print(nb_points)
 
         F1 = torch.tensor(0., device=self.device)
         precision_cum = torch.tensor(0., device=self.device)

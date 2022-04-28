@@ -35,7 +35,7 @@ def main(args,seed):
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
         validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-        valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
+        valloader = DataLoader(validation_dataset, batch_size=12, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
@@ -46,7 +46,7 @@ def main(args,seed):
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
         validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
-        valloader = DataLoader(validation_dataset, batch_size=10, shuffle=False, num_workers=args.workers)
+        valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
 
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
@@ -55,7 +55,7 @@ def main(args,seed):
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
-        model = ULM_UNet(in_channels=3)
+        model = ULM_UNet(in_channels=3, init_features=32, threshold=args.threshold)
     else:
         model = ULM_UNet()
 
@@ -71,7 +71,7 @@ def main(args,seed):
         max_epochs=args.epochs,
         #benchmark=True,
         check_val_every_n_epoch=1,
-        log_every_n_steps=5,
+        log_every_n_steps=4,
         callbacks=[ImagePredictionLogger(samples), lr_monitor]
     )
 
@@ -92,6 +92,8 @@ if __name__ == '__main__':
     parser.add_argument("--aug-scale",type=int,default=0.05,help="scale factor range for augmentation (default: 0.05)")
     parser.add_argument("--aug-angle",type=int,default=15,help="rotation angle range in degrees for augmentation (default: 15)")
     parser.add_argument("--data",type=str,default=False,help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
+    parser.add_argument("--patience", type=int, default=4, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
+    parser.add_argument("--threshold", type=float, default=0.0001, help="threhsold appied on output for detection of points (default: 0.5)")
 
     args = parser.parse_args()
 
