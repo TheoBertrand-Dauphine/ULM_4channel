@@ -145,19 +145,10 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
-
-        # sigma = .4*self.alpha
-
-        # gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (sigma,sigma))
-
-        # a = torch.zeros_like(y_hat[0,0,:,:])
-        # a[128,18] = 1.0
-        # heat_a = gaussian_blur(a.unsqueeze(0).unsqueeze(0))
-        # heat_a = heat_a / heat_a.max()
         
         val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
 
-        local_max_filt = nn.MaxPool2d(13, stride=1, padding=6)
+        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
 
         threshold = self.threshold
         dist_tol = 7
@@ -168,18 +159,21 @@ class ULM_UNet(pl.LightningModule):
         points_coordinates = batch['landmarks']
         nb_points = ((points_coordinates[:,:,:2]**2).sum(dim=2) > 0).sum(dim=1)
 
-        # print(nb_points)
-
         F1 = torch.tensor(0., device=self.device)
         precision_cum = torch.tensor(0., device=self.device)
         recall_cum = torch.tensor(0., device=self.device)
 
         avg_points_detected = detected_points.shape[0]/x.shape[0]
-        
+
         for i in range(x.shape[0]):
+
             points = detected_points[detected_points[:,0]==i,1:]
             points = points[:,[1,2,0]]
-            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
+
+            if (points[:,2]==3).sum()!=0:
+                points = points[(points[:,2]!=3),:]
+
+            distance = ((torch.tensor([[[1, 1, 0.*dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
 
             if points.shape[0]!=0:
                 distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
@@ -192,21 +186,11 @@ class ULM_UNet(pl.LightningModule):
                 precision = TP/max(found_matrix.shape[1],1) #nb of points well classified/nb of points in the class
                 recall = TP/max(nb_points[i],1) #nb of points well classified/nb of points labeled in the class
 
-                if precision>1 or recall>1:
-                    print('problems')
-                    print('TP : {} \n'.format(TP))
-                    print('nb of points : {}\n'.format(nb_points[i]))
-
-                # if torch.isnan(precision):
-                #     precision = 1.0
-
                 recall_cum += recall/x.shape[0]
                 precision_cum += precision/x.shape[0]
 
                 if precision!=0 and recall!=0:
                     F1 += 2/((1/recall)+(1/precision))/x.shape[0]
-
-        # print('hi, i am validating \n')
 
         self.log('Normalized_val_loss', val_loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)

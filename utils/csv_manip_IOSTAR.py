@@ -20,12 +20,12 @@ import numpy as np
 
 images_numbering = [2,3,5,8,9,10,12,13,15,16,17,20,21,22,24,28,30,34,36,37,38,39,40,48]
 
-nb_training_samples = 12
+# nb_training_samples = 12
 
-training_samples = sample(images_numbering, nb_training_samples)
-validation_samples = list(set(images_numbering)-set(training_samples))
+# training_samples = sample(images_numbering, nb_training_samples)
+# validation_samples = list(set(images_numbering)-set(training_samples))
 
-patches_per_image = 4
+patches_per_image = 2
 
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
@@ -36,15 +36,10 @@ side_size = 256
 
 Crop = torchvision.transforms.RandomCrop(side_size)
 
-#%% Making training set
-for p, index in enumerate(training_samples):
-
-    if index>=10:
-        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
-        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_{}.jpg'.format(index))
-    else:
-        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_0{}.mat'.format(index))
-        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_0{}.jpg'.format(index))
+#%% Making DRIVE training set
+for p in range(20):
+    f0 = loadmat('./data_IOSTAR/DRIVE_datapoints/{}_training_JunctionsPos.mat'.format(p+21))
+    I = Image.open('./data_IOSTAR/DRIVE_images/{}_training.tif'.format(p+21))
 
     I_tensor = pil_to_tensor(I)
 
@@ -61,9 +56,6 @@ for p, index in enumerate(training_samples):
         image_to_save.save('./data_IOSTAR/train_images/images_IOSTAR/training_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
         
         [j,i,h,w] = params
-
-        # if p==0:
-        #     print(f0)
 
         f1 = f0.copy()
 
@@ -84,18 +76,64 @@ for p, index in enumerate(training_samples):
         
 
         savemat('./data_IOSTAR/train_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k+1), f1)
-    
 
-#%% Making validation set
+# #%% Making training set
+# for p, index in enumerate(training_samples):
 
-for p, index in enumerate(validation_samples):
+#     if index>=10:
+#         f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
+#         I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_{}.jpg'.format(index))
+#     else:
+#         f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_0{}.mat'.format(index))
+#         I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_0{}.jpg'.format(index))
 
-    if index>=10:
-        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
-        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_{}.jpg'.format(index))
+#     I_tensor = pil_to_tensor(I)
+
+#     for k in range(patches_per_image):
+
+#         params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        
+#         Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+#         plt.imshow(Icropped.squeeze().permute([1,2,0]))
+        
+#         image_to_save = tensor_to_pil(Icropped)
+        
+#         # print(patches_per_image*p+k+1)
+#         image_to_save.save('./data_IOSTAR/train_images/images_IOSTAR/training_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
+        
+#         [j,i,h,w] = params
+
+#         # if p==0:
+#         #     print(f0)
+
+#         f1 = f0.copy()
+
+#         #Filtering out points located ouside the cropped region
+
+#         f1['EndpointPos'] = f0['EndpointPos'][(f0['EndpointPos'][:,1]>i) & (f0['EndpointPos'][:,1]<i+h) & (f0['EndpointPos'][:,0]>j) & (f0['EndpointPos'][:,0]<j+w)] - np.array([[j,i]])
+#         f1['CrossPos'] = f0['CrossPos'][(f0['CrossPos'][:,1]>i) & (f0['CrossPos'][:,1]<i+h) & (f0['CrossPos'][:,0]>j) & (f0['CrossPos'][:,0]<j+w)] - np.array([[j,i]])
+#         f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
+        
+#         # Saving in data folder
+#         plt.figure(0)
+#         plt.imshow(image_to_save)
+#         plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
+#         plt.scatter(f1['CrossPos'][:,1], f1['CrossPos'][:,0], c='b')
+#         plt.scatter(f1['BiffPos'][:,1], f1['BiffPos'][:,0], c='g')
+#         plt.savefig('./data_IOSTAR/train_images/visualization_train/train_im_scatter{}.png'.format(patches_per_image*p + k+1))
+#         plt.clf()
+        
+
+#         savemat('./data_IOSTAR/train_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k+1), f1)
+
+#%% Making DRIVE test set
+for p in range(20):
+    if p+1>=10:
+        f0 = loadmat('./data_IOSTAR/DRIVE_datapoints/{}_test_JunctionsPos.mat'.format(p+1))
+        I = Image.open('./data_IOSTAR/DRIVE_images/{}_test.tif'.format(p+1))
     else:
-        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_0{}.mat'.format(index))
-        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_0{}.jpg'.format(index))
+        f0 = loadmat('./data_IOSTAR/DRIVE_datapoints/0{}_test_JunctionsPos.mat'.format(p+1))
+        I = Image.open('./data_IOSTAR/DRIVE_images/0{}_test.tif'.format(p+1))
 
     I_tensor = pil_to_tensor(I)
 
@@ -120,8 +158,8 @@ for p, index in enumerate(validation_samples):
         f1['EndpointPos'] = f0['EndpointPos'][(f0['EndpointPos'][:,1]>i) & (f0['EndpointPos'][:,1]<i+h) & (f0['EndpointPos'][:,0]>j) & (f0['EndpointPos'][:,0]<j+w)] - np.array([[j,i]])
         f1['CrossPos'] = f0['CrossPos'][(f0['CrossPos'][:,1]>i) & (f0['CrossPos'][:,1]<i+h) & (f0['CrossPos'][:,0]>j) & (f0['CrossPos'][:,0]<j+w)] - np.array([[j,i]])
         f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
-
-        # print(f1['EndpointPos'].max())
+        
+        # Saving in data folder
         plt.figure(0)
         plt.imshow(image_to_save)
         plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
@@ -130,8 +168,56 @@ for p, index in enumerate(validation_samples):
         plt.savefig('./data_IOSTAR/val_images/visualization_val/val_im_scatter{}.png'.format(patches_per_image*p + k+1))
         plt.clf()
         
-        # Saving in data folder
 
         savemat('./data_IOSTAR/val_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k+1), f1)
+    
+
+#%% Making IOSTAR validation set
+
+for p, index in enumerate(images_numbering):
+
+    if index>=10:
+        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
+        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_{}.jpg'.format(index))
+    else:
+        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_0{}.mat'.format(index))
+        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_0{}.jpg'.format(index))
+
+    I_tensor = pil_to_tensor(I)
+
+    for k in range(patches_per_image):
+
+        params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        
+        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        plt.imshow(Icropped.squeeze().permute([1,2,0]))
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        # print(patches_per_image*p+k+1)
+        image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
+        
+        [j,i,h,w] = params
+
+        f1 = f0.copy()
+
+        #Filtering out points located ouside the cropped region
+
+        f1['EndpointPos'] = f0['EndpointPos'][(f0['EndpointPos'][:,1]>i) & (f0['EndpointPos'][:,1]<i+h) & (f0['EndpointPos'][:,0]>j) & (f0['EndpointPos'][:,0]<j+w)] - np.array([[j,i]])
+        f1['CrossPos'] = f0['CrossPos'][(f0['CrossPos'][:,1]>i) & (f0['CrossPos'][:,1]<i+h) & (f0['CrossPos'][:,0]>j) & (f0['CrossPos'][:,0]<j+w)] - np.array([[j,i]])
+        f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
+
+        # print(f1['EndpointPos'].max())
+        plt.figure(0)
+        plt.imshow(image_to_save)
+        plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
+        plt.scatter(f1['CrossPos'][:,1], f1['CrossPos'][:,0], c='b')
+        plt.scatter(f1['BiffPos'][:,1], f1['BiffPos'][:,0], c='g')
+        plt.savefig('./data_IOSTAR/val_images/visualization_val/val_im_scatter{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
+        plt.clf()
+        
+        # Saving in data folder
+
+        savemat('./data_IOSTAR/val_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k + 1 + patches_per_image*20), f1)
 
 

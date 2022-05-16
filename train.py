@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from utils.dataset import ULMDataset, IOSTARDataset
-from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap, RandomAffine
+from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap, RandomAffine, GlobalContrastNormalization, ColorJitter
 from nn.ulm_unet import ULM_UNet, ImagePredictionLogger
 
 import pytorch_lightning
@@ -31,10 +31,10 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
         valloader = DataLoader(validation_dataset, batch_size=12, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
@@ -55,9 +55,9 @@ def main(args,seed):
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
-        model = ULM_UNet(in_channels=3, init_features=32, threshold=args.threshold)
+        model = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     else:
-        model = ULM_UNet()
+        model = ULM_UNet(threshold=args.threshold, out_channels = args.out_channels)
 
     samples = next(iter(valloader))
 
@@ -77,7 +77,7 @@ def main(args,seed):
 
     trainer.fit(model,trainloader,valloader)
 
-    trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
+    trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
@@ -94,6 +94,7 @@ if __name__ == '__main__':
     parser.add_argument("--data",type=str,default=False,help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=4, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
     parser.add_argument("--threshold", type=float, default=0.0001, help="threhsold appied on output for detection of points (default: 0.5)")
+    parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
 
     args = parser.parse_args()
 

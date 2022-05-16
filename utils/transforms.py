@@ -3,6 +3,7 @@ from torchvision import transforms, utils
 from skimage import transform
 import numpy as np
 import torchgeometry
+from PIL import Image 
 
 class Rescale(object):
 
@@ -73,6 +74,7 @@ class Rescale_image(object):
 class RandomAffine(object):
 
     def __init__(self, angle, t_value):
+
         # assert isinstance(t_value, (double,tuple))
         self.t_value = t_value
         self.angle = angle
@@ -80,6 +82,7 @@ class RandomAffine(object):
 
     def __call__(self, sample):
         image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
+
         if image.ndim==3:
             transform_output = self.transform(torch.cat([image.unsqueeze(0), heat_map],1))
             return {'image': transform_output[:,:image.shape[0],:,:].squeeze(), 'landmarks': landmarks, 'heat_map': transform_output[:,image.shape[0]:,:,:].squeeze()}
@@ -124,20 +127,58 @@ class ToTensor(object):
 
 class HeatMap(object):
 
+    def __init__(self, s=9, alpha = 3., out_channels=3):
+        self.size = s 
+        self.alpha = alpha
+        self.out_channels = out_channels
+        self.gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((self.size, self.size), (self.alpha, self.alpha))
+
+
     def __call__(self, sample):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
         if image.ndim==3:
-            heat_map = torch.zeros(1,3,image.shape[1], image.shape[2])
+            heat_map = torch.zeros(1, self.out_channels, image.shape[1], image.shape[2])
         else:
-            heat_map = torch.zeros(1,3,image.shape[0], image.shape[1])
+            heat_map = torch.zeros(1, self.out_channels, image.shape[0], image.shape[1])
 
         # for rows in landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,:]:
         #     heat_map[0,int(rows[2]),int(rows[0]),int(rows[1])] = 1
         heat_map[0,landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,2].astype(int),landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,0].astype(int),landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,1].astype(int)] = 1.
 
-        gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((17,17), (3,3))
-        heat_map = gaussian_blur(heat_map)
+        heat_map = self.gaussian_blur(heat_map)
         heat_map = heat_map / heat_map.max()
 
+        if self.out_channels==4:
+            heat_map[0,3,:,:] = heat_map[0,:3,:,:].max(dim=0).values
+
         return {'image':image, 'heat_map': heat_map, 'landmarks': landmarks, 'classes':classes}
+
+class ColorJitter(object):
+    def __init__(self, power = 4):
+        self.power = power
+
+
+    def __call__(self, sample):
+        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        random_power = np.exp((2*np.log(self.power))*np.random.rand() - np.log(self.power))
+        # print(random_power)
+        return {'image': np.sign(image)*np.power(np.abs(image),random_power), 'landmarks': landmarks, 'classes': classes}
+
+class GlobalContrastNormalization(object):
+    def __init__(self, bias = 0.1):
+        self.bias = bias
+
+    def __call__(self, sample):
+        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image_out = (image - image.mean(axis=(-1,-2), keepdims=True))/(np.sqrt(self.bias + ((image - image.mean(axis=(-1,-2), keepdims=True))**2).mean(axis=(-1,-2), keepdims=True)))
+        return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True)), 'landmarks': landmarks, 'classes': classes}
+
+# class ZCAtransform(object):
+#     def __init__(self):
+
+#     def __call__(self, sample):
+#         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+#         im_vec = image.reshape([-1,1])
+#         COV = np.cov(X_norm, rowvar=False)
+#         return {'image': (image_out-image_out.min())/(image_out.max()-image_out.min()), 'landmarks': landmarks, 'classes': classes}
