@@ -177,7 +177,7 @@ class ULM_UNet(pl.LightningModule):
 
             if points.shape[0]!=0:
                 distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
-                distance_min[distance_min==0]=1e8
+                distance_min[distance!=distance.min(dim=1, keepdim=True).values]=1e8
 
                 found_matrix = distance_min < dist_tol**2
 
