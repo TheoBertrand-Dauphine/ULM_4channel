@@ -58,7 +58,7 @@ for p in range(20):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/train_images/images_IOSTAR/training_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
         
-        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[2]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 
@@ -153,7 +153,7 @@ for p in range(20):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
         
-        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[2]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 
@@ -202,7 +202,7 @@ for p, index in enumerate(images_numbering):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
         
-        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2), int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2), int((I_tensor.shape[2]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 
