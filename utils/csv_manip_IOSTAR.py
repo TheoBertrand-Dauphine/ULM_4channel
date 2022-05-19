@@ -25,16 +25,18 @@ images_numbering = [2,3,5,8,9,10,12,13,15,16,17,20,21,22,24,28,30,34,36,37,38,39
 # training_samples = sample(images_numbering, nb_training_samples)
 # validation_samples = list(set(images_numbering)-set(training_samples))
 
-patches_per_image = 2
+patches_per_image = 1
 
 pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
-side_size = 256
+side_size = 512
 # size_tain = 40
 # size_val = 20
 
-Crop = torchvision.transforms.RandomCrop(side_size)
+# Crop = torchvision.transforms.RandomCrop(side_size)
+
+Crop = torchvision.transforms.CenterCrop(side_size)
 
 #%% Making DRIVE training set
 for p in range(20):
@@ -45,9 +47,10 @@ for p in range(20):
 
     for k in range(patches_per_image):
 
-        params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        # params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
         
-        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        # Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        Icropped = Crop(I_tensor)
         plt.imshow(Icropped.squeeze().permute([1,2,0]))
         
         image_to_save = tensor_to_pil(Icropped)
@@ -55,7 +58,7 @@ for p in range(20):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/train_images/images_IOSTAR/training_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
         
-        [j,i,h,w] = params
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 
@@ -139,9 +142,10 @@ for p in range(20):
 
     for k in range(patches_per_image):
 
-        params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        # params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
         
-        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        # Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        Icropped = Crop(I_tensor)
         plt.imshow(Icropped.squeeze().permute([1,2,0]))
         
         image_to_save = tensor_to_pil(Icropped)
@@ -149,7 +153,7 @@ for p in range(20):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k+1))
         
-        [j,i,h,w] = params
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2),int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 
@@ -187,9 +191,10 @@ for p, index in enumerate(images_numbering):
 
     for k in range(patches_per_image):
 
-        params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        # params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
         
-        Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        # Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        Icropped = Crop(I_tensor)
         plt.imshow(Icropped.squeeze().permute([1,2,0]))
         
         image_to_save = tensor_to_pil(Icropped)
@@ -197,7 +202,7 @@ for p, index in enumerate(images_numbering):
         # print(patches_per_image*p+k+1)
         image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
         
-        [j,i,h,w] = params
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2), int((I_tensor.shape[0]-side_size)/2), side_size, side_size]
 
         f1 = f0.copy()
 

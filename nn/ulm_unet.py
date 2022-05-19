@@ -21,6 +21,8 @@ class ULM_UNet(pl.LightningModule):
         self.patience = patience
         self.alpha = alpha
 
+        self.local_max_filt = nn.MaxPool2d(9, stride=1, padding=4)
+
         features = init_features
         self.encoder1 = ULM_UNet._block(in_channels, features, name="enc1")
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
@@ -148,12 +150,10 @@ class ULM_UNet(pl.LightningModule):
         
         val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
 
-        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
-
         threshold = self.threshold
         dist_tol = 7
 
-        max_output = local_max_filt(y_hat)
+        max_output = self.local_max_filt(y_hat)
         detected_points = ((max_output==y_hat)*(y_hat>threshold)).nonzero()
 
         points_coordinates = batch['landmarks']

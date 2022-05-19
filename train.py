@@ -31,11 +31,11 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
-        valloader = DataLoader(validation_dataset, batch_size=12, shuffle=False, num_workers=args.workers)
+        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
+        valloader = DataLoader(validation_dataset, batch_size=2, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
