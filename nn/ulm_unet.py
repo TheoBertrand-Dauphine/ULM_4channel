@@ -140,7 +140,7 @@ class ULM_UNet(pl.LightningModule):
 
         return loss
 
-    def validation_step(self, batch, batch_idx):
+    def validation_step(self, batch, batch_idx, log=True):
 
         if batch['image'].ndim==4:
             x, y = batch['image'], batch['heat_map'].squeeze()
@@ -179,12 +179,10 @@ class ULM_UNet(pl.LightningModule):
                 distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
                 distance_min[distance!=distance.min(dim=1, keepdim=True).values]=1e8
 
-                found_matrix = distance_min < dist_tol**2
-
-                TP = found_matrix.max(dim=1).values.sum()
-
-                precision = TP/max(found_matrix.shape[1],1) #nb of points well classified/nb of points in the class
-                recall = TP/max(nb_points[i],1) #nb of points well classified/nb of points labeled in the class
+                found_matrix = (distance_min < dist_tol**2).float()
+                
+                recall = found_matrix.max(dim=1).values.mean() #nb of points well classified/nb of points in the class
+                precision = found_matrix.max(dim=1).values.sum()/max(found_matrix.shape[1],1) #nb of points well classified/nb of points labeled in the class
 
                 recall_cum += recall/x.shape[0]
                 precision_cum += precision/x.shape[0]
@@ -192,11 +190,14 @@ class ULM_UNet(pl.LightningModule):
                 if precision!=0 and recall!=0:
                     F1 += 2/((1/recall)+(1/precision))/x.shape[0]
 
-        self.log('Normalized_val_loss', val_loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        if log:
+            self.log('Normalized_val_loss', val_loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        else:
+            print(F1)
         return val_loss
 
 def wb_mask(bg_img, pred_mask, true_mask):

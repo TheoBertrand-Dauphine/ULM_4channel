@@ -139,7 +139,7 @@ class IOSTARDataset(Dataset):
         if image.ndim==3:
             image = np.transpose(image,(2,0,1))
 
-        landmarks_array = np.zeros([200,3])
+        landmarks_array = np.zeros([400,3])
         landmarks_array[:landmarks.shape[0],:] = landmarks
       
         sample = {'image': image, 'classes': classes, 'landmarks': landmarks_array}
