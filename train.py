@@ -42,10 +42,10 @@ def main(args,seed):
         else:
             data_dir = './data/'
 
-        train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), HeatMap(), ToTensor()]))
+        validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
         valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
 
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
@@ -57,7 +57,7 @@ def main(args,seed):
     if args.data == 'IOSTAR':
         model = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     else:
-        model = ULM_UNet(threshold=args.threshold, out_channels = args.out_channels)
+        model = ULM_UNet(in_channels=1, init_features=48, threshold=args.threshold, out_channels = args.out_channels)
 
     samples = next(iter(valloader))
 
@@ -71,7 +71,7 @@ def main(args,seed):
         max_epochs=args.epochs,
         #benchmark=True,
         check_val_every_n_epoch=1,
-        log_every_n_steps=4,
+        log_every_n_steps=10,
         callbacks=[ImagePredictionLogger(samples), lr_monitor]
     )
 

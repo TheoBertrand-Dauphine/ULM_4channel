@@ -127,9 +127,12 @@ class ULM_UNet(pl.LightningModule):
         if batch['image'].ndim==4:
             x, y_true = batch['image'], batch['heat_map'].squeeze()
         else:
-            x, y_true = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
+            x, y_true = batch['image'].unsqueeze(1), batch['heat_map']
 
         y_pred = self(x)
+
+        # print(y_pred.shape)
+        # print(y_true.shape)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
         batch_dictionary={
@@ -147,6 +150,9 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
+
+        # print(y_hat.shape)
+        # print(y.shape)
         
         val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
 

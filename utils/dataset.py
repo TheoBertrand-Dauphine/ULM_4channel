@@ -66,15 +66,6 @@ class ULMDataset(Dataset):
         landmarks_array = np.zeros([40,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
         landmarks = np.array(landmarks)
-        # print(landmarks)
-
-        # print(idx)
-
-        # print(data_folder)
-        # print(points_folder)
-        # plt.imshow(image)
-        # plt.scatter(landmarks[:, 1], landmarks[:, 0], s=10, marker='.', c='blue')
-        # plt.show()
 
         landmarks_array[:landmarks.shape[0],:] = landmarks
 
@@ -88,6 +79,8 @@ class ULMDataset(Dataset):
         # print(sample['image'].shape)
         if self.transform:
             sample = self.transform(sample)
+
+        # print(sample['heat_map'].shape)
         return sample
 
 class IOSTARDataset(Dataset):
