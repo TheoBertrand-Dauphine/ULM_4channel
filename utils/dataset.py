@@ -63,24 +63,20 @@ class ULMDataset(Dataset):
         landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
         landmarks.loc[classes == 'crossing',2] = 2
 
-        landmarks_array = np.zeros([40,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
+        landmarks_array = np.zeros([80,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
         landmarks = np.array(landmarks)
 
         landmarks_array[:landmarks.shape[0],:] = landmarks
-
-        # print(landmarks_array)
 
         if image.ndim==3:
             image = image[:,:,0]
       
         sample = {'image': np.sqrt(image), 'classes': classes, 'landmarks': landmarks_array}
 
-        # print(sample['image'].shape)
         if self.transform:
             sample = self.transform(sample)
 
-        # print(sample['heat_map'].shape)
         return sample
 
 class IOSTARDataset(Dataset):

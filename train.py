@@ -51,7 +51,7 @@ def main(args,seed):
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
     wandb.login()
-    wandb.init()
+    wandb.init(name = 'data_' + args.data + '_epochs_' + args.epochs + '_batch_size_' + args.batch_size + '_out_channels_' + args.out_channels)
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':

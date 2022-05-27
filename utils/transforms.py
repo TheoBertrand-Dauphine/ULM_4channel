@@ -176,6 +176,22 @@ class GlobalContrastNormalization(object): # Normalizes the contrast in the inpu
         image_out = (image - image.mean(axis=(-1,-2), keepdims=True))/(np.sqrt(self.bias + ((image - image.mean(axis=(-1,-2), keepdims=True))**2).mean(axis=(-1,-2), keepdims=True))) # centering and normalizing
         return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True)), 'landmarks': landmarks, 'classes': classes}
 
+
+class Padding(object):
+
+    def __init__(self, pad_size = 0):
+        assert isinstance(pad_size, (int,tuple))
+        self.pad_size = pad_size
+
+        self.pad = torch.nn.ConstantPad2d(self.pad_size, 0.)
+
+    def __call__(self, sample):
+        image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
+        im_padded = self.pad(image)
+        heat_map_padded = self.pad(heat_map)
+        landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] = landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] + torch.tensor([[self.pad_size,self.pad_size,0]])
+        return {'image':im_padded, 'landmarks': landmarks, 'heat_map':heat_map_padded}
+
 # class ZCAtransform(object):
 #     def __init__(self):
 

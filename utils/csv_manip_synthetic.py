@@ -8,7 +8,7 @@ Created on Tue Jan 12 16:45:02 2021
 import csv
 from PIL import Image
 import torchvision
-# import torch
+import torch
 import math
 # import torchgeometry.image.gaussian
 
@@ -43,7 +43,7 @@ for k in range(math.floor(size_tain)):
         params = A.get_params(I_tensor,output_size = (side_size,side_size))
         
         Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
-        plt.imshow(Icropped.squeeze().permute([1,2,0]))
+        # plt.imshow(Icropped.squeeze().permute([1,2,0]))
         
         image_to_save = tensor_to_pil(Icropped)
         
@@ -101,13 +101,29 @@ for k in range(math.floor(size_val)):
             if x[1]>i and x[1]<i+h and x[0]>j and x[0]<j+w:
                 cropped_list.append([x[1]-i,x[0]-j,x[2]])
         
-        plt.imshow(Icropped.squeeze().permute([1,2,0]))
-        for i in range(len(cropped_list)):
-            plt.scatter(cropped_list[i][1], cropped_list[i][0])
-        plt.show()
+        # plt.imshow(Icropped.squeeze().permute([1,2,0]))
+        # for i in range(len(cropped_list)):
+        #     plt.scatter(cropped_list[i][1], cropped_list[i][0])
+        # plt.show()
         with open("./data_synthetic/val_images/ULM_points/point_list_{}.csv".format(k+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
         if len(cropped_list)>0:
             break
 
+
+#%% Making big validation test image
+
+im_padded = torch.nn.functional.pad(I_tensor, (24,24,12,12))[0]
+
+image_to_save = tensor_to_pil(im_padded)
+
+image_to_save.save('./data_synthetic/test_images/images_ULM/big_test_image.png')
+
+padded_list = []
+for x in list_of_points:
+    padded_list.append([x[1]+12,x[0]+24,x[2]])
+
+with open("./data_synthetic/test_images/ULM_points/point_list_test_image.csv","w") as f:
+    wr = csv.writer(f)
+    wr.writerows(padded_list)

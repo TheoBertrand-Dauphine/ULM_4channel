@@ -10,6 +10,8 @@ import wandb
 
 import torchgeometry
 
+import matplotlib.pyplot as plt
+
 l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
@@ -150,9 +152,6 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)
-
-        # print(y_hat.shape)
-        # print(y.shape)
         
         val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
 
@@ -172,14 +171,12 @@ class ULM_UNet(pl.LightningModule):
         avg_points_detected = detected_points.shape[0]/x.shape[0]
 
         for i in range(x.shape[0]):
-
             points = detected_points[detected_points[:,0]==i,1:]
             points = points[:,[1,2,0]]
-
             if (points[:,2]==3).sum()!=0:
                 points = points[(points[:,2]!=3),:]
 
-            distance = ((torch.tensor([[[1, 1, 0.*dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
+            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
 
             if points.shape[0]!=0:
                 distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
@@ -204,6 +201,8 @@ class ULM_UNet(pl.LightningModule):
             self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         else:
             print(F1)
+
+            print(val_loss)
         return val_loss
 
 def wb_mask(bg_img, pred_mask, true_mask):
