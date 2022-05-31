@@ -71,7 +71,7 @@ class ULMDataset(Dataset):
         if image.ndim==3:
             image = image[:,:,0]
       
-        sample = {'image': np.sqrt(image), 'classes': classes, 'landmarks': landmarks_array}
+        sample = {'image': np.sqrt(image), 'landmarks': landmarks_array}
 
         if self.transform:
             sample = self.transform(sample)
@@ -119,10 +119,10 @@ class IOSTARDataset(Dataset):
 
 
 
-        classes = np.empty(shape = (landmarks.shape[0],),dtype = "S12")
-        classes[landmarks[:,2]==0.] = 'endpoint'
-        classes[landmarks[:,2]==1.] = 'biffurcation'
-        classes[landmarks[:,2]==2.] = 'crossing'
+        # classes = np.empty(shape = (landmarks.shape[0],),dtype = "S12")
+        # classes[landmarks[:,2]==0.] = 'endpoint'
+        # classes[landmarks[:,2]==1.] = 'biffurcation'
+        # classes[landmarks[:,2]==2.] = 'crossing'
 
         if image.ndim==3:
             image = np.transpose(image,(2,0,1))
@@ -130,7 +130,7 @@ class IOSTARDataset(Dataset):
         landmarks_array = np.zeros([400,3])
         landmarks_array[:landmarks.shape[0],:] = landmarks
       
-        sample = {'image': image, 'classes': classes, 'landmarks': landmarks_array}
+        sample = {'image': image, 'landmarks': landmarks_array}
 
         
         if self.transform:

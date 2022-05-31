@@ -13,9 +13,10 @@ class Rescale(object): # Rescale the data to another format
 
     def __call__(self, sample):
         try:
-            image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
-        except:
             image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
+        except:
+            image, landmarks = sample['image'], sample['landmarks']
+            
 
         if image.ndim==3:
             h, w = image.shape[1:]
@@ -33,8 +34,6 @@ class Rescale(object): # Rescale the data to another format
 
         new_h, new_w = int(new_h), int(new_w)
 
-        print(image.shape)
-
         if image.ndim ==3: #with C number of channels, image is assumed to have shape [C,ny,nx]
             img = transform.resize(image, (image.shape[0], new_h, new_w))
         else:
@@ -42,9 +41,10 @@ class Rescale(object): # Rescale the data to another format
 
         landmarks = landmarks * [new_w / w, new_h / h, 1]
         try:
-            return {'image':img, 'landmarks': landmarks, 'classes':classes}
-        except:
             return  {'image':img, 'landmarks': landmarks, 'heat_map':heat_map}
+        except:
+            return {'image':img, 'landmarks': landmarks}
+            
 
 class Rescale_image(object):
 
@@ -53,7 +53,7 @@ class Rescale_image(object):
         self.output_size = output_size
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image, landmarks = sample['image'], sample['landmarks']
 
         if image.ndim==3:
             h, w = image.shape[1:]
@@ -76,7 +76,7 @@ class Rescale_image(object):
         else:
             img = transform.resize(image, (new_h, new_w))
         
-        return {'image':img, 'landmarks': landmarks, 'classes':classes}
+        return {'image':img, 'landmarks': landmarks}
 
 class RandomAffine(object): # Apply Random affine (rotation and transolation) to the data
 
@@ -109,7 +109,7 @@ class RandomCrop(object): # randomly crops an image from the dataset
             self.output_size = output_size
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image, landmarks = sample['image'], sample['landmarks']
 
         if image.ndim==3:
             h, w = image.shape[1:]
@@ -138,14 +138,14 @@ class RandomCrop(object): # randomly crops an image from the dataset
         landmarks = landmarks[(landmarks[:,1]>=0),:]
         landmarks = landmarks[(landmarks[:,1]<new_w),:]
 
-        return {'image':image, 'landmarks': landmarks, 'classes':classes}
+        return {'image':image, 'landmarks': landmarks}
 
 
 class ToTensor(object): # turns variables in torch tensors instead of numpy arrays
 
     def __call__(self,sample):
-        image, landmarks, classes, heat_map = sample['image'], sample['landmarks'], sample['classes'], sample['heat_map']
-        return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks), 'classes' : classes}
+        image, landmarks, heat_map = sample['image'], sample['landmarks'],  sample['heat_map']
+        return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
 
 class HeatMap(object): # creates heatmaps that will be used as targets in the training loss
 
@@ -157,7 +157,7 @@ class HeatMap(object): # creates heatmaps that will be used as targets in the tr
 
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image, landmarks = sample['image'], sample['landmarks']
 
         # print(image.shape)
 
@@ -175,7 +175,7 @@ class HeatMap(object): # creates heatmaps that will be used as targets in the tr
         if self.out_channels==4:
             heat_map[0,3,:,:] = heat_map[0,:3,:,:].max(dim=0).values # making "dump" channel
 
-        return {'image':image, 'heat_map': heat_map, 'landmarks': landmarks, 'classes':classes}
+        return {'image':image, 'heat_map': heat_map, 'landmarks': landmarks}
 
 class ColorJitter(object):
     def __init__(self, power = 4):
@@ -183,19 +183,19 @@ class ColorJitter(object):
 
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image, landmarks = sample['image'], sample['landmarks']
         random_power = np.exp((2*np.log(self.power))*np.random.rand() - np.log(self.power))
         # print(random_power)
-        return {'image': np.sign(image)*np.power(np.abs(image),random_power), 'landmarks': landmarks, 'classes': classes}
+        return {'image': np.sign(image)*np.power(np.abs(image),random_power), 'landmarks': landmarks}
 
 class GlobalContrastNormalization(object): # Normalizes the contrast in the input image
     def __init__(self, bias = 0.1):
         self.bias = bias # bias parameter
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        image, landmarks = sample['image'], sample['landmarks']
         image_out = (image - image.mean(axis=(-1,-2), keepdims=True))/(np.sqrt(self.bias + ((image - image.mean(axis=(-1,-2), keepdims=True))**2).mean(axis=(-1,-2), keepdims=True))) # centering and normalizing
-        return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True)), 'landmarks': landmarks, 'classes': classes}
+        return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True)), 'landmarks': landmarks}
 
 
 class Padding(object):
@@ -212,12 +212,3 @@ class Padding(object):
         heat_map_padded = self.pad(heat_map)
         landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] = landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] + torch.tensor([[self.pad_size,self.pad_size,0]])
         return {'image':im_padded, 'landmarks': landmarks, 'heat_map':heat_map_padded}
-
-# class ZCAtransform(object):
-#     def __init__(self):
-
-#     def __call__(self, sample):
-#         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
-#         im_vec = image.reshape([-1,1])
-#         COV = np.cov(X_norm, rowvar=False)
-#         return {'image': (image_out-image_out.min())/(image_out.max()-image_out.min()), 'landmarks': landmarks, 'classes': classes}
