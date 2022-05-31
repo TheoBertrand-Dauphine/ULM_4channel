@@ -18,7 +18,6 @@ try:
 except:
     from transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine
 
-
 def show_landmarks(image, landmarks, classes, heat_map):
     """Show image with landmarks"""
     plt.imshow(image)

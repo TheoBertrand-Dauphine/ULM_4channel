@@ -40,9 +40,12 @@ try:
 except:
     from transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine, Padding
 
-model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 4)
+
+o_channel = 3
+
+model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.5, out_channels = o_channel)
 # model.load_from_checkpoint(checkpoint_path = './weights_import/ulm_net_IOSTAR_epochs_2000_batch_1_out_channels_4_20_5.ckpt',in_channels=3, init_features=48, threshold = 0.05, out_channels = 4)
-model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_4_24_5.pt'))
+model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_3_30_5.pt'))
 # n=44
 
 # # landmarks_stack = np.zeros([n,200,3])
@@ -56,9 +59,11 @@ pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
 
+
+
 data_dir = './data_synthetic/'
-validation_dataset = ULMDataset(root_dir = data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(32)]))
-valloader = DataLoader(validation_dataset, batch_size=20, shuffle=False, num_workers=16)
+# validation_dataset = ULMDataset(root_dir = data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = o_channel), ToTensor(), Padding(32)]))
+# valloader = DataLoader(validation_dataset, batch_size=20, shuffle=False, num_workers=16)
 
 
 ## Testing on whole big image
@@ -74,7 +79,7 @@ valloader = DataLoader(validation_dataset, batch_size=20, shuffle=False, num_wor
 
 
 
-validation_dataset = ULMDataset(root_dir = data_dir + 'test_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)]))
+validation_dataset = ULMDataset(root_dir = data_dir + 'test_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = o_channel), ToTensor(), Padding(32)]))
 valloader = DataLoader(validation_dataset, batch_size=1, shuffle=False, num_workers=16)
 
 model.eval()
@@ -87,7 +92,7 @@ with torch.no_grad():
 
         local_max_filt = nn.MaxPool2d(9, stride=1, padding=4)
 
-        threshold = 0.05
+        threshold = 0.1
         max_output = local_max_filt(y)
         detected_points = ((max_output==y)*(y>threshold)).nonzero()[:,1:]
 

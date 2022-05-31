@@ -201,8 +201,8 @@ class ULM_UNet(pl.LightningModule):
             self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
         else:
             print(F1)
-
-            print(val_loss)
+            print(precision_cum)
+            print(recall_cum)
         return val_loss
 
 def wb_mask(bg_img, pred_mask, true_mask):

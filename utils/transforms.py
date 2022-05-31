@@ -12,7 +12,10 @@ class Rescale(object): # Rescale the data to another format
         self.output_size = output_size
 
     def __call__(self, sample):
-        image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        try:
+            image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
+        except:
+            image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
 
         if image.ndim==3:
             h, w = image.shape[1:]
@@ -30,14 +33,18 @@ class Rescale(object): # Rescale the data to another format
 
         new_h, new_w = int(new_h), int(new_w)
 
+        print(image.shape)
+
         if image.ndim ==3: #with C number of channels, image is assumed to have shape [C,ny,nx]
             img = transform.resize(image, (image.shape[0], new_h, new_w))
         else:
-            img = transform.resize(image, (new_h, new_w))
+            img = transform.resize(image.astype(np.single()), (new_h, new_w))
 
         landmarks = landmarks * [new_w / w, new_h / h, 1]
-
-        return {'image':img, 'landmarks': landmarks, 'classes':classes}
+        try:
+            return {'image':img, 'landmarks': landmarks, 'classes':classes}
+        except:
+            return  {'image':img, 'landmarks': landmarks, 'heat_map':heat_map}
 
 class Rescale_image(object):
 
@@ -104,18 +111,32 @@ class RandomCrop(object): # randomly crops an image from the dataset
     def __call__(self, sample):
         image, landmarks, classes = sample['image'], sample['landmarks'], sample['classes']
 
-        h, w = image.shape[1:]
-        new_h, new_w = self.output_size
+        if image.ndim==3:
+            h, w = image.shape[1:]
+        else:
+            h, w = image.shape
 
-        top = np.random.randint(0, h - new_h)
-        left = np.random.randint(0, w - new_w)
+        new_h, new_w = self.output_size
+        if h>new_h:
+            top = np.random.randint(0, h - new_h)
+        else:
+            top=0
+
+        if w>new_w:
+            left = np.random.randint(0, w - new_w)
+        else:
+            left=0
         
         if image.ndim==3: # cropping the image
             image = image[:,top: top + new_h, left: left + new_w] 
         else:
             image = image[top: top + new_h, left: left + new_w]
 
-        landmarks = landmarks - [top, left, 0] # apply crop to the landmarks !!!! should check this !!!! (seems weird not to pop landmarks outside of cropped area)
+        landmarks = landmarks - [top,left, 0] 
+        landmarks = landmarks[(landmarks[:,0]>=0),:]
+        landmarks = landmarks[(landmarks[:,0]<new_h),:]
+        landmarks = landmarks[(landmarks[:,1]>=0),:]
+        landmarks = landmarks[(landmarks[:,1]<new_w),:]
 
         return {'image':image, 'landmarks': landmarks, 'classes':classes}
 
@@ -124,7 +145,7 @@ class ToTensor(object): # turns variables in torch tensors instead of numpy arra
 
     def __call__(self,sample):
         image, landmarks, classes, heat_map = sample['image'], sample['landmarks'], sample['classes'], sample['heat_map']
-        return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
+        return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks), 'classes' : classes}
 
 class HeatMap(object): # creates heatmaps that will be used as targets in the training loss
 
