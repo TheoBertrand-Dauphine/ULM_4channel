@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parser.add_argument("--image-size",type=int,default=64,help="target input image size (default: 256)")
     parser.add_argument("--aug-scale",type=int,default=0.05,help="scale factor range for augmentation (default: 0.05)")
     parser.add_argument("--aug-angle",type=int,default=15,help="rotation angle range in degrees for augmentation (default: 15)")
-    parser.add_argument("--data",type=str,default=False,help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
+    parser.add_argument("--data",type=str,default='ULM',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=400, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
     parser.add_argument("--threshold", type=float, default=0.5, help="threhsold appied on output for detection of points (default: 0.5)")
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")

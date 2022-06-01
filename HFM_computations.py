@@ -24,7 +24,7 @@ from scipy.sparse.csgraph import minimum_spanning_tree
 import matplotlib.pyplot as plt
 
 from utils.OrientationScore import gaussian_OS
-from utils.dataset import ULMDataset
+from utils.dataset import ULMDataset, IOSTARDataset
 
 from nn.ulm_unet import ULM_UNet
 
@@ -35,7 +35,6 @@ except:
     
 import networkx as nx
 
-from numba import njit, prange
 
 
 def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
@@ -230,12 +229,19 @@ def Detection_Model(model, val_batch, threshold=0.05):
 
 #%%
 if __name__ == '__main__':
-    validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomCrop(1024), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
-    batch = validation_dataset[0]
+    
+    data = 'IOSTAR'
+    
+    if data=='synthetic':
+        validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomCrop(1024), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
+        batch = validation_dataset[0]
+    elif data=='IOSTAR':
+        validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomCrop(1024), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
+        batch = validation_dataset[0]
     
     im_tensor = batch['image']
     
-    model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 4)
+    model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 3)
     model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_4_24_5.pt'))
     Nt = 64
     
