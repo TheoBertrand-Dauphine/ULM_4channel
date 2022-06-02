@@ -38,58 +38,60 @@ import networkx as nx
 
 
 def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
-	hfmIn = Eikonal.dictIn({
-	    'model':'Riemann3_Periodic', # The third dimension is periodic (and only this one), in this model.
-	})
+    hfmIn = Eikonal.dictIn({
+        'model':'Riemann3_Periodic', # The third dimension is periodic (and only this one), in this model.
+        })
 
-	[Nx,Ny,Nt] = W.shape
+    [Nx,Ny,Nt] = W.shape; print(Nx,Ny,Nt)
 
-	hfmIn.SetRect(sides=[[0,1],[0,1],[0,np.pi]],dims=[Nx,Ny,Nt])
+    hfmIn.SetRect(sides=[[0,Nx/Ny],[0,1],[0,np.pi]],dims=[Nx,Ny,Nt])
 
-	hfmIn['order'] = 1
+    hfmIn['order'] = 1
 
-	X,Y,Theta = hfmIn.Grid()
-	zero = np.zeros_like(X)
+    X,Y,Theta = hfmIn.Grid()
+    zero = np.zeros_like(X)
 
-	ReedsSheppMetric = Riemann( # Riemannian metric defined by a positive definite tensor field
-	    Outer([np.cos(Theta), np.sin(Theta),zero])
-	    + alpha**(-2)*Outer([-np.sin(Theta),np.cos(Theta),zero])
-	    + xi**2*Outer([zero,zero,1+zero])
-	).with_cost(W)
+    ReedsSheppMetric = Riemann( # Riemannian metric defined by a positive definite tensor field
+        Outer([np.cos(Theta), np.sin(Theta),zero])
+        + alpha**(-2)*Outer([-np.sin(Theta),np.cos(Theta),zero])
+        + xi**2*Outer([zero,zero,1+zero])
+        ).with_cost(W)
 
-	hfmIn['metric'] = ReedsSheppMetric
+    hfmIn['metric'] = ReedsSheppMetric
 
-	hfmIn['exportValues'] = 1
-	hfmIn['verbosity'] = 0
-	hfmIn['geodesicStep'] = 0.05
+    hfmIn['exportValues'] = 1
+    hfmIn['verbosity'] = 0
+    hfmIn['geodesicStep'] = 0.05
 
-	n_points = points_tensor.shape[0]
+    n_points = points_tensor.shape[0]
 
-	L = []
+    L = []
 
-	D = np.zeros((n_points,n_points))
+    D = np.zeros((n_points,n_points))
 
-	for j in range(n_points-1):    
-	    print(round((j+1)/n_points,2))
-	    
-	    hfmIn['seed'] = np.hstack([points_tensor[j,1], points_tensor[j,0], np.pi*theta_indices[j]])/np.array(W.shape)
-	    hfmIn['tips'] = np.array(torch.hstack([points_tensor[j+1:,1].unsqueeze(1), points_tensor[j+1:,0].unsqueeze(1), np.pi*theta_indices[j+1:].unsqueeze(1)]))/np.array(W.shape)
-	    hfmIn['stopWhenAllAccepted'] = hfmIn['tips']
-	    # hfmIn['stopAtEuclideanLength'] = 100
-	    
-	    a = time.time()
-	    hfmOut = hfmIn.Run()
-	    
-	    print(time.time()-a)
-	    
-	    # print(points_tensor[j+1:])
-	    D[j,j+1:] = hfmOut['values'][points_tensor[j+1:,1],points_tensor[j+1:,0],theta_indices[j+1:]]
-	    
-	    L.append(hfmOut['geodesics'])
+    for j in range(n_points-1):
+        print(round((j+1)/n_points,2))
+        
+        hfmIn['seed'] = np.hstack([points_tensor[j,1]*(Nx/Ny)/Nx, points_tensor[j,0]/Ny, np.pi*theta_indices[j]/Nt]);
 
-	D = D+D.transpose()
+        
+        hfmIn['tips'] = np.array(torch.hstack([points_tensor[j+1:,1].unsqueeze(1)*(Nx/Ny)/Nx, points_tensor[j+1:,0].unsqueeze(1)/Ny, np.pi*theta_indices[j+1:].unsqueeze(1)/Nt])); 
+        
+        hfmIn['stopWhenAllAccepted'] = hfmIn['tips']
+        # hfmIn['stopAtEuclideanLength'] = 100
+        
+        a = time.time()
+        hfmOut = hfmIn.Run()
+        
+        print(time.time()-a)
+        
+        # print(points_tensor[j+1:])
+        D[j,j+1:] = hfmOut['values'][points_tensor[j+1:,1],points_tensor[j+1:,0],theta_indices[j+1:]]
+        
+        L.append(hfmOut['geodesics'])
 
-	return([D, L])
+    D = D+D.transpose()
+    return([D, L])
 
 
 def Cluster_from_Distance(D, L, distance_threshold = 10.):
@@ -150,24 +152,25 @@ def Cluster_from_Distance(D, L, distance_threshold = 10.):
 	return([List_of_curves, list_of_stacks, Tcsr_list, prim_dict, labels])
 
 def Show_Curves(I, points_tensor, list_of_stacks=[]):
-	plt.figure(4)
-	plt.clf()
-	# plt.imshow(MatOut_window,origin='upper', cmap = "gray")
-	plt.imshow(I, cmap="gray")
-	[Nx,Ny] = I.shape
-	for i in range(len(list_of_stacks)):
-	    stacked_list = list_of_stacks[i]
-	    plt.scatter(Nx*stacked_list[0,:], Ny*stacked_list[1,:], marker='.', s=50, alpha=1)
-	plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
-	# plt.title('result with factor in the direction theta {}'.format(theta_cost))
-	# for i in range(N_points):
-	#     plt.annotate('{}'.format(i),(points_tensor[i,1]+5, max(points_tensor[i,0]+25,0)), c='g')
+    plt.figure(4)
+    plt.clf()
+    # plt.imshow(MatOut_window,origin='upper', cmap = "gray")
+    plt.imshow(I, cmap="gray")
+    [Nx,Ny] = I.shape
+    for i in range(len(list_of_stacks)):
+        stacked_list = list_of_stacks[i]
+        
+        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=1)
+        plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
+        # plt.title('result with factor in the direction theta {}'.format(theta_cost))
+        # for i in range(N_points):
+        #         plt.annotate('{}'.format(i),(points_tensor[i,1]+5, max(points_tensor[i,0]+25,0)), c='g')
 
-	plt.axis('off')
-	plt.tight_layout()
+    plt.axis('off')
+    plt.tight_layout()
 
-	plt.show()
-	return(None)
+    plt.show()
+    return(None)
 
 def Modify_Metric_and_Points(I, points_tensor, theta_indices):
 
@@ -230,67 +233,102 @@ def Detection_Model(model, val_batch, threshold=0.05):
 #%%
 if __name__ == '__main__':
     
-    data = 'IOSTAR'
+    data = 'synthetic'
     
     if data=='synthetic':
-        validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomCrop(1024), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
+        validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
         batch = validation_dataset[0]
+        im_tensor = batch['image']
+        
+        model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 3)
+        model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_3_30_5.pt'))
+        Nt = 64
+        
+        points = Detection_Model(model, batch, threshold=0.05)
+        
+        points_tensor = torch.tensor(points).long()
+        
+        batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
+        batch['image'] = batch['image'].numpy()
+        
+        print(batch['landmarks'].shape[0])
+        print((batch['landmarks'][:,2]==2).sum())
+        
+        batch_transform = transforms.Compose([Rescale((512,1024)), HeatMap(s=9, alpha=3, out_channels = 3), ToTensor()])
+        
+        batch_rescaled = batch_transform(batch)
+        
+        im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
+        
+        pil_to_tensor = torchvision.transforms.ToTensor()
+    
+        lifted_im_array = (gaussian_OS(im_tensor.T, sigma = 0.001, eps = 0.05, N_o = Nt))   
+        
+        # import napari
+        # # napari.view_image(W.numpy())
+        # viewer = napari.view_image((lifted_im_array>0.3))
+        # # viewer.add_points(points_ar1ray_3d[:,[1,0,2]], face_color = 'r', size = 3)
+        # napari.run()
+        
     elif data=='IOSTAR':
-        validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomCrop(1024), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
+        validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])) 
         batch = validation_dataset[0]
-    
-    im_tensor = batch['image']
-    
-    model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 3)
-    model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_4_24_5.pt'))
-    Nt = 64
-    
-    points = Detection_Model(model, batch, threshold=0.1)
-    
-    #%%
-    
-    points_tensor = torch.tensor(points).long()
-    
-    batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
-    batch['image'] = batch['image'].numpy()
-    
-    print(batch['landmarks'].shape[0])
-    print((batch['landmarks'][:,2]==2).sum())
-    
-    batch_transform = transforms.Compose([Rescale(256), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])
-    
-    batch_rescaled = batch_transform(batch)
-    
-    im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
-    
-    pil_to_tensor = torchvision.transforms.ToTensor()
+        
+        im_tensor = batch['image']
+        
+        model = ULM_UNet(in_channels=3, init_features=48, threshold = 0.05, out_channels = 3)
+        model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_batch_1_out_channels_3_31_5.pt'))
+        Nt = 64
+        
+        points = Detection_Model(model, batch, threshold=0.05)
+        
+        points_tensor = torch.tensor(points).long()
+        
+        batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
+        batch['image'] = batch['image'].numpy()
+        
+        print(batch['landmarks'].shape[0])
+        print((batch['landmarks'][:,2]==2).sum())
+        
+        batch_transform = transforms.Compose([Rescale(256), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])
+        
+        batch_rescaled = batch_transform(batch)
+        
+        im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
+        
+        grey_levels_im_tensor = (1.-(im_tensor**2).mean(dim=0).sqrt())*(im_tensor.mean(dim=0)>1e-1)
+        
+        pil_to_tensor = torchvision.transforms.ToTensor()
 
-    lifted_im_array = (gaussian_OS(im_tensor.T,sigma = 0.001, eps = 0.05, N_o = Nt))    
-    
+        lifted_im_array = (gaussian_OS(grey_levels_im_tensor.T, sigma = 0.01, eps = 0.1, N_o = Nt))   
+        
+        # import napari
+        # # napari.view_image(W.numpy())
+        # viewer = napari.view_image((lifted_im_array**2>0.5))
+        # # viewer.add_points(points_ar1ray_3d[:,[1,0,2]], face_color = 'r', size = 3)
+        # napari.run()
+    #%%
     theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_tensor[:,0].long()]].argmax(dim=1)
     
     shift = 1e-6
     
     [A, points_tensor, theta_indices] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
     
-    W = A>0.5
+    W = A>0.3
     
     points_array_3d = np.hstack([points_tensor[:,:-1], theta_indices.unsqueeze(1)])
     
-    [D,L] = Compute_Distance_Matrix(1/(W+shift), points_tensor, theta_indices, alpha=0.5, xi=0.1/(np.pi))     
+    #%% Distance computation
+    
+    [D,L] = Compute_Distance_Matrix(1/(W+shift), points_tensor, theta_indices, alpha=0.5, xi=0.01/(np.pi))     
     
     #%% Visualization
-    plt.figure(0)
-    plt.imshow(im_tensor.double(), cmap='gray', vmin=0, vmax=1)
-    plt.scatter(points_tensor[:,1], points_tensor[:,0], c=points_tensor[:,2]+1)
-    plt.show()
+    # plt.figure(0)
+    # plt.imshow(im_tensor.double(), cmap='gray', vmin=0, vmax=1)
+    # plt.scatter(points_tensor[:,1], points_tensor[:,0], c=points_tensor[:,2]+1)
+    # plt.show()
     
-    curves, stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D,L, distance_threshold = 320)
+    curves, stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D,L, distance_threshold = 10000000)
     Show_Curves(im_tensor, points_tensor, stacks)
-    Show_Tree(Tcsr_list[0], labels, prim_dict)
+    # Show_Tree(Tcsr_list[0], labels, prim_dict)
     
-    import napari
-    # napari.view_image(W.numpy())
-    viewer = napari.view_image((W).numpy())
-    viewer.add_points(points_array_3d[:,[1,0,2]], face_color = 'r', size = 3)
-    napari.run()

@@ -18,14 +18,14 @@ def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     Nx = Im.shape[0]
     Ny = Im.shape[1]
     
-    kx = torch.arange(-1,1,step = 2/Nx)
+    kx = torch.arange(-(Nx/Ny),(Nx/Ny),step = (2*(Nx/Ny))/Nx)
     ky = torch.arange(-1,1,step = 2/Ny)
     
     [Yg,Xg] = torch.meshgrid(kx,ky)
     
     P = torch.exp((-(torch.cos(theta+np.pi/2)*Xg.unsqueeze(2) + torch.cos(theta)*Yg.unsqueeze(2))**2)/(sigma**2))*torch.exp(-(Xg.unsqueeze(2)**2+Yg.unsqueeze(2)**2)/(eps**2))
     P = P/P.sum(dim=(0,1))
-    
+        
     A = convolve(P.numpy(), Im.unsqueeze(2).numpy(), mode='same')
 
     return(A)
