@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 
 from utils.dataset import ULMDataset, IOSTARDataset
-from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap, RandomAffine, GlobalContrastNormalization, ColorJitter
+from utils.transforms import RandomCrop, Rescale, ToTensor, HeatMap, RandomAffine, GlobalContrastNormalization, ColorJitter, RandomFlip
 from nn.ulm_unet import ULM_UNet, ImagePredictionLogger
 
 import pytorch_lightning
@@ -31,7 +31,7 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), RandomFlip() HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
         validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
@@ -39,14 +39,20 @@ def main(args,seed):
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
+
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
+            valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
         else:
             data_dir = './data/'
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomFlip(), HeatMap(s=15, alpha=5, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
-        trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=15, alpha=5, out_channels = args.out_channels), ToTensor()]))
+            valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
 
-        validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
-        valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
+        
 
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 

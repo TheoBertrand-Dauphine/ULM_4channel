@@ -14,9 +14,9 @@ import numpy as np
 from scipy.io import loadmat
 
 try:
-    from utils.transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine
+    from utils.transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine, RandomFlip
 except:
-    from transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine
+    from transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine, RandomFlip
 
 def show_landmarks(image, landmarks, classes, heat_map):
     """Show image with landmarks"""
@@ -140,16 +140,18 @@ class IOSTARDataset(Dataset):
 
 if __name__ == '__main__':
 
-    IOSTAR_dataset = IOSTARDataset(root_dir='./data_IOSTAR/val_images')
-    crop = transforms.Compose([GlobalContrastNormalization(), ColorJitter()])
-    heat = HeatMap(s=5,alpha=3, out_channels=4)
+    # IOSTAR_dataset = IOSTARDataset(root_dir='./data_IOSTAR/val_images')
+    ULM_dataset = ULMDataset(root_dir='./data/val_images')
+    # crop = transforms.Compose([GlobalContrastNormalization(), ColorJitter()])
+    # heat = HeatMap(s=5,alpha=3, out_channels=4)
 
-    composed = transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(2), HeatMap(s=15, alpha=2, out_channels = 3), ToTensor(), RandomAffine(360, 0.05)])
+    # composed = transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(2), HeatMap(s=15, alpha=2, out_channels = 3), ToTensor(), RandomAffine(360, 0.05)])
+    composed = transforms.Compose([RandomFlip(p=1.), HeatMap(s=25, alpha=5, out_channels = 3), ToTensor()])
 
     fig = plt.figure(1)
 
-    sample = IOSTAR_dataset[20]
-    scale = Rescale_image(sample['image'].shape[1:])
+    # sample = ULM_dataset[20]
+    # scale = Rescale_image(sample['image'].shape[1:])
 
     # for i, trfrm in enumerate([scale, crop, heat, composed]):
     #     print(i)
@@ -178,11 +180,11 @@ if __name__ == '__main__':
     #         plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
 
     # plt.show()
-    start = 75
+    start = 0
     n = 10
 
     for i in range(start, start + n):
-        sample = IOSTAR_dataset[i]
+        sample = ULM_dataset[i]
 
         trfrm_sample = composed(sample)
 
@@ -196,7 +198,9 @@ if __name__ == '__main__':
         ax.set_title('image {}'.format(i))
         ax.axis('off')
 
-        plt.imshow(0.5*(img-img.min())/(img.max()-img.min()) + trfrm_sample['heat_map'].permute([1,2,0]))
+        print(img.shape)
+
+        plt.imshow((0.5*(img-img.min())/(img.max()-img.min())).unsqueeze(2) + trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
         # plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
 
     plt.show()

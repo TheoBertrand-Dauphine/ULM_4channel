@@ -212,3 +212,67 @@ class Padding(object):
         heat_map_padded = self.pad(heat_map)
         landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] = landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] + torch.tensor([[self.pad_size,self.pad_size,0]])
         return {'image':im_padded, 'landmarks': landmarks, 'heat_map':heat_map_padded}
+
+
+class CenterCrop(object): # randomly crops an image from the dataset
+
+    def __init__(self, output_size):
+        assert isinstance(output_size, (int, tuple))
+        if isinstance(output_size, int):
+            self.output_size = (output_size, output_size)
+        else:
+            assert len(output_size) == 2 
+            self.output_size = output_size
+
+    def __call__(self, sample):
+        image, landmarks = sample['image'], sample['landmarks']
+
+        if image.ndim==3:
+            h, w = image.shape[1:]
+        else:
+            h, w = image.shape
+
+        new_h, new_w = self.output_size
+        if h>new_h:
+            top = int((h-new_h)/2)
+        else:
+            top=0
+
+        if w>new_w:
+            left = int((w-new_w)/2)
+        else:
+            left=0
+        
+        if image.ndim==3: # cropping the image
+            image = image[:,top: top + new_h, left: left + new_w] 
+        else:
+            image = image[top: top + new_h, left: left + new_w]
+
+        landmarks = landmarks - [top,left, 0] 
+        landmarks = landmarks[(landmarks[:,0]>=0),:]
+        landmarks = landmarks[(landmarks[:,0]<new_h),:]
+        landmarks = landmarks[(landmarks[:,1]>=0),:]
+        landmarks = landmarks[(landmarks[:,1]<new_w),:]
+
+        return {'image':image, 'landmarks': landmarks}
+
+class RandomFlip(object): # Apply Random affine (rotation and transolation) to the data
+
+    def __init__(self, p=0.5):
+
+        assert (p>=0 and p<=1)
+        self.p = p
+
+    def __call__(self, sample):
+        image, landmarks= sample['image'], sample['landmarks']
+
+
+        flip = (np.random.uniform(size=1)<self.p)
+        if flip:
+
+            landmarks_flipped = landmarks
+            landmarks_flipped[(landmarks_flipped[:,:-1]**2).sum(axis=-1) > 0, 1] = image.shape[-1] - landmarks_flipped[(landmarks_flipped[:,:-1]**2).sum(axis=-1) > 0,1]-1
+
+            return {'image':np.flip(image, axis=-1).copy(), 'landmarks': landmarks_flipped}
+        else:
+            return {'image':image, 'landmarks': landmarks}
