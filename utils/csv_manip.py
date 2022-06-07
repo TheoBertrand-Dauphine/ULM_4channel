@@ -32,7 +32,7 @@ tensor_to_pil = torchvision.transforms.ToPILImage()
 
 I_tensor = pil_to_tensor(I)
 
-side_size = 256
+side_size = 512
 size_tain = 40
 size_val = 20
 

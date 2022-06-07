@@ -310,7 +310,7 @@ if __name__ == '__main__':
         im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
         
         # grey_levels_im_tensor = (1.-(im_tensor**2).mean(dim=0).sqrt())*(im_tensor.mean(dim=0)>1e-1)
-        A = np.array([frangi(im_tensor[0].numpy()), frangi(im_tensor[1].numpy()), frangi(im_tensor[2].numpy())])*(im_tensor.mean(dim=0)>0.1).numpy()
+        A = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.1).numpy()
         A = torch.tensor(A/A.max(axis=(1,2), keepdims=True)).mean(dim=0)
         pil_to_tensor = torchvision.transforms.ToTensor()
 
@@ -328,17 +328,17 @@ if __name__ == '__main__':
     
     [A, points_tensor, theta_indices] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
     
-    W = ((A*(A>0))>0.1)+0.
+    W = (np.sqrt(A*(A>0))>0.15)+0.
     
     points_array_3d = np.hstack([points_tensor[:,:-1], theta_indices.unsqueeze(1)])
     
     #%% Distance computation
     
-    [D,L] = Compute_Distance_Matrix(1/(W+shift), points_tensor, theta_indices, alpha=0.5, xi=0.1/(np.pi))     
+    [D,L] = Compute_Distance_Matrix(1/(W+shift), points_tensor, theta_indices, alpha=0.1, xi=0.1/(np.pi))     
     
     #%% Visualization
 
-    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D,L, distance_threshold = 20)
+    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D,L, distance_threshold = 10)
     Show_Curves(W.permute([1,0,2]), im_tensor, points_tensor, list_of_stacks)
     # Show_Tree(Tcsr_list[0], labels, prim_dict)
     
