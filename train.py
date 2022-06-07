@@ -31,25 +31,25 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), RandomFlip() HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
+        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
         valloader = DataLoader(validation_dataset, batch_size=2, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
-            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
             trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = args.out_channels), ToTensor()]))
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
             valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
         else:
             data_dir = './data/'
-            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([GlobalContrastNormalization(), RandomFlip(), HeatMap(s=15, alpha=5, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
             trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=15, alpha=5, out_channels = args.out_channels), ToTensor()]))
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
             valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
 
         
@@ -57,7 +57,7 @@ def main(args,seed):
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
     wandb.login()
-    wandb.init(name = 'data_' + args.data + '_epochs_' + str(args.epochs) + '_batch_size_' + str(args.batch_size) + '_out_channels_' + str(args.out_channels))
+    wandb.init(name = 'data_' + args.data + '_epochs_' + str(args.epochs) + '_batch_size_' + str(args.batch_size) + '_out_channels_' + str(args.out_channels) + '_alpha_' + str(args.alpha) )
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
@@ -85,7 +85,7 @@ def main(args,seed):
 
     # trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
 
-    torch.save(model.state_dict(), args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt")
+    torch.save(model.state_dict(), args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt")
     # model2 = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     # # model2.load_from_checkpoint(checkpoint_path = args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt", in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     # model2.load_state_dict(torch.load(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt"))
@@ -115,6 +115,8 @@ if __name__ == '__main__':
     parser.add_argument("--patience", type=int, default=400, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
     parser.add_argument("--threshold", type=float, default=0.5, help="threhsold appied on output for detection of points (default: 0.5)")
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
+    parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
+
 
     args = parser.parse_args()
 

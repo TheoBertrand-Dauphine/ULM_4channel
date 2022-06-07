@@ -28,6 +28,8 @@ from utils.dataset import ULMDataset, IOSTARDataset
 
 from nn.ulm_unet import ULM_UNet
 
+from skimage.filters import frangi
+
 try:
     from utils.transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine, Padding, CenterCrop
 except:
@@ -151,11 +153,16 @@ def Cluster_from_Distance(D, L, distance_threshold = 10.):
 	        list_of_stacks.append(stacked_list)
 	return([List_of_curves, list_of_stacks, Tcsr_list, prim_dict, labels])
 
-def Show_Curves(I, points_tensor, list_of_stacks=[]):
+def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[]):
     plt.figure(4)
     plt.clf()
-    # plt.imshow(MatOut_window,origin='upper', cmap = "gray")
-    plt.imshow(I.max(dim=2).values, cmap="gray")
+    # plt.imshow(I.max(dim=2).values, cmap="gray")
+    if im_tensor.ndim==3:
+        plt.imshow(im_tensor.permute([1,2,0]), cmap="gray")
+        # plt.imshow(I.max(dim=2).values, cmap="gray")
+    else:
+        plt.imshow(im_tensor, cmap="gray")
+        
     [Nx,Ny, Nt] = I.shape
     
     N_points = points_tensor.shape[0]
@@ -163,10 +170,10 @@ def Show_Curves(I, points_tensor, list_of_stacks=[]):
         stacked_list = list_of_stacks[i]
         
         plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=1)
-        plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
-        # plt.title('result with factor in the direction theta {}'.format(theta_cost))
-        for i in range(N_points):
-                plt.annotate('{}'.format(i),(points_tensor[i,1]+5, max(points_tensor[i,0]+25,0)), c='g')
+    plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=200, c='r')
+    # plt.title('result with factor in the direction theta {}'.format(theta_cost))
+    for i in range(N_points):
+            plt.annotate('{}'.format(i),(points_tensor[i,1]+5, max(points_tensor[i,0]+25,0)), c='g')
 
     plt.axis('off')
     plt.tight_layout()
@@ -235,21 +242,22 @@ def Detection_Model(model, val_batch, threshold=0.05):
 #%%
 if __name__ == '__main__':
     
-    data = 'synthetic'
-    
+    data = 'IOSTAR'
+    np.random.seed(82)
+
     if data=='synthetic':
-        validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([CenterCrop(1024), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(64)])) 
+        validation_dataset = ULMDataset(root_dir =  './data_synthetic/test_images', transform=transforms.Compose([RandomCrop(800), GlobalContrastNormalization(), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
         batch = validation_dataset[0]
         im_tensor = batch['image']
         
         model = ULM_UNet(in_channels=1, init_features=48, threshold = 0.05, out_channels = 3)
         model.load_state_dict(torch.load('./weights/ulm_net_synthetic_epochs_2000_batch_1_out_channels_3_30_5.pt'))
-        Nt = 16
+        Nt = 32
         
-        points = Detection_Model(model, batch, threshold=0.05)
+        points = Detection_Model(model, batch, threshold=0.1)
         
-        # points_tensor = torch.tensor(points).long()
-        points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
+        points_tensor = torch.tensor(points).long()
+        # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
         
         batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
         batch['image'] = batch['image'].numpy()
@@ -265,11 +273,12 @@ if __name__ == '__main__':
         
         pil_to_tensor = torchvision.transforms.ToTensor()
     
-        lifted_im_array = (gaussian_OS(im_tensor.T, sigma = 0.001, eps = 0.05, N_o = Nt))   
+        # lifted_im_array = (gaussian_OS(im_tensor.T, sigma = 0.001, eps = 0.05, N_o = Nt))   
+        lifted_im_array = (gaussian_OS(im_tensor.T, sigma = 0.005, eps = 0.1, N_o = Nt))
         
         plt.figure(0)
         plt.imshow(im_tensor.double(), cmap='gray', vmin=0, vmax=1)
-        plt.scatter(points[:,1], points[:,0], c=points[:,2]+1)
+        plt.scatter(points_tensor[:,1], points_tensor[:,0], c=points_tensor[:,2])
         plt.show()
     
         
@@ -281,11 +290,12 @@ if __name__ == '__main__':
         
         model = ULM_UNet(in_channels=3, init_features=48, threshold = 0.05, out_channels = 3)
         model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_batch_1_out_channels_3_31_5.pt'))
-        Nt = 64
+        Nt = 32
         
         points = Detection_Model(model, batch, threshold=0.05)
         
-        points_tensor = torch.tensor(points).long()
+        # points_tensor = torch.tensor(points).long()
+        points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
         
         batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
         batch['image'] = batch['image'].numpy()
@@ -293,31 +303,32 @@ if __name__ == '__main__':
         print(batch['landmarks'].shape[0])
         print((batch['landmarks'][:,2]==2).sum())
         
-        batch_transform = transforms.Compose([Rescale(256), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])
+        batch_transform = transforms.Compose([Rescale(512), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor()])
         
         batch_rescaled = batch_transform(batch)
         
         im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
         
-        grey_levels_im_tensor = (1.-(im_tensor**2).mean(dim=0).sqrt())*(im_tensor.mean(dim=0)>1e-1)
-        
+        # grey_levels_im_tensor = (1.-(im_tensor**2).mean(dim=0).sqrt())*(im_tensor.mean(dim=0)>1e-1)
+        A = np.array([frangi(im_tensor[0].numpy()), frangi(im_tensor[1].numpy()), frangi(im_tensor[2].numpy())])*(im_tensor.mean(dim=0)>0.1).numpy()
+        A = torch.tensor(A/A.max(axis=(1,2), keepdims=True)).mean(dim=0)
         pil_to_tensor = torchvision.transforms.ToTensor()
 
-        lifted_im_array = (gaussian_OS(grey_levels_im_tensor.T, sigma = 0.01, eps = 0.1, N_o = Nt))   
+        lifted_im_array = gaussian_OS(A.T, sigma = 0.01, eps = 0.1, N_o = Nt)
         
         # import napari
         # # napari.view_image(W.numpy())
-        # viewer = napari.view_image((lifted_im_array**2>0.5))
+        # viewer = napari.view_image(lifted_im_array)
         # # viewer.add_points(points_ar1ray_3d[:,[1,0,2]], face_color = 'r', size = 3)
         # napari.run()
     #%%
     theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_tensor[:,0].long()]].argmax(dim=1)
     
-    shift = 1e-4
+    shift = 1e-3
     
     [A, points_tensor, theta_indices] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
     
-    W = A>0.5
+    W = ((A*(A>0))>0.1)+0.
     
     points_array_3d = np.hstack([points_tensor[:,:-1], theta_indices.unsqueeze(1)])
     
@@ -328,17 +339,17 @@ if __name__ == '__main__':
     #%% Visualization
 
     curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D,L, distance_threshold = 20)
-    Show_Curves(W.permute([1,0,2]), points_tensor, list_of_stacks)
-    Show_Tree(Tcsr_list[0], labels, prim_dict)
+    Show_Curves(W.permute([1,0,2]), im_tensor, points_tensor, list_of_stacks)
+    # Show_Tree(Tcsr_list[0], labels, prim_dict)
     
     #%%
     import napari
 
     points_array_3d = np.hstack([points_tensor[:,:-1], theta_indices.unsqueeze(1)])
 
-    [Nx,Ny] = im_tensor.shape
+    [Nx,Ny] = im_tensor.shape[1:]
     viewer = napari.view_image((W).numpy())
     viewer.add_points(points_array_3d[:,[1,0,2]], face_color = 'r', size = 3)
     for i in range(len(list_of_stacks)):
         stacked_list = list_of_stacks[i]
-        viewer.add_points(np.array([Nx*stacked_list[0,::8], Ny*stacked_list[1,::8], np.remainder(Nt*stacked_list[2,::8]/np.pi, Nt)]).transpose(), face_color = ['blue','orange'][i], size=1)
+        viewer.add_points(np.array([Nx*stacked_list[0,::8], Ny*stacked_list[1,::8], np.remainder(Nt*stacked_list[2,::8]/np.pi, Nt)]).transpose(), face_color='b', size=1)
