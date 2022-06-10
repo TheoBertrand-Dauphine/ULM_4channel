@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from scipy.io import loadmat, savemat
 import numpy as np
 
-images_numbering = [2,3,5,8,9,10,12,13,15,16,17,20,21,22,24,28,30,34,36,37,38,39,40,48]
+images_numbering = [2,3,8,9,10,12,13,15,16,20,21,22,24,28,30,36,37,38,39,40,48]
 
 # nb_training_samples = 12
 

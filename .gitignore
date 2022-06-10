@@ -6,5 +6,4 @@ share
 wandb
 None
 weights
-*.png
 *.sbatch

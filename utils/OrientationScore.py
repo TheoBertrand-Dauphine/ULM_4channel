@@ -15,7 +15,7 @@ from scipy.signal import convolve
 
 def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     
-    theta = torch.arange(0, np.pi, np.pi/N_o).unsqueeze(0).unsqueeze(0)
+    theta = torch.arange(-np.pi/2,np.pi/2, np.pi/N_o).unsqueeze(0).unsqueeze(0)
 
     Nx = Im.shape[0]
     Ny = Im.shape[1]
@@ -25,7 +25,7 @@ def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     
     [Yg,Xg] = torch.meshgrid(kx,ky)
     
-    P = torch.exp((-(torch.cos(theta+np.pi/2)*Xg.unsqueeze(2) + torch.cos(theta)*Yg.unsqueeze(2))**2)/(sigma**2))*torch.exp(-(Xg.unsqueeze(2)**2+Yg.unsqueeze(2)**2)/(eps**2))
+    P = torch.exp((-(torch.sin(theta)*Xg.unsqueeze(2) + torch.cos(theta)*Yg.unsqueeze(2))**2)/(sigma**2))*torch.exp(-(Xg.unsqueeze(2)**2+Yg.unsqueeze(2)**2)/(eps**2))
     P = P/P.sum(dim=(0,1))
     
     # napari.view_image(P.numpy())
