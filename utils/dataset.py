@@ -62,7 +62,7 @@ class ULMDataset(Dataset):
         landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
         landmarks.loc[classes == 'crossing',2] = 2
 
-        landmarks_array = np.zeros([80,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
+        landmarks_array = np.zeros([300,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
         landmarks = np.array(landmarks)
 

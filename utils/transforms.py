@@ -132,7 +132,7 @@ class RandomCrop(object): # randomly crops an image from the dataset
         else:
             image = image[top: top + new_h, left: left + new_w]
 
-        landmarks = landmarks - [top,left, 0] 
+        landmarks = landmarks - np.array([top,left, 0]) 
         landmarks = landmarks[(landmarks[:,0]>=0),:]
         landmarks = landmarks[(landmarks[:,0]<new_h),:]
         landmarks = landmarks[(landmarks[:,1]>=0),:]
@@ -146,6 +146,12 @@ class ToTensor(object): # turns variables in torch tensors instead of numpy arra
     def __call__(self,sample):
         image, landmarks, heat_map = sample['image'], sample['landmarks'],  sample['heat_map']
         return {'image':torch.from_numpy(image).float(), 'heat_map': heat_map, 'landmarks': torch.from_numpy(landmarks)}
+    
+class ToArray(object): # turns variables in torch tensors instead of numpy arrays
+
+    def __call__(self,sample):
+        image, landmarks, heat_map = sample['image'], sample['landmarks'],  sample['heat_map']
+        return {'image':image.numpy(), 'heat_map': heat_map, 'landmarks': landmarks.numpy()}
 
 class HeatMap(object): # creates heatmaps that will be used as targets in the training loss
 
@@ -248,7 +254,7 @@ class CenterCrop(object): # randomly crops an image from the dataset
         else:
             image = image[top: top + new_h, left: left + new_w]
 
-        landmarks = landmarks - [top,left, 0] 
+        landmarks = landmarks - np.array([top,left, 0]) 
         landmarks = landmarks[(landmarks[:,0]>=0),:]
         landmarks = landmarks[(landmarks[:,0]<new_h),:]
         landmarks = landmarks[(landmarks[:,1]>=0),:]

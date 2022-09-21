@@ -15,7 +15,7 @@ from scipy.signal import convolve
 
 def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     
-    theta = torch.arange(-np.pi/2,np.pi/2, np.pi/N_o).unsqueeze(0).unsqueeze(0)
+    theta = torch.arange(-np.pi/2, np.pi/2, np.pi/N_o).unsqueeze(0).unsqueeze(0)
 
     Nx = Im.shape[0]
     Ny = Im.shape[1]
