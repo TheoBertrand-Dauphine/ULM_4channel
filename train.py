@@ -35,7 +35,7 @@ def main(args,seed):
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
         validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
-        valloader = DataLoader(validation_dataset, batch_size=2, shuffle=False, num_workers=args.workers)
+        valloader = DataLoader(validation_dataset, batch_size=1, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'

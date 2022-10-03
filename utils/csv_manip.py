@@ -222,7 +222,7 @@ side_size = 512
 
 import os
 
-for mydir in ['./data/train_images/images_ULM/', './data/train_images/ULM_points/', './data/val_images/images_ULM/', './data/val_images/ULM_points/' ]:
+for mydir in ['./data/train_images/images_ULM/', './data/train_images/ULM_points/', './data/val_images/images_ULM/', './data/val_images/ULM_points/', './data/val_images/fig_viz/', './data/train_images/fig_viz/' ]:
     filelist = [ f for f in os.listdir(mydir) if f.endswith(".png") or f.endswith(".csv") ]
     for f in filelist:
         os.remove(os.path.join(mydir, f))
@@ -254,11 +254,11 @@ for i in range(nx):
     for j in range(ny):
         params = (i*side_size, j*side_size, side_size, side_size)
         Icropped = torchvision.transforms.functional.crop(I_tensor, *params)
-        plt.imshow(Icropped.squeeze())
+        # plt.imshow(Icropped.squeeze())
         
         image_to_save = tensor_to_pil(Icropped)
         
-        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(nx*i+j+1))
+        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(ny*i+j+1))
         
         [t,l,h,w] = params
     
@@ -268,9 +268,17 @@ for i in range(nx):
             if x[1]>t and x[1]<t+h and x[0]>l and x[0]<l+w:
                 cropped_list.append([x[1]-t,x[0]-l,x[2]])
         
-        with open("./data/train_images/ULM_points/point_list_{}.csv".format(nx*i+j+1),"w") as f:
+        with open("./data/train_images/ULM_points/point_list_{}.csv".format(ny*i+j+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
+
+        plt.figure(0)
+        plt.clf()
+        plt.imshow(Icropped.squeeze())
+        for x in cropped_list:
+            plt.scatter(x[1],x[0],c='r')
+        plt.savefig('./data/train_images/fig_viz/viz_{}.png'.format(ny*i+j+1))
+        plt.close()
 
 #%% training set left brain
 
@@ -301,11 +309,11 @@ for i in range(nx):
     for j in range(ny):
         params = (i*side_size, j*side_size, side_size, side_size)
         Icropped = torchvision.transforms.functional.crop(I_tensor, *params)
-        plt.imshow(Icropped.squeeze())
+        # plt.imshow(Icropped.squeeze())
         
         image_to_save = tensor_to_pil(Icropped)
         
-        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(nb_images_train_right + nx*i+j+1))
+        image_to_save.save('./data/train_images/images_ULM/training_ULM_{}.png'.format(nb_images_train_right + ny*i+j+1))
         
         [t,l,h,w] = params
     
@@ -315,9 +323,17 @@ for i in range(nx):
             if x[1]>t and x[1]<t+h and x[0]>l and x[0]<l+w:
                 cropped_list.append([x[1]-t,x[0]-l,x[2]])
         
-        with open("./data/train_images/ULM_points/point_list_{}.csv".format(nb_images_train_right + nx*i+j+1),"w") as f:
+        with open("./data/train_images/ULM_points/point_list_{}.csv".format(nb_images_train_right + ny*i+j+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
+
+        plt.figure(0)
+        plt.clf()
+        plt.imshow(Icropped.squeeze())
+        for x in cropped_list:
+            plt.scatter(x[1],x[0],c='r')
+        plt.savefig('./data/train_images/fig_viz/viz_{}.png'.format(nb_images_train_right + ny*i+j+1))
+        plt.close()
             
 #%% validation set left brain
 f = open('./data/csv/ULM_points_halfleft_label_16_07.csv',newline='\n')
@@ -346,11 +362,11 @@ for i in range(nx):
     for j in range(ny):
         params = (i*side_size, j*side_size, side_size, side_size)
         Icropped = torchvision.transforms.functional.crop(I_tensor, *params)
-        plt.imshow(Icropped.squeeze())
+        # plt.imshow(Icropped.squeeze())
         
         image_to_save = tensor_to_pil(Icropped)
         
-        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(nx*i+j+1))
+        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(ny*i+j+1))
         
         [t,l,h,w] = params
     
@@ -360,11 +376,19 @@ for i in range(nx):
             if x[1]>t and x[1]<t+h and x[0]>l and x[0]<l+w:
                 cropped_list.append([x[1]-t,x[0]-l,x[2]])
         
-        with open("./data/val_images/ULM_points/point_list_{}.csv".format(nx*i+j+1),"w") as f:
+        with open("./data/val_images/ULM_points/point_list_{}.csv".format(ny*i+j+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
 
-#%% training set left brain
+        plt.figure(0)
+        plt.clf()
+        plt.imshow(Icropped.squeeze())
+        for x in cropped_list:
+            plt.scatter(x[1],x[0],c='r')
+        plt.savefig('./data/val_images/fig_viz/viz_{}.png'.format(ny*i+j+1))
+        plt.close()
+
+#%% val set right brain
 
 
 f = open('./data/csv/ULM_points_full_bolus_label_16_07.csv', newline='\n')
@@ -381,6 +405,7 @@ pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
 I_tensor = pil_to_tensor(I).squeeze()
+shift = round(I_tensor.shape[1]/2)
 I_tensor = I_tensor[:,round(I_tensor.shape[1]/2):-1]
 
 nx = int(I_tensor.shape[0]/side_size)
@@ -389,24 +414,36 @@ nb_images_val_right = nx*ny
 
 print(nb_images_val_right)
 
+# plt.imshow(I_tensor)
+# plt.scatter([x[0]-shift for x in list_of_points], [x[1] for x in list_of_points], c='r')
+# plt.show()
+
 for i in range(nx):
     for j in range(ny):
         params = (i*side_size, j*side_size, side_size, side_size)
         Icropped = torchvision.transforms.functional.crop(I_tensor, *params)
-        plt.imshow(Icropped.squeeze())
+        # plt.imshow(Icropped.squeeze())
         
         image_to_save = tensor_to_pil(Icropped)
         
-        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(nb_images_val_left + nx*i+j+1))
+        image_to_save.save('./data/val_images/images_ULM/validation_ULM_{}.png'.format(nb_images_val_left + ny*i+j+1))
         
         [t,l,h,w] = params
     
         cropped_list = []
         
         for x in list_of_points:
-            if x[1]>t and x[1]<t+h and x[0]>l and x[0]<l+w:
-                cropped_list.append([x[1]-t,x[0]-l,x[2]])
+            if x[1]>t and x[1]<t+h and x[0]-shift>l and x[0]-shift<l+w:
+                cropped_list.append([x[1]-t,x[0]-l-shift,x[2]])
         
-        with open("./data/train_images/ULM_points/point_list_{}.csv".format(nb_images_val_left + nx*i+j+1),"w") as f:
+        with open("./data/val_images/ULM_points/point_list_{}.csv".format(nb_images_val_left + ny*i+j+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
+
+        plt.figure(0)
+        plt.clf()
+        plt.imshow(Icropped.squeeze())
+        for x in cropped_list:
+            plt.scatter(x[1],x[0],c='r')
+        plt.savefig('./data/val_images/fig_viz/viz_{}.png'.format(nb_images_val_left + ny*i+j+1))
+        plt.close()

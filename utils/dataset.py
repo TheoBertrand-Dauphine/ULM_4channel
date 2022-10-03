@@ -54,19 +54,22 @@ class ULMDataset(Dataset):
 
         points_folder = sorted([name for name in os.listdir(self.root_dir + '/ULM_points/') if os.path.isfile(self.root_dir + '/ULM_points/' + name)])
 
-        landmarks_frame = pd.read_csv(self.root_dir + '/ULM_points/' + points_folder[idx], header=None)
-        landmarks = landmarks_frame.iloc[:, :2]
-        classes = landmarks_frame.iloc[:,2]
+        try: #Catching empty list of points exception
+            landmarks_frame = pd.read_csv(self.root_dir + '/ULM_points/' + points_folder[idx], header=None)
+            landmarks = landmarks_frame.iloc[:, :2]
+            classes = landmarks_frame.iloc[:,2]
 
-        landmarks.loc[classes == 'endpoint',2] = 0
-        landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
-        landmarks.loc[classes == 'crossing',2] = 2
+            landmarks.loc[classes == 'endpoint',2] = 0
+            landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
+            landmarks.loc[classes == 'crossing',2] = 2
 
-        landmarks_array = np.zeros([300,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
+            landmarks_array = np.zeros([300,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
-        landmarks = np.array(landmarks)
+            landmarks = np.array(landmarks)
 
-        landmarks_array[:landmarks.shape[0],:] = landmarks
+            landmarks_array[:landmarks.shape[0],:] = landmarks
+        except:
+            landmarks_array = np.zeros([300,3])
 
         if image.ndim==3:
             image = image[:,:,0]
@@ -141,7 +144,7 @@ class IOSTARDataset(Dataset):
 if __name__ == '__main__':
 
     # IOSTAR_dataset = IOSTARDataset(root_dir='./data_IOSTAR/val_images')
-    ULM_dataset = ULMDataset(root_dir='./data/val_images')
+    ULM_dataset = ULMDataset(root_dir='./data/train_images')
     # crop = transforms.Compose([GlobalContrastNormalization(), ColorJitter()])
     # heat = HeatMap(s=5,alpha=3, out_channels=4)
 
@@ -180,8 +183,8 @@ if __name__ == '__main__':
     #         plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
 
     # plt.show()
-    start = 0
-    n = 10
+    start = 10
+    n = 2
 
     for i in range(start, start + n):
         sample = ULM_dataset[i]

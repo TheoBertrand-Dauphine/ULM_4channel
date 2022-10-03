@@ -176,7 +176,7 @@ class HeatMap(object): # creates heatmaps that will be used as targets in the tr
         heat_map[0,landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,2].astype(int),landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,0].astype(int),landmarks[landmarks[:,1]**2+landmarks[:,0]**2 > 0,1].astype(int)] = 1.
 
         heat_map = self.gaussian_blur(heat_map)
-        heat_map = heat_map / heat_map.max() # normalizing
+        heat_map = heat_map / (heat_map.max()+1e-8) # normalizing
 
         if self.out_channels==4:
             heat_map[0,3,:,:] = heat_map[0,:3,:,:].max(dim=0).values # making "dump" channel
