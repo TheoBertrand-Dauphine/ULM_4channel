@@ -151,14 +151,8 @@ class ULM_UNet(pl.LightningModule):
             x, y = batch['image'], batch['heat_map'].squeeze()
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
-        y_hat = self(x)
-
-        print(y_hat)
-        
+        y_hat = self(x)        
         val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
-
-        print(val_loss)
-
         threshold = self.threshold
         dist_tol = 7
 
@@ -188,7 +182,11 @@ class ULM_UNet(pl.LightningModule):
 
                 found_matrix = (distance_min < dist_tol**2).float()
                 
-                recall = found_matrix.max(dim=1).values.mean() #nb of points well classified/nb of points in the class
+                if distance.shape[0]!=0:
+                    recall = found_matrix.max(dim=1).values.mean() #nb of points well classified/nb of points in the class
+                else:
+                    recall = 1.
+
                 precision = found_matrix.max(dim=1).values.sum()/max(found_matrix.shape[1],1) #nb of points well classified/nb of points labeled in the class
 
                 recall_cum += recall/x.shape[0]
@@ -203,10 +201,9 @@ class ULM_UNet(pl.LightningModule):
             self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-        else:
-            print(F1)
-            print(precision_cum)
-            print(recall_cum)
+            # print(F1)
+            # print(precision_cum)
+            # print(recall_cum)
         return val_loss
 
 def wb_mask(bg_img, pred_mask, true_mask):
