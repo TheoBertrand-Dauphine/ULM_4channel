@@ -1,4 +1,3 @@
-# created by virtualenv automatically
 
 bin
 lib
@@ -7,3 +6,5 @@ wandb
 None
 weights
 *.sbatch
+ULM_4CHANNEL
+*.ckpt
