@@ -161,9 +161,9 @@ I_tensor = pil_to_tensor(I).squeeze()[0]
 
 nx = int(I_tensor.shape[0]/side_size)
 ny = int(I_tensor.shape[1]/side_size)
-nb_images_train_right = nx*ny
+nb_images_train = nx*ny
 
-print(nb_images_train_right)
+print(nb_images_train)
 
 for i in range(nx):
     for j in range(ny):
@@ -213,9 +213,9 @@ I_tensor = pil_to_tensor(I)[0]
 
 nx = int(I_tensor.shape[0]/side_size)
 ny = int(I_tensor.shape[1]/side_size)
-nb_images_train_left = nx*ny
+nb_images_val = nx*ny
 
-print(nb_images_train_left)
+print(nb_images_val)
 
 for i in range(nx):
     for j in range(ny):
@@ -225,7 +225,7 @@ for i in range(nx):
         
         image_to_save = tensor_to_pil(Icropped)
         
-        image_to_save.save('./data_synthetic/train_images/images_ULM/training_ULM_{}.png'.format(nb_images_train_right + ny*i+j+1))
+        image_to_save.save('./data_synthetic/val_images/images_ULM/training_ULM_{}.png'.format(ny*i+j+1))
         
         [t,l,h,w] = params
     
@@ -235,7 +235,7 @@ for i in range(nx):
             if x[1]>t and x[1]<t+h and x[0]>l and x[0]<l+w:
                 cropped_list.append([x[1]-t,x[0]-l,x[2]])
         
-        with open("./data_synthetic/train_images/ULM_points/point_list_{}.csv".format(nb_images_train_right + ny*i+j+1),"w") as f:
+        with open("./data_synthetic/val_images/ULM_points/point_list_{}.csv".format(ny*i+j+1),"w") as f:
             wr = csv.writer(f)
             wr.writerows(cropped_list)
 
@@ -244,6 +244,6 @@ for i in range(nx):
         plt.imshow(Icropped.squeeze())
         for x in cropped_list:
             plt.scatter(x[1],x[0],c='r')
-        plt.savefig('./data_synthetic/train_images/fig_viz/viz_{}.png'.format(nb_images_train_right + ny*i+j+1))
+        plt.savefig('./data_synthetic/val_images/fig_viz/viz_{}.png'.format(ny*i+j+1))
         plt.close()
             

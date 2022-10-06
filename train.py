@@ -39,11 +39,11 @@ def main(args,seed):
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
-            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
             trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(256), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
-            valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
+            valloader = DataLoader(validation_dataset, batch_size=21, shuffle=False, num_workers=args.workers)
         else:
             data_dir = './data/'
             train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))

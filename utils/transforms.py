@@ -201,7 +201,7 @@ class GlobalContrastNormalization(object): # Normalizes the contrast in the inpu
     def __call__(self, sample):
         image, landmarks = sample['image'], sample['landmarks']
         image_out = (image - image.mean(axis=(-1,-2), keepdims=True))/(np.sqrt(self.bias + ((image - image.mean(axis=(-1,-2), keepdims=True))**2).mean(axis=(-1,-2), keepdims=True))) # centering and normalizing
-        return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True)), 'landmarks': landmarks}
+        return {'image': (image_out-image_out.min(axis=(-1,-2), keepdims=True))/(image_out.max(axis=(-1,-2), keepdims=True)-image_out.min(axis=(-1,-2), keepdims=True) + 1e-4), 'landmarks': landmarks}
 
 
 class Padding(object):
