@@ -95,6 +95,7 @@ class IOSTARDataset(Dataset):
         #self.landmarks_frame = pd.read_csv(csv_file)
         self.root_dir = root_dir
         self.transform = transform
+        self.no_endpoints = no_endpoints
 
     def __len__(self):
         size = len([name for name in os.listdir(self.root_dir + '/images_IOSTAR/') if os.path.isfile(self.root_dir + '/images_IOSTAR/' + name)])
@@ -112,7 +113,7 @@ class IOSTARDataset(Dataset):
         points_folder = sorted([name for name in os.listdir(self.root_dir + '/IOSTAR_points/') if os.path.isfile(self.root_dir + '/IOSTAR_points/' + name)])
 
         landmarks_frame = loadmat(self.root_dir + '/IOSTAR_points/' + points_folder[idx])
-        if no_endpoints:
+        if self.no_endpoints:
             landmarks = np.vstack([np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
                 np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])
 
