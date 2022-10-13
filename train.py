@@ -31,10 +31,10 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]), no_endpoints=args.no_endpoints)
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
+        validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([Rescale(512), GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]), no_endpoints=args.no_endpoints)
         valloader = DataLoader(validation_dataset, batch_size=1, shuffle=False, num_workers=args.workers)
     else:
         if args.data=='synthetic':
@@ -57,7 +57,7 @@ def main(args,seed):
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
     wandb.login()
-    wandb.init(name = "data" + args.data +"_epochs_" + str(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha))
+    wandb.init(name = "data" + args.data +"_epochs_" + str(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + '_NoEndpoints_' + str(args.no_endpoints))
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
@@ -85,7 +85,7 @@ def main(args,seed):
 
     # trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
 
-    torch.save(model.state_dict(), args.weights + "ulm_net_" + args.data + "_epochs_{}".format(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt")
+    torch.save(model.state_dict(), args.weights + "ulm_net_" + args.data + "_epochs_{}".format(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + '_NoEndpoints_' + str(args.no_endpoints) + ".pt")
     # model2 = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     # # model2.load_from_checkpoint(checkpoint_path = args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt", in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
     # model2.load_state_dict(torch.load(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt"))
@@ -113,9 +113,10 @@ if __name__ == '__main__':
     parser.add_argument("--aug-angle",type=int,default=15,help="rotation angle range in degrees for augmentation (default: 15)")
     parser.add_argument("--data",type=str,default='ULM',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=400, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
-    parser.add_argument("--threshold", type=float, default=0.5, help="threhsold appied on output for detection of points (default: 0.5)")
+    parser.add_argument("--threshold", type=float, default=0.5, help="threhsold applied on output for detection of points (default: 0.5)")
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
     parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
+    parser.add_argument("--no_endpoints", type=bool, default=False, help=" Whether to unclude endpoints in IOSTAR dataset")
 
 
     args = parser.parse_args()
