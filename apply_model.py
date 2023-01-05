@@ -15,7 +15,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 
-from DRIVE_supervised_Unet.network_designs import Unet_for_ULM
+from network_designs import Unet_for_ULM
 
 import csv
 

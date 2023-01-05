@@ -148,12 +148,12 @@ class IOSTARDataset(Dataset):
 if __name__ == '__main__':
 
     # IOSTAR_dataset = IOSTARDataset(root_dir='./data_IOSTAR/val_images')
-    ULM_dataset = ULMDataset(root_dir='./data/train_images')
+    ULM_dataset = ULMDataset(root_dir='./data/val_images')
     # crop = transforms.Compose([GlobalContrastNormalization(), ColorJitter()])
     # heat = HeatMap(s=5,alpha=3, out_channels=4)
 
     # composed = transforms.Compose([Rescale(256), GlobalContrastNormalization(), ColorJitter(2), HeatMap(s=15, alpha=2, out_channels = 3), ToTensor(), RandomAffine(360, 0.05)])
-    composed = transforms.Compose([RandomFlip(p=1.), HeatMap(s=25, alpha=5, out_channels = 3), ToTensor()])
+    composed = transforms.Compose([RandomFlip(p=.5), HeatMap(s=25, alpha=5, out_channels = 3), ToTensor()])
 
     fig = plt.figure(1)
 
@@ -187,27 +187,26 @@ if __name__ == '__main__':
     #         plt.imshow(trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
 
     # plt.show()
-    start = 10
-    n = 2
+    n = 8
 
-    for i in range(start, start + n):
-        sample = ULM_dataset[i]
+    # for i in range(start, start + n):
+    sample = ULM_dataset[n]
 
-        trfrm_sample = composed(sample)
+    trfrm_sample = composed(sample)
 
-        if trfrm_sample['image'].ndim==3:
-            img = trfrm_sample['image'].permute((1,2,0))
-        else:
-            img = trfrm_sample['image']
+    if trfrm_sample['image'].ndim==3:
+        img = trfrm_sample['image'].permute((1,2,0))
+    else:
+        img = trfrm_sample['image']
 
-        ax = plt.subplot(2,int(n/2), i-start + 1)
-        # plt.tight_layout()
-        ax.set_title('image {}'.format(i))
-        ax.axis('off')
+    # ax = plt.subplot(min(n,2),int(n/2), i-start + 1)
+    # plt.tight_layout()
+    # ax.set_title('image {}'.format(i))
+    # ax.axis('off')
 
-        print(img.shape)
-
-        plt.imshow((0.5*(img-img.min())/(img.max()-img.min())).unsqueeze(2) + trfrm_sample['heat_map'].squeeze().permute([1,2,0]))
-        # plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
+    print(img.shape)
+    print(((img-img.min())/(img.max()-img.min())).unsqueeze(2).repeat([1,1,3]).shape)
+    plt.imshow(torch.maximum(.5*((img-img.min())/(img.max()-img.min())).unsqueeze(2).repeat([1,1,3]), trfrm_sample['heat_map'].squeeze().permute([1,2,0])))
+    # plt.scatter(trfrm_sample['landmarks'][:,1],trfrm_sample['landmarks'][:,0], s=10, marker='.', c='red')
 
     plt.show()

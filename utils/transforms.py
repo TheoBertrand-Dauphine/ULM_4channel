@@ -133,11 +133,10 @@ class RandomCrop(object): # randomly crops an image from the dataset
             image = image[top: top + new_h, left: left + new_w]
 
         landmarks = landmarks - np.array([top,left, 0]) 
-        landmarks = landmarks[(landmarks[:,0]>=0),:]
-        landmarks = landmarks[(landmarks[:,0]<new_h),:]
-        landmarks = landmarks[(landmarks[:,1]>=0),:]
-        landmarks = landmarks[(landmarks[:,1]<new_w),:]
-
+        landmarks = landmarks*(landmarks[:,0,None]>=0)
+        landmarks = landmarks*(landmarks[:,0,None]<new_h)
+        landmarks = landmarks*(landmarks[:,1,None]>=0)
+        landmarks = landmarks*(landmarks[:,1,None]<new_w)
         return {'image':image, 'landmarks': landmarks}
 
 
