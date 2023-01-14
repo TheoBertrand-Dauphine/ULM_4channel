@@ -57,13 +57,13 @@ def main(args,seed):
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
 
     wandb.login()
-    wandb.init(name = "data" + args.data +"_epochs_" + str(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + '_NoEndpoints_' + str(args.no_endpoints) + '_size_' + str(args.size))
+    wandb.init(name = "data" + args.data +"_epochs_" + str(args.epochs) + "_cropsize_" + str(args.size) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + '_NoEndpoints_' + str(args.no_endpoints))
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
-        model = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
+        model = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels, second_unet=args.second_unet)
     else:
-        model = ULM_UNet(in_channels=1, init_features=48, threshold=args.threshold, out_channels = args.out_channels)
+        model = ULM_UNet(in_channels=1, init_features=48, threshold=args.threshold, out_channels = args.out_channels, second_unet=args.second_unet)
 
     samples = next(iter(valloader))
 
@@ -116,6 +116,8 @@ if __name__ == '__main__':
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
     parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
     parser.add_argument("--no_endpoints", type=bool, default=False, help=" Whether to include endpoints in IOSTAR dataset")
+    parser.add_argument("--second_unet", type=bool, default=False, help=" Use 2 UNETS?")
+
 
 
     args = parser.parse_args()

@@ -16,7 +16,7 @@ l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
 
-    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False):
         super(ULM_UNet, self).__init__()
 
         self.threshold = threshold
@@ -54,9 +54,50 @@ class ULM_UNet(pl.LightningModule):
         )
         self.decoder1 = ULM_UNet._block(features * 2, features, name="dec1")
 
-        self.conv = nn.Conv2d(
-            in_channels=features, out_channels=out_channels, kernel_size=1
-        )
+        if second_unet:
+            self.conv = nn.Conv2d(
+                in_channels=features, out_channels=2, kernel_size=1
+            )
+        else:
+            self.conv = nn.Conv2d(
+                in_channels=features, out_channels=out_channels, kernel_size=1
+            )
+
+        self.second_unet = second_unet
+
+        if second_unet:
+            self.encoder1_2 = ULM_UNet._block(in_channels, features, name="enc1")
+            self.pool1_2 = nn.MaxPool2d(kernel_size=2, stride=2)
+            self.encoder2_2 = ULM_UNet._block(features, features * 2, name="enc2")
+            self.pool2_2 = nn.MaxPool2d(kernel_size=2, stride=2)
+            self.encoder3_2 = ULM_UNet._block(features * 2, features * 4, name="enc3")
+            self.pool3_2 = nn.MaxPool2d(kernel_size=2, stride=2)
+            self.encoder4_2 = ULM_UNet._block(features * 4, features * 8, name="enc4")
+            self.pool4_2 = nn.MaxPool2d(kernel_size=2, stride=2)
+
+            self.bottleneck_2 = ULM_UNet._block(features * 8, features * 16, name="bottleneck")
+
+            self.upconv4_2 = nn.ConvTranspose2d(
+                features * 16, features * 8, kernel_size=2, stride=2
+            )
+            self.decoder4_2 = ULM_UNet._block((features * 8) * 2, features * 8, name="dec4")
+            self.upconv3_2 = nn.ConvTranspose2d(
+                features * 8, features * 4, kernel_size=2, stride=2
+            )
+            self.decoder3_2 = ULM_UNet._block((features * 4) * 2, features * 4, name="dec3")
+            self.upconv2_2 = nn.ConvTranspose2d(
+                features * 4, features * 2, kernel_size=2, stride=2
+            )
+            self.decoder2_2 = ULM_UNet._block((features * 2) * 2, features * 2, name="dec2")
+            self.upconv1_2 = nn.ConvTranspose2d(
+                features * 2, features, kernel_size=2, stride=2
+            )
+            self.decoder1_2 = ULM_UNet._block(features * 2, features, name="dec1")
+
+            self.conv_2 = nn.Conv2d(
+                in_channels=features, out_channels=1, kernel_size=1
+            )
+        
         
     def forward(self, x):
         # print(x.shape)
@@ -79,7 +120,35 @@ class ULM_UNet(pl.LightningModule):
         dec1 = self.upconv1(dec2)
         dec1 = torch.cat((dec1, enc1), dim=1)
         dec1 = self.decoder1(dec1)
-        return self.conv(dec1)
+        
+        out = self.conv(dec1)
+
+        if self.second_unet:
+            enc1_2 = self.encoder1_2(x)
+            enc2_2 = self.encoder2_2(self.pool1(enc1_2))
+            enc3_2 = self.encoder3_2(self.pool2(enc2_2))
+            enc4_2 = self.encoder4_2(self.pool3(enc3_2))
+
+            bottleneck_2 = self.bottleneck_2(self.pool4_2(enc4_2))
+
+            dec4_2 = self.upconv4_2(bottleneck_2)
+            dec4_2 = torch.cat((dec4_2, enc4_2), dim=1)
+            dec4_2 = self.decoder4_2(dec4_2)
+            dec3_2 = self.upconv3_2(dec4_2)
+            dec3_2 = torch.cat((dec3_2, enc3_2), dim=1)
+            dec3_2 = self.decoder3_2(dec3_2)
+            dec2_2 = self.upconv2_2(dec3_2)
+            dec2_2 = torch.cat((dec2_2, enc2_2), dim=1)
+            dec2_2 = self.decoder2_2(dec2_2)
+            dec1_2 = self.upconv1_2(dec2_2)
+            dec1_2 = torch.cat((dec1_2, enc1_2), dim=1)
+            dec1_2 = self.decoder1_2(dec1_2)
+            
+            out_2 = self.conv_2(dec1_2)
+            # print(out_2.shape, torch.cat([out,out_2], dim=1).shape)
+            return torch.cat([out,out_2], dim=1)
+        else:
+            return out
 
     @staticmethod
     def _block(in_channels, features, name):
