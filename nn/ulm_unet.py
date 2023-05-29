@@ -337,3 +337,127 @@ class ImagePredictionLogger(pl.Callback):
 
         # log all composite images to W&B'''
         wandb.log({"Background" : mask_list[0], "predicted":mask_list[1], "label":mask_list[2]})
+
+
+class Vesselnet(pl.LightningModule):
+
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False):
+        super(Vesselnet, self).__init__()
+
+        self.threshold = threshold
+        self.patience = patience
+        self.alpha = alpha
+
+        self.k_class = out_channels
+
+        self.local_max_filt = nn.MaxPool2d(9, stride=1, padding=4)
+
+        features = init_features
+        self.encoder1 = nn.Conv2d(3, features, kernel_size = 3, stride=1, padding=1)
+        self.encoder2 = nn.Conv2d(features, 2*features, kernel_size = 5, stride=1, padding=2)
+        self.encoder3 = nn.Conv2d(2*features, 3*features, kernel_size = 5, stride=1, padding=2)
+        self.encoder4 = nn.Conv2d(3*features, 4*features, kernel_size = 3, stride=1, padding=1)
+
+        self.last_layer = nn.Conv2d(4*features, self.k_class, 1, stride=1, padding=0)
+
+        self.softmax = nn.Softmax(dim=1)
+        
+        
+    def forward(self, x):
+        enc1 = self.encoder1(x)
+        enc2 = self.encoder2(torch.relu(enc1))
+        enc3 = self.encoder3(torch.relu(enc2))
+        enc4 = self.encoder4(torch.relu(enc3))
+
+        output = self.last_layer(enc4)
+
+        return torch.relu(output)
+    
+    def training_step(self, batch, batch_idx):
+
+        if batch['image'].ndim==4:
+            x, y_true = batch['image'], batch['heat_map'].squeeze()
+        else:
+            x, y_true = batch['image'].unsqueeze(1), batch['heat_map']
+
+        y_pred = self(x)
+
+        # print(y_pred.shape)
+        # print(y_true.shape)
+        loss = l2loss(y_pred,y_true)
+        logs={"train_loss": loss}
+        batch_dictionary={
+            "loss": loss,
+            "log": logs,
+        }
+        self.log('loss', loss, prog_bar = False, on_step=False,on_epoch=True,logger=True)
+
+        return loss
+
+    def validation_step(self, batch, batch_idx, log=True):
+
+        if batch['image'].ndim==4:
+            x, y = batch['image'], batch['heat_map'].squeeze()
+        else:
+            x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
+        y_hat = self(x)        
+        val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
+        threshold = self.threshold
+        dist_tol = 7
+
+        max_output = self.local_max_filt(y_hat)
+        detected_points = ((max_output==y_hat)*(y_hat>threshold)).nonzero()
+
+        points_coordinates = batch['landmarks']
+        nb_points = ((points_coordinates[:,:,:2]**2).sum(dim=2) > 0).sum(dim=1)
+
+        F1 = torch.tensor(0., device=self.device)
+        precision_cum = torch.tensor(0., device=self.device)
+        recall_cum = torch.tensor(0., device=self.device)
+
+        avg_points_detected = detected_points.shape[0]/x.shape[0]
+
+        for i in range(x.shape[0]):
+            points = detected_points[detected_points[:,0]==i,1:]
+            points = points[:,[1,2,0]]
+            if (points[:,2]==3).sum()!=0:
+                points = points[(points[:,2]!=3),:]
+
+            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
+
+            if points.shape[0]!=0:
+                distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
+                distance_min[distance!=distance.min(dim=1, keepdim=True).values]=1e8
+
+                found_matrix = (distance_min < dist_tol**2).float()
+                
+                if distance.shape[0]!=0:
+                    recall = found_matrix.max(dim=1).values.mean() #nb of points well classified/nb of points in the class
+                else:
+                    recall = 1.
+
+                precision = found_matrix.max(dim=1).values.sum()/max(found_matrix.shape[1],1) #nb of points well classified/nb of points labeled in the class
+
+                recall_cum += recall/x.shape[0]
+                precision_cum += precision/x.shape[0]
+
+                if precision!=0 and recall!=0:
+                    F1 += 2/((1/recall)+(1/precision))/x.shape[0]
+
+        if log:
+            self.log('Normalized_val_loss', val_loss, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+            # print(F1)
+            # print(precision_cum)
+            # print(recall_cum)
+        return val_loss
+    
+
+if __name__== '__main__' : 
+
+    model = Vesselnet(init_features=32)
+
+    print(sum([param.numel() for param in model.parameters()]))

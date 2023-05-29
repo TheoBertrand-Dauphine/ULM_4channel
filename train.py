@@ -110,13 +110,16 @@ if __name__ == '__main__':
     parser.add_argument("--size",type=int,default=512,help="target input image size (default: 256)")
     parser.add_argument("--aug-scale",type=int,default=0.05,help="scale factor range for augmentation (default: 0.05)")
     parser.add_argument("--aug-angle",type=int,default=15,help="rotation angle range in degrees for augmentation (default: 15)")
-    parser.add_argument("--data",type=str,default='ULM',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
+    parser.add_argument("--data",type=str,default='IOSTAR',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=400, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
     parser.add_argument("--threshold", type=float, default=0.5, help="threhsold applied on output for detection of points (default: 0.5)")
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
     parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
     parser.add_argument("--no_endpoints", type=bool, default=False, help=" Whether to include endpoints in IOSTAR dataset")
     parser.add_argument("--second_unet", type=bool, default=False, help=" Use 2 UNETS?")
+    parser.add_argument("--vesselnet", type=bool, default=True, help=" Use Vesselnet?")
+
+
 
 
 
