@@ -299,7 +299,7 @@ class ImagePredictionLogger(pl.Callback):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
             
-            bg_image = gray2rgb(original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
+            bg_image = (original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 
