@@ -20,10 +20,12 @@ import numpy as np
 
 images_numbering = [2,3,8,9,10,12,13,15,16,20,21,22,24,28,30,36,37,38,39,40,48]
 
-# nb_training_samples = 12
+import os
 
-# training_samples = sample(images_numbering, nb_training_samples)
-# validation_samples = list(set(images_numbering)-set(training_samples))
+for mydir in ['./data_IOSTAR/train_images/images_IOSTAR/', './data_IOSTAR/train_images/IOSTAR_points/', './data_IOSTAR/val_images/images_IOSTAR/', './data_IOSTAR/val_images/IOSTAR_points/', './data_IOSTAR/val_images/visualization_val/', './data_IOSTAR/train_images/visualization_train/' ]:
+    filelist = [ f for f in os.listdir(mydir) if f.endswith(".png") or f.endswith(".csv") or f.endswith(".mat") ]
+    for f in filelist:
+        os.remove(os.path.join(mydir, f))
 
 patches_per_image = 1
 
@@ -31,10 +33,6 @@ pil_to_tensor = torchvision.transforms.ToTensor()
 tensor_to_pil = torchvision.transforms.ToPILImage()
 
 side_size = 512
-# size_tain = 40
-# size_val = 20
-
-# Crop = torchvision.transforms.RandomCrop(side_size)
 
 Crop = torchvision.transforms.CenterCrop(side_size)
 
@@ -178,7 +176,7 @@ for p in range(20):
 
 #%% Making IOSTAR validation set
 
-for p, index in enumerate(images_numbering):
+for p, index in enumerate(images_numbering[:11]):
 
     if index>=10:
         f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
@@ -226,3 +224,51 @@ for p, index in enumerate(images_numbering):
         savemat('./data_IOSTAR/val_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k + 1 + patches_per_image*20), f1)
 
 
+#%% Making IOSTAR training set
+
+for p, index in enumerate(images_numbering[11:]):
+
+    if index>=10:
+        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_{}.mat'.format(index))
+        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_{}.jpg'.format(index))
+    else:
+        f0 = loadmat('./data_IOSTAR/IOSTAR_datapoints/IOSTAR_points_0{}.mat'.format(index))
+        I = Image.open('./data_IOSTAR/IOSTAR_images/IOSTAR_image_0{}.jpg'.format(index))
+
+    I_tensor = pil_to_tensor(I)
+
+    for k in range(patches_per_image):
+
+        # params = Crop.get_params(I_tensor, output_size = (side_size,side_size))
+        
+        # Icropped = torchvision.transforms.functional.crop(I_tensor,*params)
+        Icropped = Crop(I_tensor)
+        plt.imshow(Icropped.squeeze().permute([1,2,0]))
+        
+        image_to_save = tensor_to_pil(Icropped)
+        
+        # print(patches_per_image*p+k+1)
+        image_to_save.save('./data_IOSTAR/train_images/images_IOSTAR/training_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
+        
+        [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2), int((I_tensor.shape[2]-side_size)/2), side_size, side_size]
+
+        f1 = f0.copy()
+
+        #Filtering out points located ouside the cropped region
+
+        f1['EndpointPos'] = f0['EndpointPos'][(f0['EndpointPos'][:,1]>i) & (f0['EndpointPos'][:,1]<i+h) & (f0['EndpointPos'][:,0]>j) & (f0['EndpointPos'][:,0]<j+w)] - np.array([[j,i]])
+        f1['CrossPos'] = f0['CrossPos'][(f0['CrossPos'][:,1]>i) & (f0['CrossPos'][:,1]<i+h) & (f0['CrossPos'][:,0]>j) & (f0['CrossPos'][:,0]<j+w)] - np.array([[j,i]])
+        f1['BiffPos'] = f0['BiffPos'][(f0['BiffPos'][:,1]>i) & (f0['BiffPos'][:,1]<i+h) & (f0['BiffPos'][:,0]>j) & (f0['BiffPos'][:,0]<j+w)] - np.array([[j,i]])
+
+        # print(f1['EndpointPos'].max())
+        plt.figure(0)
+        plt.imshow(image_to_save)
+        plt.scatter(f1['EndpointPos'][:,1], f1['EndpointPos'][:,0], c='r')
+        plt.scatter(f1['CrossPos'][:,1], f1['CrossPos'][:,0], c='b')
+        plt.scatter(f1['BiffPos'][:,1], f1['BiffPos'][:,0], c='g')
+        plt.savefig('./data_IOSTAR/train_images/visualization_train/train_im_scatter{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
+        plt.clf()
+        
+        # Saving in data folder
+
+        savemat('./data_IOSTAR/train_images/IOSTAR_points/IOSTAR_points_{}.mat'.format(patches_per_image*p + k + 1 + patches_per_image*20), f1)

@@ -275,30 +275,6 @@ class ULM_UNet(pl.LightningModule):
             # print(recall_cum)
         return val_loss
 
-def wb_mask(bg_img, pred_mask, true_mask):
-
-    """class_labels = {
-        0: 'endpoint',
-        1: 'biffurcation',
-        2: 'crossing',
-    }"""
-
-    return [wandb.Image(bg_img), wandb.Image(pred_mask), wandb.Image(true_mask)]
-
-
-def gray2rgb(image):
-    w, h = image.shape[-2:]
-    image += np.abs(np.min(image))
-    image_max = np.abs(np.max(image))
-    if image_max > 0:
-        image /= image_max
-    ret = np.empty((w, h, 3), dtype=np.uint8)
-    if image.ndim==3:
-        ret = (255*image).transpose((1,2,0))
-    else:
-        ret[:, :, 2] = ret[:, :, 1] = ret[:, :, 0] = image * 255
-    return ret
-
 class ImagePredictionLogger(pl.Callback):
     def __init__(self, val_samples, num_samples=10):
         super().__init__()
@@ -327,16 +303,14 @@ class ImagePredictionLogger(pl.Callback):
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 
-            prediction_mask = np.sum(local_max_filt(logits.clone().detach()).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            prediction_mask = logits.clone().detach()
 
             # ground truth mask
-            true_mask = np.sum(local_max_filt(ground_truth.clone().detach()).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+            true_mask = ground_truth.clone().detach()
             # keep a list of composite images
             
-            mask_list = wb_mask(bg_image, prediction_mask, true_mask)
-
         # log all composite images to W&B'''
-        wandb.log({"Background" : mask_list[0], "predicted":mask_list[1], "label":mask_list[2]})
+        wandb.log({"Background":wandb.Image(bg_image), "predicted":wandb.Image((prediction_mask).squeeze()), "label":wandb.Image(true_mask)})
 
 
 class Vesselnet(pl.LightningModule):
@@ -361,6 +335,15 @@ class Vesselnet(pl.LightningModule):
         self.last_layer = nn.Conv2d(4*features, self.k_class, 1, stride=1, padding=0)
 
         self.softmax = nn.Softmax(dim=1)
+
+    def configure_optimizers(self):
+        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
+        print(optimizer.state)
+
+
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=self.patience, min_lr=1e-8)
+
+        return {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "Normalized_val_loss"}}
         
         
     def forward(self, x):
@@ -371,7 +354,7 @@ class Vesselnet(pl.LightningModule):
 
         output = self.last_layer(enc4)
 
-        return torch.relu(output)
+        return output
     
     def training_step(self, batch, batch_idx):
 
