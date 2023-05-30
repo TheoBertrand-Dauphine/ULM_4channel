@@ -202,8 +202,6 @@ class ULM_UNet(pl.LightningModule):
 
         y_pred = self(x)
 
-        # print(y_pred.shape)
-        # print(y_true.shape)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
         batch_dictionary={
@@ -290,16 +288,12 @@ class ImagePredictionLogger(pl.Callback):
         val_imgs = self.val_imgs.to(device=pl_module.device)
 
         logits = pl_module(val_imgs)
-
-        mask_list = []
-
-        local_max_filt = nn.MaxPool2d(17, stride=1, padding=8)
         
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
             
-            bg_image = (original_image.squeeze(0).cpu().numpy()).astype(np.uint8)
+            bg_image = np.floor(original_image.squeeze().permute([1,2,0]).cpu().numpy())
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 

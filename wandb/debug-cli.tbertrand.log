@@ -155,3 +155,185 @@ wandb.errors.CommError: <Response [400]>
 2023-05-30 16:22:25 INFO About to run command: /usr/bin/env python train.py --alpha=5 --features=32 --lr=0.0002705417089368996 --out_channels=3 --patience=300 --size=64 --vesselnet=True
 2023-05-30 16:22:30 INFO Running runs: ['0dwh8uye']
 2023-05-30 16:22:45 INFO Cleaning up finished run: 0dwh8uye
+2023-05-30 17:18:12 ERROR 400 response executing GraphQL.
+2023-05-30 17:18:12 ERROR {"errors":[{"message":"name required for project query","path":["project"]}],"data":{"project":null}}
+2023-05-30 17:18:12 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 683, in sweep
+    response = self.gql(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 113, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 199, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/transport/requests.py", line 39, in execute
+    request.raise_for_status()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1315, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 622, in agent
+    return run_agent(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 564, in run_agent
+    agent.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 180, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 99, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 28, in wrapper
+    raise CommError(err.response, err)
+wandb.errors.CommError: <Response [400]>
+
+2023-05-30 17:18:30 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+ValueError: Sweep tbertrand/ULM_4channel/3lze6oj5 not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1315, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 622, in agent
+    return run_agent(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 564, in run_agent
+    agent.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 180, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 99, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+wandb.errors.CommError: Sweep tbertrand/ULM_4channel/3lze6oj5 not found
+
+2023-05-30 17:18:55 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+ValueError: Sweep tbertrand/ULM_4channel/3lze6oj5 not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1315, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 622, in agent
+    return run_agent(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 564, in run_agent
+    agent.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 180, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 99, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+wandb.errors.CommError: Sweep tbertrand/ULM_4channel/3lze6oj5 not found
+
+2023-05-30 17:19:27 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+ValueError: Sweep tbertrand/ULM_4channel/4dlg0dc7 not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1315, in agent
+    wandb_agent.agent(sweep_id, entity=entity, project=project, count=count)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 622, in agent
+    return run_agent(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 564, in run_agent
+    agent.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/wandb_agent.py", line 180, in run
+    sweep_obj = self._api.sweep(self._sweep_id, "{}")
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 99, in sweep
+    return self.api.sweep(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 693, in sweep
+    raise ValueError(f"Sweep {entity}/{project}/{sweep} not found")
+wandb.errors.CommError: Sweep tbertrand/ULM_4channel/4dlg0dc7 not found
+
+2023-05-30 17:21:09 INFO Running runs: []
+2023-05-30 17:21:09 INFO Agent received command: run
+2023-05-30 17:21:09 INFO Agent starting run with config:
+	alpha: 5
+	features: 16
+	lr: 0.0004866011111850584
+	out_channels: 4
+	patience: 400
+	size: 512
+	vesselnet: False
+2023-05-30 17:21:09 INFO About to run command: /usr/bin/env python train.py --alpha=5 --features=16 --lr=0.0004866011111850584 --out_channels=4 --patience=400 --size=512 --vesselnet=False
+2023-05-30 17:21:14 INFO Running runs: ['z62a25yy']
+2023-05-30 17:21:30 INFO Cleaning up finished run: z62a25yy
+2023-05-30 17:23:10 INFO Running runs: []
+2023-05-30 17:23:10 INFO Agent received command: run
+2023-05-30 17:23:10 INFO Agent starting run with config:
+	alpha: 5
+	features: 8
+	lr: 3.85680367447801e-05
+	out_channels: 4
+	patience: 100
+	size: 64
+	vesselnet: False
+2023-05-30 17:23:10 INFO About to run command: /usr/bin/env python train.py --alpha=5 --features=8 --lr=3.85680367447801e-05 --out_channels=4 --patience=100 --size=64 --vesselnet=False
+2023-05-30 17:23:15 INFO Running runs: ['7hgp8jpp']
+2023-05-30 17:23:31 INFO Cleaning up finished run: 7hgp8jpp
+2023-05-30 17:26:31 INFO Running runs: []
+2023-05-30 17:26:49 INFO Agent received command: run
+2023-05-30 17:26:49 INFO Agent starting run with config:
+	alpha: 1
+	features: 32
+	lr: 5.061518870814092e-05
+	out_channels: 3
+	patience: 400
+	size: 128
+	vesselnet: False
+2023-05-30 17:26:49 INFO About to run command: /usr/bin/env python train.py --alpha=1 --features=32 --lr=5.061518870814092e-05 --out_channels=3 --patience=400 --size=128 --vesselnet=False
+2023-05-30 17:26:54 INFO Running runs: ['rjn47mj7']
+2023-05-30 17:26:59 INFO Cleaning up finished run: rjn47mj7
+2023-05-30 17:27:23 INFO Running runs: []
+2023-05-30 17:27:24 INFO Agent received command: run
+2023-05-30 17:27:24 INFO Agent starting run with config:
+	alpha: 3
+	features: 16
+	lr: 2.079477784821688e-05
+	out_channels: 3
+	patience: 200
+	size: 256
+	vesselnet: True
+2023-05-30 17:27:24 INFO About to run command: /usr/bin/env python train.py --alpha=3 --features=16 --lr=2.079477784821688e-05 --out_channels=3 --patience=200 --size=256 --vesselnet=True
+2023-05-30 17:27:29 INFO Running runs: ['n8wmhdta']
+2023-05-30 17:28:00 INFO Cleaning up finished run: n8wmhdta

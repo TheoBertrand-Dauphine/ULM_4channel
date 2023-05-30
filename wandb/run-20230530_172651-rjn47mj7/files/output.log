@@ -1,0 +1,73 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=1)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=1)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 896
+2 | encoder2       | Conv2d    | 51.3 K
+3 | encoder3       | Conv2d    | 153 K
+4 | encoder4       | Conv2d    | 110 K
+5 | last_layer     | Conv2d    | 387
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+316 K     Trainable params
+0         Non-trainable params
+316 K     Total params
+1.268     Total estimated model params size (MB)
+defaultdict(<class 'dict'>, {})
+Sanity Checking DataLoader 0:  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                          | 1/2 [00:00<00:00,  1.07it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 127, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 83, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 696, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 735, in _fit_impl
+    results = self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1274, in _run_train
+    self._run_sanity_check()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1343, in _run_sanity_check
+    val_loop.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 155, in advance
+    dl_outputs = self.epoch_loop.run(self._data_fetcher, dl_max_batches, kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 143, in advance
+    output = self._evaluation_step(**kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 240, in _evaluation_step
+    output = self.trainer._call_strategy_hook(hook_name, *kwargs.values())
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1704, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 370, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 382, in validation_step
+    y_hat = self(x)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 349, in forward
+    enc4 = self.encoder4(torch.relu(enc3))
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 457, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 453, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 128.00 MiB (GPU 0; 3.79 GiB total capacity; 295.23 MiB already allocated; 115.81 MiB free; 378.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

@@ -1,0 +1,65 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=1)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=1)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 224
+2 | encoder2       | Conv2d    | 3.2 K
+3 | encoder3       | Conv2d    | 9.6 K
+4 | encoder4       | Conv2d    | 6.9 K
+5 | last_layer     | Conv2d    | 132
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+20.1 K    Trainable params
+0         Non-trainable params
+20.1 K    Total params
+0.081     Total estimated model params size (MB)
+defaultdict(<class 'dict'>, {})
+
+Sanity Checking DataLoader 0:   0%|                                                                                                                                                                                                                             | 0/2 [00:00<?, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([4, 512, 512])) that is different to the input size (torch.Size([1, 4, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.31it/s]
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 127, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 83, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 696, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 735, in _fit_impl
+    results = self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1274, in _run_train
+    self._run_sanity_check()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1343, in _run_sanity_check
+    val_loop.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 207, in run
+    output = self.on_run_end()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 187, in on_run_end
+    self._on_evaluation_epoch_end()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 298, in _on_evaluation_epoch_end
+    self.trainer._call_callback_hooks(hook_name)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1597, in _call_callback_hooks
+    fn(self, self.lightning_module, *args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 313, in on_validation_epoch_end
+    wandb.log({"Background":wandb.Image(bg_image), "predicted":wandb.Image((prediction_mask).squeeze()), "label":wandb.Image(true_mask)})
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/data_types/image.py", line 153, in __init__
+    self._initialize_from_data(data_or_path, mode)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/data_types/image.py", line 282, in _initialize_from_data
+    self.to_uint8(data), mode=mode or self.guess_mode(data)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/data_types/image.py", line 428, in guess_mode
+    raise ValueError(
+ValueError: Un-supported shape for image conversion [3, 512, 512]

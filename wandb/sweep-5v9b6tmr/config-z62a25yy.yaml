@@ -1,0 +1,16 @@
+wandb_version: 1
+
+alpha:
+  value: 5
+features:
+  value: 16
+lr:
+  value: 0.0004866011111850584
+out_channels:
+  value: 4
+patience:
+  value: 400
+size:
+  value: 512
+vesselnet:
+  value: false

@@ -63,7 +63,7 @@ def main(args,seed):
     if args.data == 'IOSTAR':
 
         if args.vesselnet:
-            model = Vesselnet(in_channels = 3, out_channels = 3, init_features = args.features, threshold = args.threshold, patience = args.patience, alpha = args.alpha)
+            model = Vesselnet(in_channels = 3, out_channels = args.out_channels, init_features = args.features, threshold = args.threshold, patience = args.patience, alpha = args.alpha)
         else:
             model = ULM_UNet(in_channels=3, init_features=args.features, threshold = args.threshold, out_channels = args.out_channels, second_unet=args.second_unet)
     else:
@@ -101,7 +101,7 @@ def main(args,seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=10, help="input batch size for training (default: 16)")
-    parser.add_argument("--epochs", type=int, default=2, help="number of epochs to train (default: 100)")
+    parser.add_argument("--epochs", type=int, default=200, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=int, default=1, help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=16, help="number of workers for data loading (default: 16)")
