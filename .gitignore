@@ -2,7 +2,6 @@
 bin
 lib
 share
-wandb
 None
 weights
 *.sbatch

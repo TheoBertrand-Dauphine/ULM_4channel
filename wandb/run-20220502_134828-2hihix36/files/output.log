@@ -1,0 +1,19 @@
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/cuda/__init__.py:80: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:112.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File "train.py", line 101, in <module>
+    main(args,42)
+  File "train.py", line 64, in main
+    trainer = Trainer(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/env_vars_connector.py", line 38, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 426, in __init__
+    gpu_ids, tpu_cores = self._parse_devices(gpus, auto_select_gpus, tpu_cores)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1543, in _parse_devices
+    gpu_ids = device_parser.parse_gpu_ids(gpus)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/device_parser.py", line 89, in parse_gpu_ids
+    return _sanitize_gpu_ids(gpus)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/device_parser.py", line 151, in _sanitize_gpu_ids
+    raise MisconfigurationException(
+pytorch_lightning.utilities.exceptions.MisconfigurationException: You requested GPUs: [0]
+ But your machine only has: []

@@ -1,0 +1,81 @@
+Epoch 4: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 42/42 [00:11<00:00,  3.78it/s, loss=0.00573, v_num=uiml]
+0
+tensor(0.0016)
+1
+tensor(0.0035)
+2
+tensor(0.0021)
+3
+tensor(0.0026)
+4
+tensor(0.0023)
+5
+tensor(0.0025)
+6
+tensor(0.0033)
+7
+tensor(0.0029)
+8
+tensor(0.0032)
+9
+tensor(0.0045)
+10
+tensor(0.0040)
+11
+tensor(0.0027)
+12
+tensor(0.0035)
+13
+tensor(0.0036)
+14
+tensor(0.0038)
+15
+tensor(0.0045)
+16
+tensor(0.0029)
+17
+tensor(0.0038)
+18
+tensor(0.0045)
+19
+tensor(0.0032)
+20
+tensor(0.0017)
+21
+tensor(0.0023)
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 22.3 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 124 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 498 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 2.0 M
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 8.0 M
+10 | upconv4        | ConvTranspose2d | 1.2 M
+11 | decoder4       | Sequential      | 4.0 M
+12 | upconv3        | ConvTranspose2d | 295 K
+13 | decoder3       | Sequential      | 996 K
+14 | upconv2        | ConvTranspose2d | 73.8 K
+15 | decoder2       | Sequential      | 249 K
+16 | upconv1        | ConvTranspose2d | 18.5 K
+17 | decoder1       | Sequential      | 62.5 K
+18 | conv           | Conv2d          | 196
+----------------------------------------------------
+17.5 M    Trainable params
+0         Non-trainable params
+17.5 M    Total params
+69.864    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([4, 512, 512])) that is different to the input size (torch.Size([1, 4, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)

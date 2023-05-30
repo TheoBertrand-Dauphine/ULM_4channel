@@ -1,0 +1,156 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]torch.Size([167, 3])
+torch.Size([173, 3])
+torch.Size([100, 3])
+torch.Size([188, 3])
+torch.Size([160, 3])
+torch.Size([113, 3])
+torch.Size([178, 3])
+torch.Size([202, 3])
+torch.Size([122, 3])
+torch.Size([179, 3])
+torch.Size([132, 3])
+torch.Size([163, 3])
+torch.Size([202, 3])
+torch.Size([195, 3])
+torch.Size([165, 3])
+torch.Size([141, 3])
+torch.Size([161, 3])
+torch.Size([130, 3])
+torch.Size([373, 3])
+torch.Size([174, 3])
+Epoch 0:  82%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                          | 9/11 [00:01<00:00,  8.11it/s, loss=0.129]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+Epoch 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:01<00:00,  9.06it/s, loss=0.126]torch.Size([171, 3])
+torch.Size([180, 3])                                                                                                                                                                 | 0/1 [00:00<?, ?it/s]
+torch.Size([113, 3])
+torch.Size([194, 3])
+torch.Size([169, 3])
+torch.Size([131, 3])
+torch.Size([173, 3])
+torch.Size([202, 3])
+torch.Size([123, 3])
+torch.Size([187, 3])
+torch.Size([134, 3])
+torch.Size([171, 3])
+torch.Size([163, 3])
+torch.Size([201, 3])
+torch.Size([181, 3])
+torch.Size([152, 3])
+torch.Size([172, 3])
+torch.Size([159, 3])
+torch.Size([194, 3])
+torch.Size([188, 3])
+Epoch 1:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  9.10it/s, loss=0.108, v_num=7i05]torch.Size([404, 3])
+torch.Size([374, 3])                                                                                                                                                                 | 0/1 [00:00<?, ?it/s]
+torch.Size([294, 3])
+torch.Size([374, 3])
+torch.Size([246, 3])
+torch.Size([305, 3])
+torch.Size([382, 3])
+torch.Size([390, 3])
+torch.Size([312, 3])
+torch.Size([364, 3])
+torch.Size([279, 3])
+torch.Size([358, 3])
+torch.Size([226, 3])
+torch.Size([415, 3])
+torch.Size([356, 3])
+torch.Size([253, 3])
+torch.Size([416, 3])
+torch.Size([318, 3])
+torch.Size([232, 3])
+torch.Size([337, 3])
+Epoch 2:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  9.30it/s, loss=0.0789, v_num=7i05]
+torch.Size([554, 3])                                                                                                                                                                 | 0/1 [00:00<?, ?it/s]
+torch.Size([452, 3])
+torch.Size([549, 3])
+torch.Size([413, 3])
+torch.Size([481, 3])
+torch.Size([558, 3])
+torch.Size([581, 3])
+torch.Size([455, 3])
+torch.Size([569, 3])
+torch.Size([456, 3])
+torch.Size([550, 3])
+torch.Size([405, 3])
+torch.Size([582, 3])
+torch.Size([537, 3])
+torch.Size([441, 3])
+torch.Size([587, 3])
+torch.Size([484, 3])
+torch.Size([425, 3])
+torch.Size([516, 3])
+Epoch 3:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  9.10it/s, loss=0.0609, v_num=7i05]
+torch.Size([539, 3])                                                                                                                                                                 | 0/1 [00:00<?, ?it/s]
+torch.Size([470, 3])
+torch.Size([555, 3])
+torch.Size([393, 3])
+torch.Size([522, 3])
+torch.Size([554, 3])
+torch.Size([590, 3])
+torch.Size([492, 3])
+torch.Size([542, 3])
+torch.Size([465, 3])
+torch.Size([564, 3])
+torch.Size([366, 3])
+torch.Size([578, 3])
+torch.Size([523, 3])
+torch.Size([411, 3])
+torch.Size([585, 3])
+torch.Size([501, 3])
+torch.Size([374, 3])
+torch.Size([506, 3])
+Epoch 4:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  8.23it/s, loss=0.0484, v_num=7i05]torch.Size([562, 3])
+torch.Size([554, 3])                                                                                                                                                                 | 0/1 [00:00<?, ?it/s]
+torch.Size([491, 3])
+torch.Size([551, 3])
+torch.Size([371, 3])
+torch.Size([516, 3])
+torch.Size([572, 3])
+torch.Size([590, 3])
+torch.Size([530, 3])
+torch.Size([529, 3])
+torch.Size([490, 3])
+torch.Size([551, 3])
+torch.Size([330, 3])
+torch.Size([562, 3])
+torch.Size([516, 3])
+torch.Size([406, 3])
+torch.Size([604, 3])
+torch.Size([523, 3])
+torch.Size([297, 3])
+torch.Size([518, 3])
+Epoch 4: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:02<00:00,  4.05it/s, loss=0.0484, v_num=7i05]

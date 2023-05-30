@@ -1,0 +1,27 @@
+{
+    "os": "Linux-5.15.0-48-generic-x86_64-with-glibc2.31",
+    "python": "3.10.4",
+    "heartbeatAt": "2022-10-06T07:41:59.139478",
+    "startedAt": "2022-10-06T07:41:59.126478",
+    "docker": null,
+    "gpu": "Quadro T2000",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "--data",
+        "synthetic"
+    ],
+    "state": "running",
+    "program": "/home/tbertrand/Bureau/ULM_4channel_pull/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "git@github.com:TheoBertrand-Dauphine/ULM_4channel.git",
+        "commit": "7016b0e7d27de8087cfe7199f2317b674054bbd4"
+    },
+    "email": "tbertrand@ceremade.dauphine.fr",
+    "root": "/home/tbertrand/Bureau/ULM_4channel_pull",
+    "host": "P7550BERTRAND",
+    "username": "tbertrand",
+    "executable": "/home/tbertrand/anaconda3/envs/landmarkv2/bin/python3"
+}

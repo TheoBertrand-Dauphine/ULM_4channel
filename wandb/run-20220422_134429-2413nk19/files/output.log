@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "train.py", line 95, in <module>
+    main(args,42)
+  File "train.py", line 61, in main
+    samples = next(iter(valloader))
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1203, in _next_data
+    return self._process_data(data)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1229, in _process_data
+    data.reraise()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/_utils.py", line 434, in reraise
+    raise exception
+NameError: Caught NameError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 287, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/dataset.py", line 145, in __getitem__
+    sample = self.transform(sample)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torchvision/transforms/transforms.py", line 61, in __call__
+    img = t(img)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/transforms.py", line 131, in __call__
+    print(landarks)
+NameError: name 'landarks' is not defined

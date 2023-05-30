@@ -1,0 +1,23 @@
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 132, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 88, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1128, in _run
+    verify_loop_configurations(self)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 36, in verify_loop_configurations
+    __verify_train_val_loop_configuration(trainer, model)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 84, in __verify_train_val_loop_configuration
+    raise MisconfigurationException(
+pytorch_lightning.utilities.exceptions.MisconfigurationException: No `configure_optimizers()` method defined. Lightning `Trainer` expects as minimum a `training_step()`, `train_dataloader()` and `configure_optimizers()` to be defined.

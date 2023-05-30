@@ -1,0 +1,117 @@
+
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+
+Epoch 0:   0%|                                                                                                                                                                       | 0/6 [00:00<?, ?it/s]
+/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py:246: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction_mask = np.sum(local_max_filt(torch.tensor(logits.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py:249: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  true_mask = np.sum(local_max_filt(torch.tensor(ground_truth.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (4) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Traceback (most recent call last):
+  File "train.py", line 90, in <module>
+    main(args,42)
+  File "train.py", line 72, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
+    self._dispatch()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
+    self.training_type_plugin.start_training(self)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
+    self._results = trainer.run_stage()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
+    return self._run_train()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1319, in _run_train
+    self.fit_loop.run()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/fit_loop.py", line 234, in advance
+    self.epoch_loop.run(data_fetcher)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 193, in advance
+    batch_output = self.batch_loop.run(batch, batch_idx)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/batch/training_batch_loop.py", line 88, in advance
+    outputs = self.optimizer_loop.run(split_batch, optimizers, batch_idx)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 215, in advance
+    result = self._run_optimization(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 266, in _run_optimization
+    self._optimizer_step(optimizer, opt_idx, batch_idx, closure)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 378, in _optimizer_step
+    lightning_module.optimizer_step(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/core/lightning.py", line 1652, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/core/optimizer.py", line 164, in step
+    trainer.accelerator.optimizer_step(self._optimizer, self._optimizer_idx, closure, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 336, in optimizer_step
+    self.precision_plugin.optimizer_step(model, optimizer, opt_idx, closure, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 163, in optimizer_step
+    optimizer.step(closure=closure, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/optim/optimizer.py", line 88, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 28, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/optim/adam.py", line 92, in step
+    loss = closure()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 148, in _wrap_closure
+    closure_result = closure()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 160, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 155, in closure
+    self._backward_fn(step_output.closure_loss)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 327, in backward_fn
+    self.trainer.accelerator.backward(loss, optimizer, opt_idx)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 311, in backward
+    self.precision_plugin.backward(self.lightning_module, closure_loss, *args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 91, in backward
+    model.backward(closure_loss, optimizer, *args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/core/lightning.py", line 1434, in backward
+    loss.backward(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/_tensor.py", line 307, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/autograd/__init__.py", line 154, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: Found dtype Double but expected Float

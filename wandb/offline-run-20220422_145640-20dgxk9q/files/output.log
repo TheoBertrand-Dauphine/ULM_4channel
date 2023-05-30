@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "train.py", line 95, in <module>
+    main(args,42)
+  File "train.py", line 56, in main
+    if args.data == 'IOSTAR' | args.data == 'synthetic':
+TypeError: unsupported operand type(s) for |: 'str' and 'str'

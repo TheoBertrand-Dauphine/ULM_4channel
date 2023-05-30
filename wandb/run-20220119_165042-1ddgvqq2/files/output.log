@@ -1,0 +1,123 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]torch.Size([0, 4])
+Epoch 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:01<00:00, 10.03it/s, loss=0.177]
+Validating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 1:  18%|████████████████████████▎                                                                                                             | 2/11 [00:00<00:02,  3.24it/s, loss=0.175, v_num=vqq2]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+Epoch 1:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  8.48it/s, loss=0.163, v_num=vqq2]torch.Size([1603, 4])
+113idating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+113
+46
+94
+50
+46
+102
+124
+42
+88
+62
+106
+23
+145
+118
+50
+80
+80
+17
+104
+Epoch 2:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  8.53it/s, loss=0.137, v_num=vqq2]
+429idating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+432
+284
+347
+178
+282
+362
+405
+266
+364
+301
+418
+130
+470
+412
+243
+404
+336
+100
+380
+Epoch 3:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  8.30it/s, loss=0.111, v_num=vqq2]
+515idating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+500
+374
+434
+214
+365
+429
+496
+325
+444
+369
+491
+139
+547
+461
+277
+502
+362
+111
+432
+Epoch 4:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  8.64it/s, loss=0.0837, v_num=vqq2]torch.Size([7430, 4])
+483idating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+506
+324
+406
+207
+328
+407
+458
+298
+409
+353
+470
+135
+545
+442
+265
+484
+364
+113
+433
+Epoch 4: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 11/11 [00:02<00:00,  4.22it/s, loss=0.0837, v_num=vqq2]

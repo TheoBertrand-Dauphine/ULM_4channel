@@ -1,0 +1,70 @@
+
+Epoch 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 40/40 [00:03<00:00, 10.65it/s, loss=0.0125, v_num=b9hf]
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 21.5 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 124 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 498 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 2.0 M
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 8.0 M
+10 | upconv4        | ConvTranspose2d | 1.2 M
+11 | decoder4       | Sequential      | 4.0 M
+12 | upconv3        | ConvTranspose2d | 295 K
+13 | decoder3       | Sequential      | 996 K
+14 | upconv2        | ConvTranspose2d | 73.8 K
+15 | decoder2       | Sequential      | 249 K
+16 | upconv1        | ConvTranspose2d | 18.5 K
+17 | decoder1       | Sequential      | 62.5 K
+18 | conv           | Conv2d          | 196
+----------------------------------------------------
+17.5 M    Trainable params
+0         Non-trainable params
+17.5 M    Total params
+69.860    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Traceback (most recent call last):
+  File "train.py", line 115, in <module>
+    main(args,42)
+  File "train.py", line 78, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
+    self._dispatch()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
+    self.training_type_plugin.start_training(self)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
+    self._results = trainer.run_stage()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
+    return self._run_train()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1319, in _run_train
+    self.fit_loop.run()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/fit_loop.py", line 234, in advance
+    self.epoch_loop.run(data_fetcher)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 151, in run
+    output = self.on_run_end()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 303, in on_run_end
+    self.update_lr_schedulers("epoch", update_plateau_schedulers=True)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 441, in update_lr_schedulers
+    self._update_learning_rates(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 486, in _update_learning_rates
+    raise MisconfigurationException(
+pytorch_lightning.utilities.exceptions.MisconfigurationException: ReduceLROnPlateau conditioned on metric Normalized_val_loss which is not available. Available metrics are: ['loss']. Condition can be set using `monitor` key in lr scheduler dict

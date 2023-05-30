@@ -1,0 +1,454 @@
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:00<00:00,  1.08it/s]
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:00<00:00,  1.08it/s]tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+Epoch 0:  17%|████████████████████████▎                                                                                                                         | 2/12 [00:01<00:05,  1.95it/s, loss=0.311]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 0:  75%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                    | 9/12 [00:03<00:01,  2.93it/s, loss=0.283]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+Epoch 0:  83%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋                        | 10/12 [00:03<00:00,  2.89it/s, loss=0.28]tensor(inf)
+tensor(inf)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+Epoch 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:04<00:00,  2.74it/s, loss=0.28]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.09it/s]
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+
+Epoch 1:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                      | 10/12 [00:03<00:00,  2.84it/s, loss=0.255, v_num=521n]
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(7.0000)
+tensor(inf)
+Epoch 1: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:04<00:00,  2.74it/s, loss=0.255, v_num=521n]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.16it/s]
+tensor(2.)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+
+Epoch 2:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                      | 10/12 [00:03<00:00,  2.88it/s, loss=0.216, v_num=521n]tensor(0.0811)
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)
+tensor(3.5000)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(7.0000)
+tensor(inf)
+Epoch 2: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:04<00:00,  2.75it/s, loss=0.216, v_num=521n]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.14it/s]
+tensor(2.)
+tensor(8.)
+tensor(inf)
+tensor(inf)
+tensor(3.)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+
+Epoch 3:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                      | 10/12 [00:03<00:00,  2.74it/s, loss=0.191, v_num=521n]tensor(0.0811)
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)
+tensor(3.5000)
+tensor(inf)
+tensor(inf)
+tensor(0.0811)
+tensor(4.)
+tensor(inf)
+tensor(inf)
+Epoch 3: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:04<00:00,  2.61it/s, loss=0.191, v_num=521n]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.05it/s]
+tensor(inf)
+tensor(8.)
+tensor(inf)
+tensor(inf)
+tensor(1.5000)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+
+
+Epoch 4:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                      | 10/12 [00:04<00:00,  2.45it/s, loss=0.171, v_num=521n]tensor(0.0811)
+tensor(5.5000)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)
+tensor(2.3333)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+tensor(4.)
+tensor(inf)
+tensor(7.0000)
+Epoch 4: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:05<00:00,  2.37it/s, loss=0.171, v_num=521n]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.02it/s]
+tensor(inf)
+tensor(8.)
+tensor(inf)
+tensor(inf)
+tensor(1.)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+
+
+Epoch 5:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                      | 10/12 [00:04<00:00,  2.35it/s, loss=0.154, v_num=521n]tensor(0.0811)
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(0.0526)
+tensor(7.0000)
+tensor(1.)
+tensor(inf)
+tensor(inf)
+tensor(4.)
+tensor(inf)
+tensor(3.5000)
+Epoch 5: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:05<00:00,  2.30it/s, loss=0.154, v_num=521n]tensor(inf)
+tensor(inf)  50%|██████████████████████████████████████████████████████████████████████████████                                                                              | 1/2 [00:00<00:00,  1.04it/s]
+tensor(inf)
+tensor(2.6667)
+tensor(6.)
+tensor(inf)
+tensor(3.)
+tensor(inf)
+tensor(inf)
+tensor(inf)
+Validating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.51it/s]
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(11.)   0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(0.0526)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(0.0526)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(0.0526)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(3.5000)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(3.5000)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(3.5000)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]
+tensor(inf)00)0%|                                                                                                                                                                    | 0/2 [00:00<?, ?it/s]

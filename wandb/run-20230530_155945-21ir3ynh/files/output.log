@@ -1,0 +1,45 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 448
+2 | encoder2       | Conv2d    | 12.8 K
+3 | encoder3       | Conv2d    | 38.4 K
+4 | encoder4       | Conv2d    | 27.7 K
+5 | last_layer     | Conv2d    | 195
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+79.6 K    Trainable params
+0         Non-trainable params
+79.6 K    Total params
+0.319     Total estimated model params size (MB)
+defaultdict(<class 'dict'>, {})
+Sanity Checking: 0it [00:00, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+
+
+
+Epoch 0:   9%|██████████████████▍                                                                                                                                                                                              | 3/34 [00:02<00:30,  1.03it/s, loss=0.326, v_num=3ynh]
+
+
+
+
+
+
+
+
+
+
+
+Validation DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 31/31 [00:09<00:00,  3.27it/s]
+
+`Trainer.fit` stopped: `max_epochs=2` reached.

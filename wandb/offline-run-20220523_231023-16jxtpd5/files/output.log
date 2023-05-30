@@ -1,0 +1,122 @@
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+torch.Size([1, 4, 256, 256])
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 21.5 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 124 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 498 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 2.0 M
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 8.0 M
+10 | upconv4        | ConvTranspose2d | 1.2 M
+11 | decoder4       | Sequential      | 4.0 M
+12 | upconv3        | ConvTranspose2d | 295 K
+13 | decoder3       | Sequential      | 996 K
+14 | upconv2        | ConvTranspose2d | 73.8 K
+15 | decoder2       | Sequential      | 249 K
+16 | upconv1        | ConvTranspose2d | 18.5 K
+17 | decoder1       | Sequential      | 62.5 K
+18 | conv           | Conv2d          | 196
+----------------------------------------------------
+17.5 M    Trainable params
+0         Non-trainable params
+17.5 M    Total params
+69.860    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([8, 3, 256, 256])) that is different to the input size (torch.Size([8, 4, 256, 256])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Traceback (most recent call last):
+  File "train.py", line 115, in <module>
+    main(args,42)
+  File "train.py", line 78, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
+    self._dispatch()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
+    self.training_type_plugin.start_training(self)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
+    self._results = trainer.run_stage()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
+    return self._run_train()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
+    self._run_sanity_check(self.lightning_module)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
+    self._evaluation_loop.run()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
+    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
+    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
+    output = self.trainer.accelerator.validation_step(step_kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 236, in validation_step
+    return self.training_type_plugin.validation_step(*step_kwargs.values())
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 154, in validation_step
+    val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py", line 520, in forward
+    return F.mse_loss(input, target, reduction=self.reduction)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/functional.py", line 3111, in mse_loss
+    expanded_input, expanded_target = torch.broadcast_tensors(input, target)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/functional.py", line 72, in broadcast_tensors
+    return _VF.broadcast_tensors(tensors)  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (4) must match the size of tensor b (3) at non-singleton dimension 1

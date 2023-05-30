@@ -1,0 +1,131 @@
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (15) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:00<00:00,  2.13it/s]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:   0%|                                                                                                                                                                      | 0/20 [00:00<?, ?it/s]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:   5%|███████▎                                                                                                                                          | 1/20 [00:00<00:15,  1.23it/s, loss=0.236]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  10%|██████████████▌                                                                                                                                   | 2/20 [00:01<00:12,  1.46it/s, loss=0.225]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  15%|█████████████████████▉                                                                                                                            | 3/20 [00:01<00:10,  1.61it/s, loss=0.219]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  20%|█████████████████████████████▏                                                                                                                    | 4/20 [00:02<00:09,  1.77it/s, loss=0.215]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  25%|████████████████████████████████████▌                                                                                                             | 5/20 [00:02<00:08,  1.84it/s, loss=0.212]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  30%|███████████████████████████████████████████▊                                                                                                      | 6/20 [00:03<00:07,  1.87it/s, loss=0.208]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  35%|███████████████████████████████████████████████████                                                                                               | 7/20 [00:03<00:07,  1.86it/s, loss=0.205]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  40%|██████████████████████████████████████████████████████████▍                                                                                       | 8/20 [00:04<00:06,  1.85it/s, loss=0.203]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  45%|█████████████████████████████████████████████████████████████████▋                                                                                | 9/20 [00:04<00:05,  1.84it/s, loss=0.201]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  50%|████████████████████████████████████████████████████████████████████████▌                                                                        | 10/20 [00:05<00:05,  1.87it/s, loss=0.198]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  55%|███████████████████████████████████████████████████████████████████████████████▊                                                                 | 11/20 [00:05<00:04,  1.90it/s, loss=0.196]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  60%|███████████████████████████████████████████████████████████████████████████████████████                                                          | 12/20 [00:06<00:04,  1.93it/s, loss=0.194]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  65%|██████████████████████████████████████████████████████████████████████████████████████████████▎                                                  | 13/20 [00:06<00:03,  1.93it/s, loss=0.191]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  75%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                    | 15/20 [00:07<00:02,  1.99it/s, loss=0.188]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>                                                                                                                                                              | 0/5 [00:00<?, ?it/s]
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                     | 17/20 [00:07<00:01,  2.16it/s, loss=0.188]<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>█████████████████████████▏                                                                                                                            | 1/5 [00:00<00:01,  2.94it/s]
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+                                                                                                                                                                                                           <class 'numpy.ndarray'>
+<class 'numpy.ndarray'>████████████████████████████████████████████████████████▍                                                                                             | 2/5 [00:00<00:00,  3.70it/s]
+<class 'numpy.ndarray'>
+<class 'numpy.ndarray'>
+Epoch 0:  95%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊       | 19/20 [00:08<00:00,  2.28it/s, loss=0.188]<class 'numpy.ndarray'>

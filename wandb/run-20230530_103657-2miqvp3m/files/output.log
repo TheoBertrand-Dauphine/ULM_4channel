@@ -1,0 +1,158 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 224
+2 | encoder2       | Conv2d    | 3.2 K
+3 | encoder3       | Conv2d    | 9.6 K
+4 | encoder4       | Conv2d    | 6.9 K
+5 | last_layer     | Conv2d    | 99
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+20.1 K    Trainable params
+0         Non-trainable params
+20.1 K    Total params
+0.080     Total estimated model params size (MB)
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+defaultdict(<class 'dict'>, {})
+Epoch 0:   0%|                                                                                                                                                                                                                                                 | 0/44 [00:00<?, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1892: PossibleUserWarning: The number of training batches (3) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Epoch 0:  34%|██████████████████████████████████████████████████████████████████████▌                                                                                                                                        | 15/44 [00:02<00:04,  6.52it/s, loss=0.0192, v_num=vp3m]
+
+
+
+
+Epoch 2:  30%|█████████████████████████████████████████████████████████████▏                                                                                                                                                 | 13/44 [00:02<00:05,  5.97it/s, loss=0.0178, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 9:  48%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                            | 21/44 [00:02<00:02,  8.13it/s, loss=0.0117, v_num=vp3m]
+
+Epoch 10:  39%|███████████████████████████████████████████████████████████████████████████████▌                                                                                                                              | 17/44 [00:02<00:03,  7.39it/s, loss=0.0108, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 16:  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                      | 22/44 [00:02<00:02,  8.78it/s, loss=0.00734, v_num=vp3m]
+
+Epoch 17:  43%|████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                                    | 19/44 [00:02<00:03,  8.03it/s, loss=0.00701, v_num=vp3m]
+
+Epoch 18:  32%|█████████████████████████████████████████████████████████████████▌                                                                                                                                            | 14/44 [00:02<00:04,  6.33it/s, loss=0.0071, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+Epoch 23:  48%|█████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                           | 21/44 [00:02<00:02,  8.34it/s, loss=0.00672, v_num=vp3m]
+
+Epoch 24:  39%|███████████████████████████████████████████████████████████████████████████████▏                                                                                                                             | 17/44 [00:02<00:03,  7.45it/s, loss=0.00689, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 31:  45%|█████████████████████████████████████████████████████████████████████████████████████████████▏                                                                                                               | 20/44 [00:02<00:02,  8.14it/s, loss=0.00691, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 37:  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                      | 22/44 [00:02<00:02,  8.58it/s, loss=0.00659, v_num=vp3m]
+
+Epoch 38:  43%|████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                                    | 19/44 [00:02<00:03,  7.96it/s, loss=0.00652, v_num=vp3m]
+
+Epoch 39:  39%|███████████████████████████████████████████████████████████████████████████████▏                                                                                                                             | 17/44 [00:02<00:03,  7.59it/s, loss=0.00657, v_num=vp3m]
+
+Epoch 40:  36%|██████████████████████████████████████████████████████████████████████████▉                                                                                                                                   | 16/44 [00:02<00:03,  7.51it/s, loss=0.0067, v_num=vp3m]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 48:  32%|█████████████████████████████████████████████████████████████████▏                                                                                                                                           | 14/44 [00:02<00:04,  6.83it/s, loss=0.00676, v_num=vp3m]
+
+
+
+Validation DataLoader 0:  98%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋     | 40/41 [00:02<00:00, 13.50it/s]
+Exception ignored in: <function _releaseLock at 0x7f25f4304d30>
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/logging/__init__.py", line 228, in _releaseLock
+    def _releaseLock():
+KeyboardInterrupt:
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:653: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+
+Validation: 0it [00:00, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:653: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+  rank_zero_warn("Detected KeyboardInterrupt, attempting graceful shutdown...")
+Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x7f25f3729a20>
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1510, in __del__
+    self._shutdown_workers()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1493, in _shutdown_workers
+    if w.is_alive():
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/multiprocessing/process.py", line 160, in is_alive
+    assert self._parent_pid == os.getpid(), 'can only test a child process'
+AssertionError: can only test a child process

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "train.py", line 81, in <module>
+    main(args,42)
+  File "train.py", line 60, in main
+    callbacks=[ImagePredictionLogger(samples), lr_monitor]
+NameError: name 'lr_monitor' is not defined

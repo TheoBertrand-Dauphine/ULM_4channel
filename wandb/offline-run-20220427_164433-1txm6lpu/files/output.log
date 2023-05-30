@@ -1,0 +1,132 @@
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:01<00:01,  1.01s/it]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Epoch 0:  92%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████          | 49/53 [00:04<00:00, 10.42it/s, loss=0.0153, v_num=6lpu]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Validating:   0%|                                                                                                                                                                    | 0/5 [00:00<?, ?it/s]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Epoch 0:  96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████     | 51/53 [00:05<00:00,  8.63it/s, loss=0.0153, v_num=6lpu]tensor([38, 30, 47, 27, 22, 26, 51, 64, 51, 44], device='cuda:0')
+Validating:  40%|██████████████████████████████████████████████████████████████▍                                                                                             | 2/5 [00:01<00:01,  1.88it/s]tensor([59, 77, 60, 38, 57, 55, 50, 49, 32, 72], device='cuda:0')
+Epoch 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 53/53 [00:06<00:00,  8.40it/s, loss=0.0153, v_num=6lpu]tensor([48, 41, 68, 30, 43, 42, 48, 40], device='cuda:0')
+Epoch 1:  91%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋            | 48/53 [00:04<00:00, 10.18it/s, loss=0.00594, v_num=6lpu]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Epoch 1:  94%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       | 50/53 [00:05<00:00,  8.71it/s, loss=0.00594, v_num=6lpu]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Validating:  20%|███████████████████████████████▏                                                                                                                            | 1/5 [00:01<00:04,  1.02s/it]tensor([38, 30, 47, 27, 22, 26, 51, 64, 51, 44], device='cuda:0')
+Epoch 1:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 52/53 [00:06<00:00,  8.47it/s, loss=0.00594, v_num=6lpu]tensor([59, 77, 60, 38, 57, 55, 50, 49, 32, 72], device='cuda:0')
+Validating:  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:01<00:00,  2.62it/s]tensor([48, 41, 68, 30, 43, 42, 48, 40], device='cuda:0')
+Epoch 2:  91%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋            | 48/53 [00:04<00:00, 10.20it/s, loss=0.00464, v_num=6lpu]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Epoch 2:  94%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       | 50/53 [00:05<00:00,  8.79it/s, loss=0.00464, v_num=6lpu]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Validating:  20%|███████████████████████████████▏                                                                                                                            | 1/5 [00:00<00:03,  1.02it/s]tensor([38, 30, 47, 27, 22, 26, 51, 64, 51, 44], device='cuda:0')
+Epoch 2:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 52/53 [00:06<00:00,  8.55it/s, loss=0.00464, v_num=6lpu]tensor([59, 77, 60, 38, 57, 55, 50, 49, 32, 72], device='cuda:0')
+Validating:  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:01<00:00,  2.68it/s]tensor([48, 41, 68, 30, 43, 42, 48, 40], device='cuda:0')
+Epoch 3:  91%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋            | 48/53 [00:04<00:00, 10.32it/s, loss=0.00499, v_num=6lpu]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Epoch 3:  94%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       | 50/53 [00:05<00:00,  8.86it/s, loss=0.00499, v_num=6lpu]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Validating:  20%|███████████████████████████████▏                                                                                                                            | 1/5 [00:00<00:03,  1.01it/s]tensor([38, 30, 47, 27, 22, 26, 51, 64, 51, 44], device='cuda:0')
+Epoch 3:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 52/53 [00:06<00:00,  8.61it/s, loss=0.00499, v_num=6lpu]tensor([59, 77, 60, 38, 57, 55, 50, 49, 32, 72], device='cuda:0')
+Validating:  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:01<00:00,  2.67it/s]tensor([48, 41, 68, 30, 43, 42, 48, 40], device='cuda:0')
+Epoch 4:  91%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋            | 48/53 [00:04<00:00, 10.25it/s, loss=0.00399, v_num=6lpu]tensor([37, 49, 42, 35, 57, 61, 57, 55, 24, 24], device='cuda:0')
+Epoch 4:  94%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌       | 50/53 [00:05<00:00,  8.81it/s, loss=0.00399, v_num=6lpu]tensor([22, 32, 15, 43, 54, 21, 35, 26, 20, 22], device='cuda:0')
+Validating:  20%|███████████████████████████████▏                                                                                                                            | 1/5 [00:00<00:03,  1.01it/s]tensor([38, 30, 47, 27, 22, 26, 51, 64, 51, 44], device='cuda:0')
+Epoch 4:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 52/53 [00:06<00:00,  8.57it/s, loss=0.00399, v_num=6lpu]tensor([59, 77, 60, 38, 57, 55, 50, 49, 32, 72], device='cuda:0')
+Validating:  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:01<00:00,  2.67it/s]tensor([48, 41, 68, 30, 43, 42, 48, 40], device='cuda:0')
+Epoch 5:   0%|                                                                                                                                            | 0/53 [00:00<?, ?it/s, loss=0.00399, v_num=6lpu]
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 22.3 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 124 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 498 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 2.0 M
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 8.0 M
+9  | upconv4    | ConvTranspose2d | 1.2 M
+10 | decoder4   | Sequential      | 4.0 M
+11 | upconv3    | ConvTranspose2d | 295 K
+12 | decoder3   | Sequential      | 996 K
+13 | upconv2    | ConvTranspose2d | 73.8 K
+14 | decoder2   | Sequential      | 249 K
+15 | upconv1    | ConvTranspose2d | 18.5 K
+16 | decoder1   | Sequential      | 62.5 K
+17 | conv       | Conv2d          | 147
+------------------------------------------------
+17.5 M    Trainable params
+0         Non-trainable params
+17.5 M    Total params
+69.864    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([3, 256, 256])) that is different to the input size (torch.Size([1, 3, 256, 256])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Exception ignored in: <function _releaseLock at 0x7fec3b88c9d0>
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/lib/python3.8/logging/__init__.py", line 223, in _releaseLock
+    def _releaseLock():
+KeyboardInterrupt:
+Exception ignored in: <function _releaseLock at 0x7fec3b88c9d0>
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/lib/python3.8/logging/__init__.py", line 223, in _releaseLock
+    def _releaseLock():
+KeyboardInterrupt:
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 990, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/home/tbertrand/anaconda3/lib/python3.8/multiprocessing/queues.py", line 108, in get
+    raise Empty
+_queue.Empty
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "train.py", line 100, in <module>
+    main(args,42)
+  File "train.py", line 78, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
+    self._dispatch()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
+    self.training_type_plugin.start_training(self)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
+    self._results = trainer.run_stage()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
+    return self._run_train()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1319, in _run_train
+    self.fit_loop.run()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/fit_loop.py", line 234, in advance
+    self.epoch_loop.run(data_fetcher)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 140, in run
+    self.on_run_start(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 141, in on_run_start
+    self._dataloader_iter = _update_dataloader_iter(data_fetcher, self.batch_idx + 1)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py", line 121, in _update_dataloader_iter
+    dataloader_iter = enumerate(data_fetcher, batch_idx)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/fetching.py", line 199, in __iter__
+    self.prefetching(self.prefetch_batches)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/fetching.py", line 258, in prefetching
+    self._fetch_next_batch()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/fetching.py", line 300, in _fetch_next_batch
+    batch = next(self.dataloader_iter)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/supporters.py", line 550, in __next__
+    return self.request_next_batch(self.loader_iters)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/supporters.py", line 562, in request_next_batch
+    return apply_to_collection(loader_iters, Iterator, next)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/apply_func.py", line 95, in apply_to_collection
+    return function(data, *args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1186, in _next_data
+    idx, data = self._get_data()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1152, in _get_data
+    success, data = self._try_get_data()
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1003, in _try_get_data
+    raise RuntimeError('DataLoader worker (pid(s) {}) exited unexpectedly'.format(pids_str)) from e
+RuntimeError: DataLoader worker (pid(s) 2372611, 2372627, 2372643, 2372659, 2372675, 2372691) exited unexpectedly

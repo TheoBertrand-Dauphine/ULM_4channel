@@ -1,0 +1,41 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 448
+2 | encoder2       | Conv2d    | 12.8 K
+3 | encoder3       | Conv2d    | 38.4 K
+4 | encoder4       | Conv2d    | 27.7 K
+5 | last_layer     | Conv2d    | 195
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+79.6 K    Trainable params
+0         Non-trainable params
+79.6 K    Total params
+0.319     Total estimated model params size (MB)
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+defaultdict(<class 'dict'>, {})
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  5.29it/s]<wandb.sdk.data_types.image.Image object at 0x7f7e3807fca0>
+Epoch 0:   0%|                                                                                                                                                                                                                                                 | 0/34 [00:00<?, ?it/s]
+Epoch 0:  24%|█████████████████████████████████████████████████▍                                                                                                                                                                | 8/34 [00:02<00:07,  3.58it/s, loss=8.63, v_num=ohqi]
+
+
+Validation DataLoader 0:  84%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                  | 26/31 [00:04<00:00,  5.32it/s]
+
+Epoch 1:  26%|███████████████████████████████████████████████████████▊                                                                                                                                                           | 9/34 [00:02<00:08,  3.12it/s, loss=4.8, v_num=ohqi]
+
+
+Validation DataLoader 0:  87%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                           | 27/31 [00:05<00:00,  5.03it/s]
+[34m[1mwandb[39m[22m: [33mWARNING[39m Serializing object of type ndarray that is 2097272 bytes
+
+Epoch 1: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 34/34 [00:07<00:00,  4.26it/s, loss=4.8, v_num=ohqi]

@@ -1,0 +1,44 @@
+2022-05-02 10:55:05,147 INFO    MainThread:502560 [internal.py:wandb_internal():92] W&B internal server running at pid: 502560, started at: 2022-05-02 10:55:05.146806
+2022-05-02 10:55:05,148 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: run_start
+2022-05-02 10:55:05,148 INFO    WriterThread:502560 [datastore.py:open_for_write():77] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220502_105504-h78o7m9n/run-h78o7m9n.wandb
+2022-05-02 10:55:05,150 DEBUG   HandlerThread:502560 [meta.py:__init__():37] meta init
+2022-05-02 10:55:05,150 DEBUG   HandlerThread:502560 [meta.py:__init__():51] meta init done
+2022-05-02 10:55:05,150 DEBUG   HandlerThread:502560 [meta.py:probe():211] probe
+2022-05-02 10:55:05,156 DEBUG   HandlerThread:502560 [meta.py:_setup_git():201] setup git
+2022-05-02 10:55:05,165 DEBUG   HandlerThread:502560 [meta.py:_setup_git():208] setup git done
+2022-05-02 10:55:05,165 DEBUG   HandlerThread:502560 [meta.py:_save_pip():55] save pip
+2022-05-02 10:55:05,165 DEBUG   HandlerThread:502560 [meta.py:_save_pip():69] save pip done
+2022-05-02 10:55:05,165 DEBUG   HandlerThread:502560 [meta.py:probe():249] probe done
+2022-05-02 10:55:09,009 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:09,017 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:13,476 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:13,477 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:13,625 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:13,626 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:18,091 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:18,092 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:18,247 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:18,247 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:22,732 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:22,732 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:22,889 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:22,890 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:27,362 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:27,363 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:27,521 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:27,522 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:32,027 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:32,028 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:32,194 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:32,195 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:36,664 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:36,665 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:36,822 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:36,823 DEBUG   HandlerThread:502560 [handler.py:handle_request():141] handle_request: partial_history
+2022-05-02 10:55:40,514 WARNING MainThread:502560 [internal.py:wandb_internal():155] Internal process interrupt: 1
+2022-05-02 10:55:40,716 WARNING MainThread:502560 [internal.py:wandb_internal():155] Internal process interrupt: 2
+2022-05-02 10:55:40,716 ERROR   MainThread:502560 [internal.py:wandb_internal():158] Internal process interrupted.
+2022-05-02 10:55:40,763 INFO    HandlerThread:502560 [handler.py:finish():790] shutting down handler
+2022-05-02 10:55:40,763 INFO    WriterThread:502560 [datastore.py:close():281] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220502_105504-h78o7m9n/run-h78o7m9n.wandb
+2022-05-02 10:55:41,153 INFO    SenderThread:502560 [sender.py:finish():1107] shutting down sender
+2022-05-02 10:55:41,154 INFO    MainThread:502560 [internal.py:handle_exit():82] Internal process exited

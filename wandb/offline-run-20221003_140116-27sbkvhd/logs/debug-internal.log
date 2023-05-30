@@ -1,0 +1,22 @@
+2022-10-03 14:01:17,386 INFO    MainThread:197550 [internal.py:wandb_internal():90] W&B internal server running at pid: 197550, started at: 2022-10-03 14:01:17.386465
+2022-10-03 14:01:17,388 INFO    WriterThread:197550 [datastore.py:open_for_write():75] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20221003_140116-27sbkvhd/run-27sbkvhd.wandb
+2022-10-03 14:01:17,388 DEBUG   HandlerThread:197550 [handler.py:handle_request():141] handle_request: run_start
+2022-10-03 14:01:17,390 DEBUG   HandlerThread:197550 [meta.py:__init__():35] meta init
+2022-10-03 14:01:17,390 DEBUG   HandlerThread:197550 [meta.py:__init__():49] meta init done
+2022-10-03 14:01:17,390 DEBUG   HandlerThread:197550 [meta.py:probe():209] probe
+2022-10-03 14:01:17,397 DEBUG   HandlerThread:197550 [meta.py:_setup_git():199] setup git
+2022-10-03 14:01:17,413 DEBUG   HandlerThread:197550 [meta.py:_setup_git():206] setup git done
+2022-10-03 14:01:17,413 DEBUG   HandlerThread:197550 [meta.py:_save_pip():53] save pip
+2022-10-03 14:01:17,414 DEBUG   HandlerThread:197550 [meta.py:_save_pip():67] save pip done
+2022-10-03 14:01:17,414 DEBUG   HandlerThread:197550 [meta.py:_save_conda():74] save conda
+2022-10-03 14:01:20,312 DEBUG   HandlerThread:197550 [meta.py:_save_conda():84] save conda done
+2022-10-03 14:01:20,312 DEBUG   HandlerThread:197550 [meta.py:probe():247] probe done
+2022-10-03 14:01:35,924 DEBUG   HandlerThread:197550 [handler.py:handle_request():141] handle_request: partial_history
+2022-10-03 14:01:35,928 DEBUG   HandlerThread:197550 [handler.py:handle_request():141] handle_request: partial_history
+2022-10-03 14:02:24,652 WARNING MainThread:197550 [internal.py:wandb_internal():153] Internal process interrupt: 1
+2022-10-03 14:02:25,647 WARNING MainThread:197550 [internal.py:wandb_internal():153] Internal process interrupt: 2
+2022-10-03 14:02:25,647 ERROR   MainThread:197550 [internal.py:wandb_internal():156] Internal process interrupted.
+2022-10-03 14:02:25,835 INFO    WriterThread:197550 [datastore.py:close():279] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20221003_140116-27sbkvhd/run-27sbkvhd.wandb
+2022-10-03 14:02:25,836 INFO    HandlerThread:197550 [handler.py:finish():806] shutting down handler
+2022-10-03 14:02:26,398 INFO    SenderThread:197550 [sender.py:finish():1110] shutting down sender
+2022-10-03 14:02:26,399 INFO    MainThread:197550 [internal.py:handle_exit():80] Internal process exited

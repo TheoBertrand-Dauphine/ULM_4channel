@@ -1,0 +1,112 @@
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (15) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+Validation sanity check: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  2.49it/s]torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 0:  85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                     | 17/20 [00:07<00:01,  2.21it/s, loss=0.185]
+Validating:  40%|██████████████████████████████████████████████████████████████▍                                                                                             | 2/5 [00:00<00:00,  3.37it/s]
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.61it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+Epoch 1:  80%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▍                          | 16/20 [00:06<00:01,  2.29it/s, loss=0.143, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  5.41it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 2: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:09<00:00,  2.18it/s, loss=0.104, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.69it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 3: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:09<00:00,  2.19it/s, loss=0.0717, v_num=9g5q]torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.67it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 4:  90%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊             | 18/20 [00:08<00:00,  2.23it/s, loss=0.0504, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.70it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 5: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:09<00:00,  2.18it/s, loss=0.036, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.76it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+Epoch 6:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▌                          | 16/20 [00:07<00:01,  2.06it/s, loss=0.0262, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                               | 4/5 [00:01<00:00,  3.75it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 7: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:08<00:00,  2.33it/s, loss=0.0201, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                               | 4/5 [00:01<00:00,  4.28it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+Epoch 8:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▌                          | 16/20 [00:07<00:01,  2.08it/s, loss=0.0163, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                               | 4/5 [00:00<00:00,  4.28it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+
+
+
+Epoch 9:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋             | 18/20 [00:08<00:00,  2.09it/s, loss=0.014, v_num=9g5q]
+torch.Size([1, 256, 256])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:01<00:00,  4.27it/s]
+torch.Size([1, 256, 256])
+torch.Size([1, 256, 256])
+Epoch 9: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:09<00:00,  2.10it/s, loss=0.014, v_num=9g5q]

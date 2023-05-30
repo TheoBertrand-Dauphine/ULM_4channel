@@ -1,0 +1,140 @@
+2022-01-14 14:54:17,817 INFO    MainThread:485501 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-14 14:54:17,817 INFO    MainThread:485501 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-14 14:54:17,817 INFO    MainThread:485501 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-14 14:54:17,818 INFO    MainThread:485501 [wandb_init.py:_log_setup():371] Logging user logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_145417-3fhs87lj/logs/debug.log
+2022-01-14 14:54:17,818 INFO    MainThread:485501 [wandb_init.py:_log_setup():372] Logging internal logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_145417-3fhs87lj/logs/debug-internal.log
+2022-01-14 14:54:17,818 INFO    MainThread:485501 [wandb_init.py:init():404] calling init triggers
+2022-01-14 14:54:17,818 INFO    MainThread:485501 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {}
+2022-01-14 14:54:17,819 INFO    MainThread:485501 [wandb_init.py:init():460] starting backend
+2022-01-14 14:54:17,819 INFO    MainThread:485501 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-01-14 14:54:17,826 INFO    MainThread:485501 [backend.py:ensure_launched():216] starting backend process...
+2022-01-14 14:54:17,829 INFO    MainThread:485501 [backend.py:ensure_launched():221] started backend process with pid: 485560
+2022-01-14 14:54:17,830 INFO    MainThread:485501 [wandb_init.py:init():469] backend started and connected
+2022-01-14 14:54:17,832 INFO    MainThread:485501 [wandb_init.py:init():533] updated telemetry
+2022-01-14 14:54:17,841 INFO    MainThread:485501 [wandb_init.py:init():563] communicating current version
+2022-01-14 14:54:18,216 INFO    MainThread:485501 [wandb_init.py:init():568] got version response 
+2022-01-14 14:54:18,217 INFO    MainThread:485501 [wandb_init.py:init():578] communicating run to backend with 30 second timeout
+2022-01-14 14:54:18,389 INFO    MainThread:485501 [wandb_init.py:init():606] starting run threads in backend
+2022-01-14 14:54:18,442 INFO    MainThread:485501 [wandb_run.py:_console_start():1810] atexit reg
+2022-01-14 14:54:18,442 INFO    MainThread:485501 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.REDIRECT
+2022-01-14 14:54:18,443 INFO    MainThread:485501 [wandb_run.py:_redirect():1689] Redirecting console.
+2022-01-14 14:54:18,443 INFO    MainThread:485501 [wandb_run.py:_redirect():1745] Redirects installed.
+2022-01-14 14:54:18,443 INFO    MainThread:485501 [wandb_init.py:init():633] run started, returning control to user process
+2022-01-14 14:54:19,758 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}}}}
+2022-01-14 14:54:19,759 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,759 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,759 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,760 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,760 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,761 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:19,761 INFO    MainThread:485501 [wandb_run.py:_config_callback():956] config_cb None None {'_wandb': {'mask/class_labels': {'predictions_wandb_delimeter_prediction': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_prediction', 'value': {0: 'class_0'}}, 'predictions_wandb_delimeter_ground truth': {'type': 'mask/class_labels', 'key': 'predictions_wandb_delimeter_ground truth', 'value': {0: 'class_0', 1: 'class_1'}}}}}
+2022-01-14 14:54:25,014 INFO    MainThread:485501 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 0
+2022-01-14 14:54:25,015 INFO    MainThread:485501 [wandb_run.py:_restore():1752] restore
+2022-01-14 14:54:27,983 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 156556
+  total_bytes: 156556
+}
+
+2022-01-14 14:54:28,183 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 1
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 156556
+  total_bytes: 156556
+}
+
+2022-01-14 14:54:28,404 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 156556
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:28,505 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 156556
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:28,606 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:28,707 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:28,809 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:28,910 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:29,011 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:29,249 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+
+2022-01-14 14:54:29,628 INFO    MainThread:485501 [wandb_run.py:_wait_for_finish():1912] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+  media_count: 12
+}
+pusher_stats {
+  uploaded_bytes: 163932
+  total_bytes: 163932
+}
+local_info {
+}
+
+2022-01-14 14:54:30,713 INFO    MainThread:485501 [wandb_run.py:_append_history():2130] rendering history
+2022-01-14 14:54:30,713 INFO    MainThread:485501 [wandb_run.py:_append_summary():2085] rendering summary
+2022-01-14 14:54:30,714 INFO    MainThread:485501 [wandb_run.py:_append_files():2180] logging synced files

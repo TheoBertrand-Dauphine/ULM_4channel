@@ -1,0 +1,365 @@
+2022-01-19 16:43:49,365 INFO    MainThread:362548 [internal.py:wandb_internal():87] W&B internal server running at pid: 362548, started at: 2022-01-19 16:43:49.365041
+2022-01-19 16:43:49,366 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: check_version
+2022-01-19 16:43:49,366 INFO    WriterThread:362548 [datastore.py:open_for_write():77] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/run-3u397i05.wandb
+2022-01-19 16:43:49,367 DEBUG   SenderThread:362548 [sender.py:send():234] send: header
+2022-01-19 16:43:49,367 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: check_version
+2022-01-19 16:43:49,390 DEBUG   SenderThread:362548 [sender.py:send():234] send: run
+2022-01-19 16:43:49,562 INFO    SenderThread:362548 [dir_watcher.py:__init__():169] watching files in: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files
+2022-01-19 16:43:49,563 INFO    SenderThread:362548 [sender.py:_start_run_threads():804] run started: 3u397i05 with start time 1642607029
+2022-01-19 16:43:49,563 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:49,563 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:49,564 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: run_start
+2022-01-19 16:43:49,571 DEBUG   HandlerThread:362548 [meta.py:__init__():40] meta init
+2022-01-19 16:43:49,571 DEBUG   HandlerThread:362548 [meta.py:__init__():54] meta init done
+2022-01-19 16:43:49,571 DEBUG   HandlerThread:362548 [meta.py:probe():214] probe
+2022-01-19 16:43:49,579 DEBUG   HandlerThread:362548 [meta.py:_setup_git():204] setup git
+2022-01-19 16:43:49,587 DEBUG   HandlerThread:362548 [meta.py:_setup_git():211] setup git done
+2022-01-19 16:43:49,588 DEBUG   HandlerThread:362548 [meta.py:_save_pip():58] save pip
+2022-01-19 16:43:49,588 DEBUG   HandlerThread:362548 [meta.py:_save_pip():72] save pip done
+2022-01-19 16:43:49,588 DEBUG   HandlerThread:362548 [meta.py:probe():252] probe done
+2022-01-19 16:43:49,623 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:49,624 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-metadata.json with policy now
+2022-01-19 16:43:49,626 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: stop_status
+2022-01-19 16:43:49,627 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: stop_status
+2022-01-19 16:43:50,064 INFO    Thread-11 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/20qpi4d0-wandb-metadata.json
+2022-01-19 16:43:50,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:43:50,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/requirements.txt
+2022-01-19 16:43:50,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:43:50,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-metadata.json
+2022-01-19 16:43:52,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:43:53,930 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:53,930 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_0_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:43:53,931 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:53,931 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_0_39962cd5bc9f4f044634.png with policy now
+2022-01-19 16:43:53,931 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:53,932 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_0_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:43:53,932 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:53,932 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:53,932 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:54,383 INFO    Thread-14 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/2l0quxmf-media/images/true_mask_0_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:54,408 INFO    Thread-13 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/9hxi85vv-media/images/pred_mask_0_39962cd5bc9f4f044634.png
+2022-01-19 16:43:54,432 INFO    Thread-12 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1cr96g1w-media/images/predictions_0_ac0028b22324cf8d3fb1.png
+2022-01-19 16:43:54,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:43:54,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:43:54,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_0_39962cd5bc9f4f044634.png
+2022-01-19 16:43:54,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_0_ac0028b22324cf8d3fb1.png
+2022-01-19 16:43:54,563 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_0_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:54,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:43:54,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media
+2022-01-19 16:43:56,539 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:56,540 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_1_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:43:56,540 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:56,540 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_1_39962cd5bc9f4f044634.png with policy now
+2022-01-19 16:43:56,541 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:56,541 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_1_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:43:56,545 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:56,545 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:56,545 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:56,546 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,546 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,546 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:43:56,547 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,547 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,548 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,548 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,548 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,548 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:56,548 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:56,550 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_1_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_1_ac0028b22324cf8d3fb1.png
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_1_39962cd5bc9f4f044634.png
+2022-01-19 16:43:56,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:43:56,589 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,589 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,590 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:43:56,590 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:56,590 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:56,590 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:56,590 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:56,989 INFO    Thread-17 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/o74dvtcb-media/images/true_mask_1_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:57,027 INFO    Thread-16 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/2ehogb6v-media/images/pred_mask_1_39962cd5bc9f4f044634.png
+2022-01-19 16:43:57,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:43:58,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:43:59,064 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:59,064 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_4_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:43:59,066 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:59,066 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_4_39962cd5bc9f4f044634.png with policy now
+2022-01-19 16:43:59,067 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:43:59,067 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_4_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,069 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,070 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,072 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:59,072 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:59,073 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:59,073 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,074 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,074 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:43:59,075 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:59,075 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:59,075 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:59,113 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,113 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:43:59,113 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:43:59,113 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:43:59,113 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:43:59,113 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:43:59,536 INFO    Thread-20 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/3t2qt800-media/images/true_mask_4_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:59,543 INFO    Thread-19 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/3fww65kh-media/images/pred_mask_4_39962cd5bc9f4f044634.png
+2022-01-19 16:43:59,564 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:43:59,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_4_39962cd5bc9f4f044634.png
+2022-01-19 16:43:59,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_4_e6d4bb6cc4067d49121a.png
+2022-01-19 16:43:59,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_4_ac0028b22324cf8d3fb1.png
+2022-01-19 16:43:59,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:43:59,580 INFO    Thread-18 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1zgoxqea-media/images/predictions_4_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:00,407 INFO    Thread-15 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1dwkojhh-media/images/predictions_1_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:00,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:01,623 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:01,623 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_7_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:44:01,623 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:01,623 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_7_e7c5bca61fbc1a71b1b8.png with policy now
+2022-01-19 16:44:01,625 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:01,625 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_7_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:44:01,626 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:01,626 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:01,628 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:01,628 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:01,628 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:01,628 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:01,628 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:01,629 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:01,630 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:01,670 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:01,671 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:01,671 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:01,671 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:01,671 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:01,672 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:02,079 INFO    Thread-22 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1bk0jr06-media/images/pred_mask_7_e7c5bca61fbc1a71b1b8.png
+2022-01-19 16:44:02,117 INFO    Thread-21 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1lax32j1-media/images/predictions_7_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:02,140 INFO    Thread-23 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/349celac-media/images/true_mask_7_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:02,565 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:02,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:02,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_7_e7c5bca61fbc1a71b1b8.png
+2022-01-19 16:44:02,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_7_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:02,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_7_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:02,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:44:04,145 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:04,145 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_10_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:44:04,146 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:04,146 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_10_b847eaf191f584836af5.png with policy now
+2022-01-19 16:44:04,147 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:04,147 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_10_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:44:04,148 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:04,148 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:04,150 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:04,150 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:04,150 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:04,150 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:04,150 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:04,150 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:04,151 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:04,193 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:04,193 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:04,193 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:04,193 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:04,193 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:04,194 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:04,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:04,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:04,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_10_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:04,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_10_b847eaf191f584836af5.png
+2022-01-19 16:44:04,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_10_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:04,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:44:04,623 INFO    Thread-25 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/1p4y3crf-media/images/pred_mask_10_b847eaf191f584836af5.png
+2022-01-19 16:44:04,656 INFO    Thread-24 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/hbcox6fq-media/images/predictions_10_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:04,666 INFO    Thread-26 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/2zi5vjbm-media/images/true_mask_10_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:04,761 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: stop_status
+2022-01-19 16:44:04,761 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: stop_status
+2022-01-19 16:44:05,345 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:05,345 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:05,345 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:05,345 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:05,345 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:05,345 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:05,345 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:05,566 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:06,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:06,860 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:06,861 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/predictions_14_ac0028b22324cf8d3fb1.png with policy now
+2022-01-19 16:44:06,862 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:06,862 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/pred_mask_14_a3ba5db1ee6a59eeabf7.png with policy now
+2022-01-19 16:44:06,863 DEBUG   SenderThread:362548 [sender.py:send():234] send: files
+2022-01-19 16:44:06,863 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file media/images/true_mask_14_e6d4bb6cc4067d49121a.png with policy now
+2022-01-19 16:44:06,863 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:06,863 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:06,864 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:06,864 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:06,864 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:06,864 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:06,864 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:06,866 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:06,866 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:06,908 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:06,908 DEBUG   SenderThread:362548 [sender.py:send():234] send: metric
+2022-01-19 16:44:06,909 WARNING SenderThread:362548 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-19 16:44:06,909 DEBUG   SenderThread:362548 [sender.py:send():234] send: history
+2022-01-19 16:44:06,909 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:06,909 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:07,328 INFO    Thread-27 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/2119fbys-media/images/predictions_14_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:07,333 INFO    Thread-29 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/3c9kifr3-media/images/true_mask_14_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:07,372 INFO    Thread-28 :362548 [upload_job.py:push():137] Uploaded file /tmp/tmp2s2rs6huwandb/10sn70wz-media/images/pred_mask_14_a3ba5db1ee6a59eeabf7.png
+2022-01-19 16:44:07,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:07,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_14_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:07,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_14_a3ba5db1ee6a59eeabf7.png
+2022-01-19 16:44:07,567 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_14_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:07,568 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images
+2022-01-19 16:44:08,568 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:09,406 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:09,407 DEBUG   SenderThread:362548 [sender.py:send():234] send: telemetry
+2022-01-19 16:44:09,408 DEBUG   SenderThread:362548 [sender.py:send():234] send: exit
+2022-01-19 16:44:09,408 INFO    SenderThread:362548 [sender.py:send_exit():366] handling exit code: 0
+2022-01-19 16:44:09,408 INFO    SenderThread:362548 [sender.py:send_exit():368] handling runtime: 19
+2022-01-19 16:44:09,409 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:09,409 INFO    SenderThread:362548 [sender.py:send_exit():374] send defer
+2022-01-19 16:44:09,409 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:09,410 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,411 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 0
+2022-01-19 16:44:09,411 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,411 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 0
+2022-01-19 16:44:09,412 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 1
+2022-01-19 16:44:09,412 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,413 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 1
+2022-01-19 16:44:09,463 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,463 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 1
+2022-01-19 16:44:09,463 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 2
+2022-01-19 16:44:09,463 DEBUG   SenderThread:362548 [sender.py:send():234] send: stats
+2022-01-19 16:44:09,464 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,464 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 2
+2022-01-19 16:44:09,464 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,464 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 2
+2022-01-19 16:44:09,464 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 3
+2022-01-19 16:44:09,464 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,464 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 3
+2022-01-19 16:44:09,465 DEBUG   SenderThread:362548 [sender.py:send():234] send: summary
+2022-01-19 16:44:09,465 INFO    SenderThread:362548 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-19 16:44:09,465 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,465 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 3
+2022-01-19 16:44:09,465 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 4
+2022-01-19 16:44:09,465 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,465 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 4
+2022-01-19 16:44:09,466 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,466 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 4
+2022-01-19 16:44:09,513 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:09,569 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:09,570 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:09,653 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 5
+2022-01-19 16:44:09,654 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:09,655 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:09,655 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 5
+2022-01-19 16:44:09,655 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:09,655 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 5
+2022-01-19 16:44:09,656 INFO    SenderThread:362548 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-01-19 16:44:09,757 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:10,570 INFO    Thread-8  :362548 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/config.yaml
+2022-01-19 16:44:10,570 INFO    SenderThread:362548 [dir_watcher.py:finish():313] scan: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files
+2022-01-19 16:44:10,570 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/requirements.txt requirements.txt
+2022-01-19 16:44:10,570 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-metadata.json wandb-metadata.json
+2022-01-19 16:44:10,570 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json wandb-summary.json
+2022-01-19 16:44:10,571 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/config.yaml config.yaml
+2022-01-19 16:44:10,571 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log output.log
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_7_e6d4bb6cc4067d49121a.png media/images/true_mask_7_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_14_e6d4bb6cc4067d49121a.png media/images/true_mask_14_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_10_b847eaf191f584836af5.png media/images/pred_mask_10_b847eaf191f584836af5.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_4_e6d4bb6cc4067d49121a.png media/images/true_mask_4_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_14_ac0028b22324cf8d3fb1.png media/images/predictions_14_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_0_39962cd5bc9f4f044634.png media/images/pred_mask_0_39962cd5bc9f4f044634.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_4_39962cd5bc9f4f044634.png media/images/pred_mask_4_39962cd5bc9f4f044634.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_10_e6d4bb6cc4067d49121a.png media/images/true_mask_10_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,573 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_10_ac0028b22324cf8d3fb1.png media/images/predictions_10_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_1_ac0028b22324cf8d3fb1.png media/images/predictions_1_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_14_a3ba5db1ee6a59eeabf7.png media/images/pred_mask_14_a3ba5db1ee6a59eeabf7.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_0_e6d4bb6cc4067d49121a.png media/images/true_mask_0_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/true_mask_1_e6d4bb6cc4067d49121a.png media/images/true_mask_1_e6d4bb6cc4067d49121a.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_7_ac0028b22324cf8d3fb1.png media/images/predictions_7_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_4_ac0028b22324cf8d3fb1.png media/images/predictions_4_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_1_39962cd5bc9f4f044634.png media/images/pred_mask_1_39962cd5bc9f4f044634.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/pred_mask_7_e7c5bca61fbc1a71b1b8.png media/images/pred_mask_7_e7c5bca61fbc1a71b1b8.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/media/images/predictions_0_ac0028b22324cf8d3fb1.png media/images/predictions_0_ac0028b22324cf8d3fb1.png
+2022-01-19 16:44:10,575 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 6
+2022-01-19 16:44:10,575 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:10,577 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:10,577 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 6
+2022-01-19 16:44:10,577 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:10,578 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 6
+2022-01-19 16:44:10,578 INFO    SenderThread:362548 [file_pusher.py:finish():177] shutting down file pusher
+2022-01-19 16:44:10,678 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:10,679 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:10,782 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:10,782 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:10,885 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:10,886 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:10,989 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:10,989 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,023 INFO    Thread-31 :362548 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/wandb-summary.json
+2022-01-19 16:44:11,030 INFO    Thread-30 :362548 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/requirements.txt
+2022-01-19 16:44:11,086 INFO    Thread-32 :362548 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/config.yaml
+2022-01-19 16:44:11,090 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:11,090 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,160 INFO    Thread-33 :362548 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/files/output.log
+2022-01-19 16:44:11,192 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:11,192 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,293 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:11,294 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,361 INFO    Thread-7  :362548 [sender.py:transition_state():387] send defer: 7
+2022-01-19 16:44:11,361 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:11,361 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 7
+2022-01-19 16:44:11,361 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:11,361 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 7
+2022-01-19 16:44:11,395 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:11,496 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 8
+2022-01-19 16:44:11,496 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,497 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:11,497 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 8
+2022-01-19 16:44:11,497 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:11,497 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 8
+2022-01-19 16:44:11,497 INFO    SenderThread:362548 [sender.py:transition_state():387] send defer: 9
+2022-01-19 16:44:11,498 DEBUG   SenderThread:362548 [sender.py:send():234] send: final
+2022-01-19 16:44:11,498 DEBUG   SenderThread:362548 [sender.py:send():234] send: footer
+2022-01-19 16:44:11,498 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: defer
+2022-01-19 16:44:11,498 INFO    HandlerThread:362548 [handler.py:handle_request_defer():147] handle defer: 9
+2022-01-19 16:44:11,498 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: defer
+2022-01-19 16:44:11,498 INFO    SenderThread:362548 [sender.py:send_request_defer():383] handle sender defer: 9
+2022-01-19 16:44:11,598 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: poll_exit
+2022-01-19 16:44:11,599 DEBUG   SenderThread:362548 [sender.py:send_request():248] send_request: poll_exit
+2022-01-19 16:44:11,599 INFO    SenderThread:362548 [file_pusher.py:join():182] waiting for file pusher
+2022-01-19 16:44:11,902 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: get_summary
+2022-01-19 16:44:11,902 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: sampled_history
+2022-01-19 16:44:11,903 DEBUG   HandlerThread:362548 [handler.py:handle_request():130] handle_request: shutdown
+2022-01-19 16:44:11,903 INFO    HandlerThread:362548 [handler.py:finish():731] shutting down handler
+2022-01-19 16:44:12,498 INFO    WriterThread:362548 [datastore.py:close():281] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220119_164349-3u397i05/run-3u397i05.wandb
+2022-01-19 16:44:12,901 INFO    SenderThread:362548 [sender.py:finish():1070] shutting down sender
+2022-01-19 16:44:12,901 INFO    SenderThread:362548 [file_pusher.py:finish():177] shutting down file pusher
+2022-01-19 16:44:12,902 INFO    SenderThread:362548 [file_pusher.py:join():182] waiting for file pusher
+2022-01-19 16:44:12,908 INFO    MainThread:362548 [internal.py:handle_exit():77] Internal process exited

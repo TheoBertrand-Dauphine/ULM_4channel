@@ -1,0 +1,75 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Epoch 0:   0%|                                                                                                                                                                      | 0/43 [00:00<?, ?it/s]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py:247: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prediction_mask = np.sum(local_max_filt(torch.tensor(logits.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py:250: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  true_mask = np.sum(local_max_filt(torch.tensor(ground_truth.data)).cpu().permute(1,2,0).numpy().astype(np.uint8),axis=-1)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (40) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+
+Epoch 1:  93%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊         | 40/43 [00:01<00:00, 31.18it/s, loss=0.0206, v_num=l0t2]
+
+
+
+
+
+
+Epoch 9:  93%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊         | 40/43 [00:01<00:00, 30.68it/s, loss=0.00188, v_num=l0t2]
+
+
+
+
+Epoch 14:  93%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉         | 40/43 [00:01<00:00, 29.59it/s, loss=0.00134, v_num=l0t2]
+
+
+
+
+
+Epoch 20:  93%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉         | 40/43 [00:01<00:00, 29.77it/s, loss=0.00107, v_num=l0t2]
+
+
+
+
+Epoch 25:  93%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉         | 40/43 [00:01<00:00, 30.45it/s, loss=0.00101, v_num=l0t2]
+
+
+
+
+
+
+Epoch 31:  93%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████         | 40/43 [00:01<00:00, 31.05it/s, loss=0.000844, v_num=l0t2]
+
+
+
+

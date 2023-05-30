@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "train.py", line 90, in <module>
+    main(args,42)
+  File "train.py", line 59, in main
+    trainer = Trainer(
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/env_vars_connector.py", line 38, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 426, in __init__
+    gpu_ids, tpu_cores = self._parse_devices(gpus, auto_select_gpus, tpu_cores)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1543, in _parse_devices
+    gpu_ids = device_parser.parse_gpu_ids(gpus)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/device_parser.py", line 78, in parse_gpu_ids
+    gpus = _normalize_parse_gpu_string_input(gpus)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/utilities/device_parser.py", line 131, in _normalize_parse_gpu_string_input
+    return int(s.strip())
+ValueError: invalid literal for int() with base 10: 'cuda:0'

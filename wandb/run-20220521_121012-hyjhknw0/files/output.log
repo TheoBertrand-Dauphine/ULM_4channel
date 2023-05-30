@@ -1,0 +1,108 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 22.3 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 124 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 498 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 2.0 M
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 8.0 M
+10 | upconv4        | ConvTranspose2d | 1.2 M
+11 | decoder4       | Sequential      | 4.0 M
+12 | upconv3        | ConvTranspose2d | 295 K
+13 | decoder3       | Sequential      | 996 K
+14 | upconv2        | ConvTranspose2d | 73.8 K
+15 | decoder2       | Sequential      | 249 K
+16 | upconv1        | ConvTranspose2d | 18.5 K
+17 | decoder1       | Sequential      | 62.5 K
+18 | conv           | Conv2d          | 196
+----------------------------------------------------
+17.5 M    Trainable params
+0         Non-trainable params
+17.5 M    Total params
+69.864    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+
+Epoch 0:  12%|█████████▎                                                                    | 5/42 [00:01<00:13,  2.78it/s, loss=0.239, v_num=knw0]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([4, 512, 512])) that is different to the input size (torch.Size([1, 4, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+
+
+Epoch 0:  67%|███████████████████████████████████████████████████▎                         | 28/42 [00:07<00:03,  3.62it/s, loss=0.149, v_num=knw0]
+
+
+
+
+Epoch 1:  57%|███████████████████████████████████████████▍                                | 24/42 [00:07<00:05,  3.40it/s, loss=0.0387, v_num=knw0]
+
+
+
+
+
+Epoch 2:  71%|██████████████████████████████████████████████████████▎                     | 30/42 [00:08<00:03,  3.71it/s, loss=0.0149, v_num=knw0]
+
+
+
+
+Epoch 3:  57%|████████████████████████████████████████████                                 | 24/42 [00:07<00:05,  3.34it/s, loss=0.008, v_num=knw0]
+
+
+
+
+
+Epoch 4:  71%|█████████████████████████████████████████████████████▌                     | 30/42 [00:08<00:03,  3.71it/s, loss=0.00673, v_num=knw0]
+
+
+0
+tensor(0.1559, grad_fn=<MeanBackward0>)
+1
+tensor(0.1480, grad_fn=<MeanBackward0>)
+2
+tensor(0.1511, grad_fn=<MeanBackward0>)
+3
+tensor(0.1666, grad_fn=<MeanBackward0>)
+4
+tensor(0.1495, grad_fn=<MeanBackward0>)
+5
+tensor(0.1570, grad_fn=<MeanBackward0>)
+6
+tensor(0.1590, grad_fn=<MeanBackward0>)
+7
+tensor(0.1880, grad_fn=<MeanBackward0>)
+8
+tensor(0.1865, grad_fn=<MeanBackward0>)
+9
+tensor(0.1836, grad_fn=<MeanBackward0>)
+10
+tensor(0.1785, grad_fn=<MeanBackward0>)
+11
+tensor(0.1669, grad_fn=<MeanBackward0>)
+12
+tensor(0.1767, grad_fn=<MeanBackward0>)
+13
+tensor(0.1839, grad_fn=<MeanBackward0>)
+14
+tensor(0.1871, grad_fn=<MeanBackward0>)
+15
+tensor(0.1867, grad_fn=<MeanBackward0>)
+16
+tensor(0.1755, grad_fn=<MeanBackward0>)
+17
+tensor(0.1821, grad_fn=<MeanBackward0>)
+18
+tensor(0.1724, grad_fn=<MeanBackward0>)
+19
+tensor(0.1577, grad_fn=<MeanBackward0>)
+20
+tensor(0.1548, grad_fn=<MeanBackward0>)
+21
+tensor(0.1536, grad_fn=<MeanBackward0>)

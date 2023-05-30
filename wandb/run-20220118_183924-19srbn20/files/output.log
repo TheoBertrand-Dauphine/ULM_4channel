@@ -1,0 +1,323 @@
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+Validation sanity check:   0%|                                                                                                                                                       | 0/1 [00:00<?, ?it/s]tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+Epoch 0:  91%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊             | 10/11 [00:01<00:00,  9.01it/s, loss=0.196]
+Validating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 1:  45%|████████████████████████████████████████████████████████████▉                                                                         | 5/11 [00:00<00:00,  6.51it/s, loss=0.179, v_num=bn20]
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+Epoch 1:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  8.96it/s, loss=0.166, v_num=bn20]tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 2:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉            | 10/11 [00:01<00:00,  9.03it/s, loss=0.119, v_num=bn20]tensor(2, device='cuda:0')
+tensor(2, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(38, device='cuda:0')
+problems
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(38, device='cuda:0')
+problems
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+
+problemsng:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+tensor(3, device='cuda:0')
+tensor(38, device='cuda:0')
+problems
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(5, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+Epoch 4:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  9.19it/s, loss=0.0633, v_num=bn20]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(1, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 5:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  8.94it/s, loss=0.0457, v_num=bn20]tensor(38, device='cuda:0')
+problemsng:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(5, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 6:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  9.27it/s, loss=0.0353, v_num=bn20]
+problemsng:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(39, device='cuda:0')
+problems
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(38, device='cuda:0')
+problems
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(37, device='cuda:0')
+problems
+Epoch 7:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  8.96it/s, loss=0.0289, v_num=bn20]
+problemsng:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(37, device='cuda:0')
+problems
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 8:  91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 10/11 [00:01<00:00,  8.99it/s, loss=0.0245, v_num=bn20]
+Validating:   0%|                                                                                                                                                                    | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(5, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(36, device='cuda:0')
+problems
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+Epoch 9:  36%|████████████████████████████████████████████████▎                                                                                    | 4/11 [00:00<00:01,  5.88it/s, loss=0.0228, v_num=bn20]
+tensor(1, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(36, device='cuda:0')
+problems
+tensor(4, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+Epoch 10:   0%|                                                                                                                                            | 0/11 [00:00<?, ?it/s, loss=0.0212, v_num=bn20]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(1, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(37, device='cuda:0')
+problems
+tensor(3, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(2, device='cuda:0')
+tensor(0, device='cuda:0')
+tensor(3, device='cuda:0')
+Validating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01<00:00,  1.17s/it]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(1, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(2, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(3, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(0, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(5, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(3, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(1, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+problems, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+problems, device='cuda:0')                                                                                                                                                           | 0/1 [00:00<?, ?it/s]
+tensor(35, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+tensor(36, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+tensor(36, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]
+problems6, device='cuda:0')                                                                                                                                                          | 0/1 [00:00<?, ?it/s]

@@ -1,0 +1,22 @@
+2022-10-03 14:03:47,568 INFO    MainThread:199448 [internal.py:wandb_internal():90] W&B internal server running at pid: 199448, started at: 2022-10-03 14:03:47.568249
+2022-10-03 14:03:47,570 DEBUG   HandlerThread:199448 [handler.py:handle_request():141] handle_request: run_start
+2022-10-03 14:03:47,570 INFO    WriterThread:199448 [datastore.py:open_for_write():75] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20221003_140347-3m93oxtc/run-3m93oxtc.wandb
+2022-10-03 14:03:47,571 DEBUG   HandlerThread:199448 [meta.py:__init__():35] meta init
+2022-10-03 14:03:47,572 DEBUG   HandlerThread:199448 [meta.py:__init__():49] meta init done
+2022-10-03 14:03:47,572 DEBUG   HandlerThread:199448 [meta.py:probe():209] probe
+2022-10-03 14:03:47,578 DEBUG   HandlerThread:199448 [meta.py:_setup_git():199] setup git
+2022-10-03 14:03:47,591 DEBUG   HandlerThread:199448 [meta.py:_setup_git():206] setup git done
+2022-10-03 14:03:47,591 DEBUG   HandlerThread:199448 [meta.py:_save_pip():53] save pip
+2022-10-03 14:03:47,591 DEBUG   HandlerThread:199448 [meta.py:_save_pip():67] save pip done
+2022-10-03 14:03:47,592 DEBUG   HandlerThread:199448 [meta.py:_save_conda():74] save conda
+2022-10-03 14:03:50,519 DEBUG   HandlerThread:199448 [meta.py:_save_conda():84] save conda done
+2022-10-03 14:03:50,519 DEBUG   HandlerThread:199448 [meta.py:probe():247] probe done
+2022-10-03 14:04:05,673 DEBUG   HandlerThread:199448 [handler.py:handle_request():141] handle_request: partial_history
+2022-10-03 14:04:05,677 DEBUG   HandlerThread:199448 [handler.py:handle_request():141] handle_request: partial_history
+2022-10-03 14:04:48,287 WARNING MainThread:199448 [internal.py:wandb_internal():153] Internal process interrupt: 1
+2022-10-03 14:04:48,490 WARNING MainThread:199448 [internal.py:wandb_internal():153] Internal process interrupt: 2
+2022-10-03 14:04:48,490 ERROR   MainThread:199448 [internal.py:wandb_internal():156] Internal process interrupted.
+2022-10-03 14:04:48,579 INFO    SenderThread:199448 [sender.py:finish():1110] shutting down sender
+2022-10-03 14:04:48,685 INFO    HandlerThread:199448 [handler.py:finish():806] shutting down handler
+2022-10-03 14:04:48,685 INFO    WriterThread:199448 [datastore.py:close():279] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20221003_140347-3m93oxtc/run-3m93oxtc.wandb
+2022-10-03 14:04:48,686 INFO    MainThread:199448 [internal.py:handle_exit():80] Internal process exited

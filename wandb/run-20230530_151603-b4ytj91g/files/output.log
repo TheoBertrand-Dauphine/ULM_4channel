@@ -1,0 +1,372 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 896
+2 | encoder2       | Conv2d    | 51.3 K
+3 | encoder3       | Conv2d    | 153 K
+4 | encoder4       | Conv2d    | 110 K
+5 | last_layer     | Conv2d    | 387
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+316 K     Trainable params
+0         Non-trainable params
+316 K     Total params
+1.268     Total estimated model params size (MB)
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+defaultdict(<class 'dict'>, {})
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  2.19it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1892: PossibleUserWarning: The number of training batches (2) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+
+Epoch 0:  12%|████████████████████████                                                                                                                                                                                       | 5/43 [00:07<00:56,  1.50s/it, loss=0.00761, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 1:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:06<01:32,  2.30s/it, loss=0.00665, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 2:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:05<02:01,  2.96s/it, loss=0.00653, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 3:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:07<01:34,  2.37s/it, loss=0.00632, v_num=j91g]
+
+
+
+
+
+
+
+
+Epoch 4:  12%|████████████████████████                                                                                                                                                                                       | 5/43 [00:07<01:00,  1.58s/it, loss=0.00601, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 5:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:06<02:04,  3.03s/it, loss=0.00596, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 6:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:07<01:35,  2.38s/it, loss=0.00577, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 7:   9%|███████████████████▎                                                                                                                                                                                           | 4/43 [00:07<01:09,  1.78s/it, loss=0.00574, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 8:  12%|████████████████████████                                                                                                                                                                                       | 5/43 [00:08<01:02,  1.65s/it, loss=0.00565, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 9:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:06<02:04,  3.03s/it, loss=0.00561, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 10:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:05<01:58,  2.88s/it, loss=0.0054, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 11:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:07<00:56,  1.49s/it, loss=0.00532, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 12:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:06<02:17,  3.36s/it, loss=0.00528, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 13:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:07<01:34,  2.35s/it, loss=0.00526, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 14:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:05<02:02,  2.99s/it, loss=0.00531, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 15:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:07<01:15,  1.92s/it, loss=0.00531, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 16:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:05<02:01,  2.96s/it, loss=0.00533, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 17:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:05<01:57,  2.85s/it, loss=0.00524, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 18:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:05<01:57,  2.87s/it, loss=0.00526, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 19:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:07<00:57,  1.52s/it, loss=0.00528, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 20:   9%|███████████████████▎                                                                                                                                                                                           | 4/43 [00:07<01:09,  1.79s/it, loss=0.0052, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 21:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:07<01:09,  1.79s/it, loss=0.00514, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 22:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:06<02:03,  3.01s/it, loss=0.00504, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 23:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:07<00:57,  1.52s/it, loss=0.00499, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 24:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:07<01:12,  1.85s/it, loss=0.00501, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 25:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:07<01:10,  1.81s/it, loss=0.00499, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 26:   5%|█████████▋                                                                                                                                                                                                      | 2/43 [00:05<02:00,  2.95s/it, loss=0.005, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+
+Epoch 27:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:06<02:04,  3.04s/it, loss=0.00504, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 28:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:07<01:12,  1.87s/it, loss=0.00502, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 29:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:06<02:05,  3.05s/it, loss=0.00496, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 30:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:06<02:03,  3.01s/it, loss=0.00504, v_num=j91g]
+
+
+
+
+
+
+
+
+
+
+Epoch 31:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:05<01:58,  2.89s/it, loss=0.00511, v_num=j91g]
+
+
+
+
+
+
+
+
+
+Epoch 32:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:08<01:01,  1.61s/it, loss=0.00512, v_num=j91g]
+
+
+
+
+
+
+
+Validation DataLoader 0:  85%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                               | 35/41 [00:13<00:02,  2.51it/s]

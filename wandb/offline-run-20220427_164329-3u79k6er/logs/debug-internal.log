@@ -1,0 +1,20 @@
+2022-04-27 16:43:30,185 INFO    MainThread:2368801 [internal.py:wandb_internal():92] W&B internal server running at pid: 2368801, started at: 2022-04-27 16:43:30.185502
+2022-04-27 16:43:30,186 DEBUG   HandlerThread:2368801 [handler.py:handle_request():141] handle_request: run_start
+2022-04-27 16:43:30,187 INFO    WriterThread:2368801 [datastore.py:open_for_write():77] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220427_164329-3u79k6er/run-3u79k6er.wandb
+2022-04-27 16:43:30,188 DEBUG   HandlerThread:2368801 [meta.py:__init__():37] meta init
+2022-04-27 16:43:30,188 DEBUG   HandlerThread:2368801 [meta.py:__init__():51] meta init done
+2022-04-27 16:43:30,188 DEBUG   HandlerThread:2368801 [meta.py:probe():211] probe
+2022-04-27 16:43:30,194 DEBUG   HandlerThread:2368801 [meta.py:_setup_git():201] setup git
+2022-04-27 16:43:30,200 DEBUG   HandlerThread:2368801 [meta.py:_setup_git():208] setup git done
+2022-04-27 16:43:30,201 DEBUG   HandlerThread:2368801 [meta.py:_save_pip():55] save pip
+2022-04-27 16:43:30,201 DEBUG   HandlerThread:2368801 [meta.py:_save_pip():69] save pip done
+2022-04-27 16:43:30,201 DEBUG   HandlerThread:2368801 [meta.py:probe():249] probe done
+2022-04-27 16:43:36,409 DEBUG   HandlerThread:2368801 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:43:36,414 DEBUG   HandlerThread:2368801 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:43:40,375 WARNING MainThread:2368801 [internal.py:wandb_internal():155] Internal process interrupt: 1
+2022-04-27 16:43:40,765 WARNING MainThread:2368801 [internal.py:wandb_internal():155] Internal process interrupt: 2
+2022-04-27 16:43:40,765 ERROR   MainThread:2368801 [internal.py:wandb_internal():158] Internal process interrupted.
+2022-04-27 16:43:40,819 INFO    HandlerThread:2368801 [handler.py:finish():790] shutting down handler
+2022-04-27 16:43:40,819 INFO    WriterThread:2368801 [datastore.py:close():281] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220427_164329-3u79k6er/run-3u79k6er.wandb
+2022-04-27 16:43:41,190 INFO    SenderThread:2368801 [sender.py:finish():1107] shutting down sender
+2022-04-27 16:43:41,191 INFO    MainThread:2368801 [internal.py:handle_exit():82] Internal process exited

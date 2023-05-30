@@ -1,0 +1,22 @@
+
+torch.Size([1, 3, 256, 256])
+Traceback (most recent call last):
+  File "train.py", line 70, in <module>
+    main(args,42)
+  File "train.py", line 39, in main
+    samples = next(iter(valloader))
+  File "/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/dataset.py", line 70, in __getitem__
+    sample = self.transform(sample)
+  File "/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/torchvision/transforms/transforms.py", line 61, in __call__
+    img = t(img)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/transforms.py", line 66, in __call__
+    return {'image':torch.from_numpy(image), 'heat_map': torch.from_numpy(heat_map) }
+TypeError: expected np.ndarray (got Tensor)

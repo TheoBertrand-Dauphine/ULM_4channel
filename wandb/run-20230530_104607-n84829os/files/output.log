@@ -1,0 +1,116 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 896
+2 | encoder2       | Conv2d    | 51.3 K
+3 | encoder3       | Conv2d    | 153 K
+4 | encoder4       | Conv2d    | 110 K
+5 | last_layer     | Conv2d    | 387
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+316 K     Trainable params
+0         Non-trainable params
+316 K     Total params
+1.268     Total estimated model params size (MB)
+defaultdict(<class 'dict'>, {})
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.90it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+
+Epoch 0:  24%|████████████████████████████████████████████████▍                                                                                                                                                             | 12/51 [00:03<00:10,  3.87it/s, loss=0.00589, v_num=29os]
+
+
+
+
+
+
+
+
+
+Epoch 1:  25%|████████████████████████████████████████████████████▌                                                                                                                                                         | 13/51 [00:03<00:11,  3.38it/s, loss=0.00661, v_num=29os]
+
+
+
+
+
+
+
+
+
+Epoch 2:  24%|████████████████████████████████████████████████▍                                                                                                                                                             | 12/51 [00:03<00:11,  3.46it/s, loss=0.00656, v_num=29os]
+
+
+
+
+
+
+
+
+Epoch 3:  20%|████████████████████████████████████████▍                                                                                                                                                                     | 10/51 [00:01<00:07,  5.76it/s, loss=0.00672, v_num=29os]
+
+
+
+
+
+
+
+
+Epoch 4:  20%|████████████████████████████████████████▍                                                                                                                                                                     | 10/51 [00:01<00:07,  5.75it/s, loss=0.00728, v_num=29os]
+
+
+
+
+
+
+
+
+
+Epoch 5:  25%|████████████████████████████████████████████████████▌                                                                                                                                                         | 13/51 [00:03<00:10,  3.72it/s, loss=0.00646, v_num=29os]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 7:  25%|████████████████████████████████████████████████████▌                                                                                                                                                         | 13/51 [00:03<00:10,  3.56it/s, loss=0.00663, v_num=29os]
+
+
+
+
+
+
+
+
+Epoch 8:  25%|████████████████████████████████████████████████████▊                                                                                                                                                          | 13/51 [00:03<00:10,  3.78it/s, loss=0.0063, v_num=29os]
+
+
+
+
+
+
+
+Validation DataLoader 0:  98%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋     | 40/41 [00:15<00:00,  2.60it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:653: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+
+Validation DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 41/41 [00:15<00:00,  2.61it/s]

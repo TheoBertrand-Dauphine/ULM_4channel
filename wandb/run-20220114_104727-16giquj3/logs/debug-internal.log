@@ -1,0 +1,321 @@
+2022-01-14 10:47:27,911 INFO    MainThread:191584 [internal.py:wandb_internal():87] W&B internal server running at pid: 191584, started at: 2022-01-14 10:47:27.911697
+2022-01-14 10:47:27,914 DEBUG   HandlerThread:191584 [handler.py:handle_request():130] handle_request: check_version
+2022-01-14 10:47:27,914 DEBUG   SenderThread:191584 [sender.py:send():234] send: header
+2022-01-14 10:47:27,914 DEBUG   SenderThread:191584 [sender.py:send_request():248] send_request: check_version
+2022-01-14 10:47:27,914 INFO    WriterThread:191584 [datastore.py:open_for_write():77] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/run-16giquj3.wandb
+2022-01-14 10:47:27,937 DEBUG   SenderThread:191584 [sender.py:send():234] send: run
+2022-01-14 10:47:28,111 INFO    SenderThread:191584 [dir_watcher.py:__init__():169] watching files in: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files
+2022-01-14 10:47:28,111 INFO    SenderThread:191584 [sender.py:_start_run_threads():804] run started: 16giquj3 with start time 1642153647
+2022-01-14 10:47:28,111 DEBUG   HandlerThread:191584 [handler.py:handle_request():130] handle_request: run_start
+2022-01-14 10:47:28,111 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:28,112 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:28,113 DEBUG   HandlerThread:191584 [meta.py:__init__():40] meta init
+2022-01-14 10:47:28,113 DEBUG   HandlerThread:191584 [meta.py:__init__():54] meta init done
+2022-01-14 10:47:28,113 DEBUG   HandlerThread:191584 [meta.py:probe():214] probe
+2022-01-14 10:47:28,119 DEBUG   HandlerThread:191584 [meta.py:_setup_git():204] setup git
+2022-01-14 10:47:28,126 DEBUG   HandlerThread:191584 [meta.py:_setup_git():211] setup git done
+2022-01-14 10:47:28,126 DEBUG   HandlerThread:191584 [meta.py:_save_pip():58] save pip
+2022-01-14 10:47:28,126 DEBUG   HandlerThread:191584 [meta.py:_save_pip():72] save pip done
+2022-01-14 10:47:28,126 DEBUG   HandlerThread:191584 [meta.py:probe():252] probe done
+2022-01-14 10:47:28,162 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:28,163 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-metadata.json with policy now
+2022-01-14 10:47:28,165 DEBUG   HandlerThread:191584 [handler.py:handle_request():130] handle_request: stop_status
+2022-01-14 10:47:28,166 DEBUG   SenderThread:191584 [sender.py:send_request():248] send_request: stop_status
+2022-01-14 10:47:28,658 INFO    Thread-11 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3c8r0jyz-wandb-metadata.json
+2022-01-14 10:47:29,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:29,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json
+2022-01-14 10:47:29,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-metadata.json
+2022-01-14 10:47:29,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/requirements.txt
+2022-01-14 10:47:29,412 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,412 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_0_0.png with policy now
+2022-01-14 10:47:29,413 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,413 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_00.mask.png with policy now
+2022-01-14 10:47:29,414 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,414 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,414 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_001.mask.png with policy now
+2022-01-14 10:47:29,415 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,415 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,415 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_0_1.png with policy now
+2022-01-14 10:47:29,415 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,415 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_10.mask.png with policy now
+2022-01-14 10:47:29,416 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,416 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,416 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_101.mask.png with policy now
+2022-01-14 10:47:29,416 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,418 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,418 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_0_2.png with policy now
+2022-01-14 10:47:29,419 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,419 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_20.mask.png with policy now
+2022-01-14 10:47:29,419 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,419 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,419 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_201.mask.png with policy now
+2022-01-14 10:47:29,421 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,421 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,421 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_0_3.png with policy now
+2022-01-14 10:47:29,424 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,424 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_30.mask.png with policy now
+2022-01-14 10:47:29,425 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,425 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:29,425 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_0_301.mask.png with policy now
+2022-01-14 10:47:29,425 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:29,425 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:29,427 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:29,428 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:29,888 INFO    Thread-13 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1ee965iv-media/images/mask/predictions_0_00.mask.png
+2022-01-14 10:47:29,920 INFO    Thread-17 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1fq1xjol-media/images/mask/predictions_0_101.mask.png
+2022-01-14 10:47:29,921 INFO    Thread-16 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/10i7751m-media/images/mask/predictions_0_10.mask.png
+2022-01-14 10:47:29,938 INFO    Thread-20 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/df3lpyeg-media/images/mask/predictions_0_201.mask.png
+2022-01-14 10:47:29,939 INFO    Thread-19 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/31fc5phg-media/images/mask/predictions_0_20.mask.png
+2022-01-14 10:47:29,941 INFO    Thread-12 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3mpp6wqi-media/images/predictions_0_0.png
+2022-01-14 10:47:29,942 INFO    Thread-22 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3jc4s5oe-media/images/mask/predictions_0_30.mask.png
+2022-01-14 10:47:29,950 INFO    Thread-23 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/qg158gr2-media/images/mask/predictions_0_301.mask.png
+2022-01-14 10:47:29,951 INFO    Thread-18 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/t85obt5t-media/images/predictions_0_2.png
+2022-01-14 10:47:29,983 INFO    Thread-21 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3e3s7jhw-media/images/predictions_0_3.png
+2022-01-14 10:47:29,990 INFO    Thread-14 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3u8vu41v-media/images/mask/predictions_0_001.mask.png
+2022-01-14 10:47:29,990 INFO    Thread-15 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1g2hk962-media/images/predictions_0_1.png
+2022-01-14 10:47:30,112 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_301.mask.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_201.mask.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_1.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_101.mask.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_3.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_2.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_20.mask.png
+2022-01-14 10:47:30,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_0.png
+2022-01-14 10:47:30,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_30.mask.png
+2022-01-14 10:47:30,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_10.mask.png
+2022-01-14 10:47:30,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_00.mask.png
+2022-01-14 10:47:30,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_001.mask.png
+2022-01-14 10:47:30,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media
+2022-01-14 10:47:30,115 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images
+2022-01-14 10:47:30,115 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask
+2022-01-14 10:47:31,113 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:33,114 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:35,115 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:37,117 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:37,667 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,667 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_1_0.png with policy now
+2022-01-14 10:47:37,668 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,668 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_00.mask.png with policy now
+2022-01-14 10:47:37,669 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,669 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,669 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_001.mask.png with policy now
+2022-01-14 10:47:37,670 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,670 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,670 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_1_1.png with policy now
+2022-01-14 10:47:37,670 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,670 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_10.mask.png with policy now
+2022-01-14 10:47:37,670 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,671 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_101.mask.png with policy now
+2022-01-14 10:47:37,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,671 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_1_2.png with policy now
+2022-01-14 10:47:37,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,671 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_20.mask.png with policy now
+2022-01-14 10:47:37,673 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,674 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_201.mask.png with policy now
+2022-01-14 10:47:37,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,674 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_1_3.png with policy now
+2022-01-14 10:47:37,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,674 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_30.mask.png with policy now
+2022-01-14 10:47:37,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:37,677 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_1_301.mask.png with policy now
+2022-01-14 10:47:37,678 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:37,678 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:37,679 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:37,680 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,680 WARNING SenderThread:191584 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:37,680 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:37,682 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:37,720 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,720 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,720 WARNING SenderThread:191584 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-14 10:47:37,721 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:37,721 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:37,721 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:37,722 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:38,118 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_2.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_301.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_20.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_10.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_201.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_30.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_00.mask.png
+2022-01-14 10:47:38,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_101.mask.png
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_0.png
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_3.png
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_001.mask.png
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_1.png
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask
+2022-01-14 10:47:38,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images
+2022-01-14 10:47:38,162 INFO    Thread-26 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/bujqxfw8-media/images/mask/predictions_1_001.mask.png
+2022-01-14 10:47:38,177 INFO    Thread-25 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/2vn7hv90-media/images/mask/predictions_1_00.mask.png
+2022-01-14 10:47:38,186 INFO    Thread-24 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3hvaj7wt-media/images/predictions_1_0.png
+2022-01-14 10:47:38,192 INFO    Thread-35 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/22pi1nc2-media/images/mask/predictions_1_301.mask.png
+2022-01-14 10:47:38,194 INFO    Thread-34 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/14dgvg7d-media/images/mask/predictions_1_30.mask.png
+2022-01-14 10:47:38,188 INFO    Thread-28 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3jx8x7ik-media/images/mask/predictions_1_10.mask.png
+2022-01-14 10:47:38,198 INFO    Thread-32 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/35yr7hht-media/images/mask/predictions_1_201.mask.png
+2022-01-14 10:47:38,215 INFO    Thread-31 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/8b8dmd9p-media/images/mask/predictions_1_20.mask.png
+2022-01-14 10:47:38,234 INFO    Thread-30 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/ec3wp90n-media/images/predictions_1_2.png
+2022-01-14 10:47:38,236 INFO    Thread-29 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1ksrwoqb-media/images/mask/predictions_1_101.mask.png
+2022-01-14 10:47:38,248 INFO    Thread-33 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3g61jzg9-media/images/predictions_1_3.png
+2022-01-14 10:47:38,285 INFO    Thread-27 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/2bnk43r4-media/images/predictions_1_1.png
+2022-01-14 10:47:39,119 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:41,120 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:43,122 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:43,298 DEBUG   HandlerThread:191584 [handler.py:handle_request():130] handle_request: stop_status
+2022-01-14 10:47:43,298 DEBUG   SenderThread:191584 [sender.py:send_request():248] send_request: stop_status
+2022-01-14 10:47:45,124 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:46,644 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,644 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_4_0.png with policy now
+2022-01-14 10:47:46,645 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,645 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_00.mask.png with policy now
+2022-01-14 10:47:46,647 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,647 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,647 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_001.mask.png with policy now
+2022-01-14 10:47:46,649 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,650 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,650 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_4_1.png with policy now
+2022-01-14 10:47:46,652 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,652 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_10.mask.png with policy now
+2022-01-14 10:47:46,658 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,658 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,658 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_101.mask.png with policy now
+2022-01-14 10:47:46,659 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,659 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,659 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_4_2.png with policy now
+2022-01-14 10:47:46,659 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,659 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_20.mask.png with policy now
+2022-01-14 10:47:46,659 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,660 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,661 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_201.mask.png with policy now
+2022-01-14 10:47:46,664 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,665 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,665 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/predictions_4_3.png with policy now
+2022-01-14 10:47:46,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,671 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_30.mask.png with policy now
+2022-01-14 10:47:46,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,671 DEBUG   SenderThread:191584 [sender.py:send():234] send: files
+2022-01-14 10:47:46,672 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file media/images/mask/predictions_4_301.mask.png with policy now
+2022-01-14 10:47:46,672 DEBUG   SenderThread:191584 [sender.py:send():234] send: config
+2022-01-14 10:47:46,672 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,672 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,672 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,674 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:46,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:46,675 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:46,675 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,676 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,676 WARNING SenderThread:191584 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-14 10:47:46,678 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:46,678 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:46,679 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:46,689 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,690 DEBUG   SenderThread:191584 [sender.py:send():234] send: metric
+2022-01-14 10:47:46,690 WARNING SenderThread:191584 [sender.py:send_metric():897] Seen metric with glob (shouldnt happen)
+2022-01-14 10:47:46,690 DEBUG   SenderThread:191584 [sender.py:send():234] send: history
+2022-01-14 10:47:46,690 DEBUG   SenderThread:191584 [sender.py:send():234] send: summary
+2022-01-14 10:47:46,690 INFO    SenderThread:191584 [sender.py:_save_file():939] saving file wandb-summary.json with policy end
+2022-01-14 10:47:47,125 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_201.mask.png
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_3.png
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_20.mask.png
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_301.mask.png
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_1.png
+2022-01-14 10:47:47,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_0.png
+2022-01-14 10:47:47,127 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_001.mask.png
+2022-01-14 10:47:47,128 INFO    Thread-37 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3vblpn1u-media/images/mask/predictions_4_00.mask.png
+2022-01-14 10:47:47,128 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_30.mask.png
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_10.mask.png
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_00.mask.png
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_2.png
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_created():217] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_101.mask.png
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask
+2022-01-14 10:47:47,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images
+2022-01-14 10:47:47,135 INFO    Thread-38 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/p9eacbdd-media/images/mask/predictions_4_001.mask.png
+2022-01-14 10:47:47,146 INFO    Thread-40 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/jq2evodn-media/images/mask/predictions_4_10.mask.png
+2022-01-14 10:47:47,152 INFO    Thread-46 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1kten8pa-media/images/mask/predictions_4_30.mask.png
+2022-01-14 10:47:47,159 INFO    Thread-44 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1o18bvi6-media/images/mask/predictions_4_201.mask.png
+2022-01-14 10:47:47,162 INFO    Thread-43 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1lox9wff-media/images/mask/predictions_4_20.mask.png
+2022-01-14 10:47:47,163 INFO    Thread-42 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/9cbkfh3y-media/images/predictions_4_2.png
+2022-01-14 10:47:47,164 INFO    Thread-36 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1fo8fyuc-media/images/predictions_4_0.png
+2022-01-14 10:47:47,167 INFO    Thread-41 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/1z5ktwy7-media/images/mask/predictions_4_101.mask.png
+2022-01-14 10:47:47,196 INFO    Thread-39 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/36hjkrob-media/images/predictions_4_1.png
+2022-01-14 10:47:47,210 INFO    Thread-47 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/16nua1g0-media/images/mask/predictions_4_301.mask.png
+2022-01-14 10:47:47,211 INFO    Thread-45 :191584 [upload_job.py:push():137] Uploaded file /tmp/tmpcg32wth5wandb/3cb2amaz-media/images/predictions_4_3.png
+2022-01-14 10:47:49,126 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:51,128 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:53,129 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:54,720 WARNING MainThread:191584 [internal.py:wandb_internal():146] Internal process interrupt: 1
+2022-01-14 10:47:55,132 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:55,855 WARNING MainThread:191584 [internal.py:wandb_internal():146] Internal process interrupt: 2
+2022-01-14 10:47:55,855 ERROR   MainThread:191584 [internal.py:wandb_internal():149] Internal process interrupted.
+2022-01-14 10:47:56,132 INFO    Thread-8  :191584 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:56,502 INFO    HandlerThread:191584 [handler.py:finish():731] shutting down handler
+2022-01-14 10:47:56,502 DEBUG   SenderThread:191584 [sender.py:send():234] send: stats
+2022-01-14 10:47:56,502 INFO    WriterThread:191584 [datastore.py:close():281] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/run-16giquj3.wandb
+2022-01-14 10:47:56,502 INFO    SenderThread:191584 [sender.py:finish():1070] shutting down sender
+2022-01-14 10:47:56,503 INFO    SenderThread:191584 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-01-14 10:47:57,133 INFO    SenderThread:191584 [dir_watcher.py:finish():313] scan: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files
+2022-01-14 10:47:57,133 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/requirements.txt requirements.txt
+2022-01-14 10:47:57,133 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-metadata.json wandb-metadata.json
+2022-01-14 10:47:57,133 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json wandb-summary.json
+2022-01-14 10:47:57,134 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/config.yaml config.yaml
+2022-01-14 10:47:57,136 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log output.log
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_1.png media/images/predictions_0_1.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_0.png media/images/predictions_1_0.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_0.png media/images/predictions_0_0.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_3.png media/images/predictions_0_3.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_0_2.png media/images/predictions_0_2.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_2.png media/images/predictions_1_2.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_2.png media/images/predictions_4_2.png
+2022-01-14 10:47:57,138 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_3.png media/images/predictions_4_3.png
+2022-01-14 10:47:57,139 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_1.png media/images/predictions_4_1.png
+2022-01-14 10:47:57,139 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_3.png media/images/predictions_1_3.png
+2022-01-14 10:47:57,139 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_4_0.png media/images/predictions_4_0.png
+2022-01-14 10:47:57,140 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/predictions_1_1.png media/images/predictions_1_1.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_00.mask.png media/images/mask/predictions_1_00.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_30.mask.png media/images/mask/predictions_0_30.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_20.mask.png media/images/mask/predictions_4_20.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_301.mask.png media/images/mask/predictions_1_301.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_00.mask.png media/images/mask/predictions_4_00.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_10.mask.png media/images/mask/predictions_4_10.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_101.mask.png media/images/mask/predictions_4_101.mask.png
+2022-01-14 10:47:57,141 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_00.mask.png media/images/mask/predictions_0_00.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_10.mask.png media/images/mask/predictions_0_10.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_201.mask.png media/images/mask/predictions_1_201.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_001.mask.png media/images/mask/predictions_1_001.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_201.mask.png media/images/mask/predictions_0_201.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_30.mask.png media/images/mask/predictions_1_30.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_30.mask.png media/images/mask/predictions_4_30.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_301.mask.png media/images/mask/predictions_4_301.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_301.mask.png media/images/mask/predictions_0_301.mask.png
+2022-01-14 10:47:57,143 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_001.mask.png media/images/mask/predictions_4_001.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_101.mask.png media/images/mask/predictions_1_101.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_001.mask.png media/images/mask/predictions_0_001.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_4_201.mask.png media/images/mask/predictions_4_201.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_20.mask.png media/images/mask/predictions_0_20.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_10.mask.png media/images/mask/predictions_1_10.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_1_20.mask.png media/images/mask/predictions_1_20.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [dir_watcher.py:finish():327] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/media/images/mask/predictions_0_101.mask.png media/images/mask/predictions_0_101.mask.png
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [file_pusher.py:finish():177] shutting down file pusher
+2022-01-14 10:47:57,144 INFO    SenderThread:191584 [file_pusher.py:join():182] waiting for file pusher
+2022-01-14 10:47:57,579 INFO    Thread-50 :191584 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/config.yaml
+2022-01-14 10:47:57,588 INFO    Thread-51 :191584 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/output.log
+2022-01-14 10:47:57,592 INFO    Thread-49 :191584 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/wandb-summary.json
+2022-01-14 10:47:57,597 INFO    Thread-48 :191584 [upload_job.py:push():137] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20220114_104727-16giquj3/files/requirements.txt
+2022-01-14 10:47:58,281 INFO    MainThread:191584 [internal.py:handle_exit():77] Internal process exited

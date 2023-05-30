@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "train.py", line 123, in <module>
+    main(args,42)
+  File "train.py", line 68, in main
+    samples = next(iter(valloader))
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 681, in __next__
+    data = self._next_data()
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1376, in _next_data
+    return self._process_data(data)
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1402, in _process_data
+    data.reraise()
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/_utils.py", line 461, in reraise
+    raise exception
+IndexError: Caught IndexError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/dataset.py", line 57, in __getitem__
+    landmarks_frame = pd.read_csv(self.root_dir + '/ULM_points/' + points_folder[idx], header=None)
+IndexError: list index out of range

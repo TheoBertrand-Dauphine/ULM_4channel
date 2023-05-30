@@ -1,0 +1,75 @@
+Epoch 0:   0%|                                                                                                                                                                      | 0/22 [00:00<?, ?it/s]torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+Epoch 0:   5%|██████                                                                                                                                | 1/22 [00:00<00:12,  1.69it/s, loss=0.118, v_num=bbwz]torch.Size([256, 256])
+torch.Size([256, 256])
+torch.Size([256, 256])
+Epoch 0:   9%|████████████▏                                                                                                                         | 2/22 [00:00<00:07,  2.61it/s, loss=0.111, v_num=bbwz]torch.Size([256, 256])
+torch.Size([256, 256])
+Epoch 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:05<00:00,  4.22it/s, loss=0.0805, v_num=bbwz]
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.7 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 886 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 443 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.775     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(

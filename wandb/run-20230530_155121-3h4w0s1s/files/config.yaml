@@ -1,0 +1,78 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.13.3
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.10.4
+    start_time: 1685454681.07155
+    t:
+      1:
+      - 1
+      - 9
+      - 41
+      - 55
+      2:
+      - 1
+      - 9
+      - 41
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      4: 3.10.4
+      5: 0.13.3
+      8:
+      - 5
+alpha:
+  desc: null
+  value: 3.0
+batch_size:
+  desc: null
+  value: 10
+data:
+  desc: null
+  value: IOSTAR
+device:
+  desc: null
+  value: 0
+epochs:
+  desc: null
+  value: 2
+features:
+  desc: null
+  value: 16
+lr:
+  desc: null
+  value: 0.001
+no_endpoints:
+  desc: null
+  value: false
+out_channels:
+  desc: null
+  value: 3
+patience:
+  desc: null
+  value: 200
+second_unet:
+  desc: null
+  value: false
+size:
+  desc: null
+  value: 128
+threshold:
+  desc: null
+  value: 0.05
+vesselnet:
+  desc: null
+  value: true
+weights:
+  desc: null
+  value: ./weights/
+workers:
+  desc: null
+  value: 16

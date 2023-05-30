@@ -1,0 +1,99 @@
+
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+
+Validation sanity check: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:02<00:00,  1.28s/it]
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:132: UserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Validation sanity check: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:02<00:00,  1.28s/it]torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+
+
+
+
+
+
+
+
+Epoch 0:  67%|████████████████████████████████████████████████████████████████████████████████████████████████▋                                                | 10/15 [00:19<00:09,  1.94s/it, loss=0.166]
+
+
+Validating:  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:03<00:02,  1.05s/it]
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+torch.Size([1, 512, 512])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.27it/s]
+torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+
+
+
+
+
+
+
+
+Epoch 1:  67%|████████████████████████████████████████████████████████████████████████████████████████▋                                            | 10/15 [00:20<00:10,  2.05s/it, loss=0.145, v_num=d29w]
+
+
+torch.Size([1, 512, 512])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.31it/s]
+torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+
+
+
+
+
+
+
+
+Epoch 2:  67%|████████████████████████████████████████████████████████████████████████████████████████▋                                            | 10/15 [00:20<00:10,  2.01s/it, loss=0.103, v_num=d29w]
+
+
+torch.Size([1, 512, 512])████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.25it/s]
+torch.Size([1, 512, 512])
+torch.Size([1, 512, 512])
+
+
+
+
+
+
+
+
+
+Epoch 3:  80%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▌                          | 12/15 [00:21<00:05,  1.76s/it, loss=0.0683, v_num=d29w]
+

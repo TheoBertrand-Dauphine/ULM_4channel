@@ -1,0 +1,40 @@
+2022-04-27 16:44:33,987 INFO    MainThread:2370289 [internal.py:wandb_internal():92] W&B internal server running at pid: 2370289, started at: 2022-04-27 16:44:33.987199
+2022-04-27 16:44:33,989 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: run_start
+2022-04-27 16:44:33,989 INFO    WriterThread:2370289 [datastore.py:open_for_write():77] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220427_164433-1txm6lpu/run-1txm6lpu.wandb
+2022-04-27 16:44:33,991 DEBUG   HandlerThread:2370289 [meta.py:__init__():37] meta init
+2022-04-27 16:44:33,991 DEBUG   HandlerThread:2370289 [meta.py:__init__():51] meta init done
+2022-04-27 16:44:33,991 DEBUG   HandlerThread:2370289 [meta.py:probe():211] probe
+2022-04-27 16:44:33,997 DEBUG   HandlerThread:2370289 [meta.py:_setup_git():201] setup git
+2022-04-27 16:44:34,004 DEBUG   HandlerThread:2370289 [meta.py:_setup_git():208] setup git done
+2022-04-27 16:44:34,004 DEBUG   HandlerThread:2370289 [meta.py:_save_pip():55] save pip
+2022-04-27 16:44:34,004 DEBUG   HandlerThread:2370289 [meta.py:_save_pip():69] save pip done
+2022-04-27 16:44:34,004 DEBUG   HandlerThread:2370289 [meta.py:probe():249] probe done
+2022-04-27 16:44:38,474 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:38,480 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:45,725 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:45,725 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:45,981 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:45,981 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:53,257 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:53,258 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:53,529 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:44:53,530 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:00,741 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:00,742 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:01,019 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:01,020 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:08,190 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:08,191 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:08,458 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:08,459 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:15,616 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:15,618 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:15,890 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:15,891 DEBUG   HandlerThread:2370289 [handler.py:handle_request():141] handle_request: partial_history
+2022-04-27 16:45:15,921 WARNING MainThread:2370289 [internal.py:wandb_internal():155] Internal process interrupt: 1
+2022-04-27 16:45:16,114 WARNING MainThread:2370289 [internal.py:wandb_internal():155] Internal process interrupt: 2
+2022-04-27 16:45:16,114 ERROR   MainThread:2370289 [internal.py:wandb_internal():158] Internal process interrupted.
+2022-04-27 16:45:16,892 INFO    WriterThread:2370289 [datastore.py:close():281] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20220427_164433-1txm6lpu/run-1txm6lpu.wandb
+2022-04-27 16:45:16,893 INFO    HandlerThread:2370289 [handler.py:finish():790] shutting down handler
+2022-04-27 16:45:16,994 INFO    SenderThread:2370289 [sender.py:finish():1107] shutting down sender
+2022-04-27 16:45:16,995 INFO    MainThread:2370289 [internal.py:handle_exit():82] Internal process exited

@@ -1,0 +1,22 @@
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_setup.py:_flush():68] Configure stats pid to 366619
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_setup.py:_flush():68] Loading settings from /home/tbertrand/.config/wandb/settings
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_setup.py:_flush():68] Loading settings from /home/tbertrand/Bureau/ULM_4channel_pull/wandb/settings
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True'}
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': 'train.py', 'program': '/home/tbertrand/Bureau/ULM_4channel_pull/./train.py'}
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:_log_setup():476] Logging user logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20230109_174153-117g4tf1/logs/debug.log
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:_log_setup():477] Logging internal logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20230109_174153-117g4tf1/logs/debug-internal.log
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:init():516] calling init triggers
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:init():519] wandb.init called with sweep_config: {}
+config: {}
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:init():569] starting backend
+2023-01-09 17:41:53,611 INFO    MainThread:366619 [wandb_init.py:init():573] setting up manager
+2023-01-09 17:41:53,613 INFO    MainThread:366619 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-01-09 17:41:53,614 INFO    MainThread:366619 [wandb_init.py:init():580] backend started and connected
+2023-01-09 17:41:53,615 INFO    MainThread:366619 [wandb_init.py:init():658] updated telemetry
+2023-01-09 17:41:53,618 INFO    MainThread:366619 [wandb_init.py:init():727] starting run threads in backend
+2023-01-09 17:41:56,353 INFO    MainThread:366619 [wandb_run.py:_console_start():1954] atexit reg
+2023-01-09 17:41:56,353 INFO    MainThread:366619 [wandb_run.py:_redirect():1812] redirect: SettingsConsole.WRAP_RAW
+2023-01-09 17:41:56,353 INFO    MainThread:366619 [wandb_run.py:_redirect():1877] Wrapping output streams.
+2023-01-09 17:41:56,353 INFO    MainThread:366619 [wandb_run.py:_redirect():1899] Redirects installed.
+2023-01-09 17:41:56,353 INFO    MainThread:366619 [wandb_init.py:init():764] run started, returning control to user process
+2023-01-09 17:41:59,286 WARNING MsgRouterThr:366619 [router.py:message_loop():77] message_loop has been closed

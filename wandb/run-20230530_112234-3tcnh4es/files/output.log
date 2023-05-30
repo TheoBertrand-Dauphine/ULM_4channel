@@ -1,0 +1,2328 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 896
+2 | encoder2       | Conv2d    | 51.3 K
+3 | encoder3       | Conv2d    | 153 K
+4 | encoder4       | Conv2d    | 110 K
+5 | last_layer     | Conv2d    | 387
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+316 K     Trainable params
+0         Non-trainable params
+316 K     Total params
+1.268     Total estimated model params size (MB)
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+defaultdict(<class 'dict'>, {})
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  2.14it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1892: PossibleUserWarning: The number of training batches (2) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+
+Epoch 0:   9%|███████████████████▎                                                                                                                                                                                           | 4/43 [00:03<00:31,  1.25it/s, loss=0.00951, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 1:  12%|████████████████████████                                                                                                                                                                                       | 5/43 [00:03<00:27,  1.41it/s, loss=0.00862, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 2:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:02<00:38,  1.05it/s, loss=0.00807, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 3:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:02<00:37,  1.05it/s, loss=0.00797, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 4:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:02<00:36,  1.09it/s, loss=0.00781, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 5:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:36,  1.11it/s, loss=0.00749, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 6:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:34,  1.17it/s, loss=0.00742, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 7:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:35,  1.16it/s, loss=0.00723, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 8:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:35,  1.17it/s, loss=0.00733, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 9:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:35,  1.15it/s, loss=0.00718, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 10:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00689, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 11:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.17it/s, loss=0.00679, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 12:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:37,  1.08it/s, loss=0.00676, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 13:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00658, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 14:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00659, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 15:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00654, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 16:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00643, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 17:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.18it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 18:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00626, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 19:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.16it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 20:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 21:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 22:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.14it/s, loss=0.00661, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 23:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.14it/s, loss=0.00662, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 24:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00663, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 25:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:38,  1.06it/s, loss=0.00674, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 26:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.16it/s, loss=0.00682, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 27:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:37,  1.10it/s, loss=0.00696, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 28:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00705, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 29:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.16it/s, loss=0.00701, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 30:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00692, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 32:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:37,  1.11it/s, loss=0.00685, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 34:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.14it/s, loss=0.00677, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 35:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.17it/s, loss=0.00663, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 36:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.24it/s, loss=0.00665, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 37:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 38:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.09it/s, loss=0.00646, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 39:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:37,  1.07it/s, loss=0.00632, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 40:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:37,  1.08it/s, loss=0.00631, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 41:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.18it/s, loss=0.00622, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 42:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00616, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 43:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 44:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:02<00:37,  1.07it/s, loss=0.0062, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 45:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00632, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 46:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 47:   7%|██████████████▍                                                                                                                                                                                                | 3/43 [00:02<00:37,  1.08it/s, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 48:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:37,  1.06it/s, loss=0.00637, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 49:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.11it/s, loss=0.00642, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 50:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00665, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 51:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.11it/s, loss=0.00661, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 52:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:30,  1.29it/s, loss=0.00655, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 53:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.44it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 54:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00651, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 55:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.19it/s, loss=0.00647, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 56:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:37,  1.07it/s, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 57:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:29,  1.30it/s, loss=0.00631, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 58:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.18it/s, loss=0.00627, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 59:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.18it/s, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 60:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:35,  1.12it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 61:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:30,  1.29it/s, loss=0.00622, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 63:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 64:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:35,  1.12it/s, loss=0.00623, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 65:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.11it/s, loss=0.00634, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 66:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.45it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 67:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.17it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 68:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:35,  1.13it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 69:   9%|███████████████████▎                                                                                                                                                                                           | 4/43 [00:03<00:30,  1.28it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 70:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:29,  1.30it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 71:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.44it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 72:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.00654, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 73:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.11it/s, loss=0.00655, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 74:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.44it/s, loss=0.00661, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 75:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:25,  1.48it/s, loss=0.00653, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 76:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 77:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00643, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 78:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.21it/s, loss=0.00634, v_num=h4es]
+
+
+
+
+
+Epoch 79:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.16it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 80:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:34,  1.18it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 81:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.14it/s, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 82:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:29,  1.31it/s, loss=0.00642, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 84:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.13it/s, loss=0.00632, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 85:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:34,  1.18it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 86:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00645, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 87:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.44it/s, loss=0.00655, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 88:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.17it/s, loss=0.00674, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 89:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:35,  1.12it/s, loss=0.00672, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 90:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:37,  1.07it/s, loss=0.00672, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 91:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:30,  1.27it/s, loss=0.00678, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 92:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.09it/s, loss=0.00664, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 93:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:36,  1.10it/s, loss=0.00669, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 94:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:02<00:41,  1.01s/it, loss=0.0066, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 95:   5%|█████████▋                                                                                                                                                                                                     | 2/43 [00:01<00:34,  1.18it/s, loss=0.0066, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 96:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.22it/s, loss=0.00654, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 97:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:02<00:38,  1.05it/s, loss=0.00638, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 98:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.15it/s, loss=0.00638, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 99:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:37,  1.10it/s, loss=0.00639, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 100:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:41,  1.01s/it, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 101:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.22it/s, loss=0.0063, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 102:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.23it/s, loss=0.00637, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 103:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.10it/s, loss=0.00619, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 104:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.14it/s, loss=0.00647, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 105:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.03it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 106:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:40,  1.02it/s, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 107:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.01it/s, loss=0.00658, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 108:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:30,  1.27it/s, loss=0.00645, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 109:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:26,  1.42it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 110:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:30,  1.29it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 111:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:36,  1.09it/s, loss=0.00655, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 112:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:37,  1.07it/s, loss=0.00658, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 113:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:36,  1.09it/s, loss=0.00666, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 114:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:37,  1.06it/s, loss=0.00637, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 115:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:40,  1.01it/s, loss=0.00611, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 116:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.17it/s, loss=0.00613, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 117:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:35,  1.16it/s, loss=0.0062, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 118:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:36,  1.11it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 119:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:37,  1.08it/s, loss=0.00623, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 120:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.14it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 121:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.15it/s, loss=0.00613, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 122:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:03<00:45,  1.13s/it, loss=0.0061, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 123:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.23it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 124:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:51,  1.25s/it, loss=0.00646, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+Epoch 125:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.16it/s, loss=0.00669, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 126:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:40,  1.01it/s, loss=0.00672, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 127:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.08it/s, loss=0.00662, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 129:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:41,  1.00s/it, loss=0.00658, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 130:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.05it/s, loss=0.00664, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 131:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.19it/s, loss=0.00659, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 132:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.10it/s, loss=0.00664, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 133:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:27,  1.40it/s, loss=0.00656, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+Epoch 134:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.15it/s, loss=0.00651, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 135:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:43,  1.10s/it, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 136:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:37,  1.08it/s, loss=0.00646, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 137:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:28,  1.31it/s, loss=0.00658, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 138:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.06it/s, loss=0.00652, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 139:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.01it/s, loss=0.00647, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 140:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:40,  1.02it/s, loss=0.00645, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 141:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:39,  1.05it/s, loss=0.00646, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 142:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:40,  1.02s/it, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 143:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:37,  1.08it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 144:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.02it/s, loss=0.00639, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 145:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.22it/s, loss=0.00627, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 146:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.08it/s, loss=0.00619, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 147:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:41,  1.04s/it, loss=0.00607, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 148:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.21it/s, loss=0.0061, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 149:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.08it/s, loss=0.00616, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 150:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:39,  1.04it/s, loss=0.00614, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 151:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.15it/s, loss=0.00612, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 152:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:40,  1.00it/s, loss=0.0061, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 153:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.25it/s, loss=0.00618, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 154:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.03it/s, loss=0.00609, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 155:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:27,  1.39it/s, loss=0.00609, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 156:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.03it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 157:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.15it/s, loss=0.00629, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 158:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.07it/s, loss=0.00632, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 159:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:40,  1.02s/it, loss=0.00631, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 160:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.16it/s, loss=0.00636, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 161:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:36,  1.12it/s, loss=0.00646, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 162:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:39,  1.05it/s, loss=0.00647, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 163:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:27,  1.37it/s, loss=0.00639, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 165:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:39,  1.04it/s, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 166:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:36,  1.12it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 167:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.15it/s, loss=0.00631, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 168:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:42,  1.06s/it, loss=0.00636, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 169:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.17it/s, loss=0.00631, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 170:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.03it/s, loss=0.00619, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 171:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:36,  1.13it/s, loss=0.00623, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 172:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:27,  1.40it/s, loss=0.00618, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 173:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.20it/s, loss=0.00618, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 174:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:36,  1.09it/s, loss=0.00611, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 175:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:32,  1.20it/s, loss=0.00617, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 176:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:37,  1.06it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 177:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:36,  1.12it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 180:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:44,  1.08s/it, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 182:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:28,  1.32it/s, loss=0.00627, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 184:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.04it/s, loss=0.00647, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 185:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.08it/s, loss=0.00638, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 186:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.00it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 187:   7%|██████████████▎                                                                                                                                                                                               | 3/43 [00:03<00:40,  1.02s/it, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 188:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:37,  1.09it/s, loss=0.00654, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 189:   9%|███████████████████▏                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.18it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 190:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:34,  1.13it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 191:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.04it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 192:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:35,  1.15it/s, loss=0.00638, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 193:  12%|███████████████████████▉                                                                                                                                                                                      | 5/43 [00:03<00:29,  1.27it/s, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 194:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:31,  1.25it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 195:   5%|█████████▌                                                                                                                                                                                                    | 2/43 [00:01<00:38,  1.06it/s, loss=0.0065, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 196:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:33,  1.16it/s, loss=0.00634, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 197:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:40,  1.01it/s, loss=0.00627, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 198:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.07it/s, loss=0.00619, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 199:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:43,  1.06s/it, loss=0.00629, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 200:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:39,  1.04it/s, loss=0.00623, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 201:   9%|███████████████████                                                                                                                                                                                          | 4/43 [00:03<00:34,  1.13it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 202:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:41,  1.01s/it, loss=0.00622, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 203:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.08it/s, loss=0.00608, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 204:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.01it/s, loss=0.00605, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 205:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:41,  1.01s/it, loss=0.00599, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 206:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:38,  1.06it/s, loss=0.00608, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 207:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:38,  1.05it/s, loss=0.00609, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 208:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:41,  1.01s/it, loss=0.00616, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 209:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:03<00:41,  1.04s/it, loss=0.00604, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 210:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:01<00:36,  1.13it/s, loss=0.00601, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 211:   5%|█████████▌                                                                                                                                                                                                   | 2/43 [00:02<00:44,  1.08s/it, loss=0.00597, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 212:  12%|███████████████████████▊                                                                                                                                                                                     | 5/43 [00:03<00:27,  1.37it/s, loss=0.00602, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 213:   7%|██████████████▎                                                                                                                                                                                              | 3/43 [00:02<00:39,  1.02it/s, loss=0.00598, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 214:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:37,  1.08it/s, loss=0.00584, v_num=h4es]
+
+
+
+
+
+
+
+
+
+Epoch 215:   7%|█████████████▋                                                                                                                                                                                      | 3/43 [00:02<00:38,  1.04it/s, loss=0.00607, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 216:   7%|█████████████▋                                                                                                                                                                                      | 3/43 [00:02<00:36,  1.08it/s, loss=0.00607, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 217:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:29,  1.31it/s, loss=0.00607, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 218:  12%|██████████████████████▊                                                                                                                                                                             | 5/43 [00:03<00:26,  1.44it/s, loss=0.00617, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 219:  12%|██████████████████████▊                                                                                                                                                                             | 5/43 [00:03<00:27,  1.40it/s, loss=0.00619, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 220:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:30,  1.29it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 221:  12%|██████████████████████▊                                                                                                                                                                             | 5/43 [00:03<00:26,  1.44it/s, loss=0.00643, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 223:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:35,  1.16it/s, loss=0.00648, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 224:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:36,  1.14it/s, loss=0.00655, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 226:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:35,  1.17it/s, loss=0.00642, v_num=h4es]
+
+
+
+
+
+
+
+Epoch 227:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:33,  1.22it/s, loss=0.00648, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 228:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:36,  1.12it/s, loss=0.00632, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 229:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:35,  1.15it/s, loss=0.00641, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 230:   5%|█████████▏                                                                                                                                                                                           | 2/43 [00:01<00:34,  1.18it/s, loss=0.0064, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 231:   5%|█████████                                                                                                                                                                                           | 2/43 [00:02<00:42,  1.03s/it, loss=0.00626, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 232:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:34,  1.19it/s, loss=0.00622, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 233:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:35,  1.16it/s, loss=0.00621, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 234:   7%|█████████████▋                                                                                                                                                                                       | 3/43 [00:02<00:35,  1.13it/s, loss=0.0061, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 235:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:35,  1.15it/s, loss=0.00605, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 236:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:34,  1.18it/s, loss=0.00593, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 237:   7%|█████████████▋                                                                                                                                                                                      | 3/43 [00:02<00:35,  1.13it/s, loss=0.00584, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 238:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:30,  1.26it/s, loss=0.00591, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 239:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:31,  1.25it/s, loss=0.00594, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 240:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:30,  1.27it/s, loss=0.00609, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 241:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:30,  1.26it/s, loss=0.00602, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 242:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:30,  1.26it/s, loss=0.00596, v_num=h4es]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 244:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:34,  1.18it/s, loss=0.00624, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 245:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:36,  1.13it/s, loss=0.00628, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 246:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:33,  1.22it/s, loss=0.00635, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 247:   5%|█████████                                                                                                                                                                                           | 2/43 [00:01<00:36,  1.13it/s, loss=0.00644, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 248:   7%|█████████████▋                                                                                                                                                                                      | 3/43 [00:02<00:36,  1.10it/s, loss=0.00649, v_num=h4es]
+
+
+
+
+
+
+
+
+Epoch 249:   9%|██████████████████▏                                                                                                                                                                                 | 4/43 [00:03<00:31,  1.26it/s, loss=0.00642, v_num=h4es]
+
+
+
+
+
+
+
+
+Validation DataLoader 0:  98%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉     | 40/41 [00:14<00:00,  2.68it/s]
+`Trainer.fit` stopped: `max_epochs=250` reached.

@@ -1,0 +1,94 @@
+GPU available: True, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py:1584: UserWarning: GPU available but not used. Set the gpus flag in your trainer `Trainer(gpus=1)` or script `--gpus=1`.
+  rank_zero_warn(
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 2.5 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 14.0 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 55.6 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 221 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 885 K
+9  | upconv4    | ConvTranspose2d | 131 K
+10 | decoder4   | Sequential      | 442 K
+11 | upconv3    | ConvTranspose2d | 32.8 K
+12 | decoder3   | Sequential      | 110 K
+13 | upconv2    | ConvTranspose2d | 8.2 K
+14 | decoder2   | Sequential      | 27.8 K
+15 | upconv1    | ConvTranspose2d | 2.1 K
+16 | decoder1   | Sequential      | 7.0 K
+17 | conv       | Conv2d          | 51
+------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.769     Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/trainer/data_loading.py:428: UserWarning: The number of training samples (10) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]tensor(0., dtype=torch.float64)
+tensor(0.)
+tensor(0., dtype=torch.float64)
+tensor(0.)
+tensor(0.0270, dtype=torch.float64)
+tensor(19.5000)
+tensor(0.0065, dtype=torch.float64)
+tensor(0.1429)
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:00<00:00,  1.82it/s]tensor(0.0213, dtype=torch.float64)
+tensor(1.)
+tensor(0.0275, dtype=torch.float64)
+tensor(19.5000)
+tensor(0.0080, dtype=torch.float64)
+tensor(0.3333)
+tensor(0.0081, dtype=torch.float64)
+tensor(0.2500)
+
+Epoch 0:  67%|████████████████████████████████████████████████████████████████████████████████████████████████▋                                                | 10/15 [00:03<00:01,  2.58it/s, loss=0.172]
+Validating:   0%|                                                                                                                                                                    | 0/5 [00:00<?, ?it/s]
+/home/tbertrand/Bureau/ULM_4channel-master/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+tensor(0.3333)0%|                                                                                                                                                                    | 0/5 [00:00<?, ?it/s]
+tensor(0.0125, dtype=torch.float64)
+tensor(3.)
+tensor(0.0034, dtype=torch.float64)
+tensor(0.5000)
+tensor(0.0076, dtype=torch.float64)
+tensor(0.4286)
+Epoch 0:  80%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                             | 12/15 [00:04<00:01,  2.71it/s, loss=0.172]tensor(0., dtype=torch.float64)
+tensor(0.):  20%|███████████████████████████████▏                                                                                                                            | 1/5 [00:00<00:02,  1.81it/s]
+tensor(0., dtype=torch.float64)
+tensor(0.)
+tensor(0.0050, dtype=torch.float64)
+tensor(12.6667)
+tensor(0.0047, dtype=torch.float64)
+tensor(9.2500)
+                                                                                                                                                                                                           tensor(0.0061, dtype=torch.float64)
+tensor(0.2857)0%|██████████████████████████████████████████████████████████████▍                                                                                             | 2/5 [00:00<00:00,  3.20it/s]
+tensor(0.0101, dtype=torch.float64)
+tensor(0.5714)
+tensor(0., dtype=torch.float64)
+tensor(0.)
+tensor(0.0107, dtype=torch.float64)
+tensor(5.1429)
+Epoch 0:  93%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎         | 14/15 [00:04<00:00,  2.96it/s, loss=0.172]tensor(0.0053, dtype=torch.float64)
+tensor(1.):  60%|█████████████████████████████████████████████████████████████████████████████████████████████▌                                                              | 3/5 [00:00<00:00,  4.09it/s]
+tensor(0.0022, dtype=torch.float64)
+tensor(4.)
+tensor(0.0125, dtype=torch.float64)
+tensor(6.1667)
+tensor(0., dtype=torch.float64)
+tensor(0.)
+                                                                                                                                                                                                           tensor(0., dtype=torch.float64)
+tensor(0.):  80%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                               | 4/5 [00:00<00:00,  4.93it/s]
+tensor(0.0028, dtype=torch.float64)
+tensor(0.2000)
+tensor(0.0023, dtype=torch.float64)
+tensor(0.5000)
+tensor(0.0051, dtype=torch.float64)
+tensor(0.5000)
+Epoch 0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 15/15 [00:05<00:00,  2.85it/s, loss=0.172, v_num=ex68]

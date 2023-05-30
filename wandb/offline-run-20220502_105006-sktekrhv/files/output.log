@@ -1,0 +1,786 @@
+Validation sanity check:   0%|                                                                                                                                                       | 0/2 [00:00<?, ?it/s]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Validation sanity check:  50%|███████████████████████████████████████████████████████████████████████▌                                                                       | 1/2 [00:00<00:00,  1.62it/s]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 0:  94%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍       | 49/52 [00:02<00:00, 18.29it/s, loss=0.0101, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])                                                                                                                                                        | 0/4 [00:00<?, ?it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])███████████████████████████                                                                                                                     | 1/4 [00:00<00:01,  1.74it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 139, 139]], device='cuda:0')
+tensor([[139, 139,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 229, 237]], device='cuda:0')
+tensor([[229, 237,   1]], device='cuda:0')
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])██████████████████████████████████████████████████████████████████                                                                              | 2/4 [00:00<00:00,  3.16it/s]
+tensor([[  1,   0, 132],
+        [  1,   3, 127]], device='cuda:0')
+tensor([[  0, 132,   1],
+        [  3, 127,   1]], device='cuda:0')
+tensor([[  1, 151,  71]], device='cuda:0')
+tensor([[151,  71,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 52/52 [00:03<00:00, 14.75it/s, loss=0.0101, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])█████████████████████████████████████████████████████████████████████████████████████████████████████████                                       | 3/4 [00:00<00:00,  4.28it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 253,  65],
+        [  1, 253,  92],
+        [  1, 253, 124]], device='cuda:0')
+tensor([[253,  65,   1],
+        [253,  92,   1],
+        [253, 124,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1,   0, 150],
+        [  1,   0, 162]], device='cuda:0')
+tensor([[  0, 150,   1],
+        [  0, 162,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 1:  92%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉          | 48/52 [00:02<00:00, 17.80it/s, loss=0.00383, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])                                                                                                                                                        | 0/4 [00:00<?, ?it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 234, 254]], device='cuda:0')
+tensor([[234, 254,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  0, 172,   3],
+        [  1, 166,   4],
+        [  1, 170,  24],
+        [  1, 174,   8],
+        [  1, 174,  22],
+        [  1, 174,  26],
+        [  1, 178,  20],
+        [  1, 183,   1],
+        [  1, 188,  18]], device='cuda:0')
+tensor([[172,   3,   0],
+        [166,   4,   1],
+        [170,  24,   1],
+        [174,   8,   1],
+        [174,  22,   1],
+        [174,  26,   1],
+        [178,  20,   1],
+        [183,   1,   1],
+        [188,  18,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[ 1, 22, 48]], device='cuda:0')
+tensor([[22, 48,  1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])███████████████████████████                                                                                                                     | 1/4 [00:00<00:01,  1.72it/s]
+tensor([[  1,   0, 208],
+        [  1,   9, 200],
+        [  1,  12, 214]], device='cuda:0')
+tensor([[  0, 208,   1],
+        [  9, 200,   1],
+        [ 12, 214,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[ 1,  0, 10]], device='cuda:0')
+tensor([[ 0, 10,  1]], device='cuda:0')
+tensor([[  1, 167, 254]], device='cuda:0')
+tensor([[167, 254,   1]], device='cuda:0')
+tensor([[  1,   0, 162],
+        [  1,   0, 174],
+        [  1,   0, 182],
+        [  1,   0, 194],
+        [  1,   0, 200],
+        [  1,   0, 208],
+        [  1,   0, 212],
+        [  1,   0, 236],
+        [  1,   0, 244]], device='cuda:0')
+tensor([[  0, 162,   1],
+        [  0, 174,   1],
+        [  0, 182,   1],
+        [  0, 194,   1],
+        [  0, 200,   1],
+        [  0, 208,   1],
+        [  0, 212,   1],
+        [  0, 236,   1],
+        [  0, 244,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 132, 186]], device='cuda:0')
+tensor([[132, 186,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 126, 148],
+        [  1, 132, 156],
+        [  1, 138, 142]], device='cuda:0')
+tensor([[126, 148,   1],
+        [132, 156,   1],
+        [138, 142,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 224, 254],
+        [  1, 228, 238]], device='cuda:0')
+tensor([[224, 254,   1],
+        [228, 238,   1]], device='cuda:0')
+Epoch 1:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 51/52 [00:03<00:00, 14.89it/s, loss=0.00383, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])██████████████████████████████████████████████████████████████████                                                                              | 2/4 [00:00<00:00,  3.09it/s]
+tensor([[  1,   0, 128],
+        [  1,   0, 132]], device='cuda:0')
+tensor([[  0, 128,   1],
+        [  0, 132,   1]], device='cuda:0')
+tensor([[  1, 138,  80],
+        [  1, 144,  88],
+        [  1, 150,  74]], device='cuda:0')
+tensor([[138,  80,   1],
+        [144,  88,   1],
+        [150,  74,   1]], device='cuda:0')
+tensor([[  1,   0, 222]], device='cuda:0')
+tensor([[  0, 222,   1]], device='cuda:0')
+tensor([[  1, 142, 178]], device='cuda:0')
+tensor([[142, 178,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])█████████████████████████████████████████████████████████████████████████████████████████████████████████                                       | 3/4 [00:00<00:00,  4.19it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  0, 228,  47],
+        [  0, 232,  43],
+        [  0, 236,  49],
+        [  0, 238,  39],
+        [  0, 238,  43],
+        [  0, 240,  51],
+        [  0, 240,  57],
+        [  1, 216,  60],
+        [  1, 218,  40],
+        [  1, 218,  48],
+        [  1, 226,  46],
+        [  1, 226,  50],
+        [  1, 234,  56],
+        [  1, 236,  50],
+        [  1, 238,  42],
+        [  1, 238,  60]], device='cuda:0')
+tensor([[228,  47,   0],
+        [232,  43,   0],
+        [236,  49,   0],
+        [238,  39,   0],
+        [238,  43,   0],
+        [240,  51,   0],
+        [240,  57,   0],
+        [216,  60,   1],
+        [218,  40,   1],
+        [218,  48,   1],
+        [226,  46,   1],
+        [226,  50,   1],
+        [234,  56,   1],
+        [236,  50,   1],
+        [238,  42,   1],
+        [238,  60,   1]], device='cuda:0')
+tensor([[  0, 192,  99],
+        [  0, 196,  95],
+        [  0, 200, 101],
+        [  0, 202,  93],
+        [  0, 204, 105],
+        [  1, 180, 114],
+        [  1, 182, 100],
+        [  1, 186,  94],
+        [  1, 186,  98],
+        [  1, 190, 100],
+        [  1, 198, 108],
+        [  1, 204, 114],
+        [  1, 218,  76],
+        [  1, 244, 126],
+        [  1, 250,  92],
+        [  1, 250, 124]], device='cuda:0')
+tensor([[192,  99,   0],
+        [196,  95,   0],
+        [200, 101,   0],
+        [202,  93,   0],
+        [204, 105,   0],
+        [180, 114,   1],
+        [182, 100,   1],
+        [186,  94,   1],
+        [186,  98,   1],
+        [190, 100,   1],
+        [198, 108,   1],
+        [204, 114,   1],
+        [218,  76,   1],
+        [244, 126,   1],
+        [250,  92,   1],
+        [250, 124,   1]], device='cuda:0')
+tensor([[  0,  70, 167],
+        [  0,  78, 169],
+        [  0,  80, 161],
+        [  0,  82, 175],
+        [  1,  58, 182],
+        [  1,  60, 168],
+        [  1,  64, 162],
+        [  1,  64, 166],
+        [  1,  64, 170],
+        [  1,  70, 172],
+        [  1,  76, 178],
+        [  1,  82, 182],
+        [  1,  96, 144],
+        [  1, 122, 194],
+        [  1, 134, 190]], device='cuda:0')
+tensor([[ 70, 167,   0],
+        [ 78, 169,   0],
+        [ 80, 161,   0],
+        [ 82, 175,   0],
+        [ 58, 182,   1],
+        [ 60, 168,   1],
+        [ 64, 162,   1],
+        [ 64, 166,   1],
+        [ 64, 170,   1],
+        [ 70, 172,   1],
+        [ 76, 178,   1],
+        [ 82, 182,   1],
+        [ 96, 144,   1],
+        [122, 194,   1],
+        [134, 190,   1]], device='cuda:0')
+tensor([[  1,   0, 112],
+        [  1,   0, 122],
+        [  1,   0, 144],
+        [  1,   0, 150],
+        [  1,   0, 162],
+        [  1,  18, 130],
+        [  1,  57, 177]], device='cuda:0')
+tensor([[  0, 112,   1],
+        [  0, 122,   1],
+        [  0, 144,   1],
+        [  0, 150,   1],
+        [  0, 162,   1],
+        [ 18, 130,   1],
+        [ 57, 177,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1,  11, 253]], device='cuda:0')
+tensor([[ 11, 253,   1]], device='cuda:0')
+tensor([[  1,  86, 254]], device='cuda:0')
+tensor([[ 86, 254,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 2:  92%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉          | 48/52 [00:02<00:00, 17.93it/s, loss=0.00294, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])                                                                                                                                                        | 0/4 [00:00<?, ?it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])███████████████████████████                                                                                                                     | 1/4 [00:00<00:01,  1.76it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 228, 238]], device='cuda:0')
+tensor([[228, 238,   1]], device='cuda:0')
+Epoch 2:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 51/52 [00:03<00:00, 15.07it/s, loss=0.00294, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])██████████████████████████████████████████████████████████████████                                                                              | 2/4 [00:00<00:00,  3.18it/s]
+tensor([[  1,   0, 128],
+        [  1,   0, 132]], device='cuda:0')
+tensor([[  0, 128,   1],
+        [  0, 132,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])█████████████████████████████████████████████████████████████████████████████████████████████████████████                                       | 3/4 [00:00<00:00,  4.30it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1, 226,  50],
+        [  1, 234,  54]], device='cuda:0')
+tensor([[226,  50,   1],
+        [234,  54,   1]], device='cuda:0')
+tensor([[  1, 198, 108]], device='cuda:0')
+tensor([[198, 108,   1]], device='cuda:0')
+tensor([[  1,  76, 176]], device='cuda:0')
+tensor([[ 76, 176,   1]], device='cuda:0')
+tensor([[  1,   0, 112],
+        [  1,   0, 144],
+        [  1,   0, 150],
+        [  1,   0, 162]], device='cuda:0')
+tensor([[  0, 112,   1],
+        [  0, 144,   1],
+        [  0, 150,   1],
+        [  0, 162,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 3:  92%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉          | 48/52 [00:02<00:00, 17.81it/s, loss=0.00236, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])                                                                                                                                                        | 0/4 [00:00<?, ?it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])███████████████████████████                                                                                                                     | 1/4 [00:00<00:01,  1.73it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 3:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 51/52 [00:03<00:00, 14.95it/s, loss=0.00236, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])██████████████████████████████████████████████████████████████████                                                                              | 2/4 [00:00<00:00,  3.15it/s]
+tensor([[  1,   0, 128],
+        [  1,   0, 132]], device='cuda:0')
+tensor([[  0, 128,   1],
+        [  0, 132,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])█████████████████████████████████████████████████████████████████████████████████████████████████████████                                       | 3/4 [00:00<00:00,  4.27it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1,   0, 144],
+        [  1,   0, 150],
+        [  1,   0, 162]], device='cuda:0')
+tensor([[  0, 144,   1],
+        [  0, 150,   1],
+        [  0, 162,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 4:  92%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉          | 48/52 [00:02<00:00, 17.68it/s, loss=0.00234, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])                                                                                                                                                        | 0/4 [00:00<?, ?it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])███████████████████████████                                                                                                                     | 1/4 [00:00<00:01,  1.68it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 4:  98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 51/52 [00:03<00:00, 14.78it/s, loss=0.00234, v_num=krhv]torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])██████████████████████████████████████████████████████████████████                                                                              | 2/4 [00:00<00:00,  3.07it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+                                                                                                                                                                                                           torch.Size([12, 4, 256, 256])
+torch.Size([12, 4, 256, 256])█████████████████████████████████████████████████████████████████████████████████████████████████████████                                       | 3/4 [00:00<00:00,  4.19it/s]
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([[  1,   0, 162]], device='cuda:0')
+tensor([[  0, 162,   1]], device='cuda:0')
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+tensor([], device='cuda:0', size=(0, 3), dtype=torch.int64)
+Epoch 4: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 52/52 [00:04<00:00, 11.28it/s, loss=0.00234, v_num=krhv]
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name       | Type            | Params
+------------------------------------------------
+0  | encoder1   | Sequential      | 10.3 K
+1  | pool1      | MaxPool2d       | 0
+2  | encoder2   | Sequential      | 55.7 K
+3  | pool2      | MaxPool2d       | 0
+4  | encoder3   | Sequential      | 221 K
+5  | pool3      | MaxPool2d       | 0
+6  | encoder4   | Sequential      | 886 K
+7  | pool4      | MaxPool2d       | 0
+8  | bottleneck | Sequential      | 3.5 M
+9  | upconv4    | ConvTranspose2d | 524 K
+10 | decoder4   | Sequential      | 1.8 M
+11 | upconv3    | ConvTranspose2d | 131 K
+12 | decoder3   | Sequential      | 443 K
+13 | upconv2    | ConvTranspose2d | 32.8 K
+14 | decoder2   | Sequential      | 110 K
+15 | upconv1    | ConvTranspose2d | 8.2 K
+16 | decoder1   | Sequential      | 27.8 K
+17 | conv       | Conv2d          | 132
+------------------------------------------------
+7.8 M     Trainable params
+0         Non-trainable params
+7.8 M     Total params
+31.064    Total estimated model params size (MB)
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:631: UserWarning: Checkpoint directory /home/tbertrand/Bureau/ULM_4channel_pull/None/version_None/checkpoints exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/Bureau/ULM_4channel_pull/lib/python3.8/site-packages/torch/nn/modules/loss.py:520: UserWarning: Using a target size (torch.Size([4, 256, 256])) that is different to the input size (torch.Size([1, 4, 256, 256])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Traceback (most recent call last):
+  File "train.py", line 101, in <module>
+    main(args,42)
+  File "train.py", line 80, in main
+    trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.bout_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
+AttributeError: 'Namespace' object has no attribute 'bout_channels'

@@ -1,0 +1,198 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=0)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=0)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1764: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=1)`.
+  rank_zero_warn(
+  | Name           | Type      | Params
+---------------------------------------------
+0 | local_max_filt | MaxPool2d | 0
+1 | encoder1       | Conv2d    | 224
+2 | encoder2       | Conv2d    | 3.2 K
+3 | encoder3       | Conv2d    | 9.6 K
+4 | encoder4       | Conv2d    | 6.9 K
+5 | last_layer     | Conv2d    | 99
+6 | softmax        | Softmax   | 0
+---------------------------------------------
+20.1 K    Trainable params
+0         Non-trainable params
+20.1 K    Total params
+0.080     Total estimated model params size (MB)
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+defaultdict(<class 'dict'>, {})
+Epoch 0:   0%|                                                                                                                                                                                                                                                 | 0/44 [00:00<?, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:1892: PossibleUserWarning: The number of training batches (3) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Epoch 0:   7%|██████████████▏                                                                                                                                                                                                 | 3/44 [00:04<00:55,  1.35s/it, loss=0.0217, v_num=whhp]
+
+
+
+
+Epoch 1:  36%|███████████████████████████████████████████████████████████████████████████▎                                                                                                                                   | 16/44 [00:05<00:09,  2.86it/s, loss=0.0204, v_num=whhp]
+
+
+
+Epoch 2:  20%|██████████████████████████████████████████▌                                                                                                                                                                     | 9/44 [00:05<00:19,  1.78it/s, loss=0.0191, v_num=whhp]
+
+
+
+Epoch 3:  43%|█████████████████████████████████████████████████████████████████████████████████████████▍                                                                                                                     | 19/44 [00:06<00:08,  2.90it/s, loss=0.0179, v_num=whhp]
+
+
+Epoch 4:  43%|█████████████████████████████████████████████████████████████████████████████████████████▍                                                                                                                     | 19/44 [00:06<00:08,  3.05it/s, loss=0.0169, v_num=whhp]
+
+
+Epoch 5:  34%|██████████████████████████████████████████████████████████████████████▌                                                                                                                                        | 15/44 [00:05<00:11,  2.52it/s, loss=0.0158, v_num=whhp]
+
+
+
+Epoch 6:  25%|███████████████████████████████████████████████████▊                                                                                                                                                           | 11/44 [00:05<00:16,  2.01it/s, loss=0.0145, v_num=whhp]
+
+
+
+Epoch 7:  39%|███████████████████████████████████████████████████████████████████████████████▉                                                                                                                               | 17/44 [00:05<00:08,  3.06it/s, loss=0.0123, v_num=whhp]
+
+Epoch 8:   7%|██████████████▏                                                                                                                                                                                                 | 3/44 [00:03<00:52,  1.29s/it, loss=0.0105, v_num=whhp]
+
+
+
+Epoch 9:   7%|██████████████                                                                                                                                                                                                 | 3/44 [00:04<00:57,  1.41s/it, loss=0.00895, v_num=whhp]
+
+
+
+Epoch 10:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:53,  1.30s/it, loss=0.00772, v_num=whhp]
+
+
+
+Epoch 11:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:04<00:55,  1.34s/it, loss=0.00661, v_num=whhp]
+
+
+
+
+Epoch 12:  43%|████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                                    | 19/44 [00:06<00:08,  2.94it/s, loss=0.00576, v_num=whhp]
+
+Epoch 13:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:52,  1.28s/it, loss=0.00519, v_num=whhp]
+
+
+
+Epoch 14:  48%|█████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                           | 21/44 [00:06<00:06,  3.39it/s, loss=0.00484, v_num=whhp]
+
+
+Epoch 15:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:04<00:59,  1.44s/it, loss=0.00445, v_num=whhp]
+
+
+
+
+Epoch 16:  27%|████████████████████████████████████████████████████████▏                                                                                                                                                     | 12/44 [00:05<00:13,  2.29it/s, loss=0.0042, v_num=whhp]
+
+
+
+Epoch 17:  52%|███████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                                                                                 | 23/44 [00:05<00:05,  3.93it/s, loss=0.00404, v_num=whhp]
+
+
+Epoch 18:  39%|███████████████████████████████████████████████████████████████████████████████▏                                                                                                                             | 17/44 [00:06<00:10,  2.61it/s, loss=0.00392, v_num=whhp]
+
+
+
+Epoch 19:  39%|███████████████████████████████████████████████████████████████████████████████▏                                                                                                                             | 17/44 [00:05<00:09,  2.89it/s, loss=0.00381, v_num=whhp]
+
+
+Epoch 20:  48%|█████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                           | 21/44 [00:06<00:06,  3.45it/s, loss=0.00374, v_num=whhp]
+
+
+Epoch 21:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:04<00:55,  1.36s/it, loss=0.00359, v_num=whhp]
+
+
+Epoch 22:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:04<00:55,  1.36s/it, loss=0.00355, v_num=whhp]
+
+
+
+Epoch 23:   7%|██████████████                                                                                                                                                                                                 | 3/44 [00:04<00:57,  1.40s/it, loss=0.0035, v_num=whhp]
+
+
+
+Epoch 24:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:04<00:55,  1.34s/it, loss=0.00344, v_num=whhp]
+
+
+
+Epoch 25:   7%|██████████████                                                                                                                                                                                                 | 3/44 [00:04<00:57,  1.41s/it, loss=0.0034, v_num=whhp]
+
+
+
+Epoch 26:  16%|████████████████████████████████▊                                                                                                                                                                             | 7/44 [00:04<00:25,  1.47it/s, loss=0.00334, v_num=whhp]
+
+
+
+Epoch 27:  18%|█████████████████████████████████████▍                                                                                                                                                                        | 8/44 [00:04<00:22,  1.62it/s, loss=0.00328, v_num=whhp]
+
+
+
+Epoch 28:  45%|█████████████████████████████████████████████████████████████████████████████████████████████▏                                                                                                               | 20/44 [00:05<00:06,  3.52it/s, loss=0.00328, v_num=whhp]
+
+
+Epoch 29:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:54,  1.33s/it, loss=0.00329, v_num=whhp]
+
+
+
+Epoch 30:  14%|████████████████████████████                                                                                                                                                                                  | 6/44 [00:04<00:30,  1.25it/s, loss=0.00333, v_num=whhp]
+
+
+
+Epoch 31:  25%|███████████████████████████████████████████████████▎                                                                                                                                                         | 11/44 [00:05<00:15,  2.17it/s, loss=0.00333, v_num=whhp]
+
+
+
+Epoch 32:  41%|███████████████████████████████████████████████████████████████████████████████████▊                                                                                                                         | 18/44 [00:05<00:07,  3.29it/s, loss=0.00326, v_num=whhp]
+
+
+Epoch 33:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:51,  1.26s/it, loss=0.00331, v_num=whhp]
+
+
+
+Epoch 34:  18%|█████████████████████████████████████▍                                                                                                                                                                        | 8/44 [00:04<00:22,  1.61it/s, loss=0.00324, v_num=whhp]
+
+
+
+Epoch 35:  36%|██████████████████████████████████████████████████████████████████████████▉                                                                                                                                   | 16/44 [00:05<00:09,  2.87it/s, loss=0.0033, v_num=whhp]
+
+Epoch 36:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:53,  1.30s/it, loss=0.00327, v_num=whhp]
+
+
+
+Epoch 37:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:51,  1.27s/it, loss=0.00317, v_num=whhp]
+
+
+
+Epoch 38:  16%|████████████████████████████████▊                                                                                                                                                                             | 7/44 [00:04<00:25,  1.47it/s, loss=0.00323, v_num=whhp]
+
+
+
+Epoch 39:  39%|███████████████████████████████████████████████████████████████████████████████▏                                                                                                                             | 17/44 [00:05<00:08,  3.15it/s, loss=0.00317, v_num=whhp]
+
+
+Epoch 40:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:50,  1.24s/it, loss=0.00315, v_num=whhp]
+
+
+
+Epoch 41:  16%|████████████████████████████████▊                                                                                                                                                                             | 7/44 [00:04<00:25,  1.47it/s, loss=0.00318, v_num=whhp]
+
+
+
+Epoch 42:  20%|██████████████████████████████████████████▏                                                                                                                                                                   | 9/44 [00:04<00:18,  1.86it/s, loss=0.00319, v_num=whhp]
+
+
+
+Epoch 43:  41%|███████████████████████████████████████████████████████████████████████████████████▊                                                                                                                         | 18/44 [00:05<00:07,  3.29it/s, loss=0.00324, v_num=whhp]
+
+
+Epoch 44:   7%|██████████████                                                                                                                                                                                                | 3/44 [00:03<00:51,  1.26s/it, loss=0.00328, v_num=whhp]
+
+
+
+Epoch 45:   2%|████▋                                                                                                                                                                                                         | 1/44 [00:02<01:33,  2.17s/it, loss=0.00328, v_num=whhp]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py:653: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+  rank_zero_warn("Detected KeyboardInterrupt, attempting graceful shutdown...")
