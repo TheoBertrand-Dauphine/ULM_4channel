@@ -154,11 +154,11 @@ class ToArray(object): # turns variables in torch tensors instead of numpy array
 
 class HeatMap(object): # creates heatmaps that will be used as targets in the training loss
 
-    def __init__(self, s=9, alpha = 3., out_channels=3):
+    def __init__(self, s=17, alpha = 3., out_channels=3):
         self.size = s # size of the window of the gaussian blur filter
         self.alpha = alpha # gaussian blur parameter
         self.out_channels = out_channels # number of output channels (3 classes + 1 "dump" class)
-        self.gaussian_blur = torchgeometry.image.gaussian.GaussianBlur((self.size, self.size), (self.alpha, self.alpha)) # gaussian kernel itself
+        self.gaussian_blur = torchgeometry.image.gaussian.GaussianBlur( kernel_size=(self.size, self.size), sigma=(self.alpha, self.alpha)) # gaussian kernel itself
 
 
     def __call__(self, sample):
@@ -281,3 +281,7 @@ class RandomFlip(object): # Apply Random affine (rotation and transolation) to t
             return {'image':np.flip(image, axis=-1).copy(), 'landmarks': landmarks_flipped}
         else:
             return {'image':image, 'landmarks': landmarks}
+        
+
+if __name__== '__main__' :
+    gk = HeatMap(alpha=8.)

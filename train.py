@@ -31,7 +31,7 @@ def main(args,seed):
 
     if args.data=='IOSTAR':
         data_dir = './data_IOSTAR/'
-        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]), no_endpoints=args.no_endpoints)
+        train_dataset = IOSTARDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), RandomFlip(), HeatMap(alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]), no_endpoints=args.no_endpoints)
         trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
         validation_dataset = IOSTARDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]), no_endpoints=args.no_endpoints)
@@ -39,7 +39,7 @@ def main(args,seed):
     else:
         if args.data=='synthetic':
             data_dir = './data_synthetic/'
-            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
             trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
             validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
@@ -61,7 +61,6 @@ def main(args,seed):
     wandb_logger = WandbLogger(project="ULM_4CHANNEL")
 
     if args.data == 'IOSTAR':
-
         if args.vesselnet:
             model = Vesselnet(in_channels = 3, out_channels = args.out_channels, init_features = args.features, threshold = args.threshold, patience = args.patience, alpha = args.alpha)
         else:
@@ -109,18 +108,13 @@ if __name__ == '__main__':
     parser.add_argument("--size",type=int,default=128,help="target input image size (default: 256)")
     parser.add_argument("--data",type=str,default='IOSTAR',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=200, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
-    parser.add_argument("--threshold", type=float, default=0.05, help="threhsold applied on output for detection of points (default: 0.1)")
+    parser.add_argument("--threshold", type=float, default=0.05, help="threshold applied on output for detection of points (default: 0.1)")
     parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
     parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
-    parser.add_argument("--no_endpoints", type=bool, default=False, help=" Whether to include endpoints in IOSTAR dataset")
-    parser.add_argument("--second_unet", type=bool, default=False, help=" Use 2 UNETS?")
-    parser.add_argument("--vesselnet", type=bool, default=True, help=" Use Vesselnet?")
-    parser.add_argument("--features", type=int, default=16, help=" Use Vesselnet?")
-
-
-
-
-
+    parser.add_argument("--no_endpoints", type=int, default=0, help=" Whether to include endpoints in IOSTAR dataset")
+    parser.add_argument("--second_unet", type=int, default=0, help=" Use 2 UNETS?")
+    parser.add_argument("--vesselnet", type=int, default=0, help=" Use Vesselnet?")
+    parser.add_argument("--features", type=int, default=16, help=" Number of features in first layer")
 
     args = parser.parse_args()
 

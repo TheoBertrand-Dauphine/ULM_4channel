@@ -1,0 +1,18 @@
+wandb_version: 1
+
+alpha:
+  value: 1.5523808020020708
+batch-size:
+  value: 8
+features:
+  value: 8
+lr:
+  value: 5.040716834998923e-05
+out_channels:
+  value: 3
+patience:
+  value: 300
+size:
+  value: 64
+vesselnet:
+  value: false
