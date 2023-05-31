@@ -284,4 +284,6 @@ class RandomFlip(object): # Apply Random affine (rotation and transolation) to t
         
 
 if __name__== '__main__' :
-    gk = HeatMap(alpha=8.)
+    gk = HeatMap(alpha = 0.5)
+
+    print(gk)
