@@ -221,7 +221,7 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)        
-        val_loss = l2loss(y_hat,y) #/l2loss(heat_a,torch.zeros_like(heat_a))
+        val_loss = l2loss(y_hat,y)
         threshold = self.threshold
         dist_tol = 7
 

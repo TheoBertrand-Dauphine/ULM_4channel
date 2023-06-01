@@ -100,7 +100,7 @@ def main(args,seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=10, help="input batch size for training (default: 16)")
-    parser.add_argument("--epochs", type=int, default=200, help="number of epochs to train (default: 100)")
+    parser.add_argument("--epochs", type=int, default=400, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=int, default=1, help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=16, help="number of workers for data loading (default: 16)")

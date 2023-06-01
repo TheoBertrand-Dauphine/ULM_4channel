@@ -1,0 +1,8 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 121, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 67, in main
+    model = ULM_UNet(in_channels=3, init_features=args.features, threshold = args.threshold, out_channels = args.out_channels, second_unet=args.second_unet, lr = args.lr)
+TypeError: ULM_UNet.__init__() got an unexpected keyword argument 'threshold'
