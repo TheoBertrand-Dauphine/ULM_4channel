@@ -306,7 +306,7 @@ class ImagePredictionLogger(pl.Callback):
             # keep a list of composite images
             
         # log all composite images to W&B'''
-        wandb.log({"Background":wandb.Image(bg_image), "predicted":wandb.Image((prediction_mask).squeeze()), "label":wandb.Image(true_mask)})
+        wandb.log({"Background":wandb.Image(bg_image), "predicted":wandb.Image((prediction_mask).squeeze()[:3]), "label":wandb.Image(true_mask[:3])})
 
 
 class Vesselnet(pl.LightningModule):
