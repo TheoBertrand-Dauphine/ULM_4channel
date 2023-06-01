@@ -16,12 +16,14 @@ l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
 
-    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False, lr=1e-4):
         super(ULM_UNet, self).__init__()
 
         self.threshold = threshold
         self.patience = patience
         self.alpha = alpha
+
+        self.lr = lr
 
         self.local_max_filt = nn.MaxPool2d(9, stride=1, padding=4)
 
@@ -186,7 +188,7 @@ class ULM_UNet(pl.LightningModule):
         )
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
 
 
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=self.patience, min_lr=1e-8)
@@ -309,12 +311,14 @@ class ImagePredictionLogger(pl.Callback):
 
 class Vesselnet(pl.LightningModule):
 
-    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False, lr=1e-4):
         super(Vesselnet, self).__init__()
 
         self.threshold = threshold
         self.patience = patience
         self.alpha = alpha
+
+        self.lr = lr
 
         self.k_class = out_channels
 
@@ -331,7 +335,7 @@ class Vesselnet(pl.LightningModule):
         self.softmax = nn.Softmax(dim=1)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
         print(optimizer.state)
 
 
