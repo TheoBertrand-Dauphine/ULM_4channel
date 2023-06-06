@@ -270,10 +270,62 @@ class ULM_UNet(pl.LightningModule):
             self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-            # print(F1)
-            # print(precision_cum)
-            # print(recall_cum)
         return val_loss
+    
+    def test_step(self, batch, batch_idx):
+        if batch['image'].ndim==4:
+            x, y = batch['image'], batch['heat_map'].squeeze()
+        else:
+            x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
+        y_hat = self(x)        
+        val_loss = l2loss(y_hat,y)
+        threshold = self.threshold
+        dist_tol = 7
+
+        max_output = self.local_max_filt(y_hat)
+        detected_points = ((max_output==y_hat)*(y_hat>threshold)).nonzero()
+
+        points_coordinates = batch['landmarks']
+        nb_points = ((points_coordinates[:,:,:2]**2).sum(dim=2) > 0).sum(dim=1)
+
+        F1 = torch.tensor(0., device=self.device)
+        precision_cum = torch.tensor(0., device=self.device)
+        recall_cum = torch.tensor(0., device=self.device)
+
+        avg_points_detected = detected_points.shape[0]/x.shape[0]
+
+        for i in range(x.shape[0]):
+            points = detected_points[detected_points[:,0]==i,1:]
+            points = points[:,[1,2,0]]
+            if (points[:,2]==3).sum()!=0:
+                points = points[(points[:,2]!=3),:]
+
+            distance = ((torch.tensor([[[1, 1, dist_tol]]]).to(device=self.device)*(points.unsqueeze(0) - points_coordinates[i,:nb_points[i],:].unsqueeze(1)))**2).sum(dim=-1)
+
+            if points.shape[0]!=0:
+                distance_min = distance*(distance==distance.min(dim=1, keepdim=True).values)
+                distance_min[distance!=distance.min(dim=1, keepdim=True).values]=1e8
+
+                found_matrix = (distance_min < dist_tol**2).float()
+                
+                if distance.shape[0]!=0:
+                    recall = found_matrix.max(dim=1).values.mean() #nb of points well classified/nb of points in the class
+                else:
+                    recall = 1.
+
+                precision = found_matrix.max(dim=1).values.sum()/max(found_matrix.shape[1],1) #nb of points well classified/nb of points labeled in the class
+
+                recall_cum += recall/x.shape[0]
+                precision_cum += precision/x.shape[0]
+
+                if precision!=0 and recall!=0:
+                    F1 += 2/((1/recall)+(1/precision))/x.shape[0]
+
+        self.log('TEST F1', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        self.log('TEST recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+        self.log('TEST precision', precision_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
+
+        return F1
 
 class ImagePredictionLogger(pl.Callback):
     def __init__(self, val_samples, num_samples=10):

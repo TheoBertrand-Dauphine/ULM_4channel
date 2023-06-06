@@ -1,0 +1,97 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py:447: LightningDeprecationWarning: Setting `Trainer(gpus=1)` is deprecated in v1.7 and will be removed in v2.0. Please use `Trainer(accelerator='gpu', devices=1)` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 2.8 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 14.0 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 55.7 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 221 K
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 886 K
+10 | upconv4        | ConvTranspose2d | 131 K
+11 | decoder4       | Sequential      | 443 K
+12 | upconv3        | ConvTranspose2d | 32.8 K
+13 | decoder3       | Sequential      | 110 K
+14 | upconv2        | ConvTranspose2d | 8.2 K
+15 | decoder2       | Sequential      | 27.8 K
+16 | upconv1        | ConvTranspose2d | 2.1 K
+17 | decoder1       | Sequential      | 7.0 K
+18 | conv           | Conv2d          | 51
+----------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.776     Total estimated model params size (MB)
+Sanity Checking DataLoader 0:   0%|                                                                                                                                                                                                                             | 0/2 [00:00<?, ?it/s]
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/loss.py:530: UserWarning: Using a target size (torch.Size([3, 512, 512])) that is different to the input size (torch.Size([1, 3, 512, 512])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+
+Epoch 0:  23%|████████████████████████████████████████████████▏                                                                                                                                                                | 3/13 [00:00<00:02,  3.81it/s, loss=0.153, v_num=0h5e]
+Validation: 0it [00:00, ?it/s]
+{'image': tensor([[[9., 9., 7.,  ..., 7., 8., 9.],
+         [8., 8., 8.,  ..., 8., 7., 6.],
+         [8., 7., 7.,  ..., 6., 8., 8.],
+         ...,
+         [7., 8., 7.,  ..., 8., 8., 7.],
+         [8., 9., 7.,  ..., 8., 7., 7.],
+         [9., 9., 9.,  ..., 8., 8., 8.]],
+        [[7., 7., 7.,  ..., 5., 6., 7.],
+         [6., 6., 8.,  ..., 6., 5., 4.],
+         [6., 5., 7.,  ..., 6., 6., 6.],
+         ...,
+         [5., 6., 7.,  ..., 6., 6., 5.],
+         [6., 7., 7.,  ..., 6., 5., 5.],
+         [7., 7., 9.,  ..., 6., 6., 6.]],
+        [[8., 8., 7.,  ..., 6., 7., 8.],
+         [7., 7., 8.,  ..., 7., 6., 5.],
+         [7., 6., 7.,  ..., 6., 7., 7.],
+         ...,
+         [6., 7., 5.,  ..., 7., 7., 6.],
+         [7., 8., 5.,  ..., 9., 6., 6.],
+         [8., 8., 7.,  ..., 9., 7., 7.]]]), 'heat_map': tensor([[[[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]]]]), 'landmarks': tensor([[201.,   3.,   0.],
+        [143.,  27.,   0.],
+        [402.,  33.,   0.],
+        ...,
+        [  0.,   0.,   0.],
+        [  0.,   0.,   0.],
+        [  0.,   0.,   0.]], dtype=torch.float64)}
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 114, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/train.py", line 91, in main
+    model.test_and_log(test_dataset)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 276, in test_and_log
+    if batch['image'].ndim==4:
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/utils/dataset.py", line 109, in __getitem__
+    img_name = os.path.join(self.root_dir, 'images_IOSTAR', data_folder[idx])
+TypeError: list indices must be integers or slices, not str

@@ -84,23 +84,17 @@ def main(args,seed):
     # trainer.save_checkpoint(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt")
 
     torch.save(model.state_dict(), args.weights + "ulm_net_" + args.data + "_epochs_{}".format(args.epochs) + "_size_" + str(train_dataset[0]['image'].shape[-1]) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + '_alpha_' + str(args.alpha) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + '_NoEndpoints_' + str(args.no_endpoints) + ".pt")
-    # model2 = ULM_UNet(in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
-    # # model2.load_from_checkpoint(checkpoint_path = args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".ckpt", in_channels=3, init_features=48, threshold = args.threshold, out_channels = args.out_channels)
-    # model2.load_state_dict(torch.load(args.weights + "ulm_net_" + args.data +"_epochs_{}".format(args.epochs) + "_batch_{}".format(args.batch_size) + "_out_channels_{}".format(args.out_channels) + "_{}_{}".format(datetime.datetime.today().day, datetime.datetime.today().month) + ".pt"))
-    
-    # with torch.no_grad():
-    #     model.eval()
-    #     for val_batch_idx, val_batch in enumerate(valloader):
-    #         print(val_batch_idx)
-    #         val_out = model.forward(val_batch['image'])
-    #         val_out2 = model2.forward(val_batch['image'])
 
-    #         print(((val_out-val_out2)**2).mean())
+    if args.data == 'IOSTAR':
+        test_dataset = IOSTARDataset(root_dir=data_dir + 'test_images', transform=transforms.Compose([HeatMap(alpha=args.alpha, out_channels = args.out_channels), ToTensor()]), no_endpoints=args.no_endpoints)
+
+        testloader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=args.workers)
+        trainer.test(model, dataloaders = testloader)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=10, help="input batch size for training (default: 16)")
-    parser.add_argument("--epochs", type=int, default=400, help="number of epochs to train (default: 100)")
+    parser.add_argument("--epochs", type=int, default=1, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=int, default=1, help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=16, help="number of workers for data loading (default: 16)")
