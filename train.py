@@ -71,7 +71,8 @@ def main(args,seed):
     samples = next(iter(valloader))
 
     trainer = Trainer(
-        gpus=args.device,
+        accelerator='gpu',
+        devices=-1,
         logger = wandb_logger,
         max_epochs=args.epochs,
         check_val_every_n_epoch=1,

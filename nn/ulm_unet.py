@@ -278,7 +278,7 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)        
-        val_loss = l2loss(y_hat,y)
+        
         threshold = self.threshold
         dist_tol = 7
 
@@ -291,8 +291,6 @@ class ULM_UNet(pl.LightningModule):
         F1 = torch.tensor(0., device=self.device)
         precision_cum = torch.tensor(0., device=self.device)
         recall_cum = torch.tensor(0., device=self.device)
-
-        avg_points_detected = detected_points.shape[0]/x.shape[0]
 
         for i in range(x.shape[0]):
             points = detected_points[detected_points[:,0]==i,1:]
