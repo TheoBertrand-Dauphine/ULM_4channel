@@ -62,7 +62,7 @@ def main(args,seed):
 
     if args.data == 'IOSTAR':
         if args.vesselnet:
-            model = Vesselnet(in_channels = 3, out_channels = args.out_channels, init_features = args.features, threshold = args.threshold, patience = args.patience, alpha = args.alpha, lr = args.lr)
+            model = Vesselnet(in_channels = 3, out_channels = args.out_channels, init_features = args.features, threshold = args.threshold, patience = args.patience, alpha = args.alpha, lr = args.lr, penalization = args.penalization)
         else:
             model = ULM_UNet(in_channels=3, init_features=args.features, threshold = args.threshold, out_channels = args.out_channels, second_unet=args.second_unet, lr = args.lr)
     else:
@@ -110,6 +110,8 @@ if __name__ == '__main__':
     parser.add_argument("--second_unet", type=int, default=0, help=" Use 2 UNETS?")
     parser.add_argument("--vesselnet", type=int, default=0, help=" Use Vesselnet?")
     parser.add_argument("--features", type=int, default=16, help=" Number of features in first layer")
+    parser.add_argument("--penalization", type=float, default=1., help=" Number of features in first layer")
+
 
     args = parser.parse_args()
 

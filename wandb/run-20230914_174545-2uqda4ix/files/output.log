@@ -1,0 +1,48 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 2.8 K
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 14.0 K
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 55.7 K
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 221 K
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 886 K
+10 | upconv4        | ConvTranspose2d | 131 K
+11 | decoder4       | Sequential      | 443 K
+12 | upconv3        | ConvTranspose2d | 32.8 K
+13 | decoder3       | Sequential      | 110 K
+14 | upconv2        | ConvTranspose2d | 8.2 K
+15 | decoder2       | Sequential      | 27.8 K
+16 | upconv1        | ConvTranspose2d | 2.1 K
+17 | decoder1       | Sequential      | 7.0 K
+18 | conv           | Conv2d          | 68
+----------------------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.776     Total estimated model params size (MB)
+
+Epoch 0:  23%|██████████████████████████▎                                                                                       | 3/13 [00:00<00:02,  3.40it/s, loss=0.116, v_num=a4ix]
+
+Validation DataLoader 0:  10%|████████████▏                                                                                                             | 1/10 [00:00<00:00, 36.65it/s]
+
+Testing: 0it [00:00, ?it/s]
+
+Testing DataLoader 0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 21/21 [00:01<00:00, 11.36it/s]
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       Test metric             DataLoader 0
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+         TEST F1            0.0506596565246582
+     TEST precision         0.02713046222925186
+       TEST recall          0.42908746004104614
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

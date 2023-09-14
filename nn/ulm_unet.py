@@ -16,12 +16,13 @@ l2loss = nn.MSELoss(reduction='mean')
 
 class ULM_UNet(pl.LightningModule):
 
-    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False, lr=1e-4):
+    def __init__(self, in_channels=1, out_channels=3, init_features=16, threshold=0.5, patience=400, alpha=1, second_unet = False, lr=1e-4, penalization = 1.):
         super(ULM_UNet, self).__init__()
 
         self.threshold = threshold
         self.patience = patience
         self.alpha = alpha
+        self.penalization = penalization
 
         self.lr = lr
 
@@ -204,7 +205,7 @@ class ULM_UNet(pl.LightningModule):
 
         y_pred = self(x)
 
-        loss = l2loss(y_pred,y_true)
+        loss = (torch.tensor([self.penalization,1.,1.,1.])[None,:,None,None].to(self.device)*((y_pred-y_true))**2).mean() #l2loss(y_pred,y_true)
         logs={"train_loss": loss}
         batch_dictionary={
             "loss": loss,
@@ -221,7 +222,7 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)        
-        val_loss = l2loss(y_hat,y)
+        val_loss = (torch.tensor([self.penalization,1.,1.,1.])[None,:,None,None].to(self.device)*((y_hat-y))**2).mean() #l2loss(y_pred,y_true)
         threshold = self.threshold
         dist_tol = 7
 
