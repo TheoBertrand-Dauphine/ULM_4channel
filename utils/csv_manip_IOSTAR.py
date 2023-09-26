@@ -153,7 +153,7 @@ for p, index in enumerate(images_numbering[:11]):
         if p<5:
             image_to_save.save('./data_IOSTAR/val_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
         else:
-            image_to_save.save('./data_IOSTAR/test_images/images_IOSTAR/validation_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
+            image_to_save.save('./data_IOSTAR/test_images/images_IOSTAR/test_IOSTAR_{}.png'.format(patches_per_image*p + k + 1 + patches_per_image*20))
         
         [j,i,h,w] = [int((I_tensor.shape[1]-side_size)/2), int((I_tensor.shape[2]-side_size)/2), side_size, side_size]
 

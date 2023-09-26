@@ -109,10 +109,15 @@ class IOSTARDataset(Dataset):
         img_name = os.path.join(self.root_dir, 'images_IOSTAR', data_folder[idx])
         #img_name = os.path.join(self.root_dir, self.landmarks_frame.iloc[idx, 0])
         image = io.imread(img_name)
+        print(img_name)
+        print('hellooooo')
 
         points_folder = sorted([name for name in os.listdir(self.root_dir + '/IOSTAR_points/') if os.path.isfile(self.root_dir + '/IOSTAR_points/' + name)])
 
         landmarks_frame = loadmat(self.root_dir + '/IOSTAR_points/' + points_folder[idx])
+
+        print(points_folder)
+        print(data_folder)
         if self.no_endpoints:
             landmarks = np.vstack([np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
                 np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])

@@ -642,3 +642,62 @@ wandb.errors.CommError: Sweep tbertrand/ULM_4channel/0ggkixgi not found
 	vesselnet: False
 2023-05-31 12:08:43 INFO About to run command: /usr/bin/env python train.py --alpha=3.900035557648531 --batch-size=30 --features=64 --lr=0.0007597156960733915 --out_channels=3 --patience=100 --size=64 --vesselnet=False
 2023-05-31 12:08:48 INFO Running runs: ['g6687bj8']
+2023-09-25 11:41:40 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1858, in pull
+    project, run = api.parse_slug(run, project=project)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 84, in parse_slug
+    return self.api.parse_slug(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 363, in parse_slug
+    raise CommError("No default project configured.")
+wandb.errors.CommError: No default project configured.
+
+2023-09-25 11:42:06 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1692, in download_urls
+    raise CommError(f"Run does not exist {entity}/{project}/{run}.")
+wandb.errors.CommError: Run does not exist models/ULM_4channel/5ss48pkc.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1859, in pull
+    urls = api.download_urls(project, run=run, entity=entity)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 90, in download_urls
+    return self.api.download_urls(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1692, in download_urls
+    raise CommError(f"Run does not exist {entity}/{project}/{run}.")
+wandb.errors.CommError: Run does not exist models/ULM_4channel/5ss48pkc.
+
+2023-09-25 11:43:31 ERROR Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1692, in download_urls
+    raise CommError(f"Run does not exist {entity}/{project}/{run}.")
+wandb.errors.CommError: Run does not exist models/ULM_4channel/sweep:dl1wxdnd.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 97, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/cli/cli.py", line 1859, in pull
+    urls = api.download_urls(project, run=run, entity=entity)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/internal.py", line 90, in download_urls
+    return self.api.download_urls(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 62, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/apis/normalize.py", line 26, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/wandb/sdk/internal/internal_api.py", line 1692, in download_urls
+    raise CommError(f"Run does not exist {entity}/{project}/{run}.")
+wandb.errors.CommError: Run does not exist models/ULM_4channel/sweep:dl1wxdnd.
+

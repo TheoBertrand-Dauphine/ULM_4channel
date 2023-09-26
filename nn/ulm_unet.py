@@ -238,6 +238,7 @@ class ULM_UNet(pl.LightningModule):
 
         avg_points_detected = detected_points.shape[0]/x.shape[0]
 
+
         for i in range(x.shape[0]):
             points = detected_points[detected_points[:,0]==i,1:]
             points = points[:,[1,2,0]]

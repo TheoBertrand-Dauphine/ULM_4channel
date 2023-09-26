@@ -188,29 +188,29 @@ def Cluster_from_Distance(D, L, distance_threshold = 10.):
 
 def Modify_Metric_and_Points(I, points_tensor, theta_indices):
 
-	[Nx,Ny,Nt] = I.shape
+    [Nx, Ny, Nt] = I.shape
 
-	tol_prox_theta = Nt/5
+    tol_prox_theta = Nt/5
 
-	for i in range(points_tensor.shape[0]):
-	    
-	    if points_tensor[i,2] == 2:
-	        theta_ind_prox = I[[points_tensor[i,1].long(),points_tensor[i,0].long()]].topk(Nt).indices
-	        indic_prox_theta = torch.abs(theta_ind_prox-theta_indices[i])>tol_prox_theta
-	        
-	        theta_ind = theta_ind_prox[indic_prox_theta][0]
-	        theta_indices = torch.cat([theta_indices, theta_ind.unsqueeze(0)], dim=0)
-	        
-	        points_tensor = torch.cat([points_tensor, points_tensor[i,:].unsqueeze(0)], dim=0)
-	        
-	    if points_tensor[i,2] == 1:
-	        I[points_tensor[i,1].long(),points_tensor[i,0].long(),:] = 1.0
+    for i in range(points_tensor.shape[0]):
 
-	print('nombre de points : {}'.format(points_tensor.shape[0]))
+        if points_tensor[i,2] == 2:
+            theta_ind_prox = I[[points_tensor[i,1].long(),points_tensor[i,0].long()]].topk(Nt).indices
+            indic_prox_theta = torch.abs(theta_ind_prox-theta_indices[i])>tol_prox_theta
 
-	theta_indices = theta_indices.long()
+            theta_ind = theta_ind_prox[indic_prox_theta][0]
+            theta_indices = torch.cat([theta_indices, theta_ind.unsqueeze(0)], dim=0)
 
-	return([I, points_tensor, theta_indices])
+            points_tensor = torch.cat([points_tensor, points_tensor[i,:].unsqueeze(0)], dim=0)
+
+        if points_tensor[i,2] == 1:
+            I[points_tensor[i,1].long(),points_tensor[i,0].long(),:] = 1.0
+
+    print('nombre de points : {}'.format(points_tensor.shape[0]))
+
+    theta_indices = theta_indices.long()
+
+    return([I, points_tensor, theta_indices])
 
 def Show_Tree(Tcsr_element, labels, prim_dict):
 
@@ -274,7 +274,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], show_metric=Fals
 #%%
 if __name__ == '__main__':
     
-    data = 'ULM'
+    data = 'IOSTAR'
     np.random.seed(82)
 
     if data=='synthetic':
@@ -320,8 +320,8 @@ if __name__ == '__main__':
         
         im_tensor = batch['image']
         
-        model = ULM_UNet(in_channels=3, init_features=48, threshold = 0.1, out_channels = 4)
-        model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_2000_size_512_batch_1_out_channels_4_alpha_3.0_10_6.pt'))
+        model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.1, out_channels = 4)
+        model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
         Nt = 64
         
         points = Detection_Model(model, batch, threshold=0.3)
@@ -335,14 +335,14 @@ if __name__ == '__main__':
         print(batch['landmarks'].shape[0])
         print((batch['landmarks'][:,2]==2).sum())
         
-        batch_transform = transforms.Compose([Rescale(512), HeatMap(s=13, alpha=3, out_channels = 6), ToTensor(), Padding(0)])
+        batch_transform = transforms.Compose([Rescale(256), HeatMap(s=13, alpha=3.55, out_channels = 4), ToTensor(), Padding(0)])
         
         batch_rescaled = batch_transform(batch)
         
         im_tensor, points_tensor = batch_rescaled['image'], batch_rescaled['landmarks'][:,:].long()
         
         # grey_levels_im_tensor = (1.-(im_tensor**2).mean(dim=0).sqrt())*(im_tensor.mean(dim=0)>1e-1)
-        A = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.1).numpy()
+        A = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.15).numpy()
         A = torch.tensor(A/A.max(axis=(1,2), keepdims=True)).mean(dim=0).sqrt()
         pil_to_tensor = torchvision.transforms.ToTensor()
 
