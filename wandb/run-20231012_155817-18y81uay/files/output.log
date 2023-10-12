@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "./train.py", line 118, in <module>
+    main(args,42)
+  File "./train.py", line 73, in main
+    trainer = Trainer(
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/env_vars_connector.py", line 38, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 431, in __init__
+    self._accelerator_connector = AcceleratorConnector(
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 161, in __init__
+    self.select_accelerator_type()
+  File "/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/accelerator_connector.py", line 228, in select_accelerator_type
+    raise MisconfigurationException(f"You passed `accelerator='gpu'`, but {msg}.")
+pytorch_lightning.utilities.exceptions.MisconfigurationException: You passed `accelerator='gpu'`, but GPUs are not available.

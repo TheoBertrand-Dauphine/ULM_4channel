@@ -1,0 +1,117 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 66
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 240
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 912
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 3.6 K
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 14.0 K
+10 | upconv4        | ConvTranspose2d | 2.1 K
+11 | decoder4       | Sequential      | 7.0 K
+12 | upconv3        | ConvTranspose2d | 520
+13 | decoder3       | Sequential      | 1.8 K
+14 | upconv2        | ConvTranspose2d | 132
+15 | decoder2       | Sequential      | 456
+16 | upconv1        | ConvTranspose2d | 34
+17 | decoder1       | Sequential      | 120
+18 | conv           | Conv2d          | 12
+----------------------------------------------------
+30.9 K    Trainable params
+0         Non-trainable params
+30.9 K    Total params
+0.124     Total estimated model params size (MB)
+Sanity Checking DataLoader 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.14it/s]
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/./train.py", line 118, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/./train.py", line 83, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 696, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 735, in _fit_impl
+    results = self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1283, in _run_train
+    self.fit_loop.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 271, in advance
+    self._outputs = self.epoch_loop.run(self._data_fetcher)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 203, in advance
+    batch_output = self.batch_loop.run(kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/batch/training_batch_loop.py", line 87, in advance
+    outputs = self.optimizer_loop.run(optimizers, kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 201, in advance
+    result = self._run_optimization(kwargs, self._optimizers[self.optim_progress.optimizer_position])
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 248, in _run_optimization
+    self._optimizer_step(optimizer, opt_idx, kwargs.get("batch_idx", 0), closure)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 358, in _optimizer_step
+    self.trainer._call_lightning_module_hook(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1550, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1705, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/core/optimizer.py", line 168, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, self._optimizer_idx, closure, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 216, in optimizer_step
+    return self.precision_plugin.optimizer_step(model, optimizer, opt_idx, closure, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 153, in optimizer_step
+    return optimizer.step(closure=closure, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/optim/optimizer.py", line 113, in wrapper
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/optim/adam.py", line 118, in step
+    loss = closure()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 138, in _wrap_closure
+    closure_result = closure()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 146, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 132, in closure
+    step_output = self._step_fn()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/optimizer_loop.py", line 407, in _training_step
+    training_step_output = self.trainer._call_strategy_hook("training_step", *kwargs.values())
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1704, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 358, in training_step
+    return self.model.training_step(*args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 204, in training_step
+    y_pred = self(x)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 106, in forward
+    enc1 = self.encoder1(x)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/modules/batchnorm.py", line 168, in forward
+    return F.batch_norm(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/torch/nn/functional.py", line 2438, in batch_norm
+    return torch.batch_norm(
+
+Epoch 0:   0%|                                                                                                                                                                                                                                   | 0/4 [00:00<?, ?it/s]

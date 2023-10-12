@@ -103,7 +103,8 @@ class ULM_UNet(pl.LightningModule):
         
         
     def forward(self, x):
-        # print(x.shape)
+
+        print(x.shape)
         enc1 = self.encoder1(x)
         enc2 = self.encoder2(self.pool1(enc1))
         enc3 = self.encoder3(self.pool2(enc2))
@@ -148,7 +149,6 @@ class ULM_UNet(pl.LightningModule):
             dec1_2 = self.decoder1_2(dec1_2)
             
             out_2 = self.conv_2(dec1_2)
-            # print(out_2.shape, torch.cat([out,out_2], dim=1).shape)
             return torch.cat([out,out_2], dim=1)
         else:
             return out
@@ -346,8 +346,10 @@ class ImagePredictionLogger(pl.Callback):
         for original_image, logits, ground_truth in zip(val_imgs, logits, self.val_labels):
             # the raw background image as a numpy array
             #bg_image = image2np(original_image.data)
-            
-            bg_image = np.floor(original_image.squeeze().permute([1,2,0]).cpu().numpy())
+            if original_image.ndim==4:
+                bg_image = np.floor(original_image.squeeze().permute([1,2,0]).cpu().numpy())
+            elif original_image.ndim==3:
+                bg_image = np.floor(original_image.cpu().numpy())
             # run the model on that image
             #prediction = pl_module(original_image)[0]
 

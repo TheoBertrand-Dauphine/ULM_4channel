@@ -66,7 +66,7 @@ def main(args,seed):
         else:
             model = ULM_UNet(in_channels=3, init_features=args.features, threshold = args.threshold, out_channels = args.out_channels, second_unet=args.second_unet, lr = args.lr)
     else:
-        model = ULM_UNet(in_channels=1, init_features=48, threshold=args.threshold, out_channels = args.out_channels, second_unet=args.second_unet, lr = args.lr)
+        model = ULM_UNet(in_channels=1, init_features=args.features, threshold=args.threshold, out_channels = args.out_channels, second_unet=args.second_unet, lr = args.lr)
 
     samples = next(iter(valloader))
 

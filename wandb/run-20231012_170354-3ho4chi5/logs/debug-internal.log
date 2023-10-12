@@ -1,0 +1,223 @@
+2023-10-12 17:03:54,112 INFO    StreamThr :314310 [internal.py:wandb_internal():88] W&B internal server running at pid: 314310, started at: 2023-10-12 17:03:54.111001
+2023-10-12 17:03:54,116 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: status
+2023-10-12 17:03:54,118 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: status
+2023-10-12 17:03:54,121 DEBUG   SenderThread:314310 [sender.py:send():301] send: header
+2023-10-12 17:03:54,121 DEBUG   SenderThread:314310 [sender.py:send():301] send: run
+2023-10-12 17:03:54,127 INFO    WriterThread:314310 [datastore.py:open_for_write():75] open: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/run-3ho4chi5.wandb
+2023-10-12 17:03:54,717 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: check_version
+2023-10-12 17:03:54,723 INFO    SenderThread:314310 [dir_watcher.py:__init__():216] watching files in: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files
+2023-10-12 17:03:54,723 INFO    SenderThread:314310 [sender.py:_start_run_threads():912] run started: 3ho4chi5 with start time 1697123034.100144
+2023-10-12 17:03:54,723 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:03:54,724 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:03:54,724 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: check_version
+2023-10-12 17:03:54,821 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: run_start
+2023-10-12 17:03:54,826 DEBUG   HandlerThread:314310 [meta.py:__init__():34] meta init
+2023-10-12 17:03:54,826 DEBUG   HandlerThread:314310 [meta.py:__init__():49] meta init done
+2023-10-12 17:03:54,826 DEBUG   HandlerThread:314310 [meta.py:probe():215] probe
+2023-10-12 17:03:54,834 DEBUG   HandlerThread:314310 [meta.py:_setup_git():205] setup git
+2023-10-12 17:03:54,844 DEBUG   HandlerThread:314310 [meta.py:_setup_git():212] setup git done
+2023-10-12 17:03:54,844 DEBUG   HandlerThread:314310 [meta.py:_save_pip():53] save pip
+2023-10-12 17:03:54,845 DEBUG   HandlerThread:314310 [meta.py:_save_pip():67] save pip done
+2023-10-12 17:03:54,845 DEBUG   HandlerThread:314310 [meta.py:_save_conda():74] save conda
+2023-10-12 17:03:55,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/conda-environment.yaml
+2023-10-12 17:03:55,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/requirements.txt
+2023-10-12 17:03:55,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-summary.json
+2023-10-12 17:03:58,507 DEBUG   HandlerThread:314310 [meta.py:_save_conda():84] save conda done
+2023-10-12 17:03:58,507 DEBUG   HandlerThread:314310 [meta.py:probe():253] probe done
+2023-10-12 17:03:58,550 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:03:58,550 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-metadata.json with policy now
+2023-10-12 17:03:58,554 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: stop_status
+2023-10-12 17:03:58,554 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: stop_status
+2023-10-12 17:03:58,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/conda-environment.yaml
+2023-10-12 17:03:58,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-metadata.json
+2023-10-12 17:03:58,880 DEBUG   SenderThread:314310 [sender.py:send():301] send: telemetry
+2023-10-12 17:03:59,193 INFO    Thread-17 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/199a79n2-wandb-metadata.json
+2023-10-12 17:03:59,724 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:01,725 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:02,725 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:02,958 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:02,958 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/Background_0_98289897c5e46ccca2c2.png with policy now
+2023-10-12 17:04:02,966 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:02,966 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/predicted_0_d88cfae36d4fc405ef98.png with policy now
+2023-10-12 17:04:02,972 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:02,972 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/label_0_fcb5ce03541de5b09f43.png with policy now
+2023-10-12 17:04:02,973 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: partial_history
+2023-10-12 17:04:02,974 DEBUG   SenderThread:314310 [sender.py:send():301] send: history
+2023-10-12 17:04:02,974 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:02,977 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: partial_history
+2023-10-12 17:04:02,978 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:02,979 DEBUG   SenderThread:314310 [sender.py:send():301] send: history
+2023-10-12 17:04:02,979 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:02,982 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:03,476 INFO    Thread-18 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/1oiab2gh-media/images/Background_0_98289897c5e46ccca2c2.png
+2023-10-12 17:04:03,478 INFO    Thread-19 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/39gjaegp-media/images/predicted_0_d88cfae36d4fc405ef98.png
+2023-10-12 17:04:03,479 INFO    Thread-20 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/15lyw56r-media/images/label_0_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:03,726 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-summary.json
+2023-10-12 17:04:03,727 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/Background_0_98289897c5e46ccca2c2.png
+2023-10-12 17:04:03,727 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/label_0_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:03,727 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/predicted_0_d88cfae36d4fc405ef98.png
+2023-10-12 17:04:03,728 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media
+2023-10-12 17:04:03,728 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images
+2023-10-12 17:04:04,417 INFO    Thread-23 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/ghsarjvz-media/images/predicted_0_d88cfae36d4fc405ef98.png
+2023-10-12 17:04:04,418 INFO    Thread-21 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/ahf6iong-media/images/Background_0_98289897c5e46ccca2c2.png
+2023-10-12 17:04:04,419 INFO    Thread-22 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/1f1tc7o5-media/images/label_0_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:04,727 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:04,798 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:04,798 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/Background_2_98289897c5e46ccca2c2.png with policy now
+2023-10-12 17:04:04,921 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:04,922 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/predicted_2_2993f67a49d61c7679b4.png with policy now
+2023-10-12 17:04:04,926 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: partial_history
+2023-10-12 17:04:04,926 DEBUG   SenderThread:314310 [sender.py:send():301] send: files
+2023-10-12 17:04:04,927 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: partial_history
+2023-10-12 17:04:04,927 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file media/images/label_2_fcb5ce03541de5b09f43.png with policy now
+2023-10-12 17:04:04,929 DEBUG   SenderThread:314310 [sender.py:send():301] send: history
+2023-10-12 17:04:04,929 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:04,930 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:04,930 DEBUG   SenderThread:314310 [sender.py:send():301] send: history
+2023-10-12 17:04:04,930 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:04,933 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:04,964 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: partial_history
+2023-10-12 17:04:04,964 DEBUG   SenderThread:314310 [sender.py:send():301] send: history
+2023-10-12 17:04:04,965 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:04,966 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:05,144 DEBUG   SenderThread:314310 [sender.py:send():301] send: exit
+2023-10-12 17:04:05,145 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:05,145 INFO    SenderThread:314310 [sender.py:send_exit():437] handling exit code: 0
+2023-10-12 17:04:05,145 INFO    SenderThread:314310 [sender.py:send_exit():439] handling runtime: 10
+2023-10-12 17:04:05,147 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:05,147 INFO    SenderThread:314310 [sender.py:send_exit():445] send defer
+2023-10-12 17:04:05,147 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:05,147 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,147 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 0
+2023-10-12 17:04:05,148 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,148 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 0
+2023-10-12 17:04:05,148 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 1
+2023-10-12 17:04:05,148 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,148 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 1
+2023-10-12 17:04:05,232 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,232 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 1
+2023-10-12 17:04:05,232 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 2
+2023-10-12 17:04:05,232 DEBUG   SenderThread:314310 [sender.py:send():301] send: stats
+2023-10-12 17:04:05,233 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,233 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 2
+2023-10-12 17:04:05,233 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,233 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 2
+2023-10-12 17:04:05,233 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 3
+2023-10-12 17:04:05,233 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,233 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 3
+2023-10-12 17:04:05,233 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,233 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 3
+2023-10-12 17:04:05,233 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 4
+2023-10-12 17:04:05,233 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,234 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 4
+2023-10-12 17:04:05,234 DEBUG   SenderThread:314310 [sender.py:send():301] send: summary
+2023-10-12 17:04:05,234 INFO    SenderThread:314310 [sender.py:_save_file():1155] saving file wandb-summary.json with policy end
+2023-10-12 17:04:05,234 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,234 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 4
+2023-10-12 17:04:05,234 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 5
+2023-10-12 17:04:05,235 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,235 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 5
+2023-10-12 17:04:05,235 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,235 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 5
+2023-10-12 17:04:05,248 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:05,267 INFO    Thread-24 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/22ywxstn-media/images/Background_2_98289897c5e46ccca2c2.png
+2023-10-12 17:04:05,346 INFO    Thread-25 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/s2zk5f28-media/images/predicted_2_2993f67a49d61c7679b4.png
+2023-10-12 17:04:05,391 INFO    Thread-26 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/3nk1624i-media/images/label_2_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:05,459 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 6
+2023-10-12 17:04:05,459 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:05,460 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:05,461 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 6
+2023-10-12 17:04:05,462 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:05,463 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 6
+2023-10-12 17:04:05,563 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:05,728 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-summary.json
+2023-10-12 17:04:05,729 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/config.yaml
+2023-10-12 17:04:05,729 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/Background_2_98289897c5e46ccca2c2.png
+2023-10-12 17:04:05,730 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/predicted_2_2993f67a49d61c7679b4.png
+2023-10-12 17:04:05,730 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_created():275] file/dir created: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/label_2_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:05,730 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images
+2023-10-12 17:04:06,404 INFO    Thread-29 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/26zswskx-media/images/label_2_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:06,407 INFO    Thread-28 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/29rclm8r-media/images/predicted_2_2993f67a49d61c7679b4.png
+2023-10-12 17:04:06,409 INFO    Thread-27 :314310 [upload_job.py:push():139] Uploaded file /tmp/tmplct6rdqiwandb/11y4bd9n-media/images/Background_2_98289897c5e46ccca2c2.png
+2023-10-12 17:04:06,729 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:07,730 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:08,720 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 7
+2023-10-12 17:04:08,721 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:08,722 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:08,722 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 7
+2023-10-12 17:04:08,723 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:08,723 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 7
+2023-10-12 17:04:08,723 INFO    SenderThread:314310 [dir_watcher.py:finish():362] shutting down directory watcher
+2023-10-12 17:04:08,731 INFO    Thread-13 :314310 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:08,732 INFO    SenderThread:314310 [dir_watcher.py:finish():392] scan: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files
+2023-10-12 17:04:08,733 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/requirements.txt requirements.txt
+2023-10-12 17:04:08,733 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-metadata.json wandb-metadata.json
+2023-10-12 17:04:08,733 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-summary.json wandb-summary.json
+2023-10-12 17:04:08,739 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/conda-environment.yaml conda-environment.yaml
+2023-10-12 17:04:08,740 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/config.yaml config.yaml
+2023-10-12 17:04:08,740 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log output.log
+2023-10-12 17:04:08,746 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/predicted_2_2993f67a49d61c7679b4.png media/images/predicted_2_2993f67a49d61c7679b4.png
+2023-10-12 17:04:08,746 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/label_0_fcb5ce03541de5b09f43.png media/images/label_0_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:08,746 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/label_2_fcb5ce03541de5b09f43.png media/images/label_2_fcb5ce03541de5b09f43.png
+2023-10-12 17:04:08,747 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/Background_0_98289897c5e46ccca2c2.png media/images/Background_0_98289897c5e46ccca2c2.png
+2023-10-12 17:04:08,747 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/predicted_0_d88cfae36d4fc405ef98.png media/images/predicted_0_d88cfae36d4fc405ef98.png
+2023-10-12 17:04:08,747 INFO    SenderThread:314310 [dir_watcher.py:finish():406] scan save: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/media/images/Background_2_98289897c5e46ccca2c2.png media/images/Background_2_98289897c5e46ccca2c2.png
+2023-10-12 17:04:08,747 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 8
+2023-10-12 17:04:08,750 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:08,750 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 8
+2023-10-12 17:04:08,750 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:08,750 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 8
+2023-10-12 17:04:08,750 INFO    SenderThread:314310 [file_pusher.py:finish():168] shutting down file pusher
+2023-10-12 17:04:08,824 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:08,825 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:08,927 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:08,927 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,030 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,031 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,133 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,133 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,236 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,236 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,328 INFO    Thread-31 :314310 [upload_job.py:push():139] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/wandb-summary.json
+2023-10-12 17:04:09,331 INFO    Thread-33 :314310 [upload_job.py:push():139] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/config.yaml
+2023-10-12 17:04:09,334 INFO    Thread-30 :314310 [upload_job.py:push():139] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/requirements.txt
+2023-10-12 17:04:09,338 INFO    Thread-34 :314310 [upload_job.py:push():139] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/output.log
+2023-10-12 17:04:09,340 INFO    Thread-32 :314310 [upload_job.py:push():139] Uploaded file /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/files/conda-environment.yaml
+2023-10-12 17:04:09,342 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,342 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,445 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,445 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,541 INFO    Thread-12 (_thread_body):314310 [sender.py:transition_state():458] send defer: 9
+2023-10-12 17:04:09,542 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:09,542 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 9
+2023-10-12 17:04:09,543 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:09,543 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 9
+2023-10-12 17:04:09,547 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,847 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 10
+2023-10-12 17:04:09,847 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,849 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:09,849 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 10
+2023-10-12 17:04:09,850 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:09,850 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 10
+2023-10-12 17:04:09,850 INFO    SenderThread:314310 [sender.py:transition_state():458] send defer: 11
+2023-10-12 17:04:09,851 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: defer
+2023-10-12 17:04:09,852 DEBUG   SenderThread:314310 [sender.py:send():301] send: final
+2023-10-12 17:04:09,852 INFO    HandlerThread:314310 [handler.py:handle_request_defer():161] handle defer: 11
+2023-10-12 17:04:09,852 DEBUG   SenderThread:314310 [sender.py:send():301] send: footer
+2023-10-12 17:04:09,853 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: defer
+2023-10-12 17:04:09,853 INFO    SenderThread:314310 [sender.py:send_request_defer():454] handle sender defer: 11
+2023-10-12 17:04:09,953 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: poll_exit
+2023-10-12 17:04:09,954 DEBUG   SenderThread:314310 [sender.py:send_request():315] send_request: poll_exit
+2023-10-12 17:04:09,954 INFO    SenderThread:314310 [file_pusher.py:join():173] waiting for file pusher
+2023-10-12 17:04:10,474 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: sampled_history
+2023-10-12 17:04:10,476 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: get_summary
+2023-10-12 17:04:10,478 INFO    MainThread:314310 [wandb_run.py:_footer_history_summary_info():3321] rendering history
+2023-10-12 17:04:10,478 INFO    MainThread:314310 [wandb_run.py:_footer_history_summary_info():3353] rendering summary
+2023-10-12 17:04:10,479 INFO    MainThread:314310 [wandb_run.py:_footer_sync_info():3277] logging synced files
+2023-10-12 17:04:10,480 DEBUG   HandlerThread:314310 [handler.py:handle_request():138] handle_request: shutdown
+2023-10-12 17:04:10,480 INFO    HandlerThread:314310 [handler.py:finish():807] shutting down handler
+2023-10-12 17:04:10,852 INFO    WriterThread:314310 [datastore.py:close():279] close: /home/tbertrand/Bureau/ULM_4channel_pull/wandb/run-20231012_170354-3ho4chi5/run-3ho4chi5.wandb
+2023-10-12 17:04:11,372 INFO    SenderThread:314310 [sender.py:finish():1315] shutting down sender
+2023-10-12 17:04:11,373 INFO    SenderThread:314310 [file_pusher.py:finish():168] shutting down file pusher
+2023-10-12 17:04:11,373 INFO    SenderThread:314310 [file_pusher.py:join():173] waiting for file pusher
+2023-10-12 17:04:11,484 INFO    MainThread:314310 [internal.py:handle_exit():78] Internal process exited

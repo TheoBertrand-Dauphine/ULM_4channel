@@ -1,0 +1,64 @@
+/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+   | Name           | Type            | Params
+----------------------------------------------------
+0  | local_max_filt | MaxPool2d       | 0
+1  | encoder1       | Sequential      | 66
+2  | pool1          | MaxPool2d       | 0
+3  | encoder2       | Sequential      | 240
+4  | pool2          | MaxPool2d       | 0
+5  | encoder3       | Sequential      | 912
+6  | pool3          | MaxPool2d       | 0
+7  | encoder4       | Sequential      | 3.6 K
+8  | pool4          | MaxPool2d       | 0
+9  | bottleneck     | Sequential      | 14.0 K
+10 | upconv4        | ConvTranspose2d | 2.1 K
+11 | decoder4       | Sequential      | 7.0 K
+12 | upconv3        | ConvTranspose2d | 520
+13 | decoder3       | Sequential      | 1.8 K
+14 | upconv2        | ConvTranspose2d | 132
+15 | decoder2       | Sequential      | 456
+16 | upconv1        | ConvTranspose2d | 34
+17 | decoder1       | Sequential      | 120
+18 | conv           | Conv2d          | 12
+----------------------------------------------------
+30.9 K    Trainable params
+0         Non-trainable params
+30.9 K    Total params
+0.124     Total estimated model params size (MB)
+Sanity Checking DataLoader 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.19it/s]torch.Size([1, 256, 256])
+Traceback (most recent call last):
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/./train.py", line 118, in <module>
+    main(args,42)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/./train.py", line 83, in main
+    trainer.fit(model,trainloader,valloader)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 696, in fit
+    self._call_and_handle_interrupt(
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 735, in _fit_impl
+    results = self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1274, in _run_train
+    self._run_sanity_check()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1343, in _run_sanity_check
+    val_loop.run()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/loop.py", line 207, in run
+    output = self.on_run_end()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 187, in on_run_end
+    self._on_evaluation_epoch_end()
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 298, in _on_evaluation_epoch_end
+    self.trainer._call_callback_hooks(hook_name)
+  File "/home/tbertrand/anaconda3/envs/landmarkv2/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1597, in _call_callback_hooks
+    fn(self, self.lightning_module, *args, **kwargs)
+  File "/home/tbertrand/Bureau/ULM_4channel_pull/nn/ulm_unet.py", line 348, in on_validation_epoch_end
+    bg_image = np.floor(original_image.squeeze().permute([1,2,0]).cpu().numpy())
+RuntimeError: number of dims don't match in permute
