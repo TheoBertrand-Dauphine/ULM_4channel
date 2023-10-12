@@ -28,6 +28,8 @@ from utils.dataset import ULMDataset, IOSTARDataset
 
 from nn.ulm_unet import ULM_UNet
 
+from tqdm import tqdm
+
 from skimage.filters import frangi
 
 try:
@@ -45,33 +47,33 @@ from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, mak
 
 
 def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
-    # hfmIn = Eikonal.dictIn({
-    #     'model':'Riemann3_Periodic', # The third dimension is periodic (and only this one), in this model.
-    #     })
+    hfmIn = Eikonal.dictIn({
+        'model':'Riemann3_Periodic', # The third dimension is periodic (and only this one), in this model.
+        })
 
     [Nx,Ny,Nt] = W.shape; print(Nx,Ny,Nt)
 
-    # hfmIn.SetRect(sides=[[0,Nx/Ny],[0,1],[0,np.pi]],dims=[Nx,Ny,Nt])
+    hfmIn.SetRect(sides=[[0,Nx/Ny],[0,1],[0,np.pi]],dims=[Nx,Ny,Nt])
 
-    # hfmIn['order'] = 1
+    hfmIn['order'] = 2
 
-    # X,Y,Theta = hfmIn.Grid()
-    # zero = np.zeros_like(X)
+    X,Y,Theta = hfmIn.Grid()
+    zero = np.zeros_like(X)
 
-    # ReedsSheppMetric = Riemann( # Riemannian metric defined by a positive definite tensor field
-    #     Outer([np.cos(Theta), np.sin(Theta),zero])
-    #     + alpha**(-2)*Outer([-np.sin(Theta),np.cos(Theta),zero])
-    #     + xi**2*Outer([zero,zero,1+zero])
-    #     ).with_cost(W)
+    ReedsSheppMetric = Riemann( # Riemannian metric defined by a positive definite tensor field
+        Outer([np.cos(Theta), np.sin(Theta),zero])
+        + alpha**(-2)*Outer([-np.sin(Theta),np.cos(Theta),zero])
+        + xi**2*Outer([zero,zero,1+zero])
+        ).with_cost(W)
 
-    # hfmIn['metric'] = ReedsSheppMetric
+    hfmIn['metric'] = ReedsSheppMetric
     
-    hfmIn = Eikonal.dictIn({
-    'model': 'ReedsShepp2', # Two-dimensional Riemannian eikonal equation
-    'xi': xi,
-    'seedValue':0, # Can be omitted, since this is the default.
-    'projective':1
-    })
+    # hfmIn = Eikonal.dictIn({
+    # 'model': 'ReedsShepp2', # Two-dimensional Riemannian eikonal equation
+    # 'xi': xi,
+    # 'seedValue':0, # Can be omitted, since this is the default.
+    # 'projective':1
+    # })
     
     # W = np.ones([Nx,Nx,Nt])
     
@@ -79,10 +81,10 @@ def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0
     
     # hfmIn.SetRect(sides=[[0,Nx/Ny],[0,1],[0,np.pi]],dims=[Nx,Ny,Nt])
     
-    hfmIn['cost'] = W
+    # hfmIn['cost'] = W
     
-    hfmIn.SetRect(sides=[[0,1],[0,1]], gridScale = 1/Nx)
-    hfmIn.nTheta = 2*Nt
+    # hfmIn.SetRect(sides=[[0,1],[0,1]], gridScale = 1/Nx)
+    # hfmIn.nTheta = 2*Nt
 
     hfmIn['exportValues'] = 1
     hfmIn['verbosity'] = 0
@@ -96,8 +98,8 @@ def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0
     
     points_array_3d = np.hstack([points_tensor[:,:-1], theta_indices.unsqueeze(1)])
 
-    for j in range(n_points-1):
-        print(round((j+1)/n_points,2))
+    for j in tqdm(range(n_points-1)):
+        # print(round((j+1)/n_points,2))
         
         hfmIn['seed'] = np.hstack([points_tensor[j,1]*(Nx/Ny)/Nx, points_tensor[j,0]/Ny, np.pi*theta_indices[j]/Nt]);
 
@@ -110,7 +112,7 @@ def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0
         a = time.time()
         hfmOut = hfmIn.Run()
         
-        print(time.time()-a)
+        # print(time.time()-a)
         
         # print(points_tensor[j+1:])
         D[j,j+1:] = hfmOut['values'][points_tensor[j+1:,1],points_tensor[j+1:,0],theta_indices[j+1:]]
@@ -259,7 +261,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], show_metric=Fals
     for i in range(len(list_of_stacks)):
         stacked_list = list_of_stacks[i]
         
-        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=1)
+        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.3)
     plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
     # plt.title('result with factor in the direction theta {}'.format(theta_cost))
     # for i in range(N_points):
@@ -435,7 +437,7 @@ if __name__ == '__main__':
     
     #%% Visualization
 
-    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = 25)
+    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = 5)
     Show_Curves(W, im_tensor, points_tensor_mod, list_of_stacks, show_metric=False)
     Show_Tree(Tcsr_list[0], labels, prim_dict)
     
