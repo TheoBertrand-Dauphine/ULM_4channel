@@ -46,10 +46,10 @@ def main(args,seed):
             valloader = DataLoader(validation_dataset, batch_size=21, shuffle=False, num_workers=args.workers)
         else:
             data_dir = './data/'
-            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), GlobalContrastNormalization(), ColorJitter(), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
+            train_dataset = ULMDataset(root_dir=data_dir + 'train_images', transform=transforms.Compose([RandomCrop(args.size), RandomFlip(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor(), RandomAffine(360, 0.1)]))
             trainloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
 
-            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([GlobalContrastNormalization(), HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
+            validation_dataset = ULMDataset(root_dir=data_dir + 'val_images', transform=transforms.Compose([ HeatMap(s=int(3*args.alpha), alpha=args.alpha, out_channels = args.out_channels), ToTensor()]))
             valloader = DataLoader(validation_dataset, batch_size=8, shuffle=False, num_workers=args.workers)
 
         
@@ -95,7 +95,7 @@ def main(args,seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser( description="Training U-Net model for segmentation of brain MRI")
     parser.add_argument("--batch-size", type=int, default=10, help="input batch size for training (default: 16)")
-    parser.add_argument("--epochs", type=int, default=1, help="number of epochs to train (default: 100)")
+    parser.add_argument("--epochs", type=int, default=1000, help="number of epochs to train (default: 100)")
     parser.add_argument("--lr", type=float, default=0.001, help="initial learning rate (default: 0.001)")
     parser.add_argument("--device", type=int, default=1, help="device for training (default: cuda:0)")
     parser.add_argument("--workers",type=int,default=16, help="number of workers for data loading (default: 16)")
@@ -104,7 +104,7 @@ if __name__ == '__main__':
     parser.add_argument("--data",type=str,default='IOSTAR',help="Using synthetic data (default: ULM data, others : 'synthetic' or 'IOSTAR')")
     parser.add_argument("--patience", type=int, default=200, help=" Number of steps of consecutive stagnation of validation loss before lowering lr (default: 400)")
     parser.add_argument("--threshold", type=float, default=0.05, help="threshold applied on output for detection of points (default: 0.1)")
-    parser.add_argument("--out_channels", type=int, default=3, help="Number of channels in the output layer (default: 3)")
+    parser.add_argument("--out_channels", type=int, default=4, help="Number of channels in the output layer (default: 3)")
     parser.add_argument("--alpha", type=float, default=3., help=" Value of the parameter alpha for gaussian representing landmark (default: 3.)")
     parser.add_argument("--no_endpoints", type=int, default=0, help=" Whether to include endpoints in IOSTAR dataset")
     parser.add_argument("--second_unet", type=int, default=0, help=" Use 2 UNETS?")

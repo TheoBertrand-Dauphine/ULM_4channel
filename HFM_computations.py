@@ -30,6 +30,8 @@ from nn.ulm_unet import ULM_UNet
 
 from tqdm import tqdm
 
+from datetime import datetime
+
 from skimage.filters import frangi
 
 try:
@@ -46,6 +48,23 @@ from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, mak
 
 
 
+def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
+    """
+    Computes the distance matrix between a set of points using the Fast Marching Method (FMM) algorithm.
+
+    Args:
+    - W: numpy array of shape (Nx, Ny, Nt) representing the Riemannian metric tensor field.
+    - points_tensor: torch tensor of shape (n_points, 3) representing the set of points in 3D space.
+    - theta_indices: torch tensor of shape (n_points,) representing the indices of the theta coordinate for each point.
+    - alpha: float representing the weight of the first term in the Riemannian metric tensor field.
+    - xi: float representing the weight of the third term in the Riemannian metric tensor field.
+
+    Returns:
+    - A list containing:
+        - D: numpy array of shape (n_points, n_points) representing the distance matrix between the set of points.
+        - L: list of length n_points-1 containing the geodesics between consecutive points.
+        - hfmIn: dictionary containing the input parameters for the FMM algorithm.
+    """
 def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
     hfmIn = Eikonal.dictIn({
         'model':'Riemann3_Periodic', # The third dimension is periodic (and only this one), in this model.
@@ -123,7 +142,33 @@ def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0
     return([D, L, hfmIn])
 
 
-def Cluster_from_Distance(D, L, distance_threshold = 10.):
+def Cluster_from_Distance(D, L, distance_threshold=10.):
+    """
+    Clusters a set of curves based on their pairwise distances.
+
+    Parameters
+    ----------
+    D : numpy.ndarray
+        A square matrix of pairwise distances between curves.
+    L : list
+        A list of curves.
+    distance_threshold : float, optional
+        The maximum distance between two curves for them to be in the same cluster.
+        Defaults to 10.
+
+    Returns
+    -------
+    list
+        A list of curves, where each curve is a concatenation of the curves in a cluster.
+    list
+        A list of stacked curves, where each stacked curve is a concatenation of the curves in a cluster.
+    list
+        A list of minimum spanning trees, one for each cluster.
+    numpy.ndarray
+        A dictionary that maps the indices of the original curves to the indices of the clusters.
+    numpy.ndarray
+        A list of cluster labels, one for each curve.
+    """
     D_norm = np.zeros_like(D)
     
     D_norm[D<np.inf] = D[D<np.inf]/(D[D<np.inf]).max()
@@ -188,9 +233,34 @@ def Cluster_from_Distance(D, L, distance_threshold = 10.):
 
 
 
-def Modify_Metric_and_Points(I, points_tensor, theta_indices):
+def Modify_Metric_and_Points(I, points_tensor, theta_indices, decalage = 3):
+    """
+    Modify the metric and points tensor based on the input image I, points tensor and theta indices.
 
+    Args:
+    - I (torch.Tensor): Input image tensor of shape (Nx, Ny, Nt).
+    - points_tensor (torch.Tensor): Tensor of shape (n_points, 3) containing the x and y coordinates of each point and its type (1 or 2).
+    - theta_indices (torch.Tensor): Tensor of shape (n_points,) containing the theta index for each point.
+    - decalage (int): The number of pixels to shift the points in their neighborhood.
+
+    Returns:
+    - A list containing:
+        - The modified image tensor of shape (Nx, Ny, Nt).
+        - The modified points tensor of shape (n_points, 3).
+        - The modified theta indices tensor of shape (n_points,).
+    """
     [Nx, Ny, Nt] = I.shape
+
+    # Décalage des points dans leur voisinage
+    for i in range(points_tensor.shape[0]):
+        I_neigh = I[points_tensor[i,1].long()-decalage:points_tensor[i,1].long()+ decalage + 1,points_tensor[i,0].long()-decalage :points_tensor[i,0].long()+decalage + 1,:]
+        idx = I_neigh.argmax()
+
+        u = (I_neigh==I_neigh.reshape(-1)[idx]).nonzero()
+        points_tensor[i,0] = u[0,1] + points_tensor[i,0]-3
+        points_tensor[i,1] = u[0,0] + points_tensor[i,1]-3
+        theta_indices[i] = u[0,2]
+
 
     tol_prox_theta = Nt/5
 
@@ -215,7 +285,22 @@ def Modify_Metric_and_Points(I, points_tensor, theta_indices):
     return([I, points_tensor, theta_indices])
 
 def Show_Tree(Tcsr_element, labels, prim_dict):
+    """
+    Visualize a tree represented as a sparse matrix in Compressed Sparse Row format.
 
+    Parameters:
+    -----------
+    Tcsr_element : scipy.sparse.csr_matrix
+        The sparse matrix representing the tree.
+    labels : numpy.ndarray
+        An array of integers representing the labels of the nodes in the tree.
+    prim_dict : numpy.ndarray
+        An array of strings representing the names of the primitives used to build the tree.
+
+    Returns:
+    --------
+    None
+    """
     T = Tcsr_element
     G = nx.from_scipy_sparse_array(T)
     lab = [(i,'{}'.format(prim_dict[labels==0][i])) for i in range(len(prim_dict[labels==0]))]
@@ -226,6 +311,17 @@ def Show_Tree(Tcsr_element, labels, prim_dict):
     return(None)
 
 def Detection_Model(model, val_batch, threshold=0.05):
+    """
+    Applies a detection model to a validation batch and returns the coordinates of detected points.
+
+    Args:
+        model (torch.nn.Module): The detection model to use.
+        val_batch (dict): A dictionary containing the validation batch data.
+        threshold (float, optional): The detection threshold. Defaults to 0.05.
+
+    Returns:
+        torch.Tensor: A tensor containing the coordinates of detected points.
+    """
     if val_batch['image'].ndim==2:
         y = model(val_batch['image'].unsqueeze(0).unsqueeze(0))
     else:
@@ -238,10 +334,28 @@ def Detection_Model(model, val_batch, threshold=0.05):
     
     return(detected_points)
 
-def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], show_metric=False):
+import matplotlib.pyplot as plt
+import numpy as np
+from datetime import datetime
+
+def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic', show_metric=False, th_output = True):
+    """
+    Display curves on an image.
+
+    Args:
+    - I (torch.Tensor): 3D tensor representing the image.
+    - im_tensor (torch.Tensor): 3D tensor representing the image.
+    - points_tensor (torch.Tensor): 2D tensor representing the points to be plotted.
+    - list_of_stacks (list): list of stacked points.
+    - data (str): name of the data.
+    - show_metric (bool): whether to show metric or not.
+    - th_output (bool): whether to output threshold or not.
+
+    Returns:
+    - None
+    """
     plt.figure(4)
     plt.clf()
-    # plt.imshow(I.max(dim=2).values, cmap="gray")
     if im_tensor.ndim==3:
         if show_metric:
             plt.imshow(I.max(dim=2).values.T, cmap="gray")
@@ -254,14 +368,12 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], show_metric=Fals
             plt.imshow(im_tensor, cmap="gray")
         
     [Nx,Ny, Nt] = I.shape
-    
-    # colors = cm.rainbow(np.linspace(0, 1, len(ys)))
-    
+        
     N_points = points_tensor.shape[0]
     for i in range(len(list_of_stacks)):
         stacked_list = list_of_stacks[i]
         
-        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.3)
+        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.1)
     plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
     # plt.title('result with factor in the direction theta {}'.format(theta_cost))
     # for i in range(N_points):
@@ -269,14 +381,16 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], show_metric=Fals
 
     plt.axis('off')
     plt.tight_layout()
-
+    plt.savefig('./figures/' + data + '/curves_output' + str(0) + str(th_output) + datetime.now().strftime("%H:%M:%S") + '.png')
     plt.show()
+    
+
     return(None)
 
 #%%
 if __name__ == '__main__':
     
-    data = 'IOSTAR'
+    data = 'synthetic'
     np.random.seed(82)
 
     if data=='synthetic':

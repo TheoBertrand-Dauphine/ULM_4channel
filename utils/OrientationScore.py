@@ -73,27 +73,42 @@ def compact_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     return(A)
 
 def vesselness_from_OS(OS, eps=1e-2):
+    """
+    Computes the vesselness score from the orientation score.
 
-    x = torch.arange(0,1.,OS.shape[0])
-    y = torch.arange(0,1.,OS.shape[1])
-    theta = torch.arange(0,torch.pi,OS.shape[2])
+    Args:
+        OS (torch.Tensor): The orientation score tensor.
+        eps (float, optional): A small value to avoid division by zero. Defaults to 1e-2.
+
+    Returns:
+        torch.Tensor: The vesselness score tensor.
+    """
+
+    x = torch.linspace(0,1.,OS.shape[0])
+    y = torch.linspace(0,1.,OS.shape[1])
+    theta = torch.linspace(0,torch.pi,OS.shape[2])
+
+    assert OS.shape[0]==OS.shape[1]
+    assert OS.ndim==3
+
+    OS_unsqueezed = OS.unsqueeze(0).unsqueeze(0)
 
     [X,Y,T] = torch.meshgrid(x,y,theta)
-
-    print(T.shape)
-
+    
     sigma1 =.5
 
     Gradient3d = kornia.filters.SpatialGradient3d(mode='diff', order=1)
 
-    G = Gradient3d(torch.tensor(OS).unsqueeze(0))
+    print(OS_unsqueezed.shape)
+    G = Gradient3d(OS_unsqueezed)
+    print(G.shape)
     H = Gradient3d(G[0]).squeeze()
 
     print(H.shape)
 
-    S = ((torch.cos(T)**2)*H[:,0,0] + 2*torch.cos(T)*torch.sin(T)*H[:,0,1] + (torch.sin(T)**2)*H[:,1,1])**2 + ((torch.sin(T)**2)*H[:,0,0] - 2*torch.cos(T)*torch.sin(T)*H[:,0,1] + (torch.cos(T)**2)*H[:,1,1])**2 
-    R = ((torch.cos(T)**2)*H[:,0,0] + 2*torch.cos(T)*torch.sin(T)*H[:,0,1] + (torch.sin(T)**2)*H[:,1,1])/((torch.sin(T)**2)*H[:,0,0] - 2*torch.cos(T)*torch.sin(T)*H[:,0,1] + (torch.cos(T)**2)*H[:,1,1])
-    Q = ((torch.sin(T)**2)*H[:,0,0] - 2*torch.cos(T)*torch.sin(T)*H[:,0,1] + (torch.cos(T)**2)*H[:,1,1])
+    S = ((torch.cos(T)**2)*H[0,0] + 2*torch.cos(T)*torch.sin(T)*H[0,1] + (torch.sin(T)**2)*H[1,1])**2 + ((torch.sin(T)**2)*H[0,0] - 2*torch.cos(T)*torch.sin(T)*H[0,1] + (torch.cos(T)**2)*H[1,1])**2 
+    R = ((torch.cos(T)**2)*H[0,0] + 2*torch.cos(T)*torch.sin(T)*H[0,1] + (torch.sin(T)**2)*H[1,1])/((torch.sin(T)**2)*H[0,0] - 2*torch.cos(T)*torch.sin(T)*H[0,1] + (torch.cos(T)**2)*H[1,1])
+    Q = ((torch.sin(T)**2)*H[0,0] - 2*torch.cos(T)*torch.sin(T)*H[0,1] + (torch.cos(T)**2)*H[1,1])
 
     sigma2 = .2*S.max()
 
@@ -121,16 +136,16 @@ def B_30(x):
 def B_16(x):
     return (24310*(-1/2 + x)**16*torch.sign(1/2 - x) - 19448*(-3/2 + x)**16*torch.sign(3/2 - x) + 12376*(-5/2 + x)**16*torch.sign(5/2 - x) - 6188*(-7/2 + x)**16*torch.sign(7/2 - x) + 2380*(-9/2 + x)**16*torch.sign(9/2 - x) - 680*(-11/2 + x)**16*torch.sign(11/2 - x) + 136*(-13/2 + x)**16*torch.sign(13/2 - x) - 17*(-15/2 + x)**16*torch.sign(15/2 - x) + (-17/2 + x)**16*torch.sign(17/2 - x) + 24310*(1/2 + x)**16*torch.sign(1/2 + x) - 19448*(3/2 + x)**16*torch.sign(3/2 + x) + (1547*(5 + 2*x)**16*torch.sign(5/2 + x))/8192 - 6188*(7/2 + x)**16*torch.sign(7/2 + x) + 2380*(9/2 + x)**16*torch.sign(9/2 + x) - 680*(11/2 + x)**16*torch.sign(11/2 + x) + (17*(13 + 2*x)**16*torch.sign(13/2 + x))/8192 - 17*(15/2 + x)**16*torch.sign(15/2 + x) + (17/2 + x)**16*torch.sign(17/2 + x))/41845579776000
  
-def psit_MS(w, N_a=12, N_o=32, Nf=128):
+def psit_MS(w, N_a=12, N_o=32, Nf=128, scalemin=25, scalemax=250, window_size = 25):
     #format w [2,N,N]
     assert w.ndim==3
 
     [X,Y] = torch.meshgrid(torch.linspace(-1,1,w.shape[1]),torch.linspace(-1,1,w.shape[2]))
 
-    s_theta = 2*torch.pi/N_o
+    s_theta = .1*torch.pi/N_o
 
-    scale_min = 25*2/w.shape[1]
-    scale_max = 50*2/w.shape[1]
+    scale_min = scalemin*2/w.shape[1]
+    scale_max = scalemax*2/w.shape[1]
 
 
     a = torch.exp(torch.linspace(torch.log(torch.tensor(scale_min)),torch.log(torch.tensor(scale_max)),N_a))
@@ -147,14 +162,17 @@ def psit_MS(w, N_a=12, N_o=32, Nf=128):
 
     fft_res = torch.zeros([N_a,N_o,w.shape[1], w.shape[2]])
     fft_res[:,:,rho>0] = (B_3(torch.log(rho_a)/s_rho)*B_3((torch.remainder(phi- theta - .5*torch.pi,2*torch.pi)-torch.pi)/s_theta))[:,:,rho>0]
+    # fft_res[:,:,rho>0] = (B_3(torch.log(rho_a)/s_rho)*B_3(((torch.remainder(phi-theta-torch.pi/2,torch.pi))-.5*torch.pi)/s_theta))[:,:,rho>0]
     fft_res[:,:,rho==0] = 1/N_o
     
-    s_x = (10/w.shape[1])/a.min()
+    s_x = (window_size/w.shape[1])/a.min()
 
     gauss_factor = torch.exp(((-X**2-Y**2)/(s_x**2))[None,None,:,:]/(a[:,None,None,None]**2))
     gauss_factor = gauss_factor/gauss_factor.abs().sum(dim=[-1,-2], keepdims=True)
 
     psit = torch.fft.ifft2(fft_res)*gauss_factor
+
+    # napari.view_image(psit.mean(dim=0).real.numpy())
 
     # plt.imshow(psit[4,0].real)
     # plt.colorbar()
@@ -164,21 +182,17 @@ def psit_MS(w, N_a=12, N_o=32, Nf=128):
 
     # plt.imshow((torch.fft.fft2(psit)/M)[4,0].real)
 
-    Crop = torchvision.transforms.CenterCrop(Nf)
-    return Crop(torch.fft.ifft2(torch.fft.fft2(psit)/M))
+    # Crop = torchvision.transforms.CenterCrop(Nf)
+    return torch.fft.ifft2(torch.fft.fft2(psit)/M)
 
 
-def Cake_OS(Im, No=32):
+def Cake_OS(Im, No=128, Na=50, scale_min=25, scale_max=250, window_size = 25):
     N = Im.shape[0]
-    N_filter = N
-    Na = 64
 
     f = torch.fft.fftfreq(N,d=2/N)/2
     W = torch.stack(torch.meshgrid(f,f, indexing='ij'))
 
-    
-
-    A = psit_MS(W, N_a=Na, N_o=No, Nf=N_filter)
+    A = psit_MS(W, N_a=Na, N_o=No,)
     I = torch.tensor(Im).float() +0.j
 
 
@@ -192,31 +206,38 @@ def Cake_OS(Im, No=32):
     I_OS = ((filtered).mean(dim=0))
     I_OS = (I_OS.real/I_OS.real.abs().max())**2
 
-    return .5*(I_OS[:No//2]+I_OS[No//2:])
+    # return .5*(torch.flip(I_OS[:No//2], dims=[0])+I_OS[No//2:])
+    return .5*(I_OS[:No//2] + I_OS[No//2:])
+    # return I_OS
 
+if __name__ == '__main__':
+    from skimage import io
+    from skimage.filters import frangi
 
-# if __name__ == '__main__':
-#     from skimage import io
-#     from skimage.filters import frangi
+    N = 256
 
-#     u = io.imread('../data_IOSTAR/test_images/images_IOSTAR/test_IOSTAR_6.png')
+    Crop = torchvision.transforms.CenterCrop(N)
 
-#     N = 128
+    # u = io.imread('../data_synthetic/test_images/images_ULM/big_test_image.png')
+    # I = Crop(torch.tensor(u/255.).float()) + 0.j
+    # u = io.imread('../data_IOSTAR/test_images/images_IOSTAR/test_IOSTAR_6.png')
+    # I = torch.tensor(frangi(Crop(torch.tensor(u[:256,:,1]/255.).float()).numpy())) +0.j
+    [X,Y] = torch.meshgrid(torch.linspace(-1,1,N),torch.linspace(-1,1,N))
+    I = (X.abs()<.01) + (Y.abs()<.01) + ((X+Y).abs()<.01) + ((X-Y).abs()<.01) +0.j
+    
 
-#     Crop = torchvision.transforms.CenterCrop(N)
-        
-#     I = torch.tensor(frangi(Crop(torch.tensor(u[:256,:,1]/255.).float()).numpy())) +0.j
+    I_OS = Cake_OS(I, Na=10, No = 128, scale_min=10, scale_max=50, window_size = 25)
 
-#     I_OS = Cake_OS(I)
+    plt.figure()
+    plt.imshow(I_OS.real.sum(dim=0))
+    plt.colorbar()
 
-#     plt.figure()
-#     plt.imshow(I_OS.real.mean(dim=0))
-#     plt.colorbar()
+    lamb = 1000
+    C = 1/(1 + lamb*I_OS**2)
 
-#     lamb = 1000
-#     C = 1/(1 + lamb*I_OS**2)
+    V = vesselness_from_OS((I_OS.abs()/I_OS.abs().max()).permute([1,2,0]))
 
-    # napari.view_image((I_OS.abs()/I_OS.abs().max(dim=0, keepdims=True).values).numpy())
+    # napari.view_image((I_OS.abs()/I_OS.abs().max()).permute([0,2,1]).numpy()**.25)
     # napari.run()
 
 

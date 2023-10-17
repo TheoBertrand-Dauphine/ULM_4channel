@@ -103,8 +103,6 @@ class ULM_UNet(pl.LightningModule):
         
         
     def forward(self, x):
-
-        print(x.shape)
         enc1 = self.encoder1(x)
         enc2 = self.encoder2(self.pool1(enc1))
         enc3 = self.encoder3(self.pool2(enc2))
@@ -222,6 +220,7 @@ class ULM_UNet(pl.LightningModule):
         else:
             x, y = batch['image'].unsqueeze(1), batch['heat_map'].squeeze()
         y_hat = self(x)        
+
         val_loss = (torch.tensor([self.penalization,1.,1.,1.])[None,:,None,None].to(self.device)*((y_hat-y))**2).mean() #l2loss(y_pred,y_true)
         threshold = self.threshold
         dist_tol = 7
@@ -417,8 +416,6 @@ class Vesselnet(pl.LightningModule):
 
         y_pred = self(x)
 
-        # print(y_pred.shape)
-        # print(y_true.shape)
         loss = l2loss(y_pred,y_true)
         logs={"train_loss": loss}
         batch_dictionary={
@@ -485,9 +482,6 @@ class Vesselnet(pl.LightningModule):
             self.log('Recall', recall_cum, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('F1 score', F1, prog_bar=False, on_step=False,on_epoch=True, logger=True)
             self.log('Average number of detected_points', avg_points_detected, prog_bar=False, on_step=False,on_epoch=True, logger=True)
-            # print(F1)
-            # print(precision_cum)
-            # print(recall_cum)
         return val_loss
     
 
