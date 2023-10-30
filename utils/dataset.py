@@ -63,13 +63,13 @@ class ULMDataset(Dataset):
             landmarks.loc[(classes == 'biffurcation') | (classes == 'bifurcation'),2 ] = 1
             landmarks.loc[classes == 'crossing',2] = 2
 
-            landmarks_array = np.zeros([300,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
+            landmarks_array = np.zeros([400,3]) # Put it in a fixed size array !!!!!!!!!!!!!!
 
             landmarks = np.array(landmarks)
 
             landmarks_array[:landmarks.shape[0],:] = landmarks
         except:
-            landmarks_array = np.zeros([300,3])
+            landmarks_array = np.zeros([400,3])
 
         if image.ndim==3:
             image = image[:,:,0]
@@ -122,11 +122,6 @@ class IOSTARDataset(Dataset):
             landmarks = np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
                 np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
                 np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])
-
-        # classes = np.empty(shape = (landmarks.shape[0],),dtype = "S12")
-        # classes[landmarks[:,2]==0.] = 'endpoint'
-        # classes[landmarks[:,2]==1.] = 'biffurcation'
-        # classes[landmarks[:,2]==2.] = 'crossing'
 
         if image.ndim==3:
             image = np.transpose(image,(2,0,1))

@@ -1,6 +1,6 @@
 program: train.py
 method: bayes
-name: Synthetic_sweep
+name: ULM_sweep
 metric:
   name: F1 score
   goal: maximize

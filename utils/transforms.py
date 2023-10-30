@@ -163,9 +163,6 @@ class HeatMap(object): # creates heatmaps that will be used as targets in the tr
 
     def __call__(self, sample):
         image, landmarks = sample['image'], sample['landmarks']
-
-        # print(image.shape)
-
         if image.ndim==3:
             heat_map = torch.zeros(1, self.out_channels, image.shape[1], image.shape[2])
         else:
@@ -190,7 +187,6 @@ class ColorJitter(object):
     def __call__(self, sample):
         image, landmarks = sample['image'], sample['landmarks']
         random_power = np.exp((2*np.log(self.power))*np.random.rand() - np.log(self.power))
-        # print(random_power)
         return {'image': np.sign(image)*np.power(np.abs(image),random_power), 'landmarks': landmarks}
 
 class GlobalContrastNormalization(object): # Normalizes the contrast in the input image
@@ -215,7 +211,9 @@ class Padding(object):
         image, landmarks, heat_map = sample['image'], sample['landmarks'], sample['heat_map']
         im_padded = self.pad(image)
         heat_map_padded = self.pad(heat_map)
-        landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] = landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] + torch.tensor([[self.pad_size,self.pad_size,0]])
+        landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] = torch.relu(landmarks[(landmarks[:,:-1]**2).sum(dim=1) > 0,:] + torch.tensor([[self.pad_size,self.pad_size,0]]))
+        # print(landmarks[(landmarks[:,0]>=im_padded.shape[-2])|(landmarks[:,1]>=im_padded.shape[-1])])
+        landmarks[(landmarks[:,0]>=im_padded.shape[-2])|(landmarks[:,1]>=im_padded.shape[-1])] = 0.
         return {'image':im_padded, 'landmarks': landmarks, 'heat_map':heat_map_padded}
 
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 # fichier submission.SBATCH
 #SBATCH --nodes=1
-#SBATCH -c 8
+#SBATCH -c 10
 #SBATCH --gres=gpu:1
 #SBATCH --job-name="IOSTAR_supervised_learning"
 #SBATCH --output=%x.out
