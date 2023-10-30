@@ -4,7 +4,6 @@ lib
 share
 None
 weights
-*.sbatch
 ULM_4CHANNEL
 *.ckpt
 figures
