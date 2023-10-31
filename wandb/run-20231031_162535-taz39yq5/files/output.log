@@ -1,0 +1,8 @@
+/home/tbertrand/anaconda3/envs/ULM_landmark/lib/python3.8/site-packages/torch/distributed/_sharded_tensor/__init__.py:8: DeprecationWarning: torch.distributed._sharded_tensor will be deprecated, use torch.distributed._shard.sharded_tensor instead
+  warnings.warn(
+Traceback (most recent call last):
+  File "./figures_IOSTAR.py", line 527, in <module>
+    main(args)
+  File "./figures_IOSTAR.py", line 415, in main
+    points = Detection_Model(model, batch, threshold=args.threshold)
+AttributeError: 'Namespace' object has no attribute 'threshold'

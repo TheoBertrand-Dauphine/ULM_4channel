@@ -359,7 +359,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
     for i in range(len(list_of_stacks)):
         stacked_list = list_of_stacks[i]
         
-        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.1)
+        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.5)
     plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
     # plt.title('result with factor in the direction theta {}'.format(theta_cost))
     # for i in range(N_points):
@@ -376,7 +376,7 @@ data = 'IOSTAR'
 np.random.seed(82)
 
 validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([RandomCrop(512), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
-batch = validation_dataset[0]
+batch = validation_dataset[20]
 
 im_tensor = batch['image']/batch['image'].max()
 batch['image'] = im_tensor
@@ -385,7 +385,7 @@ original_image = im_tensor
 
 model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.1, out_channels = 4)
 model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
-Nt = 128
+Nt = 64
 
 points = Detection_Model(model, batch, threshold=0.4)
 
@@ -396,14 +396,14 @@ batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
 
 im_tensor = batch['image']
 
-im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.15).numpy()
+im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.05).numpy()
 im_frangi = torch.tensor(im_frangi/im_frangi.max(axis=(1,2), keepdims=True)).mean(dim=0).sqrt()
 
 batch['image'] = np.concatenate([im_frangi.unsqueeze(0).numpy(),original_image])
 
 print(batch['image'].shape)
 
-batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(256), ToTensor(), Padding(0)])
+batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(128), ToTensor(), Padding(0)])
 
 batch_rescaled = batch_transform(batch)
 
@@ -426,22 +426,28 @@ plt.imshow(A.mean(dim=2).double(), cmap='gray', vmin=0, vmax=1)
 plt.scatter(points_tensor[:,0], points_tensor[:,1], c=points_tensor[:,2], alpha=.5)
 plt.show()
 
-W = (A*(A>0)*(np.sqrt(A*(A>0))>0.3)+0.)
+W = (A*(A>0)*(np.sqrt(A*(A>0))>0.2)+0.)
 
 # W = A
 
 points_array_3d = np.hstack([points_tensor_mod[:,:-1], theta_indices_mod.unsqueeze(1)])
 
 #%% Distance computation
+mask_nonzero_points = (W[points_tensor_mod[:,1].long(),points_tensor_mod[:,0].long(),theta_indices_mod]>0)
+
+points_tensor_mod = points_tensor_mod[mask_nonzero_points,:]
+theta_indices_mod = theta_indices_mod[mask_nonzero_points]
 
 [D, L, hfmIn] = Compute_Distance_Matrix(1/(1+1000*W**2), points_tensor_mod, theta_indices_mod, alpha=0.5, xi=5/(np.pi))     
 
 #%% Visualization
 
-curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = .05)
-Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=True)
+curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = .1)
+Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=False)
 Show_Tree(Tcsr_list[0], labels, prim_dict)
 
+
+#%%
 import napari
 
 points_array_3d = np.hstack([points_tensor_mod[:,:-1], theta_indices_mod.unsqueeze(1)])

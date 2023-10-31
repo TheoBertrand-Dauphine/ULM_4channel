@@ -1,23 +1,16 @@
 #%%
 import numpy as np
-
-# from PIL import Image
+import wandb
 
 import torch
 import torchvision
 from torchvision import transforms
 
-
-# import agd
 from agd import Eikonal
 from agd.Metrics import Riemann
 from agd.LinearParallel import outer_self as Outer # outer product v v^T of a vector with itself
-#from agd.Plotting import savefig, quiver; #savefig.dirName = 'Figures/Riemannian'
-#from agd import LinearParallel as lp
-# from agd import AutomaticDifferentiation as ad
 
 import time
-
 
 from sklearn.cluster import AgglomerativeClustering
 from scipy.sparse import csr_matrix
@@ -36,6 +29,8 @@ from datetime import datetime
 
 from skimage.filters import frangi
 
+from skimage import transform
+
 try:
     from utils.transforms import Rescale, RandomCrop, ToTensor, HeatMap, Rescale_image, ColorJitter, GlobalContrastNormalization, RandomAffine, Padding, CenterCrop, ToArray
 except:
@@ -44,11 +39,11 @@ except:
 import networkx as nx
 
 import sys
-sys.path.append("./../ULM_data")
+# sys.path.append("./../ULM_data")
 
-from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, making_ULM_bolus_full_rat_brain2D_and_orientation
+# from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, making_ULM_bolus_full_rat_brain2D_and_orientation
 
-
+from PIL import Image
 
 def Compute_Distance_Matrix(W, points_tensor, theta_indices, alpha = 0.1, xi = 0.1/np.pi):
     """
@@ -293,7 +288,7 @@ def Show_Tree(Tcsr_element, labels, prim_dict):
     plt.figure(7)
     plt.clf()
     nx.draw_planar(G,labels=dict(lab),with_labels=True,node_size=300)
-    plt.show()
+    plt.show(block=False)
     return(None)
 
 def Detection_Model(model, val_batch, threshold=0.05):
@@ -368,12 +363,42 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
     plt.axis('off')
     plt.tight_layout()
     # plt.savefig('./figures/' + data + '/curves_output' + str(0) + str(th_output) + datetime.now().strftime("%H:%M:%S") + '.png')
-    plt.savefig(save_string)
+    # plt.savefig(save_string)
     plt.show(block=False)
 
     return(None)
 
+def mask_from_list_of_stacks(list_of_stacks, image, dist=.01):
+    """
+    Create a mask from a list of stacks and an image.
+
+    Parameters:
+    -----------
+    list_of_stacks : list
+        A list of stacks.
+    image : numpy.ndarray
+        An image.
+    dist : float, optional
+        The distance threshold. Default is 0.01.
+
+    Returns:
+    --------
+    numpy.ndarray
+        The mask.
+    """
+    
+    mask = np.zeros_like(image)
+
+    [X,Y] = np.meshgrid(np.linspace(0,1,image.shape[0]), np.linspace(0,1,image.shape[1]))
+
+    for k in range(len(list_of_stacks)):
+        mask = np.maximum(mask, (((X[None,:,:]-list_of_stacks[k][0,:,None,None])**2 + (Y[None,:,:]-list_of_stacks[k][1,:,None,None])**2)<dist**2).max(axis=0))
+
+    return mask
+
 def main(args):
+    wandb.login()
+    wandb.init(project="ULM_4CHANNEL", config=args)
     data = 'IOSTAR'
     np.random.seed(82)
 
@@ -389,7 +414,7 @@ def main(args):
     model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
     Nt = 64
 
-    points = Detection_Model(model, batch, threshold=args.threshold)
+    points = Detection_Model(model, batch, threshold=args.threshold_landmarks)
 
     points_tensor = torch.tensor(points).long()
     # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
@@ -398,7 +423,7 @@ def main(args):
 
     im_tensor = batch['image']
 
-    im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.15).numpy()
+    im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=args.beta), frangi(im_tensor[1].numpy(), beta=args.beta), frangi(im_tensor[2].numpy(), beta=args.beta)])*(im_tensor.mean(dim=0)>0.05).numpy()
     im_frangi = torch.tensor(im_frangi/im_frangi.max(axis=(1,2), keepdims=True)).mean(dim=0).sqrt()
 
     batch['image'] = np.concatenate([im_frangi.unsqueeze(0).numpy(),original_image])
@@ -418,15 +443,15 @@ def main(args):
 
     theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_tensor[:,0].long()]].argmax(dim=1)
 
-    [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array).permute([1,0,2]), points_tensor, theta_indices, decalage = 0)
+    [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array).permute([1,0,2]), points_tensor, theta_indices, decalage = args.decalage)
     # [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
 
-    plt.figure(0)
-    plt.imshow(A.mean(dim=2).double(), cmap='gray', vmin=0, vmax=1)
-    plt.scatter(points_tensor[:,0], points_tensor[:,1], c=points_tensor[:,2], alpha=.5)
-    plt.show(block=False)
+    # plt.figure(0)
+    # plt.imshow(A.mean(dim=2).double(), cmap='gray', vmin=0, vmax=1)
+    # plt.scatter(points_tensor[:,0], points_tensor[:,1], c=points_tensor[:,2], alpha=.5)
+    # plt.show(block=False)
 
-    W = (A*(A>0)*(np.sqrt(A*(A>0))>0.3)+0.)
+    W = (A*(A>0)*(np.sqrt(A*(A>0))>args.threshold_metric)+0.)
 
     # W = A
 
@@ -439,15 +464,36 @@ def main(args):
 
     #%% Distance computation
 
-    [D, L, hfmIn] = Compute_Distance_Matrix(1/(1+1000*W**2), points_tensor_mod, theta_indices_mod, alpha=0.5, xi=5/(np.pi))     
+    [D, L, hfmIn] = Compute_Distance_Matrix(1/(1+1000*W**args.power), points_tensor_mod, theta_indices_mod, alpha=args.eps, xi=args.xi/(np.pi))     
 
     #%% Visualization
 
-    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = .05)
-    Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=True, save_string = './figures/IOSTAR_output/output_IOSTAR_256_' + str(args.nb) + '_threshold_' + str(args.threshold) + '.png')
-    Show_Tree(Tcsr_list[0], labels, prim_dict)
+    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = args.threshold_tree)
+    # Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=True, save_string = './figures/IOSTAR_output/output_IOSTAR_256_' + str(args.nb) + '_threshold_' + str(args.threshold_landmarks) + '.png')
+    # Show_Tree(Tcsr_list[0], labels, prim_dict)
 
-    plt.close('all')
+    # plt.close('all')
+
+    mask_th = transform.resize(np.array(Image.open('./data_IOSTAR/test_images/GT_test/IOSTAR_GT_31.tif')),(256,256))
+
+    mask_th = mask_th/mask_th.max()
+
+    mask_from_tree = mask_from_list_of_stacks(list_of_stacks, mask_th, dist=args.dist)
+
+    wandb.log({'Ground Truth':wandb.Image(mask_th), 'Output Mask':wandb.Image(mask_from_tree)})
+
+    # plt.figure()
+    # plt.imshow(mask_from_tree)
+
+    # plt.figure()
+    # plt.imshow(mask_th)
+    # plt.show()
+
+
+    Seg_score = (mask_from_tree*mask_th).sum()/np.maximum(mask_from_tree,mask_th).sum()
+
+    wandb.log({'Segmentation score': Seg_score})
+    print(Seg_score)
 
     # import napari
 
@@ -464,8 +510,19 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Compute the HFM distance matrix between a set of points.')
-    parser.add_argument('--nb', type=int, default=0, help='number of the image in the dataset.')
-    parser.add_argument('--threshold', type=float, default=0.4, help='number of the image in the dataset.')
+    parser.add_argument('--nb', type=int, default=20, help='number of the image in the dataset.')
+    parser.add_argument('--threshold_landmarks', type=float, default=0.4, help='thershold for detection of landmarks')
+    parser.add_argument('--threshold_metric', type=float, default=0.2, help='thershold for metric cost definition')
+    parser.add_argument('--threshold_tree', type=float, default=0.05, help='thershold for metric cost definition')
+    parser.add_argument('--xi', type=float, default=1., help='thershold for metric cost definition')
+    parser.add_argument('--eps', type=float, default=1., help='thershold for metric cost definition')
+    parser.add_argument('--power', type=float, default=2., help='thershold for metric cost definition')
+    parser.add_argument('--bool_erase_far', type=int, default=1, help='thershold for metric cost definition')
+    parser.add_argument('--dist', type=float, default=.01, help='thershold for metric cost definition')
+    parser.add_argument('--decalage', type=int, default=0, help='thershold for metric cost definition')
+    parser.add_argument('--beta', type=float, default=.1, help='thershold for metric cost definition')
+
+
 
     args = parser.parse_args()
 

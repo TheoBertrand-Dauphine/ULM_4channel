@@ -1,0 +1,65 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.17
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.13
+    start_time: 1698766029
+    t:
+      1:
+      - 1
+      - 5
+      - 9
+      - 41
+      - 53
+      - 55
+      2:
+      - 1
+      - 5
+      - 9
+      - 41
+      - 53
+      - 55
+      3:
+      - 16
+      4: 3.8.13
+      5: 0.12.17
+      8:
+      - 5
+beta:
+  desc: null
+  value: 0.1
+bool_erase_far:
+  desc: null
+  value: 1
+decalage:
+  desc: null
+  value: 0
+dist:
+  desc: null
+  value: 0.01
+eps:
+  desc: null
+  value: 1.0
+nb:
+  desc: null
+  value: 20
+power:
+  desc: null
+  value: 2.0
+threshold_landmarks:
+  desc: null
+  value: 0.4
+threshold_metric:
+  desc: null
+  value: 0.2
+threshold_tree:
+  desc: null
+  value: 0.05
+xi:
+  desc: null
+  value: 1.0
