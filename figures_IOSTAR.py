@@ -414,7 +414,7 @@ def main(args):
     model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
     Nt = 64
 
-    points = Detection_Model(model, batch, threshold=args.threshold_landmarks)
+    points = Detection_Model(model, batch, threshold=0.2)
 
     points_tensor = torch.tensor(points).long()
     # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
@@ -426,7 +426,7 @@ def main(args):
     im_frangi = frangi(im_tensor.min(axis=0).values.numpy(),sigmas = np.exp(np.linspace(np.log(.001),np.log(1.5),1000)), beta=100, alpha=.5, gamma = 15)**.25
     im_frangi = im_frangi/im_frangi.max() 
 
-    batch['image'] = np.concatenate([im_frangi.unsqueeze(0).numpy(),original_image])
+    batch['image'] = np.concatenate([torch.tensor(im_frangi).unsqueeze(0).numpy(),original_image])
 
     print(batch['image'].shape)
 

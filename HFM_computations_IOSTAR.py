@@ -401,8 +401,6 @@ im_frangi = im_frangi/im_frangi.max()
 
 batch['image'] = np.concatenate([torch.tensor(im_frangi).unsqueeze(0).numpy(),original_image])
 
-print(batch['image'].shape)
-
 batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(32*12), ToTensor(), Padding(0)])
 
 batch_rescaled = batch_transform(batch)
@@ -413,8 +411,6 @@ print(points_tensor)
 # pil_to_tensor = torchvision.transforms.ToTensor()
 
 # lifted_im_array = gaussian_OS(im_tensor.squeeze(), sigma = 0.01, eps = 0.1, N_o = Nt)
-
-from utils.CakeWavelets import OS_cakeWavelet
 
 # lifted_im_array = np.abs(OS_cakeWavelet(im_tensor.squeeze().numpy(),Nt).real.transpose(1,2,0))
 lifted_im_array = gaussian_OS(torch.tensor(im_tensor).squeeze(), sigma = 0.01, eps = 0.1, N_o = Nt)
