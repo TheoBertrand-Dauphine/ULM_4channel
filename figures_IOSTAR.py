@@ -363,7 +363,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
     plt.axis('off')
     plt.tight_layout()
     # plt.savefig('./figures/' + data + '/curves_output' + str(0) + str(th_output) + datetime.now().strftime("%H:%M:%S") + '.png')
-    # plt.savefig(save_string)
+    plt.savefig(save_string)
     plt.show(block=False)
 
     return(None)
@@ -392,7 +392,7 @@ def mask_from_list_of_stacks(list_of_stacks, image, dist=.01):
     [X,Y] = np.meshgrid(np.linspace(0,1,image.shape[0]), np.linspace(0,1,image.shape[1]))
 
     for k in range(len(list_of_stacks)):
-        mask = np.maximum(mask, (((X[None,:,:]-list_of_stacks[k][0,:,None,None])**2 + (Y[None,:,:]-list_of_stacks[k][1,:,None,None])**2)<dist**2).max(axis=0))
+        mask = np.maximum(mask, (((X[None,:,:]-list_of_stacks[k][0,::3,None,None])**2 + (Y[None,:,:]-list_of_stacks[k][1,::3,None,None])**2)<dist**2).max(axis=0))
 
     return mask
 
@@ -402,7 +402,7 @@ def main(args):
     data = 'IOSTAR'
     np.random.seed(82)
 
-    validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([RandomCrop(512), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
+    validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([RandomCrop(32*14), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
     batch = validation_dataset[args.nb]
 
     im_tensor = batch['image']/batch['image'].max()
@@ -423,14 +423,14 @@ def main(args):
 
     im_tensor = batch['image']
 
-    im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=args.beta), frangi(im_tensor[1].numpy(), beta=args.beta), frangi(im_tensor[2].numpy(), beta=args.beta)])*(im_tensor.mean(dim=0)>0.05).numpy()
-    im_frangi = torch.tensor(im_frangi/im_frangi.max(axis=(1,2), keepdims=True)).mean(dim=0).sqrt()
+    im_frangi = frangi(im_tensor.min(axis=0).values.numpy(),sigmas = np.exp(np.linspace(np.log(.001),np.log(1.5),1000)), beta=100, alpha=.5, gamma = 15)**.25
+    im_frangi = im_frangi/im_frangi.max() 
 
     batch['image'] = np.concatenate([im_frangi.unsqueeze(0).numpy(),original_image])
 
     print(batch['image'].shape)
 
-    batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(256), ToTensor(), Padding(0)])
+    batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(32*14), ToTensor(), Padding(0)])
 
     batch_rescaled = batch_transform(batch)
 
@@ -446,12 +446,7 @@ def main(args):
     [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array).permute([1,0,2]), points_tensor, theta_indices, decalage = args.decalage)
     # [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
 
-    # plt.figure(0)
-    # plt.imshow(A.mean(dim=2).double(), cmap='gray', vmin=0, vmax=1)
-    # plt.scatter(points_tensor[:,0], points_tensor[:,1], c=points_tensor[:,2], alpha=.5)
-    # plt.show(block=False)
-
-    W = (A*(A>0)*(np.sqrt(A*(A>0))>args.threshold_metric)+0.)
+    W = (A*(A>0)*(np.sqrt(A*(A>0))>0.3)+0.)**2
 
     # W = A
 
@@ -468,19 +463,19 @@ def main(args):
 
     #%% Visualization
 
-    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = args.threshold_tree)
-    # Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=True, save_string = './figures/IOSTAR_output/output_IOSTAR_256_' + str(args.nb) + '_threshold_' + str(args.threshold_landmarks) + '.png')
+    curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = 0.08)
+    Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=True, save_string = './figures/IOSTAR_output/output_IOSTAR_512_' + str(args.nb) + '.png')
     # Show_Tree(Tcsr_list[0], labels, prim_dict)
 
     # plt.close('all')
 
-    mask_th = transform.resize(np.array(Image.open('./data_IOSTAR/test_images/GT_test/IOSTAR_GT_31.tif')),(256,256))
+    # mask_th = transform.resize(np.array(Image.open('./data_IOSTAR/test_images/GT_test/IOSTAR_GT_31.tif')),(512,512))
 
-    mask_th = mask_th/mask_th.max()
+    # mask_th = mask_th/mask_th.max()
 
-    mask_from_tree = mask_from_list_of_stacks(list_of_stacks, mask_th, dist=args.dist)
+    # mask_from_tree = mask_from_list_of_stacks(list_of_stacks, mask_th, dist=args.dist)
 
-    wandb.log({'Ground Truth':wandb.Image(mask_th), 'Output Mask':wandb.Image(mask_from_tree)})
+    # wandb.log({'Ground Truth':wandb.Image(mask_th), 'Output Mask':wandb.Image(mask_from_tree)})
 
     # plt.figure()
     # plt.imshow(mask_from_tree)
@@ -490,10 +485,10 @@ def main(args):
     # plt.show()
 
 
-    Seg_score = (mask_from_tree*mask_th).sum()/np.maximum(mask_from_tree,mask_th).sum()
+    # Seg_score = (mask_from_tree*mask_th).sum()/np.maximum(mask_from_tree,mask_th).sum()
 
-    wandb.log({'Segmentation score': Seg_score})
-    print(Seg_score)
+    # wandb.log({'Segmentation score': Seg_score})
+    # print(Seg_score)
 
     # import napari
 
@@ -515,7 +510,7 @@ if __name__ == '__main__':
     parser.add_argument('--threshold_metric', type=float, default=0.2, help='thershold for metric cost definition')
     parser.add_argument('--threshold_tree', type=float, default=0.05, help='thershold for metric cost definition')
     parser.add_argument('--xi', type=float, default=1., help='thershold for metric cost definition')
-    parser.add_argument('--eps', type=float, default=1., help='thershold for metric cost definition')
+    parser.add_argument('--eps', type=float, default=.5, help='thershold for metric cost definition')
     parser.add_argument('--power', type=float, default=2., help='thershold for metric cost definition')
     parser.add_argument('--bool_erase_far', type=int, default=1, help='thershold for metric cost definition')
     parser.add_argument('--dist', type=float, default=.01, help='thershold for metric cost definition')

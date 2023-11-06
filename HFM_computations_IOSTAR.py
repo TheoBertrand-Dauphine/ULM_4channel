@@ -359,7 +359,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
     for i in range(len(list_of_stacks)):
         stacked_list = list_of_stacks[i]
         
-        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.5)
+        plt.scatter(Ny*stacked_list[0]/(Ny/Nx), Nx*stacked_list[1], marker='.', s=50, alpha=.25)
     plt.scatter(points_tensor[:,1], points_tensor[:,0], marker='.', s=100, c='r')
     # plt.title('result with factor in the direction theta {}'.format(theta_cost))
     # for i in range(N_points):
@@ -375,7 +375,7 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
 data = 'IOSTAR'
 np.random.seed(82)
 
-validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([RandomCrop(512), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
+validation_dataset = IOSTARDataset(root_dir =  './data_IOSTAR/test_images', transform=transforms.Compose([CenterCrop(32*12), HeatMap(s=9, alpha=3, out_channels = 4), ToTensor(), Padding(0)])) 
 batch = validation_dataset[20]
 
 im_tensor = batch['image']/batch['image'].max()
@@ -387,7 +387,7 @@ model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.1, out_channels 
 model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
 Nt = 64
 
-points = Detection_Model(model, batch, threshold=0.4)
+points = Detection_Model(model, batch, threshold=0.2)
 
 points_tensor = torch.tensor(points).long()
 # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
@@ -396,14 +396,14 @@ batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
 
 im_tensor = batch['image']
 
-im_frangi = np.array([frangi(im_tensor[0].numpy(), beta=0.1), frangi(im_tensor[1].numpy(), beta=0.1), frangi(im_tensor[2].numpy(), beta=0.1)])*(im_tensor.mean(dim=0)>0.05).numpy()
-im_frangi = torch.tensor(im_frangi/im_frangi.max(axis=(1,2), keepdims=True)).mean(dim=0).sqrt()
+im_frangi = frangi(im_tensor.min(axis=0).values.numpy(),sigmas = np.exp(np.linspace(np.log(.001),np.log(1.5),1000)), beta=100, alpha=.5, gamma = 15)**.25
+im_frangi = im_frangi/im_frangi.max() 
 
-batch['image'] = np.concatenate([im_frangi.unsqueeze(0).numpy(),original_image])
+batch['image'] = np.concatenate([torch.tensor(im_frangi).unsqueeze(0).numpy(),original_image])
 
 print(batch['image'].shape)
 
-batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(128), ToTensor(), Padding(0)])
+batch_transform = transforms.Compose([ToTensor(), Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), Rescale(32*12), ToTensor(), Padding(0)])
 
 batch_rescaled = batch_transform(batch)
 
@@ -412,8 +412,13 @@ print(points_tensor)
 
 # pil_to_tensor = torchvision.transforms.ToTensor()
 
-lifted_im_array = gaussian_OS(im_tensor.squeeze(), sigma = 0.01, eps = 0.1, N_o = Nt)
+# lifted_im_array = gaussian_OS(im_tensor.squeeze(), sigma = 0.01, eps = 0.1, N_o = Nt)
 
+from utils.CakeWavelets import OS_cakeWavelet
+
+# lifted_im_array = np.abs(OS_cakeWavelet(im_tensor.squeeze().numpy(),Nt).real.transpose(1,2,0))
+lifted_im_array = gaussian_OS(torch.tensor(im_tensor).squeeze(), sigma = 0.01, eps = 0.1, N_o = Nt)
+lifted_im_array = lifted_im_array/lifted_im_array.max()
 
 
 theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_tensor[:,0].long()]].argmax(dim=1)
@@ -422,11 +427,11 @@ theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_
 # [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
 
 plt.figure(0)
-plt.imshow(A.mean(dim=2).double(), cmap='gray', vmin=0, vmax=1)
-plt.scatter(points_tensor[:,0], points_tensor[:,1], c=points_tensor[:,2], alpha=.5)
+plt.imshow(original_image.permute([1,2,0]), cmap='gray', vmin=0, vmax=1)
+plt.scatter(points_tensor[:,1], points_tensor[:,0], c=points_tensor[:,2], alpha=.5)
 plt.show()
 
-W = (A*(A>0)*(np.sqrt(A*(A>0))>0.2)+0.)
+W = (A*(A>0)*(np.sqrt(A*(A>0))>0.3)+0.)**2
 
 # W = A
 
@@ -438,11 +443,11 @@ mask_nonzero_points = (W[points_tensor_mod[:,1].long(),points_tensor_mod[:,0].lo
 points_tensor_mod = points_tensor_mod[mask_nonzero_points,:]
 theta_indices_mod = theta_indices_mod[mask_nonzero_points]
 
-[D, L, hfmIn] = Compute_Distance_Matrix(1/(1+1000*W**2), points_tensor_mod, theta_indices_mod, alpha=0.5, xi=5/(np.pi))     
+[D, L, hfmIn] = Compute_Distance_Matrix(1/(1+1000*W**2), points_tensor_mod, theta_indices_mod, alpha=0.5, xi=1/(np.pi))     
 
 #%% Visualization
 
-curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = .1)
+curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = .08)
 Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=False)
 Show_Tree(Tcsr_list[0], labels, prim_dict)
 

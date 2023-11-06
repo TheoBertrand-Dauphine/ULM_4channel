@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.15.0-88-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2023-11-02T10:24:55.037978",
+    "startedAt": "2023-11-02T10:24:54.397429",
+    "docker": null,
+    "gpu": "Quadro T2000",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "./figures_IOSTAR.py",
+    "codePath": "figures_IOSTAR.py",
+    "git": {
+        "remote": "git@github.com:TheoBertrand-Dauphine/ULM_4channel.git",
+        "commit": "52d77c5044bf3e0353479e9b627099b7d7c93aac"
+    },
+    "email": "tbertrand@ceremade.dauphine.fr",
+    "root": "/home/tbertrand/Bureau/ULM_4channel_pull",
+    "host": "P7550BERTRAND",
+    "username": "tbertrand",
+    "executable": "/home/tbertrand/anaconda3/envs/ULM_landmark/bin/python3"
+}
