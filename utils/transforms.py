@@ -39,11 +39,11 @@ class Rescale(object): # Rescale the data to another format
         else:
             img = transform.resize(image.astype(np.single()), (new_h, new_w))
 
-        landmarks = landmarks * [new_w / w, new_h / h, 1]
+        landmarks = landmarks * torch.tensor([[new_w / w, new_h / h, 1]])
         try:
-            return  {'image':img, 'landmarks': landmarks, 'heat_map':heat_map}
+            return  {'image':torch.tensor(img), 'landmarks': landmarks, 'heat_map':torch.tensor(heat_map)}
         except:
-            return {'image':img, 'landmarks': landmarks}
+            return {'image':torch.tensor(img), 'landmarks': landmarks}
             
 
 class Rescale_image(object):
@@ -230,6 +230,11 @@ class CenterCrop(object): # randomly crops an image from the dataset
     def __call__(self, sample):
         image, landmarks = sample['image'], sample['landmarks']
 
+        try:
+            heat_map = sample['heat_map']
+        except:
+            heat_map = None
+
         if image.ndim==3:
             h, w = image.shape[1:]
         else:
@@ -248,8 +253,10 @@ class CenterCrop(object): # randomly crops an image from the dataset
         
         if image.ndim==3: # cropping the image
             image = image[:,top: top + new_h, left: left + new_w] 
+            heat_map = heat_map[:,top: top + new_h, left: left + new_w]
         else:
             image = image[top: top + new_h, left: left + new_w]
+            heat_map = heat_map[top: top + new_h, left: left + new_w]
 
         landmarks = landmarks - np.array([top,left, 0]) 
         landmarks = landmarks[(landmarks[:,0]>=0),:]
@@ -257,7 +264,7 @@ class CenterCrop(object): # randomly crops an image from the dataset
         landmarks = landmarks[(landmarks[:,1]>=0),:]
         landmarks = landmarks[(landmarks[:,1]<new_w),:]
 
-        return {'image':image, 'landmarks': landmarks}
+        return {'image':image, 'landmarks': landmarks, 'heat_map':heat_map}
 
 class RandomFlip(object): # Apply Random affine (rotation and transolation) to the data
 

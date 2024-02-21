@@ -18,6 +18,18 @@ import kornia
 import torchvision
 
 def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
+    """
+    Computes the Gaussian Orientation Score for an input image.
+
+    Parameters:
+    - Im: torch.Tensor, input image
+    - sigma: float, standard deviation of the Gaussian kernel (default: 0.001)
+    - eps: float, regularization parameter (default: 0.1)
+    - N_o: int, number of orientations (default: 64)
+
+    Returns:
+    - out: torch.Tensor, Gaussian Orientation Score of the input image
+    """
     
     theta = torch.arange(-np.pi, np.pi, np.pi/N_o).unsqueeze(0).unsqueeze(0)
 
@@ -32,10 +44,6 @@ def gaussian_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
     P = torch.exp((-(torch.sin(theta)*Xg.unsqueeze(2) + torch.cos(theta)*Yg.unsqueeze(2))**2)/(sigma**2))*torch.exp(-(Xg.unsqueeze(2)**2+Yg.unsqueeze(2)**2)/(eps**2))*((-torch.cos(theta)*Xg.unsqueeze(2) + torch.sin(theta)*Yg.unsqueeze(2))>0)
     P = P/P.sum(dim=(0,1))
     
-    # napari.view_image(P.numpy())
-    # napari.run()
-
-        
     A = convolve(P.numpy(), Im.unsqueeze(2).numpy(), mode='same')
 
     out = 0.5*( A[...,:N_o] + A[...,N_o:])

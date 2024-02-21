@@ -1,0 +1,35 @@
+program: train.py
+method: bayes
+name: ULM_sweep
+metric:
+  name: F1 score
+  goal: maximize
+parameters:
+  lr:
+    distribution: log_uniform_values
+    min: 0.00001
+    max: 0.001
+  size:
+    values: [64, 128, 256, 512]
+  patience:
+    values: [10, 25, 50, 100, 150, 200, 300, 400]
+  vesselnet:
+    values: [0]
+  out_channels:
+    values: [4]
+  alpha:
+    min: 0.1
+    max: 9.
+  features:
+    values: [64,128]
+  batch-size:
+    values: [1,4,8,16,30]
+  threshold:
+    min: 0.05
+    max: 0.7
+  penalization:
+    distribution: log_uniform_values
+    min: 0.01
+    max: 10.
+  data:
+    values: ['ULM']

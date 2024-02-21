@@ -1,0 +1,12 @@
+torch
+torchvision
+pillow
+matplotlib
+numpy
+torchgeometry
+wandb
+pytorch-lightning
+scikit-image
+pandas
+agd
+scikit-learn

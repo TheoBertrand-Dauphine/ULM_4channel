@@ -107,6 +107,7 @@ class IOSTARDataset(Dataset):
 
         data_folder = sorted([name for name in os.listdir(self.root_dir + '/images_IOSTAR/') if os.path.isfile(self.root_dir + '/images_IOSTAR/' + name)])
         img_name = os.path.join(self.root_dir, 'images_IOSTAR', data_folder[idx])
+        print(img_name)
         #img_name = os.path.join(self.root_dir, self.landmarks_frame.iloc[idx, 0])
         image = io.imread(img_name)
 

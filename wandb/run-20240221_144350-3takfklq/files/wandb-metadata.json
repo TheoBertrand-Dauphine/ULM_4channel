@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.15.0-94-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2024-02-21T13:43:51.711699",
+    "startedAt": "2024-02-21T13:43:50.653468",
+    "docker": null,
+    "gpu": "Quadro T2000",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "./HFM_computations_IOSTAR_mask_with_multiprocessing.py",
+    "codePath": "HFM_computations_IOSTAR_mask_with_multiprocessing.py",
+    "git": {
+        "remote": "git@github.com:TheoBertrand-Dauphine/ULM_4channel.git",
+        "commit": "553964ccf7dccd5ce2891532a60ffb9cfa142225"
+    },
+    "email": "tbertrand@ceremade.dauphine.fr",
+    "root": "/home/tbertrand/Bureau/ULM_4channel_pull",
+    "host": "P7550BERTRAND",
+    "username": "tbertrand",
+    "executable": "/home/tbertrand/anaconda3/envs/ULM_landmark/bin/python3"
+}
