@@ -71,7 +71,7 @@ def compact_OS(Im, sigma = 0.001, eps = 0.1, N_o = 64):
         
     P = torch.exp((-1/(1-N)))*(N<1); P[torch.isnan(P)]=0
     
-    P = P/P.max()
+    P = P/P.sum(dim=(0,1),keepdim=True)
 
     print(P.shape)
 
