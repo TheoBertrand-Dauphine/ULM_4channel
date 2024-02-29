@@ -53,7 +53,7 @@ from scipy.io import loadmat
 
 from matplotlib.pyplot import cm
 
-naming = 'IOSTAR_model_landmarks_GT_cost_' + datetime.now().strftime('%m_%d_%H')
+naming = 'IOSTAR_metric_GT_landmarks_model_' + datetime.now().strftime('%m_%d_%H')
 os.makedirs('./figures/' + naming, exist_ok=True)
 # from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, making_ULM_bolus_full_rat_brain2D_and_orientation
 

@@ -55,7 +55,7 @@ from matplotlib.pyplot import cm
 
 import os
 
-naming = 'IOSTAR_metric_model_landmars_GT_' + datetime.now().strftime('%m_%d_%H')
+naming = 'IOSTAR_metric_model_landmarks_model_' + datetime.now().strftime('%m_%d_%H')
 os.makedirs('./figures/' + naming, exist_ok=True)
 # from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, making_ULM_bolus_full_rat_brain2D_and_orientation
 
@@ -513,8 +513,8 @@ for img_idx in range(24):
 
     original_image = im_tensor
 
-    # model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.3, out_channels = 4)
-    # model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
+    model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.3, out_channels = 4)
+    model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
     Nt = 8
 
     # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
@@ -529,14 +529,14 @@ for img_idx in range(24):
     batch['image'] = torch.tensor(np.concatenate([torch.tensor(im_frangi).unsqueeze(0).numpy(), GT.unsqueeze(0),original_image]))
 
     threshold_landmarks=.2
-    # points = Detection_Model(model, batch, threshold=threshold_landmarks)
+    points = Detection_Model(model, batch, threshold=threshold_landmarks)
 
-    # points_tensor = torch.tensor(points).long()[points[:,2]!=3,:]
-    landmarks_frame = loadmat('./data_IOSTAR/test_with_GT/landmarks/'+landmarks_name[img_idx])
+    points_tensor = torch.tensor(points).long()[points[:,2]!=3,:]
+    # landmarks_frame = loadmat('./data_IOSTAR/test_with_GT/landmarks/'+landmarks_name[img_idx])
 
-    points_tensor = torch.minimum(torch.tensor(np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
-                    np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
-                    np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])) - torch.tensor([[26,24,0]]),torch.tensor(511))
+    # points_tensor = torch.minimum(torch.tensor(np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
+    #                 np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
+    #                 np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])) - torch.tensor([[26,24,0]]),torch.tensor(511))
     # batch['landmarks'] = points_tensor
     batch_transform = transforms.Compose([Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), CenterCrop(target_size), ToTensor(), Rescale(512)])
 
