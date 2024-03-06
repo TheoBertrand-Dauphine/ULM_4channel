@@ -1,3 +1,19 @@
+
+#%%
+import argparse
+
+parser = argparse.ArgumentParser(description='Compute the HFM distance matrix between a set of points.')
+parser.add_argument('--threshold_metric', type=float, default=0.2, help='thershold for metric cost definition')
+parser.add_argument('--xi', type=float, default=1., help='metric coefficient')
+parser.add_argument('--decalage', type=int, default=0, help='point displacement in the neighborhood')
+parser.add_argument('--beta', type=float, default=100, help='frangi input')
+parser.add_argument('--sigma', type=float, default=.001, help='frangi input')
+parser.add_argument('--eps', type=float, default=.01, help='support of gaussian OS')
+parser.add_argument('--alpha', type=float, default=.5, help='metric coefficient')
+parser.add_argument('--Nt', type=int, default=8, help='number of orientations')
+parser.add_argument('--power', type=float, default=1, help='power of the metric')
+
+args, unknown = parser.parse_known_args()
 #%%
 import numpy as np
 
@@ -55,7 +71,10 @@ from matplotlib.pyplot import cm
 
 import os
 
-naming = 'IOSTAR_metric_model_landmars_GT_' + datetime.now().strftime('%m_%d_%H')
+naming = 'IOSTAR_metric_model_landmarks_GT_' + datetime.now().strftime('%m_%d_%H_%M')
+for k in args.__dict__.keys():
+    naming = naming + '_' + k + '_' + str(args.__dict__[k])
+
 os.makedirs('./figures/' + naming, exist_ok=True)
 # from make_ulm_images import making_ULM_halfleft_rat_brain2D_and_orientation, making_ULM_bolus_full_rat_brain2D_and_orientation
 
@@ -269,12 +288,18 @@ def Modify_Metric_and_Points(I, points_tensor, theta_indices, decalage = 3):
 
     # Décalage des points dans leur voisinage
     for i in range(points_tensor.shape[0]):
-        I_neigh = I[max(points_tensor[i,1].long()-decalage,0):min(points_tensor[i,1].long()+ decalage + 1,I.shape[1]),max(points_tensor[i,0].long()-decalage,0) :min(points_tensor[i,0].long()+decalage + 1,I.shape[0]),:]
-        idx = I_neigh.argmax()
 
-        u = (I_neigh==I_neigh.reshape(-1)[idx]).nonzero()
-        points_tensor[i,0] = u[0,1] + points_tensor[i,0]-decalage
-        points_tensor[i,1] = u[0,0] + points_tensor[i,1]-decalage
+        mask_neigh = np.zeros_like(I)
+        mask_neigh[max(points_tensor[i,1].long()-decalage,0):min(points_tensor[i,1].long()+ decalage + 1,I.shape[1]),max(points_tensor[i,0].long()-decalage,0) :min(points_tensor[i,0].long()+decalage + 1,I.shape[0]),:] = 1.
+        
+        delta_mid = torch.zeros_like(I)
+        delta_mid[points_tensor[i,1].long(),points_tensor[i,0].long(),:] = 1.0
+        
+        idx = (I*mask_neigh + 1e-2*delta_mid).argmax()
+
+        u = (I==I.reshape(-1)[idx]).nonzero()
+        points_tensor[i,0] = u[0,1] 
+        points_tensor[i,1] = u[0,0]
         theta_indices[i] = u[0,2]
 
 
@@ -404,7 +429,9 @@ def Show_Curves(I, im_tensor, points_tensor, list_of_stacks=[], data='synthetic'
 
     plt.axis('off')
     plt.tight_layout()
-    plt.savefig('./figures/' + naming + '/img' + str(img_number) + '_dist_' + str(dist)+ '.png')
+
+    if img_number<5:
+        plt.savefig('./figures/' + naming + '/img' + str(img_number) + '_dist_' + str(dist)+ '.png')
     # plt.show()
 
     return(None)
@@ -501,6 +528,10 @@ target_size = 512
 
 batch_F1 = []
 
+import wandb
+wandb.login()
+wandb.init(project="ULM_4CHANNEL", config=args)
+
 for img_idx in range(24):
     input_image = transforms.CenterCrop(512)(torch.tensor(np.array(Image.open('./data_IOSTAR/test_with_GT/images/' + img_names[img_idx]))).permute([2,0,1]).unsqueeze(0)/255)
     GT = transforms.CenterCrop(512)(torch.tensor(np.array(Image.open('./data_IOSTAR/test_with_GT/GT/' + GT_names[img_idx]))))
@@ -513,38 +544,26 @@ for img_idx in range(24):
 
     original_image = im_tensor
 
-    # model = ULM_UNet(in_channels=3, init_features=64, threshold = 0.3, out_channels = 4)
-    # model.load_state_dict(torch.load('./weights/ulm_net_IOSTAR_epochs_1000_size_256_batch_4_out_channels_4_alpha_3.555774513043065_18_9_NoEndpoints_0.pt'))
-    Nt = 8
-
-    # points_tensor = batch['landmarks'][ (batch['landmarks']**2).sum(dim=-1)>0,:]
-
-    # batch['landmarks'] = points_tensor[points_tensor[:,2]!=3,:].numpy()
+    Nt = args.Nt
 
     im_tensor = batch['image']
     [X,Y] = np.meshgrid(np.linspace(-1,1,512),np.linspace(-1,1,512))
     Un = (X**2+Y**2)<1.02**2
 
-    im_frangi = frangi(im_tensor.min(axis=0).values.numpy(),sigmas = np.logspace(-2,1,30), beta=100, alpha=.5, gamma = .5)
+    im_frangi = frangi(im_tensor.min(axis=0).values.numpy(),sigmas = np.logspace(-2,1,30), beta=args.beta, alpha=.5, gamma = .5)
     im_frangi = Un*im_frangi/im_frangi.max()
 
     batch['image'] = torch.tensor(np.concatenate([torch.tensor(im_frangi).unsqueeze(0).numpy(), GT.unsqueeze(0),original_image]))
 
-    threshold_landmarks=.2
-    # points = Detection_Model(model, batch, threshold=threshold_landmarks)
+    threshold_landmarks= None
 
-    # points_tensor = torch.tensor(points).long()[points[:,2]!=3,:]
     landmarks_frame = loadmat('./data_IOSTAR/test_with_GT/landmarks/'+landmarks_name[img_idx])
 
     points_tensor = torch.maximum(torch.minimum(torch.tensor(np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
                     np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
                     np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])) - torch.tensor([[26,24,0]]),torch.tensor(511)),torch.tensor(0))
-    # batch['landmarks'] = points_tensor
-    batch_transform = transforms.Compose([Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), CenterCrop(target_size), ToTensor(), Rescale(512)])
 
-    # points_tensor = torch.tensor(np.vstack([np.hstack([landmarks_frame['EndpointPos']-1.,0*np.ones([landmarks_frame['EndpointPos'].shape[0],1])]),
-    #                 np.hstack([landmarks_frame['BiffPos']-1.,np.ones([landmarks_frame['BiffPos'].shape[0],1])]),
-    #                 np.hstack([landmarks_frame['CrossPos']-1.,2.*np.ones([landmarks_frame['CrossPos'].shape[0],1])])])) - torch.tensor([[26,24,0]])
+    batch_transform = transforms.Compose([Padding(0), ToArray(), HeatMap(s=13, alpha=3.55, out_channels = 4), CenterCrop(512), ToTensor(), Rescale(512)])
 
     batch['landmarks'] = points_tensor
     batch_rescaled = batch_transform(batch)
@@ -552,36 +571,35 @@ for img_idx in range(24):
     im_tensor, points_tensor = batch_rescaled['image'][0], batch_rescaled['landmarks'][ (points_tensor**2).sum(dim=-1)>0,:].long()
 
     # lifted_im_array = torch.tensor(compact_OS(im_tensor.squeeze(),sigma=0.01,eps=0.1,N_o=Nt))
-    lifted_im_array = gaussian_OS(torch.tensor(im_tensor).squeeze(), sigma = 0.001, eps = 0.01, N_o = Nt)
+    lifted_im_array = gaussian_OS(torch.tensor(im_tensor).squeeze(), sigma = args.sigma, eps = args.eps, N_o = Nt)
     lifted_im_array = lifted_im_array/lifted_im_array.max()
 
     theta_indices = torch.tensor(lifted_im_array)[[points_tensor[:,1].long(),points_tensor[:,0].long()]].argmax(dim=1)
 
-    [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array).permute([1,0,2]), points_tensor, theta_indices, decalage=0)
-    # [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array), points_tensor, theta_indices)
+    decalage = args.decalage
+
+    [A, points_tensor_mod, theta_indices_mod] = Modify_Metric_and_Points(torch.tensor(lifted_im_array).permute([1,0,2]), points_tensor, theta_indices, decalage=decalage)
 
     plt.figure(0)
     plt.imshow(im_tensor, cmap='gray', vmin=0, vmax=1)
     plt.scatter(points_tensor[:,1], points_tensor[:,0], c=points_tensor[:,2], alpha=.5)
     plt.show()
 
-    s=0.2
-    W = (A*(A>0)*(np.sqrt(A*(A>0))>s)+0.)
+    s = args.threshold_metric
+    # W = (A*(A>0)*(np.sqrt(A*(A>0))>s)+0.)
+    W = (A*(A>s**2))**args.power
     
     points_array_3d = np.hstack([points_tensor_mod[:,:-1], theta_indices_mod.unsqueeze(1)])
 
     # Distance computation
-    # mask_nonzero_points = (W[points_tensor_mod[:,1].long(),points_tensor_mod[:,0].long(),theta_indices_mod]>0)
+    alpha=args.alpha
+    xi=args.xi
 
-    # points_tensor_mod = points_tensor_mod[mask_nonzero_points,:]
-    # theta_indices_mod = theta_indices_mod[mask_nonzero_points]
-    alpha=.5
-    xi=1
     [D, L, hfmIn] = Compute_Distance_Matrix(1/(1+(1e8)*W**2), points_tensor_mod, theta_indices_mod, alpha=alpha, xi=xi)     
 
     # Visualization
     ndist = 10
-    dist_list = np.logspace(-2,-.5,ndist)
+    dist_list = np.logspace(-2,-1,ndist)
 
     widths = np.logspace(-3,-2,41)
 
@@ -597,14 +615,6 @@ for img_idx in range(24):
     best_mask = results[np.argmax(F1_dist)][1]
 
     curves, list_of_stacks, Tcsr_list, prim_dict, labels = Cluster_from_Distance(D, L, distance_threshold = distance_threshold)
-    # Show_Curves(W, batch_rescaled['image'][1:], points_tensor_mod, list_of_stacks, show_metric=False)
-    # Show_Tree(Tcsr_list[0], labels, prim_dict)
-
-    # mask_th = batch_rescaled['image'][1].numpy()
-    # mask_th = mask_th/mask_th.max()
-
-    # widths = np.logspace(-3,-2,40)
-    # F1_array, best_mask = test_mask_with_multiple_widths(list_of_stacks, mask_th, mask_th, widths)
 
     Show_Curves(W, batch_rescaled['image'][2:], points_tensor_mod, list_of_stacks, show_metric=False, img_number=img_idx, dist=distance_threshold)
 
@@ -614,7 +624,9 @@ for img_idx in range(24):
     plt.clf()
     plt.imshow(np.stack([best_mask, mask_th, mask_th*best_mask],axis=2))
     plt.axis('off')
-    plt.savefig('./figures/' + naming + '/mask' + str(img_idx) +'_dist' + str(distance_threshold) + '.png')
+
+    if img_idx<5:
+        plt.savefig('./figures/' + naming + '/mask' + str(img_idx) +'_dist' + str(distance_threshold) + '.png')
 
     print('best distance threshold : {}'.format(distance_threshold))
 
@@ -622,6 +634,10 @@ for img_idx in range(24):
 
 # %%
 print('mean F1 score : {}'.format(np.mean(batch_F1)))
+
+wandb.log({'F1': np.mean(batch_F1)})
+
+wandb.finish()
 
 with open('./figures/' + naming + '/variable_file.txt', "w") as variable_file:
     variable_file.write("s : " + str(s) + "\n")

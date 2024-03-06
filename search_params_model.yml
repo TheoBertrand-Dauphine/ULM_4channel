@@ -1,0 +1,25 @@
+program: HFM_computations_metric_model_landmarks_GT_wandb.py
+method: bayes
+name: IOSTAR_model_sweep
+metric:
+  name: F1
+  goal: maximize
+parameters:
+  threshold_metric:
+    values: [0.1,0.2,0.3,0.5,0.7]
+  xi:
+    values: [0.1,0.5,1.,2.,10.]
+  eps:
+    values: [0.01,0.005,0.002,0.001]
+  beta:
+    values: [100]
+  alpha:
+    values: [0.5,0.1,0.8]
+  sigma:
+    values: [0.01,0.001,0.0005]
+  decalage:
+    values: [0,3,5]
+  Nt:
+    values: [8,16,32]
+  power:
+    values: [.25,.5,1,2,4]

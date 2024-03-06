@@ -212,7 +212,7 @@ def Cake_OS(Im, No=128, Na=50, scale_min=25, scale_max=250, window_size = 25):
     filtered = torch.fft.ifft2(torch.fft.fft2(dirac)*torch.fft.fft2(I_expand)*torch.fft.fft2(A.conj())) #Weird fix but OK
     
     I_OS = ((filtered).mean(dim=0))
-    I_OS = (I_OS.real/I_OS.real.abs().max())**2
+    I_OS = (I_OS.real.abs()/I_OS.abs().max())**2
 
     # return .5*(torch.flip(I_OS[:No//2], dims=[0])+I_OS[No//2:])
     return .5*(I_OS[:No//2] + I_OS[No//2:])

@@ -1,0 +1,39 @@
+2024-03-05 15:25:20,616 INFO    MainThread:46624 [wandb_setup.py:_flush():76] Loading settings from /home/tbertrand/.config/wandb/settings
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_setup.py:_flush():76] Loading settings from /home/tbertrand/Bureau/ULM_4channel_pull/wandb/settings
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'HFM_computations_metric_model_landmarks_GT_wandb.py', 'program': '/home/tbertrand/Bureau/ULM_4channel_pull/HFM_computations_metric_model_landmarks_GT_wandb.py'}
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_init.py:_log_setup():428] Logging user logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20240305_152520-ty515ud6/logs/debug.log
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_init.py:_log_setup():429] Logging internal logs to /home/tbertrand/Bureau/ULM_4channel_pull/wandb/offline-run-20240305_152520-ty515ud6/logs/debug-internal.log
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_init.py:init():462] calling init triggers
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_init.py:init():465] wandb.init called with sweep_config: {}
+config: {'threshold_metric': 0.2, 'xi': 1.0, 'decalage': 0, 'beta': 100, 'sigma': 0.001, 'eps': 0.01, 'alpha': 0.5, 'Nt': 8, 'power': 1}
+2024-03-05 15:25:20,617 INFO    MainThread:46624 [wandb_init.py:init():481] re-initializing run, found existing run on stack: 1rn43o7b
+2024-03-05 15:25:20,619 INFO    MainThread:46624 [wandb_run.py:_finish():1685] finishing run ULM_4CHANNEL/1rn43o7b
+2024-03-05 15:25:20,620 INFO    MainThread:46624 [jupyter.py:save_history():435] not saving jupyter history
+2024-03-05 15:25:20,620 INFO    MainThread:46624 [jupyter.py:save_ipynb():377] not saving jupyter notebook
+2024-03-05 15:25:20,620 INFO    MainThread:46624 [wandb_init.py:_jupyter_teardown():360] cleaning up jupyter logic
+2024-03-05 15:25:20,620 INFO    MainThread:46624 [wandb_run.py:_atexit_cleanup():1867] got exitcode: 0
+2024-03-05 15:25:20,621 INFO    MainThread:46624 [wandb_run.py:_restore():1839] restore
+2024-03-05 15:25:21,253 INFO    MainThread:46624 [wandb_run.py:_on_finish():1996] got exit ret: 
+2024-03-05 15:25:21,358 INFO    MainThread:46624 [wandb_run.py:_on_finish():1996] got exit ret: done: true
+exit_result {
+}
+local_info {
+}
+
+2024-03-05 15:25:22,511 INFO    MainThread:46624 [wandb_run.py:_footer_history_summary_info():3104] rendering history
+2024-03-05 15:25:22,511 INFO    MainThread:46624 [wandb_run.py:_footer_history_summary_info():3136] rendering summary
+2024-03-05 15:25:22,515 INFO    MainThread:46624 [wandb_init.py:init():515] starting backend
+2024-03-05 15:25:22,515 INFO    MainThread:46624 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-03-05 15:25:22,516 INFO    MainThread:46624 [backend.py:ensure_launched():217] starting backend process...
+2024-03-05 15:25:22,550 INFO    MainThread:46624 [backend.py:ensure_launched():222] started backend process with pid: 295731
+2024-03-05 15:25:22,551 INFO    MainThread:46624 [wandb_init.py:init():525] backend started and connected
+2024-03-05 15:25:22,566 INFO    MainThread:46624 [wandb_run.py:_label_probe_notebook():1089] probe notebook
+2024-03-05 15:25:22,566 INFO    MainThread:46624 [wandb_run.py:_label_probe_notebook():1099] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2024-03-05 15:25:22,566 INFO    MainThread:46624 [wandb_init.py:init():596] updated telemetry
+2024-03-05 15:25:22,696 INFO    MainThread:46624 [wandb_init.py:init():662] starting run threads in backend
+2024-03-05 15:25:27,201 INFO    MainThread:46624 [wandb_run.py:_console_start():1898] atexit reg
+2024-03-05 15:25:27,201 INFO    MainThread:46624 [wandb_run.py:_redirect():1771] redirect: SettingsConsole.WRAP
+2024-03-05 15:25:27,201 INFO    MainThread:46624 [wandb_run.py:_redirect():1808] Wrapping output streams.
+2024-03-05 15:25:27,202 INFO    MainThread:46624 [wandb_run.py:_redirect():1832] Redirects installed.
+2024-03-05 15:25:27,202 INFO    MainThread:46624 [wandb_init.py:init():688] run started, returning control to user process
